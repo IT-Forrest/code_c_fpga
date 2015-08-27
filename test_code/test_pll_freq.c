@@ -19,7 +19,7 @@
 #define START_FREQ 32
 #define STOP_FREQ 127
 #define FREQ_STEP 1
-#define AVG_NUM 15
+#define AVG_NUM 16
 
 // Use get_offset, then set VOFF here
 #define VOFF 508
