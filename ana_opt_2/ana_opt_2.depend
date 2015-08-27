@@ -1,0 +1,210 @@
+# depslib dependency file v1.0
+1426795850 source:d:\dropbox\share_all\jiafan\fpga\ana_opt_2\device.c
+	"device.h"
+	"psoc_port.h"
+
+1426811571 d:\dropbox\share_all\jiafan\fpga\ana_opt_2\device.h
+	<stdio.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"psoc_port.h"
+
+1417721225 d:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\hwlib.h
+	<cstddef>
+	<cstdbool>
+	<cstdint>
+	<stddef.h>
+	<stdbool.h>
+	<stdint.h>
+	"alt_hwlibs_ver.h"
+
+1417721223 d:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\alt_hwlibs_ver.h
+
+1417721230 d:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\socal.h
+	<cstddef>
+	<cstdbool>
+	<cstdint>
+	<stddef.h>
+	<stdbool.h>
+	<stdint.h>
+
+1417721230 d:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\hps.h
+
+1417721230 d:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\alt_gpio.h
+
+1426711461 d:\dropbox\share_all\jiafan\fpga\ana_opt_2\psoc_port.h
+	<stdio.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"hps_0.h"
+
+1426711460 d:\dropbox\share_all\jiafan\fpga\ana_opt_2\hps_0.h
+
+1426717680 source:d:\dropbox\share_all\jiafan\fpga\ana_opt_2\main.c
+	<stdio.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"psoc_port.h"
+	"device.h"
+	"scan_chain.h"
+	"set_config.h"
+	"serial_port_io.h"
+
+1426812875 d:\dropbox\share_all\jiafan\fpga\ana_opt_2\scan_chain.h
+	"device.h"
+
+1426812676 d:\dropbox\share_all\jiafan\fpga\ana_opt_2\set_config.h
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+
+1426711461 d:\dropbox\share_all\jiafan\fpga\ana_opt_2\serial_port_io.h
+	"device.h"
+	<stdint.h>
+	<stdlib.h>
+
+1426804661 source:d:\dropbox\share_all\jiafan\fpga\ana_opt_2\psoc_port.c
+	"psoc_port.h"
+
+1426711461 source:d:\dropbox\share_all\jiafan\fpga\ana_opt_2\serial_port_io.c
+	<math.h>
+	<stdint.h>
+	"device.h"
+	<stdlib.h>
+
+1426742267 source:d:\dropbox\share_all\jiafan\fpga\ana_opt_2\set_config.c
+	<math.h>
+	<stdint.h>
+	"scan_chain.h"
+	"serial_port_io.h"
+	"device.h"
+	"psoc_port.h"
+	"set_config.h"
+
+1426813264 source:d:\dropbox\share_all\jiafan\fpga\ana_opt_2\test_adc.c
+	"device.h"
+	<stdio.h>
+	<math.h>
+	<stdint.h>
+	"scan_chain.h"
+	"serial_port_io.h"
+	"set_config.h"
+	"test_adc.h"
+
+1426813305 source:d:\dropbox\share_all\jiafan\fpga\ana_opt_2\test_sa.c
+	"device.h"
+	<stdint.h>
+	<stdio.h>
+	"scan_chain.h"
+	"serial_port_io.h"
+	"set_config.h"
+	"test_adc.h"
+
+1426813440 d:\dropbox\share_all\jiafan\fpga\ana_opt_2\test_adc.h
+	"device.h"
+	<stdio.h>
+	"scan_chain.h"
+
+1426711461 source:e:\dropbox\share_all\jiafan\fpga\ana_opt_2\serial_port_io.c
+	<math.h>
+	<stdint.h>
+	"device.h"
+	<stdlib.h>
+
+1426888362 e:\dropbox\share_all\jiafan\fpga\ana_opt_2\device.h
+	<stdio.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"psoc_port.h"
+
+1426882792 e:\dropbox\share_all\jiafan\fpga\ana_opt_2\psoc_port.h
+	<stdio.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"hps_0.h"
+
+1426875210 e:\dropbox\share_all\jiafan\fpga\ana_opt_2\hps_0.h
+
+1426829179 source:e:\dropbox\share_all\jiafan\fpga\ana_opt_2\set_config.c
+	<math.h>
+	<stdint.h>
+	"scan_chain.h"
+	"serial_port_io.h"
+	"device.h"
+	"psoc_port.h"
+	"set_config.h"
+	"test_adc.h"
+
+1426888394 e:\dropbox\share_all\jiafan\fpga\ana_opt_2\scan_chain.h
+	"device.h"
+
+1426711461 e:\dropbox\share_all\jiafan\fpga\ana_opt_2\serial_port_io.h
+	"device.h"
+	<stdint.h>
+	<stdlib.h>
+
+1426889935 e:\dropbox\share_all\jiafan\fpga\ana_opt_2\set_config.h
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+
+1426892713 e:\dropbox\share_all\jiafan\fpga\ana_opt_2\test_adc.h
+	"device.h"
+	<stdio.h>
+	"scan_chain.h"
+
+1426892858 source:e:\dropbox\share_all\jiafan\fpga\ana_opt_2\main.c
+	<stdio.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"psoc_port.h"
+	"device.h"
+	"scan_chain.h"
+	"set_config.h"
+	"serial_port_io.h"
+	"test_adc.h"
+
+1426882584 source:e:\dropbox\share_all\jiafan\fpga\ana_opt_2\psoc_port.c
+	"psoc_port.h"
+
+1426887166 source:e:\dropbox\share_all\jiafan\fpga\ana_opt_2\test_sa.c
+	"device.h"
+	<stdint.h>
+	<stdio.h>
+	"scan_chain.h"
+	"serial_port_io.h"
+	"set_config.h"
+	"test_adc.h"
+
+1426888165 source:e:\dropbox\share_all\jiafan\fpga\ana_opt_2\device.c
+	"device.h"
+	"psoc_port.h"
+
