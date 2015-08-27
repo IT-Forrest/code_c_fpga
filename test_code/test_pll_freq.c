@@ -17,7 +17,7 @@
 #include "../ana_opt_2/test_adc.h"
 
 #define START_FREQ 32
-#define STOP_FREQ 127
+#define STOP_FREQ 128
 #define FREQ_STEP 1
 #define AVG_NUM 16
 
