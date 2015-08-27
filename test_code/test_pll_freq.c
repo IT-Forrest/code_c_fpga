@@ -21,7 +21,7 @@
 #define FREQ_STEP 1
 #define AVG_NUM 15
 
-// Use get_offset first, then set VOFF here
+// Use get_offset, then set VOFF here
 #define VOFF 508
 
 int main()
