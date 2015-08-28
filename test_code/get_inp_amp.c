@@ -22,7 +22,7 @@
 #define AVG_NUM 16
 
 // Use get_offset first, then set VOFF here
-#define VOFF 508
+#define VOFF 507
 
 int main()
 {
@@ -63,7 +63,7 @@ int main()
                 IQAvgReadAdc(0, adc_buf, AVG_NUM);
 
                 for (k=0; k<4; k++) {adc_buf[k]=(adc_buf[k]/AVG_NUM);}
-                amp = sqrt(pow((int)adc_buf[1]-VOFF,2)+pow((int)adc_buf[3]-VOFF,2));
+                amp = sqrt(pow((int)adc_buf[2]-VOFF,2)+pow((int)adc_buf[3]-VOFF,2));
                 printf("%d\t", amp);
 
                 memset(adc_buf,0,sizeof(adc_buf));
