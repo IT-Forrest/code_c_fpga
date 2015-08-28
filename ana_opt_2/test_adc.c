@@ -53,6 +53,7 @@ void    TxCfg2ADC()
 		CFG_STA_Write(0);
 	}
 
+    usleep(50);
 	Global_RSTN_Write(1);
 }
 

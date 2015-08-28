@@ -32,10 +32,10 @@ int main()
     if (init_cfg()) return (1);
     if (syn_ctrl()) return (1);
 
-    SetCB1(5);
-    SetCB2(5);
-    SetCB3(5);
-    SetCB4(5);
+    SetCB1(7);
+    SetCB2(7);
+    SetCB3(7);
+    SetCB4(7);
     SetCB_SW(1);
 
     SetTune_X1(15);
@@ -45,10 +45,10 @@ int main()
     BackupCfg();
 
     LoadCfg();
-    CFG_PHS_Write(0);
-    CFG_SRC_Write(1);
-    CFG_CAL_Write(1);
-    CFG_OSCD_Write(0);
+    CFG_PHS_Write(1);
+    CFG_SRC_Write(0);
+    CFG_CAL_Write(0);
+    CFG_OSCD_Write(1);
 
     while(true) {
         printf("Freq Word: ");
