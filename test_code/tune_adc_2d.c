@@ -17,12 +17,12 @@
 
 #define ITERNUM 128
 #define SSNUM 7
-#define VOFFSET 508
+#define VOFFSET 507
 #define AVG 8
 
 #define NEWD
 #define P_OPT
-//#define P_SWP
+#define P_SWP
 #define P_FRP
 
 uint16  fno;
@@ -199,6 +199,8 @@ int main()
         }
     }
 #endif // P_FRP
+
+    printf("***** Setting X=%d, Y=%d\n", tunex1, tunex2);
 
     SetTune_X1(tunex1);
     SetTune_X2(tunex2);
