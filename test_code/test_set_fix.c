@@ -23,7 +23,7 @@
 uint16  fno;
 uint16  flist[4] = {0};
 
-int main()
+int main(int argc, char** argv)
 {
     uint16  tunex1, tunex2;
 
@@ -33,8 +33,17 @@ int main()
 
     if (LoadCfgFile("./case1.cfg", &fno, flist)) return (1);
 
-    tunex1 = 16;
-    tunex2 = 13;
+    if (argc == 1)
+    {
+        // default value
+        tunex1 = 11;
+        tunex2 = 12;
+    }
+    else
+    {
+        tunex1 = atoi(argv[1]);
+        tunex2 = atoi(argv[2]);
+    }
 
     printf("***** Setting X=%d, Y=%d\n", tunex1, tunex2);
 
