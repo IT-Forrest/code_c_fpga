@@ -89,10 +89,10 @@ uint32_t     *cfsatune4Dx3_addr;      // Tune X3 register
 uint32_t     *cfsatune4Dx4_addr;      // Tune X4 register
 
 // the chip test for tapeout3
-uint32_t     local_chiptestctrl_addr;
-uint32_t     *chiptest_ctrl_addr;       // chip test control register
-uint32_t     *chiptest_stat_addr;       // chip test status register
-uint32_t     *chiptest_cntclk_addr;     // chip test clock counter
+uint32_t     local_chip3_ctrl_addr;
+uint32_t     *chip3_set_ctrl_addr;       // chip test control register
+uint32_t     *chip3_chk_stat_addr;       // chip test status register
+uint32_t     *chip3_set_clkcnt_addr;     // chip test clock counter
 
 
 // Initialize memory mapping
@@ -132,7 +132,7 @@ int init_mem()
     spi_ctrl_control = spi_ctrl_addr + 3;
 
     // the AMM I/O of sa_test_logic module
-    sactrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_SACTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+/*    sactrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_SACTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
     sastat_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_SASTAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
     initx1_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_INITX1_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
     initx2_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_INITX2_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
@@ -145,7 +145,7 @@ int init_mem()
     tunex2_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_TUNEX2_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
     tunex3_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_TUNEX3_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
     tunex4_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_TUNEX4_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-/**/
+
     // the AMM I/O of sa_4D_logic module
     sa4Dctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_SACTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
     sa4Dstat_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_SASTAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
@@ -162,7 +162,7 @@ int init_mem()
     tune4Dx2_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_TUNEX2_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
     tune4Dx3_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_TUNEX3_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
     tune4Dx4_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_TUNEX4_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-
+*/
     // the AMM I/O of digital_test_logic module
     cfsa4Dctrl_addr   = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_SACTRL_BASE) & (unsigned long) (HW_REGS_MASK));
     cfsa4Dstat_addr   = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_SASTAT_BASE) & (unsigned long) (HW_REGS_MASK));
@@ -187,10 +187,10 @@ int init_mem()
     cfsatune4Dx4_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX4_BASE) & (unsigned long) (HW_REGS_MASK));
 
     // chip test module
-/*    chiptest_ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_CTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;       // chip test control register
-    chiptest_stat_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_STAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;       // chip test control register       // chip test status register
-    chiptest_cntclk_addr=virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_STAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;;     // chip test clock counter
-*/
+    chip3_set_ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_CTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;       // chip test control register
+    chip3_chk_stat_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_STAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;       // chip test control register       // chip test status register
+    chip3_set_clkcnt_addr=virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_STAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;;     // chip test clock counter
+/**/
     return(0);
 }
 
@@ -220,17 +220,17 @@ int syn_ctrl()
     local_ctrl_addr = 0;
     *ctrl_addr = local_ctrl_addr;
 
-    local_sactrl_addr = 0;
+    /*local_sactrl_addr = 0;
     *sactrl_addr = local_sactrl_addr;
 
     local_sa4Dctrl_addr = 0;
-    *sa4Dctrl_addr = local_sa4Dctrl_addr;
+    *sa4Dctrl_addr = local_sa4Dctrl_addr;*/
 
     local_cfsa4Dctrl_addr = 0;
     *cfsa4Dctrl_addr = local_cfsa4Dctrl_addr;
 
-    /*local_chiptestctrl_addr = 0;
-    *chiptest_ctrl_addr = local_chiptestctrl_addr;*/
+    local_chip3_ctrl_addr = 0;
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
 
     avs_wait();
     return (0);

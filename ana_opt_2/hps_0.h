@@ -201,290 +201,37 @@
 #define ANA_OPT_LOGIC_CNTCONV_END 0x4f
 
 /*
- * Macros for device 'sa_test_logic_sactrl', class 'sa_test_logic'
- * The macros are prefixed with 'SA_TEST_LOGIC_SACTRL_'.
+ * Macros for device 'chip_test_logic_ctrl', class 'chip_test_logic'
+ * The macros are prefixed with 'CHIP_TEST_LOGIC_CTRL_'.
  * The prefix is the slave descriptor.
  */
-#define SA_TEST_LOGIC_SACTRL_COMPONENT_TYPE sa_test_logic
-#define SA_TEST_LOGIC_SACTRL_COMPONENT_NAME sa_test_logic
-#define SA_TEST_LOGIC_SACTRL_BASE 0x50
-#define SA_TEST_LOGIC_SACTRL_SPAN 4
-#define SA_TEST_LOGIC_SACTRL_END 0x53
+#define CHIP_TEST_LOGIC_CTRL_COMPONENT_TYPE chip_test_logic
+#define CHIP_TEST_LOGIC_CTRL_COMPONENT_NAME chip_test_logic
+#define CHIP_TEST_LOGIC_CTRL_BASE 0x50
+#define CHIP_TEST_LOGIC_CTRL_SPAN 4
+#define CHIP_TEST_LOGIC_CTRL_END 0x53
 
 /*
- * Macros for device 'sa_test_logic_sastat', class 'sa_test_logic'
- * The macros are prefixed with 'SA_TEST_LOGIC_SASTAT_'.
+ * Macros for device 'chip_test_logic_stat', class 'chip_test_logic'
+ * The macros are prefixed with 'CHIP_TEST_LOGIC_STAT_'.
  * The prefix is the slave descriptor.
  */
-#define SA_TEST_LOGIC_SASTAT_COMPONENT_TYPE sa_test_logic
-#define SA_TEST_LOGIC_SASTAT_COMPONENT_NAME sa_test_logic
-#define SA_TEST_LOGIC_SASTAT_BASE 0x54
-#define SA_TEST_LOGIC_SASTAT_SPAN 4
-#define SA_TEST_LOGIC_SASTAT_END 0x57
+#define CHIP_TEST_LOGIC_STAT_COMPONENT_TYPE chip_test_logic
+#define CHIP_TEST_LOGIC_STAT_COMPONENT_NAME chip_test_logic
+#define CHIP_TEST_LOGIC_STAT_BASE 0x54
+#define CHIP_TEST_LOGIC_STAT_SPAN 4
+#define CHIP_TEST_LOGIC_STAT_END 0x57
 
 /*
- * Macros for device 'sa_test_logic_initx1', class 'sa_test_logic'
- * The macros are prefixed with 'SA_TEST_LOGIC_INITX1_'.
+ * Macros for device 'chip_test_logic_cntsclk_sc', class 'chip_test_logic'
+ * The macros are prefixed with 'CHIP_TEST_LOGIC_CNTSCLK_SC_'.
  * The prefix is the slave descriptor.
  */
-#define SA_TEST_LOGIC_INITX1_COMPONENT_TYPE sa_test_logic
-#define SA_TEST_LOGIC_INITX1_COMPONENT_NAME sa_test_logic
-#define SA_TEST_LOGIC_INITX1_BASE 0x58
-#define SA_TEST_LOGIC_INITX1_SPAN 4
-#define SA_TEST_LOGIC_INITX1_END 0x5b
-
-/*
- * Macros for device 'sa_test_logic_initx2', class 'sa_test_logic'
- * The macros are prefixed with 'SA_TEST_LOGIC_INITX2_'.
- * The prefix is the slave descriptor.
- */
-#define SA_TEST_LOGIC_INITX2_COMPONENT_TYPE sa_test_logic
-#define SA_TEST_LOGIC_INITX2_COMPONENT_NAME sa_test_logic
-#define SA_TEST_LOGIC_INITX2_BASE 0x5c
-#define SA_TEST_LOGIC_INITX2_SPAN 4
-#define SA_TEST_LOGIC_INITX2_END 0x5f
-
-/*
- * Macros for device 'sa_test_logic_initx3', class 'sa_test_logic'
- * The macros are prefixed with 'SA_TEST_LOGIC_INITX3_'.
- * The prefix is the slave descriptor.
- */
-#define SA_TEST_LOGIC_INITX3_COMPONENT_TYPE sa_test_logic
-#define SA_TEST_LOGIC_INITX3_COMPONENT_NAME sa_test_logic
-#define SA_TEST_LOGIC_INITX3_BASE 0x60
-#define SA_TEST_LOGIC_INITX3_SPAN 4
-#define SA_TEST_LOGIC_INITX3_END 0x63
-
-/*
- * Macros for device 'sa_test_logic_initx4', class 'sa_test_logic'
- * The macros are prefixed with 'SA_TEST_LOGIC_INITX4_'.
- * The prefix is the slave descriptor.
- */
-#define SA_TEST_LOGIC_INITX4_COMPONENT_TYPE sa_test_logic
-#define SA_TEST_LOGIC_INITX4_COMPONENT_NAME sa_test_logic
-#define SA_TEST_LOGIC_INITX4_BASE 0x64
-#define SA_TEST_LOGIC_INITX4_SPAN 4
-#define SA_TEST_LOGIC_INITX4_END 0x67
-
-/*
- * Macros for device 'sa_test_logic_iternum', class 'sa_test_logic'
- * The macros are prefixed with 'SA_TEST_LOGIC_ITERNUM_'.
- * The prefix is the slave descriptor.
- */
-#define SA_TEST_LOGIC_ITERNUM_COMPONENT_TYPE sa_test_logic
-#define SA_TEST_LOGIC_ITERNUM_COMPONENT_NAME sa_test_logic
-#define SA_TEST_LOGIC_ITERNUM_BASE 0x68
-#define SA_TEST_LOGIC_ITERNUM_SPAN 4
-#define SA_TEST_LOGIC_ITERNUM_END 0x6b
-
-/*
- * Macros for device 'sa_test_logic_anain', class 'sa_test_logic'
- * The macros are prefixed with 'SA_TEST_LOGIC_ANAIN_'.
- * The prefix is the slave descriptor.
- */
-#define SA_TEST_LOGIC_ANAIN_COMPONENT_TYPE sa_test_logic
-#define SA_TEST_LOGIC_ANAIN_COMPONENT_NAME sa_test_logic
-#define SA_TEST_LOGIC_ANAIN_BASE 0x6c
-#define SA_TEST_LOGIC_ANAIN_SPAN 4
-#define SA_TEST_LOGIC_ANAIN_END 0x6f
-
-/*
- * Macros for device 'sa_test_logic_tunex1', class 'sa_test_logic'
- * The macros are prefixed with 'SA_TEST_LOGIC_TUNEX1_'.
- * The prefix is the slave descriptor.
- */
-#define SA_TEST_LOGIC_TUNEX1_COMPONENT_TYPE sa_test_logic
-#define SA_TEST_LOGIC_TUNEX1_COMPONENT_NAME sa_test_logic
-#define SA_TEST_LOGIC_TUNEX1_BASE 0x70
-#define SA_TEST_LOGIC_TUNEX1_SPAN 4
-#define SA_TEST_LOGIC_TUNEX1_END 0x73
-
-/*
- * Macros for device 'sa_test_logic_tunex2', class 'sa_test_logic'
- * The macros are prefixed with 'SA_TEST_LOGIC_TUNEX2_'.
- * The prefix is the slave descriptor.
- */
-#define SA_TEST_LOGIC_TUNEX2_COMPONENT_TYPE sa_test_logic
-#define SA_TEST_LOGIC_TUNEX2_COMPONENT_NAME sa_test_logic
-#define SA_TEST_LOGIC_TUNEX2_BASE 0x74
-#define SA_TEST_LOGIC_TUNEX2_SPAN 4
-#define SA_TEST_LOGIC_TUNEX2_END 0x77
-
-/*
- * Macros for device 'sa_test_logic_tunex3', class 'sa_test_logic'
- * The macros are prefixed with 'SA_TEST_LOGIC_TUNEX3_'.
- * The prefix is the slave descriptor.
- */
-#define SA_TEST_LOGIC_TUNEX3_COMPONENT_TYPE sa_test_logic
-#define SA_TEST_LOGIC_TUNEX3_COMPONENT_NAME sa_test_logic
-#define SA_TEST_LOGIC_TUNEX3_BASE 0x78
-#define SA_TEST_LOGIC_TUNEX3_SPAN 4
-#define SA_TEST_LOGIC_TUNEX3_END 0x7b
-
-/*
- * Macros for device 'sa_test_logic_tunex4', class 'sa_test_logic'
- * The macros are prefixed with 'SA_TEST_LOGIC_TUNEX4_'.
- * The prefix is the slave descriptor.
- */
-#define SA_TEST_LOGIC_TUNEX4_COMPONENT_TYPE sa_test_logic
-#define SA_TEST_LOGIC_TUNEX4_COMPONENT_NAME sa_test_logic
-#define SA_TEST_LOGIC_TUNEX4_BASE 0x80
-#define SA_TEST_LOGIC_TUNEX4_SPAN 4
-#define SA_TEST_LOGIC_TUNEX4_END 0x83
-
-/*
- * Macros for device 'sa_4D_logic_sactrl', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_SACTRL_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_SACTRL_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_SACTRL_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_SACTRL_BASE 0xb4
-#define SA_4D_LOGIC_SACTRL_SPAN 4
-#define SA_4D_LOGIC_SACTRL_END 0xb7
-
-/*
- * Macros for device 'sa_4D_logic_sastat', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_SASTAT_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_SASTAT_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_SASTAT_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_SASTAT_BASE 0xb8
-#define SA_4D_LOGIC_SASTAT_SPAN 4
-#define SA_4D_LOGIC_SASTAT_END 0xbb
-
-/*
- * Macros for device 'sa_4D_logic_initx1', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_INITX1_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_INITX1_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_INITX1_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_INITX1_BASE 0xbc
-#define SA_4D_LOGIC_INITX1_SPAN 4
-#define SA_4D_LOGIC_INITX1_END 0xbf
-
-/*
- * Macros for device 'sa_4D_logic_initx2', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_INITX2_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_INITX2_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_INITX2_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_INITX2_BASE 0xc0
-#define SA_4D_LOGIC_INITX2_SPAN 4
-#define SA_4D_LOGIC_INITX2_END 0xc3
-
-/*
- * Macros for device 'sa_4D_logic_initx3', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_INITX3_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_INITX3_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_INITX3_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_INITX3_BASE 0xc4
-#define SA_4D_LOGIC_INITX3_SPAN 4
-#define SA_4D_LOGIC_INITX3_END 0xc7
-
-/*
- * Macros for device 'sa_4D_logic_initx4', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_INITX4_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_INITX4_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_INITX4_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_INITX4_BASE 0xc8
-#define SA_4D_LOGIC_INITX4_SPAN 4
-#define SA_4D_LOGIC_INITX4_END 0xcb
-
-/*
- * Macros for device 'sa_4D_logic_iternum', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_ITERNUM_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_ITERNUM_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_ITERNUM_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_ITERNUM_BASE 0xcc
-#define SA_4D_LOGIC_ITERNUM_SPAN 4
-#define SA_4D_LOGIC_ITERNUM_END 0xcf
-
-/*
- * Macros for device 'sa_4D_logic_iterss', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_ITERSS_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_ITERSS_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_ITERSS_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_ITERSS_BASE 0xd0
-#define SA_4D_LOGIC_ITERSS_SPAN 4
-#define SA_4D_LOGIC_ITERSS_END 0xd3
-
-/*
- * Macros for device 'sa_4D_logic_initt', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_INITT_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_INITT_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_INITT_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_INITT_BASE 0xd4
-#define SA_4D_LOGIC_INITT_SPAN 4
-#define SA_4D_LOGIC_INITT_END 0xd7
-
-/*
- * Macros for device 'sa_4D_logic_anain', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_ANAIN_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_ANAIN_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_ANAIN_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_ANAIN_BASE 0xd8
-#define SA_4D_LOGIC_ANAIN_SPAN 4
-#define SA_4D_LOGIC_ANAIN_END 0xdb
-
-/*
- * Macros for device 'sa_4D_logic_tunex1', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_TUNEX1_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_TUNEX1_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_TUNEX1_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_TUNEX1_BASE 0xdc
-#define SA_4D_LOGIC_TUNEX1_SPAN 4
-#define SA_4D_LOGIC_TUNEX1_END 0xdf
-
-/*
- * Macros for device 'sa_4D_logic_tunex2', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_TUNEX2_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_TUNEX2_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_TUNEX2_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_TUNEX2_BASE 0xe0
-#define SA_4D_LOGIC_TUNEX2_SPAN 4
-#define SA_4D_LOGIC_TUNEX2_END 0xe3
-
-/*
- * Macros for device 'sa_4D_logic_tunex3', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_TUNEX3_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_TUNEX3_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_TUNEX3_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_TUNEX3_BASE 0xe4
-#define SA_4D_LOGIC_TUNEX3_SPAN 4
-#define SA_4D_LOGIC_TUNEX3_END 0xe7
-
-/*
- * Macros for device 'sa_4D_logic_tunex4', class 'sa_4D_logic'
- * The macros are prefixed with 'SA_4D_LOGIC_TUNEX4_'.
- * The prefix is the slave descriptor.
- */
-#define SA_4D_LOGIC_TUNEX4_COMPONENT_TYPE sa_4D_logic
-#define SA_4D_LOGIC_TUNEX4_COMPONENT_NAME sa_4D_logic
-#define SA_4D_LOGIC_TUNEX4_BASE 0xe8
-#define SA_4D_LOGIC_TUNEX4_SPAN 4
-#define SA_4D_LOGIC_TUNEX4_END 0xeb
+#define CHIP_TEST_LOGIC_CNTSCLK_SC_COMPONENT_TYPE chip_test_logic
+#define CHIP_TEST_LOGIC_CNTSCLK_SC_COMPONENT_NAME chip_test_logic
+#define CHIP_TEST_LOGIC_CNTSCLK_SC_BASE 0x58
+#define CHIP_TEST_LOGIC_CNTSCLK_SC_SPAN 4
+#define CHIP_TEST_LOGIC_CNTSCLK_SC_END 0x5b
 
 /*
  * Macros for device 'cfsa_4D_logic_sactrl', class 'cfsa_4D_logic'
@@ -790,7 +537,7 @@
 #define SYSID_QSYS_SPAN 8
 #define SYSID_QSYS_END 0x10007
 #define SYSID_QSYS_ID 2899645186
-#define SYSID_QSYS_TIMESTAMP 1437777240
+#define SYSID_QSYS_TIMESTAMP 1439755981
 
 /*
  * Macros for device 'jtag_uart', class 'altera_avalon_jtag_uart'

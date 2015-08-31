@@ -555,90 +555,92 @@ unsigned int CFSA_TUNE4DX3_Read() {return (*cfsatune4Dx3_addr);}
 unsigned int CFSA_TUNE4DX4_Read() {return (*cfsatune4Dx4_addr);}
 
 /////// tapeout chip 3 //////
-void CHIP_TEST_LATA_Write(int rd_val)
+void CHIP3_SC_LATA_Write(int rd_val)
 {
-    (rd_val & 0x1)? BIT_ON(local_chiptestctrl_addr, IDX_CTRL_LAT_A):BIT_OFF(local_chiptestctrl_addr, IDX_CTRL_LAT_A);
-    *chiptest_ctrl_addr = local_chiptestctrl_addr;
+    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_LAT_A):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_LAT_A);
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
     avs_wait();
 }
 
-void CHIP_TEST_LATB_Write(int rd_val)
+void CHIP3_SC_LATB_Write(int rd_val)
 {
-    (rd_val & 0x1)? BIT_ON(local_chiptestctrl_addr, IDX_CTRL_LAT_B):BIT_OFF(local_chiptestctrl_addr, IDX_CTRL_LAT_B);
-    *chiptest_ctrl_addr = local_chiptestctrl_addr;
+    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_LAT_B):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_LAT_B);
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
     avs_wait();
 }
 
-void CHIP_TEST_SELA_Write(int rd_val)
+void CHIP3_SET_SELA_Write(int rd_val)
 {
-    (rd_val & 0x1)? BIT_ON(local_chiptestctrl_addr, IDX_CTRL_SEL_A):BIT_OFF(local_chiptestctrl_addr, IDX_CTRL_SEL_A);
-    *chiptest_ctrl_addr = local_chiptestctrl_addr;
+    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_SEL_A):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_SEL_A);
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
     avs_wait();
 }
 
-void CHIP_TEST_SELB_Write(int rd_val)
+void CHIP3_SET_SELB_Write(int rd_val)
 {
-    (rd_val & 0x1)? BIT_ON(local_chiptestctrl_addr, IDX_CTRL_SEL_B):BIT_OFF(local_chiptestctrl_addr, IDX_CTRL_SEL_B);
-    *chiptest_ctrl_addr = local_chiptestctrl_addr;
+    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_SEL_B):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_SEL_B);
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
     avs_wait();
 }
 
-void CHIP_TEST_FLAGA_Write(int rd_val)
+/// set clock flag for scan chain A
+void CHIP3_SET_FLAGA_Write(int rd_val)
 {
-    (rd_val & 0x1)? BIT_ON(local_chiptestctrl_addr, IDX_CTRL_FLAG_A):BIT_OFF(local_chiptestctrl_addr, IDX_CTRL_FLAG_A);
-    *chiptest_ctrl_addr = local_chiptestctrl_addr;
+    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_FLAG_A):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_FLAG_A);
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
     avs_wait();
 }
 
-void CHIP_TEST_FLAGB_Write(int rd_val)
+/// set clock flag for scan chain B
+void CHIP3_SET_FLAGB_Write(int rd_val)
 {
-    (rd_val & 0x1)? BIT_ON(local_chiptestctrl_addr, IDX_CTRL_FLAG_B):BIT_OFF(local_chiptestctrl_addr, IDX_CTRL_FLAG_B);
-    *chiptest_ctrl_addr = local_chiptestctrl_addr;
+    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_FLAG_B):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_FLAG_B);
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
     avs_wait();
 }
 
 /// the clock for scan chain, also need FLAGA or FLAGB
-void CHIP_TEST_STA_SCCLK_Write(int rd_val)
+void CHIP3_SET_STA_SCCLK_Write(int rd_val)
 {
-    (rd_val & 0x1)? BIT_ON(local_chiptestctrl_addr, IDX_CTRL_STA_SC):BIT_OFF(local_chiptestctrl_addr, IDX_CTRL_STA_SC);
-    *chiptest_ctrl_addr = local_chiptestctrl_addr;
+    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_STA_SC):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_STA_SC);
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
     avs_wait();
 }
 
 /// the clock for global system
-void CHIP_TEST_STA_CLK_Write(int rd_val)
+void CHIP3_SET_STA_GLBCLK_Write(int rd_val)
 {
-    (rd_val & 0x1)? BIT_ON(local_chiptestctrl_addr, IDX_CTRL_STA_CLK):BIT_OFF(local_chiptestctrl_addr, IDX_CTRL_STA_CLK);
-    *chiptest_ctrl_addr = local_chiptestctrl_addr;
+    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_STA_CLK):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_STA_CLK);
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
     avs_wait();
 }
 
 /// only generate one global clock for debug
-void CHIP_TEST_ONE_CLK_Write(int rd_val)
+void CHIP3_SET_ONE_CLK_Write(int rd_val)
 {
-    (rd_val & 0x1)? BIT_ON(local_chiptestctrl_addr, IDX_CTRL_ONE_CLK):BIT_OFF(local_chiptestctrl_addr, IDX_CTRL_ONE_CLK);
-    *chiptest_ctrl_addr = local_chiptestctrl_addr;
+    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_ONE_CLK):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_ONE_CLK);
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
     avs_wait();
 }
 
-void CHIP_TEST_SINAB_Write(int rd_val)
+void CHIP3_SET_SINAB_Write(int rd_val)
 {
-    (rd_val & 0x1)? BIT_ON(local_chiptestctrl_addr, IDX_CTRL_SIN_AB):BIT_OFF(local_chiptestctrl_addr, IDX_CTRL_SIN_AB);
-    *chiptest_ctrl_addr = local_chiptestctrl_addr;
+    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_SIN_AB):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_SIN_AB);
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
     avs_wait();
 }
 
-void CHIP_TEST_RSTN_Write(int rd_val)
+void CHIP3_SET_RSTN_Write(int rd_val)
 {
-    (rd_val & 0x1)? BIT_ON(local_chiptestctrl_addr, IDX_CTRL_RST_N):BIT_OFF(local_chiptestctrl_addr, IDX_CTRL_RST_N);
-    *chiptest_ctrl_addr = local_chiptestctrl_addr;
+    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_RST_N):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_RST_N);
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
     avs_wait();
 }
 
-int CHIP_TEST_SCRDY_Read() {return ((*chiptest_stat_addr >> IDX_STAT_SCREADY) & 1) ;}
-int CHIP_TEST_SO_A_Read()  {return ((*chiptest_stat_addr >> IDX_STAT_SCSO_A) & 1) ;}
-int CFSA_TEST_SO_B_Read()  {return ((*chiptest_stat_addr >> IDX_STAT_SCSO_B) & 1) ;}
-int CFSA_TEST_ONERDY()     {return ((*chiptest_stat_addr >> IDX_STAT_ONERDY) & 1) ;}
+int CHIP3_CHK_SCRDY_Read() {return ((*chip3_chk_stat_addr >> IDX_STAT_SCREADY) & 1) ;}
+int CHIP3_CHK_SO_A_Read()  {return ((*chip3_chk_stat_addr >> IDX_STAT_SCSO_A) & 1) ;}
+int CHIP3_CHK_SO_B_Read()  {return ((*chip3_chk_stat_addr >> IDX_STAT_SCSO_B) & 1) ;}
+int CHIP3_CHK_ONECLK_RDY() {return ((*chip3_chk_stat_addr >> IDX_STAT_ONERDY) & 1) ;}
 
 // used for debugging
 int DEBUG_Read() { return 1;}

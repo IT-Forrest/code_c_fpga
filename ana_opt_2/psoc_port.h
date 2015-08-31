@@ -80,10 +80,10 @@ extern uint32_t     *cfsatune4Dx2_addr;
 extern uint32_t     *cfsatune4Dx3_addr;
 extern uint32_t     *cfsatune4Dx4_addr;
 
-extern uint32_t     local_chiptestctrl_addr;
-extern uint32_t     *chiptest_ctrl_addr;
-extern uint32_t     *chiptest_stat_addr;
-extern uint32_t     *chiptest_cntclk_addr;
+extern uint32_t     local_chip3_ctrl_addr;
+extern uint32_t     *chip3_set_ctrl_addr;
+extern uint32_t     *chip3_chk_stat_addr;
+extern uint32_t     *chip3_set_clkcnt_addr;
 
 
 void avs_wait();
