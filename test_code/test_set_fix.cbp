@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="test_set_fix" />
+		<Option title="tcode_s" />
 		<Option pch_mode="2" />
 		<Option compiler="arm-elf-gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/test_set_fix" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/app2" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="arm-elf-gcc" />
@@ -23,7 +23,7 @@
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/test_set_fix" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/tcode_s" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="arm-elf-gcc" />
@@ -66,8 +66,43 @@
 		<Unit filename="../ana_opt_2/test_sa.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="test_set_fix.c">
+		<Unit filename="disp_ip.c">
 			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="get_fresp_bpf1.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="get_inp_amp.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="get_offset.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="swpxy_bpf1.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="test_cfsa4D.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="tune_adc_2d.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tune_adc_4d.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
 		</Unit>
 		<Extensions>
 			<code_completion />
