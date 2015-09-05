@@ -1302,5 +1302,728 @@ int LoadCfgFile(char* file_name, uint16* fno, uint16* flist)
     return 0;
 }
 
+//////// Config function for tapeout3
+int32    Chip3_Set_Dbfactor1(uint16 rd_val)
+{
+    if (rd_val != 0x0000 && rd_val > 0x03ff)
+    {
+        PutStr("\t\tChip3_Set_Dbfactor1 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_DBFACTOR1_0: CHIP3_RST_DBFACTOR1_0;
+    (rd_val & 0x00000002)? CHIP3_SET_DBFACTOR1_1: CHIP3_RST_DBFACTOR1_1;
+    (rd_val & 0x00000004)? CHIP3_SET_DBFACTOR1_2: CHIP3_RST_DBFACTOR1_2;
+    (rd_val & 0x00000008)? CHIP3_SET_DBFACTOR1_3: CHIP3_RST_DBFACTOR1_3;
+    (rd_val & 0x00000010)? CHIP3_SET_DBFACTOR1_4: CHIP3_RST_DBFACTOR1_4;
+    (rd_val & 0x00000020)? CHIP3_SET_DBFACTOR1_5: CHIP3_RST_DBFACTOR1_5;
+    (rd_val & 0x00000040)? CHIP3_SET_DBFACTOR1_6: CHIP3_RST_DBFACTOR1_6;
+    (rd_val & 0x00000080)? CHIP3_SET_DBFACTOR1_7: CHIP3_RST_DBFACTOR1_7;
+    (rd_val & 0x00000100)? CHIP3_SET_DBFACTOR1_8: CHIP3_RST_DBFACTOR1_8;
+    (rd_val & 0x00000200)? CHIP3_SET_DBFACTOR1_9: CHIP3_RST_DBFACTOR1_9;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Dbfactor0(uint16 rd_val)
+{
+    if (rd_val != 0x0000 && rd_val > 0x03ff)
+    {
+        PutStr("\t\tChip3_Set_Dbfactor0 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_DBFACTOR0_0: CHIP3_RST_DBFACTOR0_0;
+    (rd_val & 0x00000002)? CHIP3_SET_DBFACTOR0_1: CHIP3_RST_DBFACTOR0_1;
+    (rd_val & 0x00000004)? CHIP3_SET_DBFACTOR0_2: CHIP3_RST_DBFACTOR0_2;
+    (rd_val & 0x00000008)? CHIP3_SET_DBFACTOR0_3: CHIP3_RST_DBFACTOR0_3;
+    (rd_val & 0x00000010)? CHIP3_SET_DBFACTOR0_4: CHIP3_RST_DBFACTOR0_4;
+    (rd_val & 0x00000020)? CHIP3_SET_DBFACTOR0_5: CHIP3_RST_DBFACTOR0_5;
+    (rd_val & 0x00000040)? CHIP3_SET_DBFACTOR0_6: CHIP3_RST_DBFACTOR0_6;
+    (rd_val & 0x00000080)? CHIP3_SET_DBFACTOR0_7: CHIP3_RST_DBFACTOR0_7;
+    (rd_val & 0x00000100)? CHIP3_SET_DBFACTOR0_8: CHIP3_RST_DBFACTOR0_8;
+    (rd_val & 0x00000200)? CHIP3_SET_DBFACTOR0_9: CHIP3_RST_DBFACTOR0_9;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Threshold(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0xff)
+    {
+        PutStr("\t\tChip3_Set_Threshold value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_THRESHOLD_0: CHIP3_RST_THRESHOLD_0;
+    (rd_val & 0x00000002)? CHIP3_SET_THRESHOLD_1: CHIP3_RST_THRESHOLD_1;
+    (rd_val & 0x00000004)? CHIP3_SET_THRESHOLD_2: CHIP3_RST_THRESHOLD_2;
+    (rd_val & 0x00000008)? CHIP3_SET_THRESHOLD_3: CHIP3_RST_THRESHOLD_3;
+    (rd_val & 0x00000010)? CHIP3_SET_THRESHOLD_4: CHIP3_RST_THRESHOLD_4;
+    (rd_val & 0x00000020)? CHIP3_SET_THRESHOLD_5: CHIP3_RST_THRESHOLD_5;
+    (rd_val & 0x00000040)? CHIP3_SET_THRESHOLD_6: CHIP3_RST_THRESHOLD_6;
+    (rd_val & 0x00000080)? CHIP3_SET_THRESHOLD_7: CHIP3_RST_THRESHOLD_7;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Factors(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0xff)
+    {
+        PutStr("\t\tChip3_Set_Factors value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_FACTORS_0: CHIP3_RST_FACTORS_0;
+    (rd_val & 0x00000002)? CHIP3_SET_FACTORS_1: CHIP3_RST_FACTORS_1;
+    (rd_val & 0x00000004)? CHIP3_SET_FACTORS_2: CHIP3_RST_FACTORS_2;
+    (rd_val & 0x00000008)? CHIP3_SET_FACTORS_3: CHIP3_RST_FACTORS_3;
+    (rd_val & 0x00000010)? CHIP3_SET_FACTORS_4: CHIP3_RST_FACTORS_4;
+    (rd_val & 0x00000020)? CHIP3_SET_FACTORS_5: CHIP3_RST_FACTORS_5;
+    (rd_val & 0x00000040)? CHIP3_SET_FACTORS_6: CHIP3_RST_FACTORS_6;
+    (rd_val & 0x00000080)? CHIP3_SET_FACTORS_7: CHIP3_RST_FACTORS_7;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Avrg_Num(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x01)
+    {
+        PutStr("\t\tChip3_Set_Avrg_Num value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_AVRG_NUM: CHIP3_RST_AVRG_NUM;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Rand_Group(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x01)
+    {
+        PutStr("\t\tChip3_Set_Rand_Group value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_RAND_GROUP: CHIP3_RST_RAND_GROUP;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Div_Accu(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x01)
+    {
+        PutStr("\t\tChip3_Set_Div_Accu value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_DIV_ACCU: CHIP3_RST_DIV_ACCU;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Flag4D(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x01)
+    {
+        PutStr("\t\tChip3_Set_Flag4D value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_FLAG4D: CHIP3_RST_FLAG4D;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Opt_Mode(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x01)
+    {
+        PutStr("\t\tChip3_Set_Opt_Mode value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_OPT_MODE: CHIP3_RST_OPT_MODE;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Step_T(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x07)
+    {
+        PutStr("\t\tChip3_Set_Step_T value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_STEP_T_0: CHIP3_RST_STEP_T_0;
+    (rd_val & 0x00000002)? CHIP3_SET_STEP_T_1: CHIP3_RST_STEP_T_1;
+    (rd_val & 0x00000004)? CHIP3_SET_STEP_T_2: CHIP3_RST_STEP_T_2;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Init_T(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x3f)
+    {
+        PutStr("\t\tChip3_Set_Init_T value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_INIT_T_0: CHIP3_RST_INIT_T_0;
+    (rd_val & 0x00000002)? CHIP3_SET_INIT_T_1: CHIP3_RST_INIT_T_1;
+    (rd_val & 0x00000004)? CHIP3_SET_INIT_T_2: CHIP3_RST_INIT_T_2;
+    (rd_val & 0x00000008)? CHIP3_SET_INIT_T_3: CHIP3_RST_INIT_T_3;
+    (rd_val & 0x00000010)? CHIP3_SET_INIT_T_4: CHIP3_RST_INIT_T_4;
+    (rd_val & 0x00000020)? CHIP3_SET_INIT_T_5: CHIP3_RST_INIT_T_5;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Ss_Iter(uint16 rd_val)
+{
+    if (rd_val != 0x0000 && rd_val > 0x07ff)
+    {
+        PutStr("\t\tChip3_Set_Ss_Iter value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_SS_ITER_0: CHIP3_RST_SS_ITER_0;
+    (rd_val & 0x00000002)? CHIP3_SET_SS_ITER_1: CHIP3_RST_SS_ITER_1;
+    (rd_val & 0x00000004)? CHIP3_SET_SS_ITER_2: CHIP3_RST_SS_ITER_2;
+    (rd_val & 0x00000008)? CHIP3_SET_SS_ITER_3: CHIP3_RST_SS_ITER_3;
+    (rd_val & 0x00000010)? CHIP3_SET_SS_ITER_4: CHIP3_RST_SS_ITER_4;
+    (rd_val & 0x00000020)? CHIP3_SET_SS_ITER_5: CHIP3_RST_SS_ITER_5;
+    (rd_val & 0x00000040)? CHIP3_SET_SS_ITER_6: CHIP3_RST_SS_ITER_6;
+    (rd_val & 0x00000080)? CHIP3_SET_SS_ITER_7: CHIP3_RST_SS_ITER_7;
+    (rd_val & 0x00000100)? CHIP3_SET_SS_ITER_8: CHIP3_RST_SS_ITER_8;
+    (rd_val & 0x00000200)? CHIP3_SET_SS_ITER_9: CHIP3_RST_SS_ITER_9;
+    (rd_val & 0x00000400)? CHIP3_SET_SS_ITER_10: CHIP3_RST_SS_ITER_10;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Sa_Iter(uint16 rd_val)
+{
+    if (rd_val != 0x0000 && rd_val > 0x07ff)
+    {
+        PutStr("\t\tChip3_Set_Sa_Iter value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_SA_ITER_0: CHIP3_RST_SA_ITER_0;
+    (rd_val & 0x00000002)? CHIP3_SET_SA_ITER_1: CHIP3_RST_SA_ITER_1;
+    (rd_val & 0x00000004)? CHIP3_SET_SA_ITER_2: CHIP3_RST_SA_ITER_2;
+    (rd_val & 0x00000008)? CHIP3_SET_SA_ITER_3: CHIP3_RST_SA_ITER_3;
+    (rd_val & 0x00000010)? CHIP3_SET_SA_ITER_4: CHIP3_RST_SA_ITER_4;
+    (rd_val & 0x00000020)? CHIP3_SET_SA_ITER_5: CHIP3_RST_SA_ITER_5;
+    (rd_val & 0x00000040)? CHIP3_SET_SA_ITER_6: CHIP3_RST_SA_ITER_6;
+    (rd_val & 0x00000080)? CHIP3_SET_SA_ITER_7: CHIP3_RST_SA_ITER_7;
+    (rd_val & 0x00000100)? CHIP3_SET_SA_ITER_8: CHIP3_RST_SA_ITER_8;
+    (rd_val & 0x00000200)? CHIP3_SET_SA_ITER_9: CHIP3_RST_SA_ITER_9;
+    (rd_val & 0x00000400)? CHIP3_SET_SA_ITER_10: CHIP3_RST_SA_ITER_10;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Init_Y1(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x1f)
+    {
+        PutStr("\t\tChip3_Set_Init_Y1 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_INIT_Y1_0: CHIP3_RST_INIT_Y1_0;
+    (rd_val & 0x00000002)? CHIP3_SET_INIT_Y1_1: CHIP3_RST_INIT_Y1_1;
+    (rd_val & 0x00000004)? CHIP3_SET_INIT_Y1_2: CHIP3_RST_INIT_Y1_2;
+    (rd_val & 0x00000008)? CHIP3_SET_INIT_Y1_3: CHIP3_RST_INIT_Y1_3;
+    (rd_val & 0x00000010)? CHIP3_SET_INIT_Y1_4: CHIP3_RST_INIT_Y1_4;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Init_X1(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x1f)
+    {
+        PutStr("\t\tChip3_Set_Init_X1 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_INIT_X1_0: CHIP3_RST_INIT_X1_0;
+    (rd_val & 0x00000002)? CHIP3_SET_INIT_X1_1: CHIP3_RST_INIT_X1_1;
+    (rd_val & 0x00000004)? CHIP3_SET_INIT_X1_2: CHIP3_RST_INIT_X1_2;
+    (rd_val & 0x00000008)? CHIP3_SET_INIT_X1_3: CHIP3_RST_INIT_X1_3;
+    (rd_val & 0x00000010)? CHIP3_SET_INIT_X1_4: CHIP3_RST_INIT_X1_4;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Init_Y2(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x1f)
+    {
+        PutStr("\t\tChip3_Set_Init_Y2 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_INIT_Y2_0: CHIP3_RST_INIT_Y2_0;
+    (rd_val & 0x00000002)? CHIP3_SET_INIT_Y2_1: CHIP3_RST_INIT_Y2_1;
+    (rd_val & 0x00000004)? CHIP3_SET_INIT_Y2_2: CHIP3_RST_INIT_Y2_2;
+    (rd_val & 0x00000008)? CHIP3_SET_INIT_Y2_3: CHIP3_RST_INIT_Y2_3;
+    (rd_val & 0x00000010)? CHIP3_SET_INIT_Y2_4: CHIP3_RST_INIT_Y2_4;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Init_X2(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x1f)
+    {
+        PutStr("\t\tChip3_Set_Init_X2 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_INIT_X2_0: CHIP3_RST_INIT_X2_0;
+    (rd_val & 0x00000002)? CHIP3_SET_INIT_X2_1: CHIP3_RST_INIT_X2_1;
+    (rd_val & 0x00000004)? CHIP3_SET_INIT_X2_2: CHIP3_RST_INIT_X2_2;
+    (rd_val & 0x00000008)? CHIP3_SET_INIT_X2_3: CHIP3_RST_INIT_X2_3;
+    (rd_val & 0x00000010)? CHIP3_SET_INIT_X2_4: CHIP3_RST_INIT_X2_4;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Nxt_Test(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x01)
+    {
+        PutStr("\t\tChip3_Set_Nxt_Test value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_NXT_TEST: CHIP3_RST_NXT_TEST;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Trdy_Test(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x01)
+    {
+        PutStr("\t\tChip3_Set_Trdy_Test value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_TRDY_TEST: CHIP3_RST_TRDY_TEST;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Aoff(uint16 rd_val)
+{
+    if (rd_val != 0x0000 && rd_val > 0x03ff)
+    {
+        PutStr("\t\tChip3_Set_Aoff value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_AOFF_0: CHIP3_RST_AOFF_0;
+    (rd_val & 0x00000002)? CHIP3_SET_AOFF_1: CHIP3_RST_AOFF_1;
+    (rd_val & 0x00000004)? CHIP3_SET_AOFF_2: CHIP3_RST_AOFF_2;
+    (rd_val & 0x00000008)? CHIP3_SET_AOFF_3: CHIP3_RST_AOFF_3;
+    (rd_val & 0x00000010)? CHIP3_SET_AOFF_4: CHIP3_RST_AOFF_4;
+    (rd_val & 0x00000020)? CHIP3_SET_AOFF_5: CHIP3_RST_AOFF_5;
+    (rd_val & 0x00000040)? CHIP3_SET_AOFF_6: CHIP3_RST_AOFF_6;
+    (rd_val & 0x00000080)? CHIP3_SET_AOFF_7: CHIP3_RST_AOFF_7;
+    (rd_val & 0x00000100)? CHIP3_SET_AOFF_8: CHIP3_RST_AOFF_8;
+    (rd_val & 0x00000200)? CHIP3_SET_AOFF_9: CHIP3_RST_AOFF_9;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Tol(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x3f)
+    {
+        PutStr("\t\tChip3_Set_Tol value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_TOL_0: CHIP3_RST_TOL_0;
+    (rd_val & 0x00000002)? CHIP3_SET_TOL_1: CHIP3_RST_TOL_1;
+    (rd_val & 0x00000004)? CHIP3_SET_TOL_2: CHIP3_RST_TOL_2;
+    (rd_val & 0x00000008)? CHIP3_SET_TOL_3: CHIP3_RST_TOL_3;
+    (rd_val & 0x00000010)? CHIP3_SET_TOL_4: CHIP3_RST_TOL_4;
+    (rd_val & 0x00000020)? CHIP3_SET_TOL_5: CHIP3_RST_TOL_5;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Trg_Test(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x01)
+    {
+        PutStr("\t\tChip3_Set_Trg_Test value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_TRG_TEST: CHIP3_RST_TRG_TEST;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Test_Mux(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x01)
+    {
+        PutStr("\t\tChip3_Set_Test_Mux value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_TEST_MUX: CHIP3_RST_TEST_MUX;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Cal(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x01)
+    {
+        PutStr("\t\tChip3_Set_Cal value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_CAL: CHIP3_RST_CAL;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Sw(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x01)
+    {
+        PutStr("\t\tChip3_Set_Sw value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_SW: CHIP3_RST_SW;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Cb4(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x07)
+    {
+        PutStr("\t\tChip3_Set_Cb4 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_CB4_0: CHIP3_RST_CB4_0;
+    (rd_val & 0x00000002)? CHIP3_SET_CB4_1: CHIP3_RST_CB4_1;
+    (rd_val & 0x00000004)? CHIP3_SET_CB4_2: CHIP3_RST_CB4_2;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Cb3(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x07)
+    {
+        PutStr("\t\tChip3_Set_Cb3 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_CB3_0: CHIP3_RST_CB3_0;
+    (rd_val & 0x00000002)? CHIP3_SET_CB3_1: CHIP3_RST_CB3_1;
+    (rd_val & 0x00000004)? CHIP3_SET_CB3_2: CHIP3_RST_CB3_2;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Cb2(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x07)
+    {
+        PutStr("\t\tChip3_Set_Cb2 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_CB2_0: CHIP3_RST_CB2_0;
+    (rd_val & 0x00000002)? CHIP3_SET_CB2_1: CHIP3_RST_CB2_1;
+    (rd_val & 0x00000004)? CHIP3_SET_CB2_2: CHIP3_RST_CB2_2;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Cb1(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x07)
+    {
+        PutStr("\t\tChip3_Set_Cb1 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_CB1_0: CHIP3_RST_CB1_0;
+    (rd_val & 0x00000002)? CHIP3_SET_CB1_1: CHIP3_RST_CB1_1;
+    (rd_val & 0x00000004)? CHIP3_SET_CB1_2: CHIP3_RST_CB1_2;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Cap3(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x1f)
+    {
+        PutStr("\t\tChip3_Set_Cap3 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_CAP3_0: CHIP3_RST_CAP3_0;
+    (rd_val & 0x00000002)? CHIP3_SET_CAP3_1: CHIP3_RST_CAP3_1;
+    (rd_val & 0x00000004)? CHIP3_SET_CAP3_2: CHIP3_RST_CAP3_2;
+    (rd_val & 0x00000008)? CHIP3_SET_CAP3_3: CHIP3_RST_CAP3_3;
+    (rd_val & 0x00000010)? CHIP3_SET_CAP3_4: CHIP3_RST_CAP3_4;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Bs3(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x0f)
+    {
+        PutStr("\t\tChip3_Set_Bs3 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_BS3_0: CHIP3_RST_BS3_0;
+    (rd_val & 0x00000002)? CHIP3_SET_BS3_1: CHIP3_RST_BS3_1;
+    (rd_val & 0x00000004)? CHIP3_SET_BS3_2: CHIP3_RST_BS3_2;
+    (rd_val & 0x00000008)? CHIP3_SET_BS3_3: CHIP3_RST_BS3_3;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Mdiv3(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x7f)
+    {
+        PutStr("\t\tChip3_Set_Mdiv3 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_MDIV3_0: CHIP3_RST_MDIV3_0;
+    (rd_val & 0x00000002)? CHIP3_SET_MDIV3_1: CHIP3_RST_MDIV3_1;
+    (rd_val & 0x00000004)? CHIP3_SET_MDIV3_2: CHIP3_RST_MDIV3_2;
+    (rd_val & 0x00000008)? CHIP3_SET_MDIV3_3: CHIP3_RST_MDIV3_3;
+    (rd_val & 0x00000010)? CHIP3_SET_MDIV3_4: CHIP3_RST_MDIV3_4;
+    (rd_val & 0x00000020)? CHIP3_SET_MDIV3_5: CHIP3_RST_MDIV3_5;
+    (rd_val & 0x00000040)? CHIP3_SET_MDIV3_6: CHIP3_RST_MDIV3_6;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Cap2(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x1f)
+    {
+        PutStr("\t\tChip3_Set_Cap2 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_CAP2_0: CHIP3_RST_CAP2_0;
+    (rd_val & 0x00000002)? CHIP3_SET_CAP2_1: CHIP3_RST_CAP2_1;
+    (rd_val & 0x00000004)? CHIP3_SET_CAP2_2: CHIP3_RST_CAP2_2;
+    (rd_val & 0x00000008)? CHIP3_SET_CAP2_3: CHIP3_RST_CAP2_3;
+    (rd_val & 0x00000010)? CHIP3_SET_CAP2_4: CHIP3_RST_CAP2_4;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Bs2(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x0f)
+    {
+        PutStr("\t\tChip3_Set_Bs2 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_BS2_0: CHIP3_RST_BS2_0;
+    (rd_val & 0x00000002)? CHIP3_SET_BS2_1: CHIP3_RST_BS2_1;
+    (rd_val & 0x00000004)? CHIP3_SET_BS2_2: CHIP3_RST_BS2_2;
+    (rd_val & 0x00000008)? CHIP3_SET_BS2_3: CHIP3_RST_BS2_3;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Mdiv2(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x7f)
+    {
+        PutStr("\t\tChip3_Set_Mdiv2 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_MDIV2_0: CHIP3_RST_MDIV2_0;
+    (rd_val & 0x00000002)? CHIP3_SET_MDIV2_1: CHIP3_RST_MDIV2_1;
+    (rd_val & 0x00000004)? CHIP3_SET_MDIV2_2: CHIP3_RST_MDIV2_2;
+    (rd_val & 0x00000008)? CHIP3_SET_MDIV2_3: CHIP3_RST_MDIV2_3;
+    (rd_val & 0x00000010)? CHIP3_SET_MDIV2_4: CHIP3_RST_MDIV2_4;
+    (rd_val & 0x00000020)? CHIP3_SET_MDIV2_5: CHIP3_RST_MDIV2_5;
+    (rd_val & 0x00000040)? CHIP3_SET_MDIV2_6: CHIP3_RST_MDIV2_6;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Cap1(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x1f)
+    {
+        PutStr("\t\tChip3_Set_Cap1 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_CAP1_0: CHIP3_RST_CAP1_0;
+    (rd_val & 0x00000002)? CHIP3_SET_CAP1_1: CHIP3_RST_CAP1_1;
+    (rd_val & 0x00000004)? CHIP3_SET_CAP1_2: CHIP3_RST_CAP1_2;
+    (rd_val & 0x00000008)? CHIP3_SET_CAP1_3: CHIP3_RST_CAP1_3;
+    (rd_val & 0x00000010)? CHIP3_SET_CAP1_4: CHIP3_RST_CAP1_4;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Bs1(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x0f)
+    {
+        PutStr("\t\tChip3_Set_Bs1 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_BS1_0: CHIP3_RST_BS1_0;
+    (rd_val & 0x00000002)? CHIP3_SET_BS1_1: CHIP3_RST_BS1_1;
+    (rd_val & 0x00000004)? CHIP3_SET_BS1_2: CHIP3_RST_BS1_2;
+    (rd_val & 0x00000008)? CHIP3_SET_BS1_3: CHIP3_RST_BS1_3;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Mdiv1(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x7f)
+    {
+        PutStr("\t\tChip3_Set_Mdiv1 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_MDIV1_0: CHIP3_RST_MDIV1_0;
+    (rd_val & 0x00000002)? CHIP3_SET_MDIV1_1: CHIP3_RST_MDIV1_1;
+    (rd_val & 0x00000004)? CHIP3_SET_MDIV1_2: CHIP3_RST_MDIV1_2;
+    (rd_val & 0x00000008)? CHIP3_SET_MDIV1_3: CHIP3_RST_MDIV1_3;
+    (rd_val & 0x00000010)? CHIP3_SET_MDIV1_4: CHIP3_RST_MDIV1_4;
+    (rd_val & 0x00000020)? CHIP3_SET_MDIV1_5: CHIP3_RST_MDIV1_5;
+    (rd_val & 0x00000040)? CHIP3_SET_MDIV1_6: CHIP3_RST_MDIV1_6;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Cap0(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x1f)
+    {
+        PutStr("\t\tChip3_Set_Cap0 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_CAP0_0: CHIP3_RST_CAP0_0;
+    (rd_val & 0x00000002)? CHIP3_SET_CAP0_1: CHIP3_RST_CAP0_1;
+    (rd_val & 0x00000004)? CHIP3_SET_CAP0_2: CHIP3_RST_CAP0_2;
+    (rd_val & 0x00000008)? CHIP3_SET_CAP0_3: CHIP3_RST_CAP0_3;
+    (rd_val & 0x00000010)? CHIP3_SET_CAP0_4: CHIP3_RST_CAP0_4;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Bs0(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x0f)
+    {
+        PutStr("\t\tChip3_Set_Bs0 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_BS0_0: CHIP3_RST_BS0_0;
+    (rd_val & 0x00000002)? CHIP3_SET_BS0_1: CHIP3_RST_BS0_1;
+    (rd_val & 0x00000004)? CHIP3_SET_BS0_2: CHIP3_RST_BS0_2;
+    (rd_val & 0x00000008)? CHIP3_SET_BS0_3: CHIP3_RST_BS0_3;
+
+    return 0;
+}
+
+
+int32    Chip3_Set_Mdiv0(uint8 rd_val)
+{
+    if (rd_val != 0x00 && rd_val > 0x7f)
+    {
+        PutStr("\t\tChip3_Set_Mdiv0 value invalid!\r\n");
+        return -1;
+    }
+
+    (rd_val & 0x00000001)? CHIP3_SET_MDIV0_0: CHIP3_RST_MDIV0_0;
+    (rd_val & 0x00000002)? CHIP3_SET_MDIV0_1: CHIP3_RST_MDIV0_1;
+    (rd_val & 0x00000004)? CHIP3_SET_MDIV0_2: CHIP3_RST_MDIV0_2;
+    (rd_val & 0x00000008)? CHIP3_SET_MDIV0_3: CHIP3_RST_MDIV0_3;
+    (rd_val & 0x00000010)? CHIP3_SET_MDIV0_4: CHIP3_RST_MDIV0_4;
+    (rd_val & 0x00000020)? CHIP3_SET_MDIV0_5: CHIP3_RST_MDIV0_5;
+    (rd_val & 0x00000040)? CHIP3_SET_MDIV0_6: CHIP3_RST_MDIV0_6;
+
+    return 0;
+}
+
 
 /* [] END OF FILE */
