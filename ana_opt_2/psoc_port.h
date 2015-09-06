@@ -79,7 +79,10 @@ extern uint32_t     *cfsatune4Dx1_addr;
 extern uint32_t     *cfsatune4Dx2_addr;
 extern uint32_t     *cfsatune4Dx3_addr;
 extern uint32_t     *cfsatune4Dx4_addr;
+extern uint32_t     *cfsaAnaIn_addr;         // Ana bits in; debug for writing ana bits to SA
+extern uint32_t     *cfsaAnaOut_addr;        // Ana bits out; debug for reading ana bits from CF
 
+/// tapeout chip3
 extern uint32_t     local_chiptestctrl_addr;
 extern uint32_t     *chiptest_ctrl_addr;
 extern uint32_t     *chiptest_stat_addr;

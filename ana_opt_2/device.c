@@ -549,10 +549,17 @@ void CFSA_THRESHOLD_Write(int bit_val)
     avs_wait();
 }
 
+void CFSA4D_ANABITS_Write(int bit_val)
+{
+    *cfsaAnaIn_addr = bit_val;
+    avs_wait();
+}
+
 unsigned int CFSA_TUNE4DX1_Read() {return (*cfsatune4Dx1_addr);}
 unsigned int CFSA_TUNE4DX2_Read() {return (*cfsatune4Dx2_addr);}
 unsigned int CFSA_TUNE4DX3_Read() {return (*cfsatune4Dx3_addr);}
 unsigned int CFSA_TUNE4DX4_Read() {return (*cfsatune4Dx4_addr);}
+unsigned int CFSA_ANABITS_Read()  {return (*cfsaAnaOut_addr);}
 
 /////// tapeout chip 3 //////
 void CHIP_TEST_LATA_Write(int rd_val)

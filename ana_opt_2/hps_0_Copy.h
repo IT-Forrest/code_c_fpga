@@ -725,6 +725,61 @@
 #define CFSA_4D_LOGIC_SS_3DBFACTOR1_END 0x16b
 
 /*
+ * Macros for device 'sweep_logic_ctrl', class 'sweep_logic'
+ * The macros are prefixed with 'SWEEP_LOGIC_CTRL_'.
+ * The prefix is the slave descriptor.
+ */
+#define SWEEP_LOGIC_CTRL_COMPONENT_TYPE sweep_logic
+#define SWEEP_LOGIC_CTRL_COMPONENT_NAME sweep_logic
+#define SWEEP_LOGIC_CTRL_BASE 0x16c
+#define SWEEP_LOGIC_CTRL_SPAN 4
+#define SWEEP_LOGIC_CTRL_END 0x16f
+
+/*
+ * Macros for device 'sweep_logic_stat', class 'sweep_logic'
+ * The macros are prefixed with 'SWEEP_LOGIC_STAT_'.
+ * The prefix is the slave descriptor.
+ */
+#define SWEEP_LOGIC_STAT_COMPONENT_TYPE sweep_logic
+#define SWEEP_LOGIC_STAT_COMPONENT_NAME sweep_logic
+#define SWEEP_LOGIC_STAT_BASE 0x170
+#define SWEEP_LOGIC_STAT_SPAN 4
+#define SWEEP_LOGIC_STAT_END 0x173
+
+/*
+ * Macros for device 'sweep_logic_cntsclk', class 'sweep_logic'
+ * The macros are prefixed with 'SWEEP_LOGIC_CNTSCLK_'.
+ * The prefix is the slave descriptor.
+ */
+#define SWEEP_LOGIC_CNTSCLK_COMPONENT_TYPE sweep_logic
+#define SWEEP_LOGIC_CNTSCLK_COMPONENT_NAME sweep_logic
+#define SWEEP_LOGIC_CNTSCLK_BASE 0x174
+#define SWEEP_LOGIC_CNTSCLK_SPAN 4
+#define SWEEP_LOGIC_CNTSCLK_END 0x177
+
+/*
+ * Macros for device 'sweep_logic_low', class 'sweep_logic'
+ * The macros are prefixed with 'SWEEP_LOGIC_LOW_'.
+ * The prefix is the slave descriptor.
+ */
+#define SWEEP_LOGIC_LOW_COMPONENT_TYPE sweep_logic
+#define SWEEP_LOGIC_LOW_COMPONENT_NAME sweep_logic
+#define SWEEP_LOGIC_LOW_BASE 0x178
+#define SWEEP_LOGIC_LOW_SPAN 4
+#define SWEEP_LOGIC_LOW_END 0x17b
+
+/*
+ * Macros for device 'sweep_logic_high', class 'sweep_logic'
+ * The macros are prefixed with 'SWEEP_LOGIC_HIGH_'.
+ * The prefix is the slave descriptor.
+ */
+#define SWEEP_LOGIC_HIGH_COMPONENT_TYPE sweep_logic
+#define SWEEP_LOGIC_HIGH_COMPONENT_NAME sweep_logic
+#define SWEEP_LOGIC_HIGH_BASE 0x17c
+#define SWEEP_LOGIC_HIGH_SPAN 4
+#define SWEEP_LOGIC_HIGH_END 0x17f
+
+/*
  * Macros for device 'sysid_qsys', class 'altera_avalon_sysid_qsys'
  * The macros are prefixed with 'SYSID_QSYS_'.
  * The prefix is the slave descriptor.
@@ -735,7 +790,7 @@
 #define SYSID_QSYS_SPAN 8
 #define SYSID_QSYS_END 0x10007
 #define SYSID_QSYS_ID 2899645186
-#define SYSID_QSYS_TIMESTAMP 1431630876
+#define SYSID_QSYS_TIMESTAMP 1437777240
 
 /*
  * Macros for device 'jtag_uart', class 'altera_avalon_jtag_uart'

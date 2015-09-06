@@ -651,11 +651,11 @@
 	"../ana_opt_2/serial_port_io.h"
 	"../ana_opt_2/test_adc.h"
 
-1439838277 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\device.c
+1441561124 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\device.c
 	"device.h"
 	"psoc_port.h"
 
-1439836247 f:\05. code battle\github\code_c_fpga\ana_opt_2\device.h
+1441561111 f:\05. code battle\github\code_c_fpga\ana_opt_2\device.h
 	<stdio.h>
 	<unistd.h>
 	<fcntl.h>
@@ -666,7 +666,7 @@
 	"socal/alt_gpio.h"
 	"psoc_port.h"
 
-1439837973 f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.h
+1441560907 f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.h
 	<stdio.h>
 	<unistd.h>
 	<fcntl.h>
@@ -677,9 +677,9 @@
 	"socal/alt_gpio.h"
 	"hps_0.h"
 
-1440446330 f:\05. code battle\github\code_c_fpga\ana_opt_2\hps_0.h
+1441548331 f:\05. code battle\github\code_c_fpga\ana_opt_2\hps_0.h
 
-1440531024 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.c
+1441560879 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.c
 	"psoc_port.h"
 
 1427250116 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\serial_port_io.c
@@ -688,7 +688,7 @@
 	"device.h"
 	<stdlib.h>
 
-1428186132 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.c
+1441492530 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.c
 	<math.h>
 	<stdint.h>
 	"scan_chain.h"
@@ -706,17 +706,17 @@
 	<stdint.h>
 	<stdlib.h>
 
-1439850823 f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.h
+1441492530 f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.h
 	"socal/hps.h"
 	"socal/alt_gpio.h"
 
-1430700528 f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.h
+1441487662 f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.h
 	"device.h"
 	<stdio.h>
 	<stdint.h>
 	"scan_chain.h"
 
-1440734344 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.c
+1440818210 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.c
 	"device.h"
 	<stdio.h>
 	<math.h>

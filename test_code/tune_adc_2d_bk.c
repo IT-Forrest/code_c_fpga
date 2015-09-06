@@ -20,6 +20,7 @@
 #define VOFFSET 507
 #define AVG 8
 
+#define NEWD
 #define P_OPT
 #define P_SWP
 #define P_FRP
@@ -52,10 +53,9 @@ int main()
 {
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     uint16  i = 0, j = 0;
-    uint16  tunex1, tunex2, tunex3, tunex4;
+    uint16  tunex1, tunex2;
     uint16  anaz,cost;
-    uint16  gain0, gain1, gain2, gain3;
-    uint16  div_accu;
+
     uint16  adc_buf[384] = {0};
 
     /* Initialization */
@@ -68,77 +68,83 @@ int main()
 
         tunex1 = 15;
         tunex2 = 15;
-        tunex3 = 15;
-        tunex4 = 15;
+        TestCost(tunex1, tunex2, tunex1, tunex2, adc_buf, &anaz, &cost);
 
-        gain0  = 0;
-        gain1  = 0;         // Gain factor for the second term
-        gain2  = 1;
-        gain3  = 1;
-        div_accu = 1;      // Set division accuracy is T27
 
-        CFSA4D_RSN_Write(0);
-        CFSA_3DBFACTOR0_Write(0x100|106);    // Set coefficiency for the 1st 3dB frequency point
-        CFSA_3DBFACTOR1_Write(0x100|106);    // Set coefficiency for the 2nd 3dB frequency point
-        CFSA_THRESHOLD_Write(100);  // Set threshold for multi-start SS
-        CFSA4D_GAIN0_Write(gain0);// 2D need to times 2
-        CFSA4D_GAIN1_Write(gain1);// 2D need to times 2
-        CFSA4D_GAIN2_Write(gain2);
-        CFSA4D_GAIN3_Write(gain3);
-        CFSA_INIT4DX1_Write(tunex1);
-        CFSA_INIT4DX2_Write(tunex2);
-        CFSA_INIT4DX3_Write(tunex3);
-        CFSA_INIT4DX4_Write(tunex4);
-        CFSA_ITER4DSA_Write(ITERNUM); // Set SA iteration = ITERNUM
-        CFSA_ITER4DSS_Write(SSNUM);       // SSNUM Set Sensitivity time = 4
-        CFSA_INITT4D_Write(32);       // Set initial T = 32
-        CFSA4D_STEPT_Write(4);        // Set T step = 4; each time T=T-T_step;
-        CFSA4D_4DY_Write(0);          // Set 4D test
-        CFSA4D_SARAND_Write(1);
-        CFSA4D_CFAVRG_Write(1);
-        CFSA4D_DIVACCU_Write(div_accu);
-        CFSA4D_MOD_Write(1);          // Optimization type
-        CFSA_TOLIN4D_Write(OSC_TOL);       // the OSCD threshold value;
-        CFSA_OFFIN4D_Write(VOFFSET);      // Offset used in IQ measurement
-
-        // TestCost(tunex1, tunex2, tunex1, tunex2, adc_buf, &anaz, &cost);
+#ifndef NEWD
+        SA_INITX3_Write(tunex1);
+        SA_INITX4_Write(tunex2);
+        SA_ITERNUM_Write(ITERNUM);
+        WSA_4DY_Write(0);
+        SA_ANAIN_Write(anaz);
+        WSA_RSN_Write(1);
+#else
+        SA_INIT4DX3_Write(tunex1);
+        SA_INIT4DX4_Write(tunex2);
+        SA_ITER4DSA_Write(ITERNUM); // Set SA iteration = ITERNUM
+        SA_ITER4DSS_Write(SSNUM);       // Set Sensitivity time = 4
+        SA_INITT4D_Write(32);       // Set initial T = 32
+        SA4D_STEPT_Write(4);        // Set T step = 4; each time T=T-T_step;
+        SA4D_4DY_Write(0);          // Set 2D test
+        SA_ANAIN4D_Write(anaz);
+        SA4D_RSN_Write(1);
+#endif
     }
 
     /* Find Optimal */
 #ifdef P_OPT
     {
-        CFSA4D_RSN_Write(1);        // activate the CFSA
-        usleep(2);
-
         printf("*** Optimization, ITERNUM=%d, SSNUM=%d\n", ITERNUM, SSNUM);
         printf("No.\tX\tY\tCFH\tCF\n");
+        printf("#0\t%d\t%d\t%d\t%d\n", tunex1, tunex2, anaz, cost);
 
-        for (i = 0; i < ITERNUM+SSNUM+1; i++)
+        for (i = 0; i < ITERNUM+SSNUM; i++)
         {
-            usleep(1);
-            tunex1 = CFSA_TUNE4DX1_Read();
-            tunex2 = CFSA_TUNE4DX2_Read();
+#ifndef NEWD
+            SA_ANAIN_Write(anaz);
+            WSA_STA_Write(1);
+            WSA_STA_Write(0);
+            while(!WSA_RDY_Read());
+            tunex1 = SA_TUNEX3_Read();
+            tunex2 = SA_TUNEX4_Read();
+#else
+            SA_ANAIN4D_Write(anaz);
+            SA4D_STA_Write(1);
+            SA4D_STA_Write(0);
+            if (i<ITERNUM)
+            {
+                while(!SA4D_RDY_Read());
+            }
+            else
+            {
+                usleep(300);
+            }
+            tunex1 = SA_TUNE4DX3_Read();
+            tunex2 = SA_TUNE4DX4_Read();
+#endif
 
             TestCost(tunex1, tunex2, tunex1, tunex2, adc_buf, &anaz, &cost);
-            CFSA4D_ANABITS_Write(anaz);
-
-            CFSA4D_MUXNXT_Write(1);
-            CFSA4D_MUXNXT_Write(0);// for safty
 
             printf("#%d\t%d\t%d\t%d\t%d\n", i+1, tunex1, tunex2, anaz, cost);
-
             if (anaz<=1)
             {
-                i = ITERNUM+1;
+                i = ITERNUM-1;
             }
-
         }
 
-
-        tunex1 = CFSA_TUNE4DX1_Read();
-        tunex2 = CFSA_TUNE4DX2_Read();
-        TestCost(tunex1, tunex2, tunex1, tunex2, adc_buf, &anaz, &cost);
-        //CFSA4D_ANABITS_Write(anaz);
+#ifndef NEWD
+        SA_ANAIN_Write(anaz);
+        WSA_STA_Write(1);
+        WSA_STA_Write(0);
+        tunex1 = SA_TUNEX3_Read();
+        tunex2 = SA_TUNEX4_Read();
+#else
+        SA_ANAIN4D_Write(anaz);
+        SA4D_STA_Write(1);
+        SA4D_STA_Write(0);
+        tunex1 = SA_TUNE4DX3_Read();
+        tunex2 = SA_TUNE4DX4_Read();
+#endif
 
         printf("Optimization Final, X=%d, Y=%d\n", tunex1, tunex2);
     }
@@ -155,7 +161,6 @@ int main()
             for (j=0; j<32; j++)
             {
                 TestCost(i, j, i, j, adc_buf, &anaz, &cost);
-                // CFSA4D_ANABITS_Write(anaz);
                 printf("%d\t%d\t%d\n", i, j, anaz);
             }
         }

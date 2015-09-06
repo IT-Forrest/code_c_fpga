@@ -19,7 +19,7 @@
 #define ITERNUM 512
 #define SSNUM 7
 #define VOFFSET 508
-#define AVG 4
+#define AVG 8
 
 #define NEWD
 #define P_OPT

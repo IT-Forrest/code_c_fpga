@@ -87,6 +87,8 @@ uint32_t     *cfsatune4Dx1_addr;      // Tune X1 register
 uint32_t     *cfsatune4Dx2_addr;      // Tune X2 register
 uint32_t     *cfsatune4Dx3_addr;      // Tune X3 register
 uint32_t     *cfsatune4Dx4_addr;      // Tune X4 register
+uint32_t     *cfsaAnaIn_addr;         // Ana bits in; debug for writing ana bits to SA
+uint32_t     *cfsaAnaOut_addr;        // Ana bits out; debug for reading ana bits from CF
 
 // the chip test for tapeout3
 uint32_t     local_chiptestctrl_addr;
@@ -185,6 +187,9 @@ int init_mem()
     cfsatune4Dx2_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX2_BASE) & (unsigned long) (HW_REGS_MASK));
     cfsatune4Dx3_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX3_BASE) & (unsigned long) (HW_REGS_MASK));
     cfsatune4Dx4_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX4_BASE) & (unsigned long) (HW_REGS_MASK));
+
+    cfsaAnaIn_addr  = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_ANA_BITS_IN_BASE) & (unsigned long) (HW_REGS_MASK));
+    cfsaAnaOut_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_ANA_BITS_BASE) & (unsigned long) (HW_REGS_MASK));
 
     // chip test module
 /*    chiptest_ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_CTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;       // chip test control register

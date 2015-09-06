@@ -15,11 +15,12 @@
 #include "../ana_opt_2/serial_port_io.h"
 #include "../ana_opt_2/test_adc.h"
 
-#define ITERNUM   128
-#define SSNUM     12
+///ITERNUM=128, SSNUM=22
+#define ITERNUM   512
+#define SSNUM     7
 #define VOFFSET   508
 #define AVG       8
-#define IS_4D     0
+#define IS_4D     1
 #define DIV_ACCU  1
 
 
@@ -104,7 +105,9 @@ void  TestCF_SA(uint16 div_accu, uint16 gain0, uint16 gain1, uint16 gain2, uint1
     adc_buf[0] = tmp_buf[6];
     adc_buf[1] = tmp_buf[5];
 
-    *anaz = GetCFSA4D(adc_buf, VOFFSET, IS_4D, div_accu, gain0, gain1, gain2, gain3);
+    //*anaz = GetCFSA4D(adc_buf, VOFFSET, IS_4D, div_accu, gain0, gain1, gain2, gain3);
+    *anaz = CFSA_ANABITS_Read();
+    CFSA4D_ANABITS_Write(*anaz);
 
     for (i = 0; i < 18; i++)
     {

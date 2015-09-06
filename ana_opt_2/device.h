@@ -201,12 +201,13 @@ void CFSA_THRESHOLD_Write(int bit_val);
 void CFSA4D_MUXNXT_Write(int rd_val);
 void CFSA4D_MUXRDY_Write(int rd_val);
 void CFSA4D_MUXTRG_Write(int rd_val);
+void CFSA4D_ANABITS_Write(int bit_val);
 
 unsigned int CFSA_TUNE4DX1_Read();
 unsigned int CFSA_TUNE4DX2_Read();
 unsigned int CFSA_TUNE4DX3_Read();
 unsigned int CFSA_TUNE4DX4_Read();
-
+unsigned int CFSA_ANABITS_Read();
 
 int DEBUG_Read();
 float sqrt12( const float N);
