@@ -27,9 +27,15 @@
 uint16  fno;
 uint16  flist[4] = {0};
 
-void TestCost(uint16 x1, uint16 x2, uint16 x3, uint16 x4, uint16*  adc_buf, uint16* cfh, uint16* cf)
+void  Test_CFSA_4D(uint16 x1, uint16 x2, uint16 x3, uint16 x4, uint16* adc_buf, uint16* anaz, uint16* cf)
 {
-    uint16 i;
+    uint16  i = 0, j = 0, k = 0;
+    uint16  adc_val;
+
+    for (i = 0; i < 18; i++)
+    {
+        adc_buf[i] = 0;
+    }
 
     // Config
     SetTune_X1(x1);
@@ -37,15 +43,79 @@ void TestCost(uint16 x1, uint16 x2, uint16 x3, uint16 x4, uint16*  adc_buf, uint
     SetTune_X3(15);
     SetTune_X4(15);
 
-    // Get IQs
-    for (i=0; i<IQ_GRP_OFFSET+fno*4; i++) adc_buf[i] = 0;
-    FSELIQAvgRead(0, adc_buf, fno, flist, AVG);
-    for (i=0; i<IQ_GRP_OFFSET+fno*4; i++) adc_buf[i] /= AVG;
+    CFSA4D_MUXTRG_Write(0);
+    CFSA4D_MUXTRG_Write(1);
 
-    // Calculate Costs
-    *cfh = GetCFSA4D(adc_buf, VOFFSET, 0, 1, 0, 0, 1, 1);
-    *cf = GetCost4D(adc_buf,VOFFSET);
+    CFSA4D_MUXRDY_Write(1);
+    CFSA4D_MUXRDY_Write(0);
 
+    SetFreq(flist[0]);
+
+    for (j = 0; j < 2; j++)
+    {
+        for (i = 0; i < AVG; i++)
+        {
+            adc_val = ReadCfgADC(0,j,0,1);
+            adc_buf[j] += adc_val;
+            CFSA_ADCIN4D_Write(adc_val);
+            CFSA4D_ADCRDY_Write(1);
+            CFSA4D_ADCRDY_Write(0);
+        }
+    }
+    adc_buf[0] /= AVG;
+    adc_buf[1] /= AVG;
+
+    // wait CF begin 4X frequency measurment
+    for (i = 0; i < fno; i++)
+    {
+        // change FS frequency
+        SetFreq(flist[i]);
+
+        // wait till 4X signals' measurment is done
+        for (j = 0; j < 4; j++)
+        {
+            for (k=0; k < AVG; k++)
+            {
+                switch (j)
+                {
+                case 0:
+                    adc_val = ReadCfgADC(0,0,0,0); break;
+                case 1:
+                    adc_val = ReadCfgADC(0,1,0,0); break;
+                case 2:
+                    adc_val = ReadCfgADC(0,0,1,0); break;
+                case 3:
+                    adc_val = ReadCfgADC(0,1,1,0); break;
+                }
+                adc_buf[IQ_GRP_OFFSET + i*sizeof(FSEL_ELEMENT)/sizeof(IQ_ELEMENT) + j] += adc_val;
+
+                CFSA_ADCIN4D_Write(adc_val);
+                CFSA4D_ADCRDY_Write(1);
+                CFSA4D_ADCRDY_Write(0);
+            }
+
+            adc_buf[IQ_GRP_OFFSET + i*sizeof(FSEL_ELEMENT)/sizeof(IQ_ELEMENT) + j] /= AVG;
+
+            if ((0 == i) && (1 == j))
+            {
+                if (abs(adc_buf[0] - adc_buf[2])+abs(adc_buf[1] - adc_buf[3]) > OSC_TOL)
+                {
+                    *anaz = 255;
+                    *cf = 255;
+                    goto TESTCFSA_END;
+                }
+            }
+        }
+    }
+
+    usleep(50);
+    *anaz = CFSA_ANABITS_Read();
+    *cf = GetCFSA4D(adc_buf, VOFFSET, 0, 1, 0, 0, 1, 1);
+
+TESTCFSA_END:
+    usleep(80);
+
+    return;
 }
 
 int main()
@@ -119,7 +189,7 @@ int main()
             tunex1 = CFSA_TUNE4DX1_Read();
             tunex2 = CFSA_TUNE4DX2_Read();
 
-            TestCost(tunex1, tunex2, tunex1, tunex2, adc_buf, &anaz, &cost);
+            Test_CFSA_4D(tunex1, tunex2, tunex1, tunex2, adc_buf, &anaz, &cost);
             CFSA4D_ANABITS_Write(anaz);
 
             CFSA4D_MUXNXT_Write(1);
@@ -134,10 +204,9 @@ int main()
 
         }
 
-
         tunex1 = CFSA_TUNE4DX1_Read();
         tunex2 = CFSA_TUNE4DX2_Read();
-        TestCost(tunex1, tunex2, tunex1, tunex2, adc_buf, &anaz, &cost);
+        Test_CFSA_4D(tunex1, tunex2, tunex1, tunex2, adc_buf, &anaz, &cost);
         //CFSA4D_ANABITS_Write(anaz);
 
         printf("Optimization Final, X=%d, Y=%d\n", tunex1, tunex2);
@@ -154,7 +223,7 @@ int main()
         {
             for (j=0; j<32; j++)
             {
-                TestCost(i, j, i, j, adc_buf, &anaz, &cost);
+                Test_CFSA_4D(i, j, i, j, adc_buf, &anaz, &cost);
                 // CFSA4D_ANABITS_Write(anaz);
                 printf("%d\t%d\t%d\n", i, j, anaz);
             }

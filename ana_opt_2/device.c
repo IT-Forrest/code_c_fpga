@@ -455,6 +455,13 @@ void CFSA4D_MUXTRG_Write(int rd_val)
     avs_wait();
 }
 
+void CFSA4D_ADCRDY_Write(int rd_val)
+{
+    (rd_val & 0x1)? BIT_ON(local_cfsa4Dctrl_addr, IDX_CFSA_ADCRDY):BIT_OFF(local_cfsa4Dctrl_addr, IDX_CFSA_ADCRDY);
+    *cfsa4Dctrl_addr = local_cfsa4Dctrl_addr;
+    avs_wait();
+}
+
 //int CFSA4D_RDY_Read()
 //{
 //    return ((*cfsa4Dstat_addr >> IDX_STAT_SA4DRDY) & 1);

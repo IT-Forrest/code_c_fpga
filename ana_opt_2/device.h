@@ -91,6 +91,7 @@ typedef char char8;
 
 #define IDX_CFSA_SARAND  (22)               // SA Random group flag;
 #define IDX_CFSA_CFAVRG  (23)               // CF Average measurment number
+#define IDX_CFSA_ADCRDY  (24)               // RDY signal for ADC data
 
 #define IDX_STAT_SA4DRDY (0)
 
@@ -198,6 +199,7 @@ void CFSA_3DBFACTOR1_Write(int bit_val);
 void CFSA_ADCIN4D_Write(int bit_val);
 void CFSA_THRESHOLD_Write(int bit_val);
 
+void CFSA4D_ADCRDY_Write(int rd_val);
 void CFSA4D_MUXNXT_Write(int rd_val);
 void CFSA4D_MUXRDY_Write(int rd_val);
 void CFSA4D_MUXTRG_Write(int rd_val);
