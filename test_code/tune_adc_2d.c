@@ -21,7 +21,7 @@
 #define AVG 8
 
 #define P_OPT
-//#define P_SWP
+#define P_SWP
 #define P_FRP
 
 uint16  fno;
@@ -108,7 +108,7 @@ void  Test_CFSA_4D(uint16 x1, uint16 x2, uint16 x3, uint16 x4, uint16* adc_buf, 
             }
         }
     }
-
+    usleep(100);
     *anaz = CFSA_ANABITS_Read();
     *cf = GetCFSA4D(adc_buf, VOFFSET, 0, 1, 0, 0, 1, 1);
 
