@@ -535,7 +535,8 @@ uint16 GetCFSA4D(uint16* adc_buf, uint16 offset, uint8 is_4D, uint16 div_accu,
         uint32  F3 = Amp_Division(Amp_Cordic(A3->Iout - offset, A3->Qout - offset),
                                   Amp_Cordic(A3->Iinn - offset, A3->Qinn - offset), div_accu);
 
-        if (!is_4D)
+        //if (!is_4D)
+        if (1)
         {
             // 1.414*F0
             F0_tmp = F0;

@@ -21,7 +21,7 @@
 #define AVG 8
 
 #define P_OPT
-#define P_SWP
+//#define P_SWP
 #define P_FRP
 
 uint16  fno;
@@ -70,6 +70,7 @@ void  Test_CFSA_4D(uint16 x1, uint16 x2, uint16 x3, uint16 x4, uint16* adc_buf, 
     {
         // change FS frequency
         SetFreq(flist[i]);
+        usleep(300);
 
         // wait till 4X signals' measurment is done
         for (j = 0; j < 4; j++)
@@ -88,8 +89,8 @@ void  Test_CFSA_4D(uint16 x1, uint16 x2, uint16 x3, uint16 x4, uint16* adc_buf, 
                     adc_val = ReadCfgADC(0,1,1,0); break;
                 }
                 adc_buf[IQ_GRP_OFFSET + i*sizeof(FSEL_ELEMENT)/sizeof(IQ_ELEMENT) + j] += adc_val;
-
                 CFSA_ADCIN4D_Write(adc_val);
+                usleep(300);
                 CFSA4D_ADCRDY_Write(1);
                 CFSA4D_ADCRDY_Write(0);
             }
@@ -108,7 +109,6 @@ void  Test_CFSA_4D(uint16 x1, uint16 x2, uint16 x3, uint16 x4, uint16* adc_buf, 
         }
     }
 
-    usleep(50);
     *anaz = CFSA_ANABITS_Read();
     *cf = GetCFSA4D(adc_buf, VOFFSET, 0, 1, 0, 0, 1, 1);
 

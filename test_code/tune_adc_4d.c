@@ -112,7 +112,7 @@ void  Test_CFSA_4D(uint16 x1, uint16 x2, uint16 x3, uint16 x4, uint16* adc_buf, 
 
     usleep(50);
     *anaz = CFSA_ANABITS_Read();
-    *cf = GetCFSA4D(adc_buf, VOFFSET, 1, 1, 0, 0, 0, 0);
+    *cf = GetCFSA4D(adc_buf, VOFFSET, 1, 1, 0, 0, 1, 1);
 
 TESTCFSA_END:
     usleep(80);
@@ -145,13 +145,13 @@ int main()
 
         gain0  = 0;
         gain1  = 0;         // Gain factor for the second term
-        gain2  = 0;
-        gain3  = 0;
+        gain2  = 1;
+        gain3  = 1;
         div_accu = 1;      // Set division accuracy is T27
 
         CFSA4D_RSN_Write(0);
-        CFSA_3DBFACTOR0_Write(0x200);    // Set coefficiency for the 1st 3dB frequency point
-        CFSA_3DBFACTOR1_Write(0x200);    // Set coefficiency for the 2nd 3dB frequency point
+        CFSA_3DBFACTOR0_Write(0x100|106);    // Set coefficiency for the 1st 3dB frequency point
+        CFSA_3DBFACTOR1_Write(0x100|106);    // Set coefficiency for the 2nd 3dB frequency point
         CFSA_THRESHOLD_Write(100);  // Set threshold for multi-start SS
         CFSA4D_GAIN0_Write(gain0);// 2D need to times 2
         CFSA4D_GAIN1_Write(gain1);// 2D need to times 2

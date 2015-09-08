@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="tune_adc_4d.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\ana_opt_2\set_config.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5891" topLine="146" />
-		</Cursor>
-	</File>
-	<File name="..\ana_opt_2\psoc_port.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="12001" topLine="171" />
+			<Cursor1 position="32735" topLine="1238" />
 		</Cursor>
 	</File>
 	<File name="..\ana_opt_2\device.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -16,14 +11,19 @@
 			<Cursor1 position="15758" topLine="529" />
 		</Cursor>
 	</File>
-	<File name="..\ana_opt_2\set_config.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="tune_adc_4d.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="33411" topLine="1260" />
+			<Cursor1 position="1723" topLine="60" />
 		</Cursor>
 	</File>
-	<File name="..\ana_opt_2\test_adc.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\ana_opt_2\test_adc.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="12906" topLine="478" />
+			<Cursor1 position="13982" topLine="479" />
+		</Cursor>
+	</File>
+	<File name="..\ana_opt_2\psoc_port.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12001" topLine="171" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
