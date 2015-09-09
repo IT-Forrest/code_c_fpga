@@ -1,5 +1,5 @@
-
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -15,6 +15,7 @@
 #include "../ana_opt_2/set_config.h"
 #include "../ana_opt_2/serial_port_io.h"
 #include "../ana_opt_2/test_adc.h"
+#include "../ana_opt_2/experimental.h"
 
 #define ITERNUM 512
 #define SSNUM 16
@@ -22,7 +23,6 @@
 #define AVG 8
 
 #define P_OPT
-//#define P_SWP
 #define P_FRP
 
 uint16  fno;
@@ -123,7 +123,7 @@ TESTCFSA_END:
 int main()
 {
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-    uint16  i = 0, j = 0, k = 0, p = 0;
+    uint16  i = 0;
     uint16  tunex1, tunex2, tunex3, tunex4;
     uint16  anaz,cost;
     uint16  gain0, gain1, gain2, gain3;
@@ -193,7 +193,8 @@ int main()
             tunex3 = CFSA_TUNE4DX3_Read();
             tunex4 = CFSA_TUNE4DX4_Read();
 
-            Test_CFSA_4D(tunex1, tunex2, tunex3, tunex4, adc_buf, &anaz, &cost);
+            anaz = CF1(tunex1, tunex2, tunex3, tunex4);
+            cost = 0;
             CFSA4D_ANABITS_Write(anaz);// write back to CFSA
 
             CFSA4D_MUXNXT_Write(1);
@@ -213,36 +214,12 @@ int main()
         tunex3 = CFSA_TUNE4DX3_Read();
         tunex4 = CFSA_TUNE4DX4_Read();
 
-        Test_CFSA_4D(tunex1, tunex2, tunex3, tunex4, adc_buf, &anaz, &cost);
+        anaz = CF1(tunex1, tunex2, tunex3, tunex4);
         //CFSA4D_ANABITS_Write(anaz);
 
         printf("Optimization Final, X2=%d, Y2=%d, X1=%d, Y1=%d\n", tunex1, tunex2, tunex3, tunex4);
     }
 #endif // P_OPT
-
-    /* Scan Surface 4D */
-#ifdef P_SWP
-    {
-        printf("*** Surface Scan\n");
-        printf("X2\tY2\tX1\tY1\tCFH\n");
-
-        for (i=0; i<32; i++)
-        {
-            for (j=0; j<32; j++)
-            {
-                for (k=0; k<32; k++)
-                {
-                    for (p=0; p <32; p++)
-                    {
-                        Test_CFSA_4D(i, j, k, p, adc_buf, &anaz, &cost);
-                        // CFSA4D_ANABITS_Write(anaz);
-                        printf("%d\t%d\t%d\t%d\t%d\n", i, j, k, p, anaz);
-                    }
-                }
-            }
-        }
-    }
-#endif // P_SWP
 
     /* Sweep Frequency Response */
 #ifdef P_FRP

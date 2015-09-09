@@ -13,10 +13,17 @@
 				<Option compiler="arm-elf-gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="C:/altera/14.1/embedded/ip/altera/hps/altera_hps/hwlib/" />
 				</Compiler>
+				<ResourceCompiler>
+					<Add directory="C:/altera/14.1/embedded/ip/altera/hps/altera_hps/hwlib/" />
+				</ResourceCompiler>
+				<Linker>
+					<Add directory="C:/altera/14.1/embedded/ip/altera/hps/altera_hps/hwlib/" />
+				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/test_code" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/tune_adc_4d" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="arm-elf-gcc" />
@@ -30,6 +37,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-lm" />
 			<Add directory="D:/altera/14.1/embedded/ip/altera/hps/altera_hps/hwlib/include" />
 			<Add directory="C:/altera/14.1/embedded/ip/altera/hps/altera_hps/hwlib/include" />
 		</Compiler>
@@ -37,6 +45,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../ana_opt_2/device.h" />
+		<Unit filename="../ana_opt_2/experimental.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ana_opt_2/experimental.h" />
 		<Unit filename="../ana_opt_2/hps_0.h" />
 		<Unit filename="../ana_opt_2/psoc_port.c">
 			<Option compilerVar="CC" />
@@ -55,15 +67,8 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../ana_opt_2/test_adc.h" />
-		<Unit filename="test_sa4D.c">
+		<Unit filename="../ana_opt_2/test_sa.c">
 			<Option compilerVar="CC" />
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
-		<Unit filename="test_sactrl.c">
-			<Option compilerVar="CC" />
-			<Option compile="0" />
-			<Option link="0" />
 		</Unit>
 		<Unit filename="tune_adc_4d.c">
 			<Option compilerVar="CC" />
@@ -71,7 +76,11 @@
 		<Extensions>
 			<code_completion />
 			<envvars />
-			<debugger />
+			<debugger>
+				<remote_debugging>
+					<options conn_type="1" serial_baud="115200" ip_address="192.168.1.3" ip_port="123" />
+				</remote_debugging>
+			</debugger>
 			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
