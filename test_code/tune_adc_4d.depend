@@ -127,3 +127,137 @@
 
 1441838867 c:\users\congyin\documents\github\code_c_fpga\ana_opt_2\experimental.h
 
+1441591035 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\device.c
+	"device.h"
+	"psoc_port.h"
+
+1441591055 f:\05. code battle\github\code_c_fpga\ana_opt_2\device.h
+	<stdio.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"psoc_port.h"
+
+1417721225 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\hwlib.h
+	<cstddef>
+	<cstdbool>
+	<cstdint>
+	<stddef.h>
+	<stdbool.h>
+	<stdint.h>
+	"alt_hwlibs_ver.h"
+
+1417721223 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\alt_hwlibs_ver.h
+
+1417721230 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\socal.h
+	<cstddef>
+	<cstdbool>
+	<cstdint>
+	<stddef.h>
+	<stdbool.h>
+	<stdint.h>
+
+1417721230 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\hps.h
+
+1417721230 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\alt_gpio.h
+
+1441560907 f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.h
+	<stdio.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"hps_0.h"
+
+1441548331 f:\05. code battle\github\code_c_fpga\ana_opt_2\hps_0.h
+
+1441560879 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.c
+	"psoc_port.h"
+
+1427250116 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\serial_port_io.c
+	<math.h>
+	<stdint.h>
+	"device.h"
+	<stdlib.h>
+
+1441492530 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.c
+	<math.h>
+	<stdint.h>
+	"scan_chain.h"
+	"serial_port_io.h"
+	"device.h"
+	"psoc_port.h"
+	"set_config.h"
+	"test_adc.h"
+
+1428356295 f:\05. code battle\github\code_c_fpga\ana_opt_2\scan_chain.h
+	"device.h"
+
+1426711461 f:\05. code battle\github\code_c_fpga\ana_opt_2\serial_port_io.h
+	"device.h"
+	<stdint.h>
+	<stdlib.h>
+
+1441492530 f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.h
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+
+1441487662 f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.h
+	"device.h"
+	<stdio.h>
+	<stdint.h>
+	"scan_chain.h"
+
+1441916000 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.c
+	"device.h"
+	<stdio.h>
+	<math.h>
+	<stdint.h>
+	"scan_chain.h"
+	"serial_port_io.h"
+	"set_config.h"
+	"test_adc.h"
+
+1426887166 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\test_sa.c
+	"device.h"
+	<stdint.h>
+	<stdio.h>
+	"scan_chain.h"
+	"serial_port_io.h"
+	"set_config.h"
+	"test_adc.h"
+
+1441915999 source:f:\05. code battle\github\code_c_fpga\test_code\tune_adc_4d.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<unistd.h>
+	<fcntl.h>
+	<string.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"../ana_opt_2/device.h"
+	"../ana_opt_2/scan_chain.h"
+	"../ana_opt_2/set_config.h"
+	"../ana_opt_2/serial_port_io.h"
+	"../ana_opt_2/test_adc.h"
+	"../ana_opt_2/experimental.h"
+
+1441915999 f:\05. code battle\github\code_c_fpga\ana_opt_2\experimental.h
+
+1441924235 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\experimental.c
+	<stdlib.h>
+	"scan_chain.h"
+	"set_config.h"
+	"test_adc.h"
+

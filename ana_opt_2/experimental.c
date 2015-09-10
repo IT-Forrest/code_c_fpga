@@ -136,7 +136,7 @@ uint16 CF1(uint16 x1, uint16 x2, uint16 x3, uint16 x4)
 /* Improved cost function (#2, 6 freq points) for 4D optimization */
 uint16 CF2(uint16 x1, uint16 x2, uint16 x3, uint16 x4)
 {
-#define FR_NO 7
+#define FR_NO 9
 
     if (x1 < 3 || x2 < 3 || x3 < 3 || x4 < 3) return 255;
     /* ========== ADC Measurement ========== */
@@ -144,7 +144,7 @@ uint16 CF2(uint16 x1, uint16 x2, uint16 x3, uint16 x4)
     uint16  adc_val;
     uint16  fno = FR_NO;
     uint16  adc_buf[IQ_GRP_OFFSET + fno*sizeof(FSEL_ELEMENT)/sizeof(IQ_ELEMENT)];
-    uint16  flist[FR_NO] = {50, 56, 60, 64, 71, 32, 115};
+    uint16  flist[FR_NO] = {50, 56, 60, 64, 71, 32, 115, 47, 75};
 
     for (i = 0; i < IQ_GRP_OFFSET + fno*sizeof(FSEL_ELEMENT)/sizeof(IQ_ELEMENT); i++)
     {
@@ -235,19 +235,37 @@ uint16 CF2(uint16 x1, uint16 x2, uint16 x3, uint16 x4)
     F4_tmp = F[4] + (F4_tmp >> 2);
 
     uint32  cost = 0;
+
+    /* 9 pt */
     cost += (abs(F[3]-F0_tmp));
     cost += (abs(F[1]-F4_tmp));
-    cost += (abs(F[2]-F0_tmp));
-    cost += (abs(F[2]-F4_tmp));
-    //cost += (abs(F[2]-(F[5] << 1)));
-    //cost += (abs(F[2]-(F[6] << 1)));
+    //cost += (abs(F[2]-F0_tmp));
+    //cost += (abs(F[2]-F4_tmp));
+    cost += (abs(F[2]-(F[7] << 1)));
+    cost += (abs(F[2]-(F[8] << 1)));
     cost += (abs(F[0]-F[4]));
     cost += (abs(F[1]-F[2]));
     cost += (abs(F[2]-F[3]));
-    cost += (abs(F[1]-F[3]));
-    cost += (F[2] > 128) ? 0 : (128-F[2]) << 2;
-    cost += (F[5] > 16) ? 0 : (F[5]-16) << 2;
-    cost += (F[6] > 8) ? 0 : (F[6]-8) << 2;
+    cost += (abs(F[1]-F[3]) << 1);
+    cost += ((F[2] > 128) ? 0 : (128-F[2]));
+    cost += ((F[5] <= 12) ? 0 : (F[5]-12)<<3);
+    cost += ((F[6] <= 12) ? 0 : (F[6]-12)<<3);
+
+    /* 7pt */
+    /*
+    cost += (abs(F[3]-(F[7] << 1)));
+    cost += (abs(F[1]-(F[8] << 1)));
+    cost += (abs(F[2]-(F[7] << 1)));
+    cost += (abs(F[2]-(F[8] << 1)));
+    cost += (abs(F[7]-F[8]) << 1);
+    cost += (abs(F[1]-F[2]));
+    cost += (abs(F[2]-F[3]));
+    cost += (abs(F[1]-F[3]) << 1);
+    cost += ((F[2] > 128) ? 0 : (128-F[2]) << 2);
+    cost += ((F[5] > 16) ? 0 : (F[5]-16) << 2);
+    cost += ((F[6] > 8) ? 0 : (F[6]-8) << 2);
+    */
+
 
     cost = (cost >> 1);
 
