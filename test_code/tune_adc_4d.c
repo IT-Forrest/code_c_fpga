@@ -193,7 +193,7 @@ int main()
             tunex3 = CFSA_TUNE4DX3_Read();
             tunex4 = CFSA_TUNE4DX4_Read();
 
-            anaz = CF1(tunex1, tunex2, tunex3, tunex4);
+            anaz = CF2(tunex1, tunex2, tunex3, tunex4);
             cost = 0;
             CFSA4D_ANABITS_Write(anaz);// write back to CFSA
 
@@ -214,7 +214,7 @@ int main()
         tunex3 = CFSA_TUNE4DX3_Read();
         tunex4 = CFSA_TUNE4DX4_Read();
 
-        anaz = CF1(tunex1, tunex2, tunex3, tunex4);
+        anaz = CF2(tunex1, tunex2, tunex3, tunex4);
         //CFSA4D_ANABITS_Write(anaz);
 
         printf("Optimization Final, X2=%d, Y2=%d, X1=%d, Y1=%d\n", tunex1, tunex2, tunex3, tunex4);
