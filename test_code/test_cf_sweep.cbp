@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="test_cf_sweep" />
+		<Option pch_mode="2" />
+		<Option compiler="msvc10" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/test_cf_sweep" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="cygwin" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/test_code" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="arm-elf-gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="D:/altera/14.1/embedded/ip/altera/hps/altera_hps/hwlib/include" />
+			<Add directory="C:/altera/14.1/embedded/ip/altera/hps/altera_hps/hwlib/include" />
+		</Compiler>
+		<Unit filename="../ana_opt_2/device.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ana_opt_2/device.h" />
+		<Unit filename="../ana_opt_2/hps_0.h" />
+		<Unit filename="../ana_opt_2/psoc_port.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ana_opt_2/psoc_port.h" />
+		<Unit filename="../ana_opt_2/scan_chain.h" />
+		<Unit filename="../ana_opt_2/serial_port_io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ana_opt_2/serial_port_io.h" />
+		<Unit filename="../ana_opt_2/set_config.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ana_opt_2/set_config.h" />
+		<Unit filename="../ana_opt_2/test_adc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ana_opt_2/test_adc.h" />
+		<Unit filename="experiment_1.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="test_cf_sweep.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="test_sa4D.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="test_sactrl.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="tune_adc_4d.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

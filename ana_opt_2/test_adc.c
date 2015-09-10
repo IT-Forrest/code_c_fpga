@@ -670,8 +670,8 @@ uint16 Amp_Cordic(int16_t x, int16_t y)
                (xn<0 && yn<0)) ?
                -1 : 1;
         zn = xn;
-        xn -= sig * (yn>>i);
-        yn += sig * (zn>>i);
+        xn -= sig * ((yn>=0) ? (yn>>i) : -((-yn)>>i));
+        yn += sig * ((zn>=0) ? (zn>>i) : -((-zn)>>i));
     }
     /* END OF VERILOG */
 
