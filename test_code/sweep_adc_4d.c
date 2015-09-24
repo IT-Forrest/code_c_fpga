@@ -40,10 +40,10 @@ int main()
 
     if (LoadCfgFile("./case1.cfg", &fno, flist)) return (1);
 
-    tunex1 = 26;
+    tunex1 = 27;
     tunex2 = 20;
-    tunex3 = 23;
-    tunex4 = 25;
+    tunex3 = 22;
+    tunex4 = 24;
 
     printf("*** Surface Scan 1: X2 = %u, Y2 = %u\n", tunex3, tunex4);
     printf("X1\tY1\tCFH\n");

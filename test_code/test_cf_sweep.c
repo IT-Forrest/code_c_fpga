@@ -18,6 +18,7 @@
 
 //#define DEBUG_PRINT
 //#define DEBUG_CORDIC
+//#define DEBUG_MULTIP
 
 #define ITERNUM 512
 #define SSNUM 16
@@ -114,6 +115,42 @@ uint16 Amp_Div_Sweep(uint16 x, uint16 y, uint16 div_accu)
     }
 }
 
+uint16 Amp_Mult_Sweep(uint8 mod, uint16 multiplicand, uint16 multiplior)
+{
+    uint16  multiplication = 0;
+    uint16  multiplier_tmp = multiplior;
+    int16_t  i=0;
+    int16_t  j=0;
+
+    if ((mod == 0) || (mod == 1))
+    {
+        for (i=0; i<8; i++)
+        {
+            if (multiplier_tmp & 0x0001)
+            {
+                multiplication += multiplicand;
+            }
+            multiplier_tmp = (multiplier_tmp >> 1);
+            multiplication = (multiplication >> 1);
+            #ifdef DEBUG_MULTIP
+            printf("multiplication_tmp=%d\n",multiplication);
+            #endif
+        }
+
+        if (mod == 1)
+            multiplication += multiplicand;
+        #ifdef  DEBUG_MULTIP
+        printf("multiplication_tmp=%d\n",multiplication);
+        #endif
+    }
+    else
+    {
+        multiplication = (multiplicand<<1);
+    }
+
+    return  multiplication;
+}
+
 uint16 GetCFSA4D_SWEEP(uint16* adc_buf, uint16 offset, uint8 is_4D, uint16 div_accu,
                  uint16 gain0, uint16 gain1, uint16 gain2, uint16 gain3)
 {
@@ -165,7 +202,10 @@ uint16 GetCFSA4D_SWEEP(uint16* adc_buf, uint16 offset, uint8 is_4D, uint16 div_a
         uint32  F3 = Amp_Div_Sweep(Amp_Cordic_Sweep(A3->Iout - offset, A3->Qout - offset),
                                   Amp_Cordic_Sweep(A3->Iinn - offset, A3->Qinn - offset), div_accu);
         #ifdef  DEBUG_CORDIC
-        printf("\t\tF3.Ao=%d, F3.Ai=%d, F3=%d\n",
+        printf("\t\tF0.Ao=%d, F0.Ai=%d, F0=%d\tF3.Ao=%d, F3.Ai=%d, F3=%d\n",
+               Amp_Cordic_Sweep(A0->Iout - offset, A0->Qout - offset),
+               Amp_Cordic_Sweep(A0->Iinn - offset, A0->Qinn - offset),
+               F0,
                Amp_Cordic_Sweep(A3->Iout - offset, A3->Qout - offset),
                Amp_Cordic_Sweep(A3->Iinn - offset, A3->Qinn - offset),
                F3);
@@ -180,17 +220,24 @@ uint16 GetCFSA4D_SWEEP(uint16* adc_buf, uint16 offset, uint8 is_4D, uint16 div_a
         if (1)
         {
             // 1.414*F0
-            F0_tmp = F0;
-            F0_tmp = F0 + (F0_tmp >> 2);
-            F0_tmp = F0 + (F0_tmp >> 2);
-            F0_tmp = F0 + (F0_tmp >> 1);
-            F0_tmp = F0 + (F0_tmp >> 2);
+            F0_tmp = Amp_Mult_Sweep(0x01, F0, 106);
+//            F0_tmp = F0;
+//            F0_tmp = F0 + (F0_tmp >> 2);
+//            F0_tmp = F0 + (F0_tmp >> 2);
+//            F0_tmp = F0 + (F0_tmp >> 1);
+//            F0_tmp = F0 + (F0_tmp >> 2);
             // 1.414*F3
-            F3_tmp = F3;
-            F3_tmp = F3 + (F3_tmp >> 2);
-            F3_tmp = F3 + (F3_tmp >> 2);
-            F3_tmp = F3 + (F3_tmp >> 1);
-            F3_tmp = F3 + (F3_tmp >> 2);
+            F3_tmp = Amp_Mult_Sweep(0x01, F3, 106);
+//            F3_tmp = F3;
+//            printf("\t%d\n", F3_tmp);
+//            F3_tmp = F3 + (F3_tmp >> 2);
+//            printf("\t%d\n", F3_tmp);
+//            F3_tmp = F3 + (F3_tmp >> 2);
+//            printf("\t%d\n", F3_tmp);
+//            F3_tmp = F3 + (F3_tmp >> 1);
+//            printf("\t%d\n", F3_tmp);
+//            F3_tmp = F3 + (F3_tmp >> 2);
+//            printf("\t%d\n", F3_tmp);
 
             #ifdef  DEBUG_PRINT
             printf("F0*1.414\tF3*1.414\n");
@@ -280,13 +327,13 @@ int main()
         {
             for (i = 0; i < fno; i++)
             {
-                adc_buf[0] = k+i;
-                adc_buf[1] = k+i+1;
+                adc_buf[0] = (k+i)%1024;
+                adc_buf[1] = (k+i+1)%1024;
 
                 /// Ii Qi and Io Qo have different values
                 for (j=0; j<4; j++)
                 {
-                    adc_buf[2+i*fno+j] = k+i+j;
+                    adc_buf[2+i*fno+j] = (k+i+j)%1024;
                     if ((0 == i) && (1 == j))
                     {
                         if (abs(adc_buf[0] - adc_buf[2])+abs(adc_buf[1] - adc_buf[3]) > OSC_TOL)
