@@ -15,12 +15,15 @@
 #define     CFG_H           1
 #define     CFG_L           0   // least significant bits for scan chain
 
-#define     MAX_SC_BITS     127//total scan chain length for version 2
+//#define     MAX_SC_BITS     127//total scan chain length for version 2
+#define     MAX_SC_BITS     243//total scan chain length for version 3
 #define     MAX_FSEL_LEN    (127-32+1)
 
 extern uint32_t    gcfg[MAX_CFG_BITS];       // configuration bits array
 extern uint32_t    gcfg_bk[MAX_CFG_BITS];    // configuration bits backup
 extern uint32_t    gcfg_tx[MAX_CFG_BITS];    // configuration bits delivered to FPGA
+extern uint32_t    gcfg_rd[MAX_CFG_BITS];    // array used to read scan chain A
+extern uint32_t    gscB;    // Scan chain B; just for read
 
 /* Initialization */
 int     init_cfg();

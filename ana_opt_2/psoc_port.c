@@ -186,7 +186,7 @@ int init_mem()
     cfsatune4Dx3_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX3_BASE) & (unsigned long) (HW_REGS_MASK));
     cfsatune4Dx4_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX4_BASE) & (unsigned long) (HW_REGS_MASK));
 
-    // chip test module
+    /////// tapeout chip 3 //////
     chip3_set_ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_CTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;       // chip test control register
     chip3_chk_stat_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_STAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;       // chip test control register       // chip test status register
     chip3_set_clkcnt_addr=virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_STAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;;     // chip test clock counter

@@ -107,11 +107,12 @@ typedef char char8;
 #define IDX_CTRL_STA_CLK    (8)
 #define IDX_CTRL_RST_N      (9)
 #define IDX_CTRL_ONE_CLK   (10)
+#define IDX_CTRL_RST_ANA   (11)                   // Reset Analog Circuit
 
 #define IDX_STAT_SCREADY    (0)                   // bit position. Scan Chain. Ready
 #define IDX_STAT_SCSO_A     (1)                   // bit position. Scan Chain. SO_ANA
 #define IDX_STAT_SCSO_B     (2)                   // bit position. Scan Chain. SO_DIG
-#define IDX_STAT_ONERDY     (3)                   // bit position. Measurement. Ready
+//#define IDX_STAT_ONERDY     (3)                   // bit position. Measurement. Ready
 
 int USBUART_1_CDCIsReady();
 int USBUART_1_DataIsReady();
@@ -207,6 +208,22 @@ unsigned int CFSA_TUNE4DX2_Read();
 unsigned int CFSA_TUNE4DX3_Read();
 unsigned int CFSA_TUNE4DX4_Read();
 
+//// tapeout3
+void Chip3_Idx_Ctrl_Sta_Sc_Write(int rd_val);
+void Chip3_Idx_Ctrl_Sin_Ab_Write(int rd_val);
+void Chip3_Idx_Ctrl_Sel_A_Write(int rd_val);
+void Chip3_Idx_Ctrl_Sel_B_Write(int rd_val);
+void Chip3_Idx_Ctrl_Lat_A_Write(int rd_val);
+void Chip3_Idx_Ctrl_Lat_B_Write(int rd_val);
+void Chip3_Idx_Ctrl_Flag_A_Write(int rd_val);
+void Chip3_Idx_Ctrl_Flag_B_Write(int rd_val);
+void Chip3_Idx_Ctrl_Sta_Clk_Write(int rd_val);
+void Chip3_Idx_Ctrl_Rst_N_Write(int rd_val);
+void Chip3_Idx_Ctrl_Rst_Ana_Write(int rd_val);
+
+int Chip3_Idx_Stat_Scrdy_Read();
+int Chip3_Idx_Stat_Scso_A_Read();
+int Chip3_Idx_Stat_Scso_B_Read();
 
 int DEBUG_Read();
 float sqrt12( const float N);

@@ -25,6 +25,8 @@
 uint32    gcfg[MAX_CFG_BITS];       // configuration bits array
 uint32    gcfg_bk[MAX_CFG_BITS];    // configuration bits backup
 uint32    gcfg_tx[MAX_CFG_BITS];    // configuration bits delivered to FPGA
+uint32    gcfg_rd[MAX_CFG_BITS];
+uint32    gscB;
 
 int32   SetFSEL(uint8 rd_val);
 
@@ -145,6 +147,7 @@ int init_cfg()
     for (i = 0; i<MAX_CFG_BITS; i++) gcfg[i] = 0;
     for (i = 0; i<MAX_CFG_BITS; i++) gcfg_bk[i] = 0xffffffff;
     for (i = 0; i<MAX_CFG_BITS; i++) gcfg_tx[i] = 0;
+    for (i = 0; i<MAX_CFG_BITS; i++) gcfg_rd[i] = 0;
     return (0);
 }
 
@@ -196,19 +199,22 @@ void    TranxCfg()
 
 void    RShiftCfg()
 {
-    gcfg_tx[CFG_L] = gcfg_tx[CFG_L] >> 1;
-    gcfg_tx[CFG_L] = gcfg_tx[CFG_L] | ((gcfg_tx[CFG_H] & 0x1) << 31);
-    gcfg_tx[CFG_H] = gcfg_tx[CFG_H] >> 1;
-    gcfg_tx[CFG_H] = gcfg_tx[CFG_H] | ((gcfg_tx[CFG_M] & 0x1) << 31);
-    gcfg_tx[CFG_M] = gcfg_tx[CFG_M] >> 1;
-    gcfg_tx[CFG_M] = gcfg_tx[CFG_M] | ((gcfg_tx[CFG_S] & 0x1) << 31);
-    gcfg_tx[CFG_S] = gcfg_tx[CFG_S] >> 1;
+//    gcfg_tx[CFG_L] = gcfg_tx[CFG_L] >> 1;
+//    gcfg_tx[CFG_L] = gcfg_tx[CFG_L] | ((gcfg_tx[CFG_H] & 0x1) << 31);
+//    gcfg_tx[CFG_H] = gcfg_tx[CFG_H] >> 1;
+//    gcfg_tx[CFG_H] = gcfg_tx[CFG_H] | ((gcfg_tx[CFG_M] & 0x1) << 31);
+//    gcfg_tx[CFG_M] = gcfg_tx[CFG_M] >> 1;
+//    gcfg_tx[CFG_M] = gcfg_tx[CFG_M] | ((gcfg_tx[CFG_S] & 0x1) << 31);
+//    gcfg_tx[CFG_S] = gcfg_tx[CFG_S] >> 1;
 
-    //cfg_l_tx = cfg_l_tx >> 1;
-    //cfg_l_tx = cfg_l_tx + ((cfg_h_tx & 0x1) << 31);
-    //cfg_h_tx = cfg_h_tx >> 1;
-    //cfg_h_tx = cfg_h_tx + ((cfg_m_tx & 0x1) << 31);
-    //cfg_m_tx = cfg_m_tx >> 1;
+    int i;
+    for (i = 0; i < MAX_CFG_BITS-1; i++)
+    {
+        gcfg_tx[i] = (gcfg_tx[i] >> 1);
+        gcfg_tx[i] = gcfg_tx[i] | ((gcfg_tx[i+1] & 0x1) << 31);
+    }
+    /// during the last time, only do right shift
+    gcfg_tx[i] = (gcfg_tx[i] >> 1);
 }
 
 
