@@ -30,20 +30,39 @@
 #define ITERNUM 225
 #define SSNUM 7
 
-int main() {
+int main(int argc, char** argv) {
     uint16  tunex1;
     uint16  tunex2;
+    uint16  Midv0 = 0;
+    uint16  Bs0 = 0;
+    uint16  Cap0 = 0;
 
     if (init_mem()) return (1);
     if (init_cfg()) return (1);
     if (syn_ctrl()) return (1);
 
+    Chip3_Idx_Ctrl_Sta_Clk_Write(0);
+    Chip3_Idx_Ctrl_Rst_N_Write(0);
     ///////////////////////////////////////////////
     /// To set analog configuration: e.g. Mdiv, BS, etc
     ///////////////////////////////////////////////
-    Chip3_Set_Mdiv0(33);
-    Chip3_Set_Bs0(0);
-    Chip3_Set_Cap0(0);
+    if (argc == 4)
+    {
+        Midv0 = atoi(argv[1]);
+        Bs0 = atoi(argv[2]);
+        Cap0 = atoi(argv[3]);
+
+        Chip3_Set_Mdiv0(Midv0);
+        Chip3_Set_Bs0(Bs0);
+        Chip3_Set_Cap0(Cap0);
+    }
+    else
+    {
+        /// default configuration
+        Chip3_Set_Mdiv0(32);
+        Chip3_Set_Bs0(0);
+        Chip3_Set_Cap0(0);
+    }
 
     Chip3_Set_Mdiv1(127);
     Chip3_Set_Bs1(0);
@@ -88,11 +107,14 @@ int main() {
     Chip3_Set_Aoff(507);
 
     Chip3_Set_Tol(63);
-    Chip3_Set_Trg_Test(0);
-    Chip3_Set_Test_Mux(0);
+    Chip3_Set_Trg_Test(1);
+    Chip3_Set_Test_Mux(1);  // for debug
+
     /// control word configuration
     Chip3_Set_Cal(0);
-    Chip3_Set_Sw(0);
+    Chip3_Set_Phs(0);
+    Chip3_Set_Src(0);
+    Chip3_Set_Oscd(1);
 
     BackupCfg();
     TranxCfg();
@@ -130,6 +152,42 @@ int main() {
 
     // RSTN_ANA = 1
     Chip3_Idx_Ctrl_Rst_Ana_Write(1);
+
+    ///////////////// Read ADC signals //////////////////
+    Chip3_Idx_Ctrl_Rst_N_Write(1);
+    Chip3_Idx_Ctrl_Sta_Clk_Write(1);
+    // Waiting ADC ready by usleep since no signal to indicate when is ready
+    usleep(50);
+    Chip3_Idx_Ctrl_Sta_Clk_Write(0);
+
+    Chip3_Idx_Ctrl_Sel_B_Write(1);
+
+    Chip3_Idx_Ctrl_Lat_B_Write(0);//need to latch the signal?
+
+    Chip3_Idx_Ctrl_Sta_Sc_Write(1);
+
+    Chip3_Idx_Ctrl_Flag_B_Write(1);
+    while(1 != Chip3_Idx_Stat_Scrdy_Read());
+
+    gscB = 0;
+    BIT_SET(gscB, ((Chip3_Idx_Stat_Scso_B_Read())<< (MAX_SC_BITS_B-1)));
+
+    Chip3_Idx_Ctrl_Sel_B_Write(0);
+
+    for (i = 0; i< MAX_SC_BITS_B-1; i++)
+    {
+        gscB = (gscB >> 1);
+        Chip3_Idx_Ctrl_Flag_B_Write(1);
+        while(1 != Chip3_Idx_Stat_Scrdy_Read());
+
+        Chip3_Idx_Ctrl_Flag_B_Write(0);
+        while(0 != Chip3_Idx_Stat_Scrdy_Read());
+
+        BIT_SET(gscB, ((Chip3_Idx_Stat_Scso_B_Read())<< (MAX_SC_BITS_B-1)));
+    }
+
+    Chip3_Idx_Ctrl_Sta_Sc_Write(0);
+    printf("ADC = %d\n", Chip3_Rtn_Adc());
 
     return( clean_mem() );
 }

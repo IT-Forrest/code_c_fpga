@@ -104,9 +104,8 @@ typedef char char8;
 #define IDX_CTRL_FLAG_A     (6)
 #define IDX_CTRL_FLAG_B     (7)
 #define IDX_CTRL_STA_CLK    (8)
-#define IDX_CTRL_STA_CLK    (8)
 #define IDX_CTRL_RST_N      (9)
-#define IDX_CTRL_ONE_CLK   (10)
+#define IDX_CTRL_ONE_CLK   (10)                   // unused right now
 #define IDX_CTRL_RST_ANA   (11)                   // Reset Analog Circuit
 
 #define IDX_STAT_SCREADY    (0)                   // bit position. Scan Chain. Ready

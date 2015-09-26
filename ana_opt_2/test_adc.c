@@ -25,7 +25,7 @@
 void    TxCfg2ADC()
 {
     uint8   i = 0;
-    uint8   Snd_num = MAX_SC_BITS;
+    uint8   Snd_num = MAX_SC_BITS_A;
 
     TranxCfg();//update the transmission data, very important!!
 
