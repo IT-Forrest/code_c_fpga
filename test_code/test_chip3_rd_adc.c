@@ -1,15 +1,15 @@
 //+FHDR****************************************************************
 // ECE department, TAMU
 // --------------------------------------------------------------------
-// FILE NAME    : test_chip3.c
+// FILE NAME    : test_chip3_rd_adc.c
 // AUTHER       : Jiafan Wang
-// DATE         : 09/24/2015
+// DATE         : 09/6/2015
 // VERSION      : 1.0
 // PURPOSE      : the scan chain test of the tapeout 3 chip
 // --------------------------------------------------------------------
 // ABSTRACT
 //
-// New scan chain functions are defined since it's longer than before
+// This file works for Send Configuration to Scan Chain A and then read ADC from Scan chain B
 // --------------------------------------------------------------------
 
 #include <stdio.h>
@@ -29,6 +29,40 @@
 
 #define ITERNUM 225
 #define SSNUM 7
+//#define DEBUG_ON
+
+/// Send Configuration to Scan chain A
+void    Chip3_Send_Cfg_To_SCA()
+{
+    Chip3_Idx_Ctrl_Sel_A_Write(0);
+
+    Chip3_Idx_Ctrl_Lat_A_Write(0);
+    Chip3_Idx_Ctrl_Sta_Sc_Write(1);
+
+    ///////////////////// Scan chain input /////////////////////
+    //// input Scan chain A
+    int i;
+    for (i = 0; i < MAX_SC_BITS_A; i++)
+    {
+        Chip3_Idx_Ctrl_Sin_Ab_Write(gcfg_tx[0]);
+        RShiftCfg();
+        Chip3_Idx_Ctrl_Flag_A_Write(1);
+        while(1 != Chip3_Idx_Stat_Scrdy_Read());
+
+        Chip3_Idx_Ctrl_Flag_A_Write(0);
+        while(0 != Chip3_Idx_Stat_Scrdy_Read());
+    }
+
+    /// when set the latch signal, no need to send clock
+    Chip3_Idx_Ctrl_Lat_A_Write(1);
+    usleep(2);
+    Chip3_Idx_Ctrl_Lat_A_Write(0);
+
+    Chip3_Idx_Ctrl_Sta_Sc_Write(0);
+
+    return;
+}
+
 
 int main(int argc, char** argv) {
     uint16  tunex1;
@@ -41,8 +75,10 @@ int main(int argc, char** argv) {
     if (init_cfg()) return (1);
     if (syn_ctrl()) return (1);
 
+    /// Disable global clock and CFSA at the very beginning
     Chip3_Idx_Ctrl_Sta_Clk_Write(0);
     Chip3_Idx_Ctrl_Rst_N_Write(0);
+
     ///////////////////////////////////////////////
     /// To set analog configuration: e.g. Mdiv, BS, etc
     ///////////////////////////////////////////////
@@ -59,9 +95,9 @@ int main(int argc, char** argv) {
     else
     {
         /// default configuration
-        Chip3_Set_Mdiv0(32);
-        Chip3_Set_Bs0(0);
-        Chip3_Set_Cap0(0);
+        Chip3_Set_Mdiv0(108);
+        Chip3_Set_Bs0(15);
+        Chip3_Set_Cap0(31);
     }
 
     Chip3_Set_Mdiv1(127);
@@ -99,81 +135,81 @@ int main(int argc, char** argv) {
 
     Chip3_Set_Ss_Iter(SSNUM);   // Set Sensitivity time = 4
     Chip3_Set_Sa_Iter(ITERNUM); // Set SA iteration = ITERNUM
-    Chip3_Set_Init_X1(tunex1);
-    Chip3_Set_Init_Y1(tunex2);
+    Chip3_Set_Init_X1(15);
+    Chip3_Set_Init_Y1(15);
+    Chip3_Set_Init_X2(15);
+    Chip3_Set_Init_Y2(15);
+
+    Chip3_Set_Tx1(31);
+    Chip3_Set_Tx2(31);
+    Chip3_Set_Ty1(31);
+    Chip3_Set_Ty2(31);
+    Chip3_Set_Cb1(7);
+    Chip3_Set_Cb2(7);
+    Chip3_Set_Cb3(7);
+    Chip3_Set_Cb4(7);
+    Chip3_Set_Sw(1);
 
     Chip3_Set_Nxt_Test(0);
     Chip3_Set_Trdy_Test(0);
     Chip3_Set_Aoff(507);
 
     Chip3_Set_Tol(63);
-    Chip3_Set_Trg_Test(1);
+    Chip3_Set_Trg_Test(0);
     Chip3_Set_Test_Mux(1);  // for debug
 
     /// control word configuration
-    Chip3_Set_Cal(0);
+    Chip3_Set_Cal(1);
     Chip3_Set_Phs(0);
     Chip3_Set_Src(0);
-    Chip3_Set_Oscd(1);
+    Chip3_Set_Oscd(0);
 
     BackupCfg();
     TranxCfg();
 
-    Chip3_Idx_Ctrl_Rst_N_Write(0);
-
     //////////////////////////////////////////////
     /// Activate the Scan chain and load Configuration
     ///////////////////////////////////////////////
-    Chip3_Idx_Ctrl_Rst_Ana_Write(0);
-
-    Chip3_Idx_Ctrl_Sel_A_Write(0);
-
-    Chip3_Idx_Ctrl_Lat_A_Write(0);
-    Chip3_Idx_Ctrl_Sta_Sc_Write(1);
-
-    ///////////////////// Scan chain input /////////////////////
-    //// input Scan chain A
-    int i;
-    for (i = 0; i < MAX_SC_BITS_A; i++)
-    {
-        Chip3_Idx_Ctrl_Sin_Ab_Write(gcfg_tx[0]);
-        RShiftCfg();
-        Chip3_Idx_Ctrl_Flag_A_Write(1);
-        while(1 != Chip3_Idx_Stat_Scrdy_Read());
-
-        Chip3_Idx_Ctrl_Flag_A_Write(0);
-        while(0 != Chip3_Idx_Stat_Scrdy_Read());
-    }
-
-    /// when set the latch signal, no need to send clock
-    Chip3_Idx_Ctrl_Lat_A_Write(1);
-    usleep(2);
-    Chip3_Idx_Ctrl_Lat_A_Write(0);
-
-    // RSTN_ANA = 1
+    Chip3_Idx_Ctrl_Rst_Ana_Write(0);/// RST_ANA is needed only when MDIV is changed
+    Chip3_Send_Cfg_To_SCA();
     Chip3_Idx_Ctrl_Rst_Ana_Write(1);
 
+    Chip3_Set_Trg_Test(0);
+    BackupCfg();
+    TranxCfg();
+    Chip3_Send_Cfg_To_SCA();
+
     ///////////////// Read ADC signals //////////////////
-    Chip3_Idx_Ctrl_Rst_N_Write(1);
-    Chip3_Idx_Ctrl_Sta_Clk_Write(1);
-    // Waiting ADC ready by usleep since no signal to indicate when is ready
-    usleep(50);
-    Chip3_Idx_Ctrl_Sta_Clk_Write(0);
 
     Chip3_Idx_Ctrl_Sel_B_Write(1);
 
-    Chip3_Idx_Ctrl_Lat_B_Write(0);//need to latch the signal?
+    Chip3_Idx_Ctrl_Sta_Clk_Write(1);
+    // Waiting ADC ready by usleep since no signal to indicate when is ready
+    usleep(500);
+    Chip3_Idx_Ctrl_Sta_Clk_Write(0);
+
+    Chip3_Idx_Ctrl_Lat_B_Write(1);
+    usleep(2);
+    Chip3_Idx_Ctrl_Lat_B_Write(0);
+
 
     Chip3_Idx_Ctrl_Sta_Sc_Write(1);
 
     Chip3_Idx_Ctrl_Flag_B_Write(1);
     while(1 != Chip3_Idx_Stat_Scrdy_Read());
 
+    Chip3_Idx_Ctrl_Flag_B_Write(0);
+    while(0 != Chip3_Idx_Stat_Scrdy_Read());
+
     gscB = 0;
     BIT_SET(gscB, ((Chip3_Idx_Stat_Scso_B_Read())<< (MAX_SC_BITS_B-1)));
+    #ifdef  DEBUG_ON
+    printf("SCB BIT = %d\n", Chip3_Idx_Stat_Scso_B_Read());
+    #endif
 
     Chip3_Idx_Ctrl_Sel_B_Write(0);
 
+    int i;
     for (i = 0; i< MAX_SC_BITS_B-1; i++)
     {
         gscB = (gscB >> 1);
@@ -184,10 +220,16 @@ int main(int argc, char** argv) {
         while(0 != Chip3_Idx_Stat_Scrdy_Read());
 
         BIT_SET(gscB, ((Chip3_Idx_Stat_Scso_B_Read())<< (MAX_SC_BITS_B-1)));
+        #ifdef DEBUG_ON
+        printf("SCB BIT = %d\n", Chip3_Idx_Stat_Scso_B_Read());
+        #endif
     }
 
     Chip3_Idx_Ctrl_Sta_Sc_Write(0);
     printf("ADC = %d\n", Chip3_Rtn_Adc());
+    printf("FNL = %d\n", (CHIP3_CHK_ADC_FNL?1:0));
+    printf("RSTN_ADC = %d\n", (CHIP3_CHK_RSTN_ADC?1:0));
+    printf("CLRN = %d\n", (CHIP3_CHK_CLRN?1:0));
 
     return( clean_mem() );
 }

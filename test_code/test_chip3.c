@@ -8,7 +8,7 @@
 // PURPOSE      : the scan chain test of the tapeout 3 chip
 // --------------------------------------------------------------------
 // ABSTRACT
-//
+// This file only works for testing the Scan chain function.
 // New scan chain functions are defined since it's longer than before
 // --------------------------------------------------------------------
 
@@ -30,20 +30,74 @@
 #define ITERNUM 225
 #define SSNUM 7
 
-int main() {
+/// Send Configuration to Scan chain A
+void    Chip3_Send_Cfg_To_SCA()
+{
+    Chip3_Idx_Ctrl_Sel_A_Write(0);
+
+    Chip3_Idx_Ctrl_Lat_A_Write(0);
+    Chip3_Idx_Ctrl_Sta_Sc_Write(1);
+
+    ///////////////////// Scan chain input /////////////////////
+    //// input Scan chain A
+    int i;
+    for (i = 0; i < MAX_SC_BITS_A; i++)
+    {
+        Chip3_Idx_Ctrl_Sin_Ab_Write(gcfg_tx[0]);
+        RShiftCfg();
+        Chip3_Idx_Ctrl_Flag_A_Write(1);
+        while(1 != Chip3_Idx_Stat_Scrdy_Read());
+
+        Chip3_Idx_Ctrl_Flag_A_Write(0);
+        while(0 != Chip3_Idx_Stat_Scrdy_Read());
+    }
+
+    /// when set the latch signal, no need to send clock
+    Chip3_Idx_Ctrl_Lat_A_Write(1);
+    usleep(2);
+    Chip3_Idx_Ctrl_Lat_A_Write(0);
+
+    Chip3_Idx_Ctrl_Sta_Sc_Write(0);
+
+    return;
+}
+
+
+int main(int argc, char** argv) {
     uint16  tunex1;
     uint16  tunex2;
+    uint16  Midv0 = 0;
+    uint16  Bs0 = 0;
+    uint16  Cap0 = 0;
 
     if (init_mem()) return (1);
     if (init_cfg()) return (1);
     if (syn_ctrl()) return (1);
 
+    /// Disable global clock and CFSA at the very beginning
+    Chip3_Idx_Ctrl_Sta_Clk_Write(0);
+    Chip3_Idx_Ctrl_Rst_N_Write(0);
+
     ///////////////////////////////////////////////
     /// To set analog configuration: e.g. Mdiv, BS, etc
     ///////////////////////////////////////////////
-    Chip3_Set_Mdiv0(33);
-    Chip3_Set_Bs0(0);
-    Chip3_Set_Cap0(0);
+    if (argc == 4)
+    {
+        Midv0 = atoi(argv[1]);
+        Bs0 = atoi(argv[2]);
+        Cap0 = atoi(argv[3]);
+
+        Chip3_Set_Mdiv0(Midv0);
+        Chip3_Set_Bs0(Bs0);
+        Chip3_Set_Cap0(Cap0);
+    }
+    else
+    {
+        /// default configuration
+        Chip3_Set_Mdiv0(32);
+        Chip3_Set_Bs0(0);
+        Chip3_Set_Cap0(0);
+    }
 
     Chip3_Set_Mdiv1(127);
     Chip3_Set_Bs1(0);
@@ -89,44 +143,23 @@ int main() {
 
     Chip3_Set_Tol(63);
     Chip3_Set_Trg_Test(0);
-    Chip3_Set_Test_Mux(0);
+    Chip3_Set_Test_Mux(1);  // for debug
+
     /// control word configuration
     Chip3_Set_Cal(0);
-    Chip3_Set_Sw(0);
+    Chip3_Set_Phs(0);
+    Chip3_Set_Src(0);
+    Chip3_Set_Oscd(1);
 
     BackupCfg();
     TranxCfg();
-
-    Chip3_Idx_Ctrl_Rst_N_Write(0);
 
     //////////////////////////////////////////////
     /// Activate the Scan chain and load Configuration
     ///////////////////////////////////////////////
     Chip3_Idx_Ctrl_Rst_Ana_Write(0);
 
-    Chip3_Idx_Ctrl_Sel_A_Write(0);
-
-    Chip3_Idx_Ctrl_Lat_A_Write(0);
-    Chip3_Idx_Ctrl_Sta_Sc_Write(1);
-
-    ///////////////////// Scan chain input /////////////////////
-    //// input Scan chain A
-    int i;
-    for (i = 0; i < MAX_SC_BITS_A; i++)
-    {
-        Chip3_Idx_Ctrl_Sin_Ab_Write(gcfg_tx[0]);
-        RShiftCfg();
-        Chip3_Idx_Ctrl_Flag_A_Write(1);
-        while(1 != Chip3_Idx_Stat_Scrdy_Read());
-
-        Chip3_Idx_Ctrl_Flag_A_Write(0);
-        while(0 != Chip3_Idx_Stat_Scrdy_Read());
-    }
-
-    /// when set the latch signal, no need to send clock
-    Chip3_Idx_Ctrl_Lat_A_Write(1);
-    usleep(2);
-    Chip3_Idx_Ctrl_Lat_A_Write(0);
+    Chip3_Send_Cfg_To_SCA();
 
     // RSTN_ANA = 1
     Chip3_Idx_Ctrl_Rst_Ana_Write(1);

@@ -2233,16 +2233,16 @@ uint32  Chip3_Rtn_Adc()
 {
     uint32  rd_val = 0;
 
-    rd_val = (CHIP3_CHK_ADC_0)? (rd_val & 0x00000001): rd_val;
-    rd_val = (CHIP3_CHK_ADC_1)? (rd_val & 0x00000002): rd_val;
-    rd_val = (CHIP3_CHK_ADC_2)? (rd_val & 0x00000004): rd_val;
-    rd_val = (CHIP3_CHK_ADC_3)? (rd_val & 0x00000008): rd_val;
-    rd_val = (CHIP3_CHK_ADC_4)? (rd_val & 0x00000010): rd_val;
-    rd_val = (CHIP3_CHK_ADC_5)? (rd_val & 0x00000020): rd_val;
-    rd_val = (CHIP3_CHK_ADC_6)? (rd_val & 0x00000040): rd_val;
-    rd_val = (CHIP3_CHK_ADC_7)? (rd_val & 0x00000080): rd_val;
-    rd_val = (CHIP3_CHK_ADC_8)? (rd_val & 0x00000100): rd_val;
-    rd_val = (CHIP3_CHK_ADC_9)? (rd_val & 0x00000200): rd_val;
+    if (CHIP3_CHK_ADC_0) BIT_SET(rd_val, 0x00000001);
+    if (CHIP3_CHK_ADC_1) BIT_SET(rd_val, 0x00000002);
+    if (CHIP3_CHK_ADC_2) BIT_SET(rd_val, 0x00000004);
+    if (CHIP3_CHK_ADC_3) BIT_SET(rd_val, 0x00000008);
+    if (CHIP3_CHK_ADC_4) BIT_SET(rd_val, 0x00000010);
+    if (CHIP3_CHK_ADC_5) BIT_SET(rd_val, 0x00000020);
+    if (CHIP3_CHK_ADC_6) BIT_SET(rd_val, 0x00000040);
+    if (CHIP3_CHK_ADC_7) BIT_SET(rd_val, 0x00000080);
+    if (CHIP3_CHK_ADC_8) BIT_SET(rd_val, 0x00000100);
+    if (CHIP3_CHK_ADC_9) BIT_SET(rd_val, 0x00000200);
 
     return rd_val;
 }

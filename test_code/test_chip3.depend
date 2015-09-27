@@ -3,7 +3,7 @@
 	"device.h"
 	"psoc_port.h"
 
-1443192119 f:\05. code battle\github\code_c_fpga\ana_opt_2\device.h
+1443221829 f:\05. code battle\github\code_c_fpga\ana_opt_2\device.h
 	<stdio.h>
 	<unistd.h>
 	<fcntl.h>
@@ -59,7 +59,7 @@
 	"device.h"
 	<stdlib.h>
 
-1443195998 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.c
+1443224130 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.c
 	<math.h>
 	<stdint.h>
 	"scan_chain.h"
@@ -77,7 +77,7 @@
 	<stdint.h>
 	<stdlib.h>
 
-1443196749 f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.h
+1443224120 f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.h
 	"socal/hps.h"
 	"socal/alt_gpio.h"
 
