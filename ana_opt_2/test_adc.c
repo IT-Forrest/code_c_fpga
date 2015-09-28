@@ -16,99 +16,135 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include "scan_chain.h"
-#include "serial_port_io.h"
 #include "set_config.h"
 #include "test_adc.h"
+//#define DEBUG_ON
 
-/* ==================== Tx Configuration to FPGA ====================== */
-void    TxCfg2ADC()
+/* =================== Program for Test Chip3 =========================*/
+/// Send Configuration to Scan chain A
+void    Chip3_Send_Cfg_To_SCA()
 {
-    uint8   i = 0;
-    uint8   Snd_num = MAX_SC_BITS_A;
+    Chip3_Idx_Ctrl_Sel_A_Write(0);
 
-    TranxCfg();//update the transmission data, very important!!
+    Chip3_Idx_Ctrl_Lat_A_Write(0);
+    Chip3_Idx_Ctrl_Sta_Sc_Write(1);
 
-    //manually config these signals
-    CFG_FSEL_Write(RtnFSEL());
-    CFG_PHS_Write(RtnCK_PHS());
-    CFG_SRC_Write(RtnCK_SRC());
-    CFG_CAL_Write(RtnCK_CAL());
-    CFG_OSCD_Write(RtnCK_OSCD());
-
-    Global_RSTN_Write(0);
-
-    CFG_SEL_Write(0);
-
-    CFG_STA_Write(0);
-
-	for (i=0; i<Snd_num; i++)//47
-	{
-        CFG_DAT_Write(gcfg_tx[CFG_L] & 0x1);
+    ///////////////////// Scan chain input /////////////////////
+    //// input Scan chain A
+    int i;
+    for (i = 0; i < MAX_SC_BITS_A; i++)
+    {
+        Chip3_Idx_Ctrl_Sin_Ab_Write(gcfg[0]);
         RShiftCfg();
+        Chip3_Idx_Ctrl_Flag_A_Write(1);
+        while(1 != Chip3_Idx_Stat_Scrdy_Read());
 
-		CFG_STA_Write(1);
-		while (!CFG_RDY_Read());
+        Chip3_Idx_Ctrl_Flag_A_Write(0);
+        while(0 != Chip3_Idx_Stat_Scrdy_Read());
+    }
 
-		CFG_STA_Write(0);
-	}
+    /// when set the latch signal, no need to send clock
+    Chip3_Idx_Ctrl_Lat_A_Write(1);
+    usleep(2);
+    Chip3_Idx_Ctrl_Lat_A_Write(0);
 
-    //usleep(50);
-	Global_RSTN_Write(1);
+    Chip3_Idx_Ctrl_Sta_Sc_Write(0);
+
+    return;
+}
+
+/// After invoke the Control Logic, wait 500us and then Read ADC
+uint16  Chip3_Read_AdC()
+{
+    uint16  rd_val = 0;
+
+    Chip3_Idx_Ctrl_Sel_B_Write(1);
+
+    Chip3_Idx_Ctrl_Sta_Clk_Write(1);
+    // Waiting ADC ready by usleep since no signal to indicate when is ready
+    usleep(20);
+    Chip3_Idx_Ctrl_Sta_Clk_Write(0);
+
+    Chip3_Idx_Ctrl_Lat_B_Write(1);
+    usleep(2);
+    Chip3_Idx_Ctrl_Lat_B_Write(0);
+
+    Chip3_Idx_Ctrl_Sta_Sc_Write(1);
+
+    Chip3_Idx_Ctrl_Flag_B_Write(1);
+    while(1 != Chip3_Idx_Stat_Scrdy_Read());
+
+    Chip3_Idx_Ctrl_Flag_B_Write(0);
+    while(0 != Chip3_Idx_Stat_Scrdy_Read());
+
+    Chip3_Clear_Scan_Chain(0);
+    BIT_SET(gscB, ((Chip3_Idx_Stat_Scso_B_Read())<< (MAX_SC_BITS_B-1)));
+    #ifdef  DEBUG_ON
+    printf("SCB BIT = %d\n", Chip3_Idx_Stat_Scso_B_Read());
+    #endif
+
+    Chip3_Idx_Ctrl_Sel_B_Write(0);
+
+    int i;
+    for (i = 0; i< MAX_SC_BITS_B-1; i++)
+    {
+        gscB = (gscB >> 1);
+        Chip3_Idx_Ctrl_Flag_B_Write(1);
+        while(1 != Chip3_Idx_Stat_Scrdy_Read());
+
+        Chip3_Idx_Ctrl_Flag_B_Write(0);
+        while(0 != Chip3_Idx_Stat_Scrdy_Read());
+
+        BIT_SET(gscB, ((Chip3_Idx_Stat_Scso_B_Read())<< (MAX_SC_BITS_B-1)));
+        #ifdef DEBUG_ON
+        printf("SCB BIT = %d\n", Chip3_Idx_Stat_Scso_B_Read());
+        #endif
+    }
+
+    Chip3_Idx_Ctrl_Sta_Sc_Write(0);
+
+    rd_val = Chip3_Rtn_Adc();
+#ifdef DEBUG_ON
+    printf("ADC = %d\n", rd_val);
+    printf("FNL = %d\n", (CHIP3_CHK_ADC_FNL?1:0));
+    printf("RSTN_ADC = %d\n", (CHIP3_CHK_RSTN_ADC?1:0));
+    printf("CLRN = %d\n", (CHIP3_CHK_CLRN?1:0));
+#endif
+    return  rd_val;
+}
+
+/// First configue the control bits on the Scan chain, then Read ADC
+IQ_ELEMENT Chip3_Cfg_Read_ADC(uint8 cal, uint8 phs, uint8 src, uint8 oscd)
+{
+    //LoadCfg(); //since it's rotation now
+
+    Chip3_Set_Cal(cal);
+    Chip3_Set_Phs(phs);
+    Chip3_Set_Src(src);
+    Chip3_Set_Oscd(oscd);
+
+    //////////////////////////////////////////////
+    /// Activate the Scan chain and load Configuration
+    ///////////////////////////////////////////////
+    //Chip3_Idx_Ctrl_Rst_Ana_Write(0);/// RST_ANA is needed only when MDIV is changed
+    Chip3_Set_Trg_Test(0);
+    Chip3_Send_Cfg_To_SCA();
+    //Chip3_Idx_Ctrl_Rst_Ana_Write(1);
+
+    Chip3_Set_Trg_Test(1);/// no need to Rst Ana since MDIV is not changed
+    //BackupCfg();
+    Chip3_Send_Cfg_To_SCA();
+
+    ///////////////// Read ADC signals //////////////////
+    return  Chip3_Read_AdC();
 }
 
 /* ==================== Read Result from ADC ====================== */
 uint16  ReadADC()
 {
-    uint16  rd_val = 0;
-    uint8   i = 0;
-
-	ADC_STA_Write(0);
-	while (ADC_RDY_Read()){;}
-
-    ADC_STA_Write(1);
-    while (!ADC_RDY_Read());
-
-    ADC_STA_Write(0);
-	while (ADC_RDY_Read()){;}
-
-    CFG_STA_Write(0);
-	while (CFG_RDY_Read()){;}
-
-    CFG_SEL_Write(1);//make scan chain transparent
-
-    CFG_STA_Write(1);
-    while (!CFG_RDY_Read());
-
-    BIT_SET(rd_val, ANA_So_Read());
-
-    CFG_STA_Write(0);
-    while (CFG_RDY_Read());
-
-    CFG_SEL_Write(0);
-
-    // The 2~9th Period, SEL should be 0
-    for (i=1; i<=9; i++)//47
-    {
-        // Create SCK1 and SCK2 clock signal, one time;
-    	CFG_STA_Write(1);
-    	while (!CFG_RDY_Read()){;}
-
-        rd_val = rd_val << 1;
-        BIT_SET(rd_val, ANA_So_Read());
-
-        CFG_STA_Write(0);
-		while (CFG_RDY_Read()){;}
-    }
-
-    //CFG_STA_Write(1);
-    //while (!CFG_RDY_Read()){;}
-    //PutStr("#DEB\tADC 10th bit = ");FmtPrint(ANA_So_Read());PutStr("\r\n");
-
-    //CFG_CKADC_Write(0);
-
-    //PutStr("(b), ");FmtPrint(rd_val);PutStr("(d)\r\n");
-    return  rd_val;
+    return Chip3_Read_AdC();
 }
 
 /* ==================== Data Collection (Bottom-to-Up) ====================== */
@@ -116,14 +152,7 @@ uint16  ReadADC()
 // Level 0: Configure and Read ADC once
 IQ_ELEMENT ReadCfgADC(uint8 cal, uint8 phs, uint8 src, uint8 oscd)
 {
-    SetCK_CAL(cal);
-    SetCK_PHS(phs);
-    SetCK_SRC(src);
-    SetCK_OSCD(oscd);
-    // OSCD Set
-    debugCfg();
-    TxCfg2ADC();
-    return ReadADC();
+    return Chip3_Cfg_Read_ADC(cal, phs, src, oscd);
 }
 
 // Test Case 3: load configuration and then read IQ sampling data
@@ -213,123 +242,6 @@ uint16  FSELIQAvgRead(uint16 start_pos, IQ_ELEMENT* adc_buf, uint16 fno, uint16*
     return current_pos - start_pos;
 }
 
-// Test Case 7: Change XY and then do case 3 for Iout Iin, Qout Qin of N Freq
-// Level 3: IQ Data Average, Sweep Frequency, Sweep XY(2D)
-uint16  AllXYIQDataRead(uint16 start_pos, IQ_ELEMENT* adc_buf, uint16 fno, uint16* flist)
-{
-    uint8 tune_x = 0;
-    uint8 tune_y = 0;
-    uint16  current_pos = 0;
-    uint16  step_pos = 0;
-
-    current_pos = start_pos;
-    for (tune_x = 0; tune_x < MAX_5BIT_VAL; tune_x++)
-    {
-        for (tune_y = 0; tune_y < MAX_5BIT_VAL; tune_y++)
-        {
-            SetTune_X1(tune_x);//SetTune_X(tune_x);
-            SetTune_X2(tune_y);//SetTune_Y(tune_y);
-            step_pos = FSELIQDataRead(current_pos, adc_buf, fno, flist);
-            current_pos += step_pos;
-        }
-    }
-
-    return current_pos - start_pos;
-}
-
-// Test Case 8: Change XY and then do case 4 for average Iout Iin, Qout Qin of N Freq
-// Level 3b: IQ Data Average, Sweep Frequency, Sweep XY(2D)
-uint16  AllXYIQAvgRead(uint16 start_pos, IQ_ELEMENT* adc_buf, uint16 fno, uint16* flist, uint16 avg)
-{
-    uint8 tune_x = 0;
-    uint8 tune_y = 0;
-    uint16  current_pos = 0;
-    uint16  step_pos = 0;
-
-    current_pos = start_pos;
-    for (tune_x = 0; tune_x < MAX_5BIT_VAL; tune_x++)
-    {
-        for (tune_y = 0; tune_y < MAX_5BIT_VAL; tune_y++)
-        {
-            SetTune_X1(tune_x);//SetTune_X(tune_x);
-            SetTune_X2(tune_y);//SetTune_Y(tune_y);
-            step_pos = FSELIQAvgRead(current_pos, adc_buf, fno, flist, avg);
-            current_pos += step_pos;
-        }
-    }
-
-    return current_pos - start_pos;
-}
-
-// Test Case 1: simplely read ADC without configuration
-uint16  SimpleReadAdc(uint16 read_len, IQ_ELEMENT* adc_buf)
-{
-    uint16 i = 0;
-
-    for (i = 0; i < read_len-1; i++)
-    {
-        adc_buf[i] = ReadADC();
-    }
-    adc_buf[i] = ReadADC();
-
-    return read_len;
-}
-
-// Test Case 2: read ADC sampling data with configuration
-uint16  CfgAndReadAdc(uint16 read_len, IQ_ELEMENT* adc_buf)
-{
-    // load last Configuration
-    debugCfg();
-    TxCfg2ADC();
-
-    // Shift register to get ADC val
-    SimpleReadAdc(read_len, adc_buf);
-
-    // Set Configuration 2nd time
-    debugCfg();
-    TxCfg2ADC();
-
-    return read_len;
-}
-
-
-/* ==================== UI-related Functions ====================== */
-// Print ADC from Buffer
-void    PrintADC(uint16 read_len, uint16 *adc_buf)
-{
-    uint16  i;
-    if (read_len > MAX_PSOC_BUF)
-        PutStr("#CMT\tPrint Length> MAX_PSOC_BUF\r\n");
-
-    for (i = 0; i < read_len-1; i++)
-    {
-        //Since ADC val only has 10bits(1024), so it's always positive for int16
-        FmtPrint(adc_buf[i]);
-        PutStr("\r\n");
-    }
-    FmtPrint(adc_buf[i]);
-    PutStr("\r\n");
-}
-
-void    JudgePrintADC(uint16 read_len, uint16 *adc_buf)
-{
-    uint16  rd_val = 0;
-    uint8   len = 0;
-
-    // Judge whether we need to print ADC data
-    PutStr("\r\n");
-    PutStr("#CMT\tPrint ADC Data? 1:YES; 0:NO. [1]/0 ");
-    rd_val = ReadInput(&len);
-
-    // Continuously Print ADC val MAX_ADC_BUF times
-    if (!USE_NEW_VAL || 1 == rd_val)
-    {
-        PrintADC(read_len, adc_buf);
-        PutStr("\r\n#CMT\tPrint ADC Data Finished!\r\n");
-    }
-    PutStr("#CMT\tLen=");FmtPrint(read_len);PutStr("\r\n");
-}
-
 /* ==================== Non-UI Test Functions ====================== */
 // Sweep frequency and measure the frequency response (No average)
 uint16 SweepFreqResp(uint16 stNum, uint16 endNum, uint16 step, IQ_ELEMENT* adc_buf)
@@ -365,48 +277,6 @@ uint16 SweepFreqRespAvg(uint16 stNum, uint16 endNum, uint16 step, IQ_ELEMENT* ad
     }
 
     return (((endNum-stNum)/step+1)*(sizeof(FSEL_ELEMENT)/sizeof(IQ_ELEMENT)));
-}
-
-uint16  GetADCOffset(uint16 avg)
-{
-    uint16 i = 0;
-    uint16 offset = 0;
-
-    // Set default value
-    SetFreq(108);
-    SetCB1(7);
-    SetCB2(7);
-    SetCB3(7);
-    SetCB4(7);
-    SetCB_SW(1);
-    SetTune_X1(31);
-    SetTune_X2(31);
-    SetTune_X3(31);
-    SetTune_X4(31);
-    SetSgen_CAP1(1);
-    SetSgen_CAP2(15);
-    BackupCfg();
-    LoadCfg();
-
-    CFG_PHS_Write(0);
-    CFG_SRC_Write(1);
-    CFG_CAL_Write(1);
-    CFG_OSCD_Write(0);
-
-    for (i=0; i<avg; i++)
-    {
-        debugCfg();
-        TxCfg2ADC();
-
-        usleep(100);
-
-        offset += ReadADC();
-    }
-
-    TxCfg2ADC();
-
-    return (offset/avg);
-
 }
 
 /* ==================== Cost Functions ====================== */

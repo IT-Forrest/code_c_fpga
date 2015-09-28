@@ -618,7 +618,7 @@ void Chip3_Idx_Ctrl_Flag_B_Write(int rd_val)
 void Chip3_Idx_Ctrl_Sta_Clk_Write(int rd_val)
 {
     (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_STA_CLK):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_STA_CLK);
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
+    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;void    ReadArray(uint8 *dat, uint8 *length); // Read number from console
     avs_wait();
 }
 

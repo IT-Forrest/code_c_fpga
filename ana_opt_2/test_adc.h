@@ -9,29 +9,22 @@
 #define IQ_GRP_OFFSET 2
 #define OSC_TOL 16
 
-uint16  ReadADC();
-void    TxCfg2ADC();//uint8 Snd_num
+/* =================== Program for Test Chip3 =========================*/
+void    Chip3_Send_Cfg_To_SCA();
+uint16  Chip3_Read_AdC();
+IQ_ELEMENT Chip3_Cfg_Read_ADC(uint8 cal, uint8 phs, uint8 src, uint8 oscd);
 
 /* ==================== Data Collection (Bottom-to-Up) ====================== */
+uint16  ReadADC();
 IQ_ELEMENT ReadCfgADC(uint8 cal, uint8 phs, uint8 src, uint8 oscd);                                     // Level 0
 uint16  IQDataReadAdc(uint16 start_pos, IQ_ELEMENT* adc_buf);                                           // Level 1
 uint16  IQAvgReadAdc(uint16 start_pos, IQ_ELEMENT* adc_buf, uint16 avg);                                // Level 1b
 uint16  FSELIQDataRead(uint16 start_pos, IQ_ELEMENT* adc_buf, uint16 fno, uint16* flist);               // Level 2
 uint16  FSELIQAvgRead(uint16 start_pos, IQ_ELEMENT* adc_buf, uint16 fno, uint16* flist, uint16 avg);    // Level 2b
-uint16  AllXYIQDataRead(uint16 start_pos, IQ_ELEMENT* adc_buf, uint16 fno, uint16* flist);              // Level 3
-uint16  AllXYIQAvgRead(uint16 start_pos, IQ_ELEMENT* adc_buf, uint16 fno, uint16* flist, uint16 avg);   // Level 3b
-
-uint16  SimpleReadAdc(uint16 read_len, IQ_ELEMENT* adc_buf);
-uint16  CfgAndReadAdc(uint16 read_len, IQ_ELEMENT* adc_buf);
-
-/* ==================== UI-related Functions ====================== */
-void    JudgePrintADC(uint16 read_len, uint16 *adc_buf);
-void    PrintADC(uint16 read_len, uint16 *adc_buf);
 
 /* ==================== Non-UI Test Functions ====================== */
 uint16  SweepFreqResp(uint16 stNum, uint16 endNum, uint16 step, IQ_ELEMENT* adc_buf);
 uint16  SweepFreqRespAvg(uint16 stNum, uint16 endNum, uint16 step, IQ_ELEMENT* adc_buf, uint16 avg);
-uint16  GetADCOffset(uint16 avg);
 
 /* ================== Cost Function ================== */
 #define MAG(a,b) sqrt((a)*(a)+(b)*(b))

@@ -26,41 +26,10 @@
 #include "../ana_opt_2/scan_chain.h"
 #include "../ana_opt_2/serial_port_io.h"
 #include "../ana_opt_2/psoc_port.h"
+#include "../ana_opt_2/test_adc.h"
 
 #define ITERNUM 225
 #define SSNUM 7
-
-/// Send Configuration to Scan chain A
-void    Chip3_Send_Cfg_To_SCA()
-{
-    Chip3_Idx_Ctrl_Sel_A_Write(0);
-
-    Chip3_Idx_Ctrl_Lat_A_Write(0);
-    Chip3_Idx_Ctrl_Sta_Sc_Write(1);
-
-    ///////////////////// Scan chain input /////////////////////
-    //// input Scan chain A
-    int i;
-    for (i = 0; i < MAX_SC_BITS_A; i++)
-    {
-        Chip3_Idx_Ctrl_Sin_Ab_Write(gcfg_tx[0]);
-        RShiftCfg();
-        Chip3_Idx_Ctrl_Flag_A_Write(1);
-        while(1 != Chip3_Idx_Stat_Scrdy_Read());
-
-        Chip3_Idx_Ctrl_Flag_A_Write(0);
-        while(0 != Chip3_Idx_Stat_Scrdy_Read());
-    }
-
-    /// when set the latch signal, no need to send clock
-    Chip3_Idx_Ctrl_Lat_A_Write(1);
-    usleep(2);
-    Chip3_Idx_Ctrl_Lat_A_Write(0);
-
-    Chip3_Idx_Ctrl_Sta_Sc_Write(0);
-
-    return;
-}
 
 
 int main(int argc, char** argv) {
@@ -152,7 +121,6 @@ int main(int argc, char** argv) {
     Chip3_Set_Oscd(1);
 
     BackupCfg();
-    TranxCfg();
 
     //////////////////////////////////////////////
     /// Activate the Scan chain and load Configuration

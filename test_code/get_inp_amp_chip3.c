@@ -13,7 +13,6 @@
 #include "../ana_opt_2/device.h"
 #include "../ana_opt_2/scan_chain.h"
 #include "../ana_opt_2/set_config.h"
-#include "../ana_opt_2/serial_port_io.h"
 #include "../ana_opt_2/test_adc.h"
 
 #define START_FREQ 32
@@ -34,32 +33,26 @@ int main()
     if (init_mem()) return (1);
     if (init_cfg()) return (1);
     if (syn_ctrl()) return (1);
+    init_sc();
 
-    SetCB1(7);
-    SetCB2(7);
-    SetCB3(7);
-    SetCB4(7);
-    SetCB_SW(1);
-    //SetSgen_CAP1(0);
-    //SetSgen_CAP2(6);
-    SetTune_X1(31);
-    SetTune_X2(31);
-    SetTune_X3(31);
-    SetTune_X4(31);
     BackupCfg();
+    Chip3_Send_Cfg_To_SCA();
 
-    LoadCfg();
     for (freq = START_FREQ; freq <= STOP_FREQ; freq += FREQ_STEP)
     {
+        Chip3_Idx_Ctrl_Rst_Ana_Write(0);
         SetFreq(freq);
+        Chip3_Idx_Ctrl_Rst_Ana_Write(1);
+        usleep(100);
+
         for (i=0; i<2; i++) // CAP1
         {
             printf("%d\t%d\t", freq, i);
-            SetSgen_CAP1(i);
 
             for (j=0; j<16; j++) // CAP2
             {
-                SetSgen_CAP2(j);
+                Chip3_Set_Cap0((i << 4) + j);
+
                 IQAvgReadAdc(0, adc_buf, AVG_NUM);
 
                 for (k=0; k<4; k++) {adc_buf[k]=(adc_buf[k]/AVG_NUM);}
