@@ -47,92 +47,92 @@ typedef struct FREQ_FSEL_M123_STRU
 FREQ_FSEL_M123 gMapping_Array[MAX_FSEL_LEN] = {
 {	0	,	32	,	1	,	15	,	71	},
 {	0	,	33	,	1	,	15	,	71	},
-{	0	,	34	,	1	,	14	,	71	},
+{	0	,	34	,	1	,	15	,	71	},
 {	0	,	35	,	1	,	14	,	71	},
-{	0	,	36	,	1	,	13	,	71	},
+{	0	,	36	,	1	,	14	,	71	},
 {	0	,	37	,	1	,	13	,	71	},
-{	0	,	38	,	1	,	12	,	71	},
-{	0	,	39	,	1	,	12	,	71	},
+{	0	,	38	,	1	,	13	,	71	},
+{	0	,	39	,	1	,	13	,	71	},
 {	0	,	40	,	1	,	12	,	71	},
-{	0	,	41	,	1	,	11	,	51	},
-{	0	,	42	,	1	,	11	,	51	},
+{	0	,	41	,	1	,	12	,	51	},
+{	0	,	42	,	1	,	12	,	51	},
 {	0	,	43	,	1	,	11	,	51	},
 {	0	,	44	,	1	,	11	,	51	},
-{	1	,	45	,	1	,	10	,	51	},
+{	1	,	45	,	1	,	11	,	51	},
 {	1	,	46	,	1	,	10	,	51	},
 {	1	,	47	,	1	,	10	,	51	},
 {	1	,	48	,	1	,	10	,	39	},
-{	1	,	49	,	1	,	9	,	39	},
+{	1	,	49	,	1	,	10	,	39	},
 {	1	,	50	,	1	,	9	,	39	},
 {	1	,	51	,	1	,	9	,	39	},
 {	1	,	52	,	1	,	9	,	39	},
 {	1	,	53	,	1	,	9	,	39	},
-{	1	,	54	,	1	,	8	,	39	},
+{	1	,	54	,	1	,	9	,	39	},
 {	1	,	55	,	1	,	8	,	39	},
 {	1	,	56	,	1	,	8	,	39	},
 {	1	,	57	,	1	,	8	,	39	},
-{	1	,	58	,	1	,	7	,	31	},
-{	1	,	59	,	1	,	7	,	31	},
-{	1	,	60	,	1	,	7	,	31	},
-{	3	,	61	,	1	,	7	,	31	},
+{	1	,	58	,	1	,	8	,	31	},
+{	1	,	59	,	1	,	8	,	31	},
+{	1	,	60	,	1	,	8	,	31	},
+{	3	,	61	,	1	,	8	,	31	},
 {	3	,	62	,	1	,	7	,	31	},
 {	3	,	63	,	1	,	7	,	31	},
 {	3	,	64	,	1	,	7	,	31	},
 {	3	,	65	,	1	,	7	,	31	},
 {	3	,	66	,	1	,	7	,	31	},
-{	3	,	67	,	1	,	6	,	23	},
-{	3	,	68	,	1	,	6	,	23	},
+{	3	,	67	,	1	,	7	,	23	},
+{	3	,	68	,	1	,	7	,	23	},
 {	3	,	69	,	1	,	6	,	23	},
 {	3	,	70	,	1	,	6	,	23	},
 {	3	,	71	,	1	,	6	,	23	},
 {	3	,	72	,	1	,	6	,	23	},
 {	3	,	73	,	1	,	6	,	23	},
-{	3	,	74	,	1	,	5	,	23	},
-{	3	,	75	,	1	,	5	,	23	},
-{	3	,	76	,	1	,	5	,	23	},
+{	3	,	74	,	1	,	6	,	23	},
+{	3	,	75	,	1	,	6	,	23	},
+{	3	,	76	,	1	,	6	,	23	},
 {	3	,	77	,	1	,	5	,	23	},
 {	3	,	78	,	1	,	5	,	23	},
 {	3	,	79	,	1	,	5	,	19	},
 {	3	,	80	,	1	,	5	,	19	},
-{	7	,	81	,	1	,	4	,	19	},
-{	7	,	82	,	1	,	4	,	19	},
-{	7	,	83	,	1	,	4	,	19	},
-{	7	,	84	,	1	,	4	,	19	},
-{	7	,	85	,	1	,	4	,	19	},
-{	7	,	86	,	1	,	4	,	19	},
-{	7	,	87	,	1	,	4	,	19	},
-{	7	,	88	,	1	,	4	,	19	},
-{	7	,	89	,	1	,	4	,	19	},
+{	7	,	81	,	1	,	5	,	19	},
+{	7	,	82	,	1	,	5	,	19	},
+{	7	,	83	,	1	,	5	,	19	},
+{	7	,	84	,	1	,	5	,	19	},
+{	7	,	85	,	1	,	5	,	19	},
+{	7	,	86	,	0	,	5	,	19	},
+{	7	,	87	,	0	,	5	,	19	},
+{	7	,	88	,	0	,	5	,	19	},
+{	7	,	89	,	0	,	5	,	19	},
 {	7	,	90	,	1	,	4	,	19	},
-{	7	,	91	,	1	,	3	,	15	},
-{	7	,	92	,	1	,	3	,	15	},
-{	7	,	93	,	1	,	3	,	15	},
-{	7	,	94	,	1	,	3	,	15	},
-{	7	,	95	,	1	,	3	,	15	},
-{	7	,	96	,	1	,	3	,	15	},
-{	7	,	97	,	1	,	3	,	15	},
-{	7	,	98	,	1	,	3	,	15	},
+{	7	,	91	,	1	,	4	,	15	},
+{	7	,	92	,	1	,	4	,	15	},
+{	7	,	93	,	1	,	4	,	15	},
+{	7	,	94	,	1	,	4	,	15	},
+{	7	,	95	,	1	,	4	,	15	},
+{	7	,	96	,	1	,	4	,	15	},
+{	7	,	97	,	1	,	4	,	15	},
+{	7	,	98	,	0	,	4	,	15	},
 {	7	,	99	,	0	,	4	,	15	},
 {	7	,	100	,	0	,	4	,	15	},
 {	7	,	101	,	1	,	3	,	15	},
 {	7	,	102	,	1	,	3	,	15	},
 {	7	,	103	,	1	,	3	,	15	},
 {	7	,	104	,	1	,	3	,	15	},
-{	7	,	105	,	0	,	3	,	15	},
-{	15	,	106	,	0	,	3	,	11	},
-{	15	,	107	,	0	,	3	,	11	},
-{	15	,	108	,	0	,	3	,	11	},
-{	15	,	109	,	0	,	3	,	11	},
+{	7	,	105	,	1	,	3	,	15	},
+{	15	,	106	,	1	,	3	,	11	},
+{	15	,	107	,	1	,	3	,	11	},
+{	15	,	108	,	1	,	3	,	11	},
+{	15	,	109	,	1	,	3	,	11	},
 {	15	,	110	,	0	,	3	,	11	},
-{	15	,	111	,	0	,	3	,	11	},
-{	15	,	112	,	0	,	3	,	11	},
-{	15	,	113	,	0	,	3	,	11	},
-{	15	,	114	,	0	,	3	,	11	},
-{	15	,	115	,	0	,	3	,	11	},
-{	15	,	116	,	0	,	3	,	11	},
-{	15	,	117	,	0	,	3	,	11	},
-{	15	,	118	,	0	,	3	,	11	},
-{	15	,	119	,	0	,	3	,	11	},
+{	15	,	111	,	1	,	2	,	11	},
+{	15	,	112	,	1	,	2	,	11	},
+{	15	,	113	,	1	,	2	,	11	},
+{	15	,	114	,	1	,	2	,	11	},
+{	15	,	115	,	1	,	2	,	11	},
+{	15	,	116	,	1	,	2	,	11	},
+{	15	,	117	,	1	,	2	,	11	},
+{	15	,	118	,	1	,	2	,	11	},
+{	15	,	119	,	1	,	2	,	11	},
 {	15	,	120	,	0	,	3	,	11	},
 {	15	,	121	,	0	,	3	,	11	},
 {	15	,	122	,	0	,	3	,	11	},
@@ -186,7 +186,7 @@ void init_sc()
     Chip3_Set_Dbfactor0(0x100 | 106);// Set the constant for 3dB points;
     Chip3_Set_Dbfactor1(0x100 | 106);
     Chip3_Set_Threshold(100);   // Set the threshold for Multi-start SS; if ANA > threshold, choose a new start
-    Chip3_Set_Factors(0x8B);    // Set weighting factors; 8'b10_00_11_01;//Gain3-Gain2-Gain1-Gain0
+    Chip3_Set_Factors(0x00);    // Set weighting factors; 8'b10_00_11_01;//Gain3-Gain2-Gain1-Gain0
 
     Chip3_Set_Avrg_Num(1);      // Set # of times when compute the average ADC
     Chip3_Set_Rand_Group(1);
@@ -205,7 +205,7 @@ void init_sc()
     Chip3_Set_Init_Y2(15);
 
     Chip3_Set_Aoff(507);
-    Chip3_Set_Tol(63);
+    Chip3_Set_Tol(32);
 
     /// Filter Settings
     Chip3_Set_Tx1(15);
@@ -266,7 +266,7 @@ void    RShiftCfg()
     }
     /// during the last time, only do right shift and rotate
     tmp = (gcfg[i] >> 1);
-    gcfg[i] = tmp | ((loop & 0x1) << 18);
+    gcfg[i] = tmp | ((loop & 0x1) << MAX_SC_A_HIGH);
 }
 
 /* ==================== Functions for tapeout Chip3 ====================== */
@@ -868,6 +868,25 @@ void    Chip3_Set_Tx2_H4bits(uint16 rd_val)
     (rd_val & 0x00000010)? CHIP3_SET_TX2_9: CHIP3_RST_TX2_9;
 }
 
+uint32  Chip3_Rtn_Tx2()
+{
+    uint32  rd_val = 0;
+
+    if (CHIP3_CHK_TX2_0) BIT_SET(rd_val, 0x00000001);
+    if (CHIP3_CHK_TX2_1) BIT_SET(rd_val, 0x00000002);
+    if (CHIP3_CHK_TX2_2) BIT_SET(rd_val, 0x00000004);
+    if (CHIP3_CHK_TX2_3) BIT_SET(rd_val, 0x00000008);
+    if (CHIP3_CHK_TX2_4) BIT_SET(rd_val, 0x00000010);
+
+    if (CHIP3_CHK_TX2_5) BIT_SET(rd_val, 0x00000020);
+    if (CHIP3_CHK_TX2_6) BIT_SET(rd_val, 0x00000040);
+    if (CHIP3_CHK_TX2_7) BIT_SET(rd_val, 0x00000080);
+    if (CHIP3_CHK_TX2_8) BIT_SET(rd_val, 0x00000100);
+    if (CHIP3_CHK_TX2_9) BIT_SET(rd_val, 0x00000200);
+
+    return rd_val;
+}
+
 int32    Chip3_Set_Tx2(uint16 rd_val)
 {
     if (rd_val != 0x0000 && rd_val > 0x001f)
@@ -898,6 +917,25 @@ void    Chip3_Set_Ty2_H4bits(uint16 rd_val)
     (rd_val & 0x00000004)? CHIP3_SET_TY2_7: CHIP3_RST_TY2_7;
     (rd_val & 0x00000008)? CHIP3_SET_TY2_8: CHIP3_RST_TY2_8;
     (rd_val & 0x00000010)? CHIP3_SET_TY2_9: CHIP3_RST_TY2_9;
+}
+
+uint32  Chip3_Rtn_Ty2()
+{
+    uint32  rd_val = 0;
+
+    if (CHIP3_CHK_TY2_0) BIT_SET(rd_val, 0x00000001);
+    if (CHIP3_CHK_TY2_1) BIT_SET(rd_val, 0x00000002);
+    if (CHIP3_CHK_TY2_2) BIT_SET(rd_val, 0x00000004);
+    if (CHIP3_CHK_TY2_3) BIT_SET(rd_val, 0x00000008);
+    if (CHIP3_CHK_TY2_4) BIT_SET(rd_val, 0x00000010);
+
+    if (CHIP3_CHK_TY2_5) BIT_SET(rd_val, 0x00000020);
+    if (CHIP3_CHK_TY2_6) BIT_SET(rd_val, 0x00000040);
+    if (CHIP3_CHK_TY2_7) BIT_SET(rd_val, 0x00000080);
+    if (CHIP3_CHK_TY2_8) BIT_SET(rd_val, 0x00000100);
+    if (CHIP3_CHK_TY2_9) BIT_SET(rd_val, 0x00000200);
+
+    return rd_val;
 }
 
 int32    Chip3_Set_Ty2(uint16 rd_val)
@@ -964,6 +1002,25 @@ void    Chip3_Set_Tx1_H4bits(uint16 rd_val)
     (rd_val & 0x00000010)? CHIP3_SET_TX1_9: CHIP3_RST_TX1_9;
 }
 
+uint32  Chip3_Rtn_Tx1()
+{
+    uint32  rd_val = 0;
+
+    if (CHIP3_CHK_TX1_0) BIT_SET(rd_val, 0x00000001);
+    if (CHIP3_CHK_TX1_1) BIT_SET(rd_val, 0x00000002);
+    if (CHIP3_CHK_TX1_2) BIT_SET(rd_val, 0x00000004);
+    if (CHIP3_CHK_TX1_3) BIT_SET(rd_val, 0x00000008);
+    if (CHIP3_CHK_TX1_4) BIT_SET(rd_val, 0x00000010);
+
+    if (CHIP3_CHK_TX1_5) BIT_SET(rd_val, 0x00000020);
+    if (CHIP3_CHK_TX1_6) BIT_SET(rd_val, 0x00000040);
+    if (CHIP3_CHK_TX1_7) BIT_SET(rd_val, 0x00000080);
+    if (CHIP3_CHK_TX1_8) BIT_SET(rd_val, 0x00000100);
+    if (CHIP3_CHK_TX1_9) BIT_SET(rd_val, 0x00000200);
+
+    return rd_val;
+}
+
 int32    Chip3_Set_Tx1(uint16 rd_val)
 {
     if (rd_val != 0x0000 && rd_val > 0x001f)
@@ -994,6 +1051,25 @@ void    Chip3_Set_Ty1_H4bits(uint16 rd_val)
     (rd_val & 0x00000004)? CHIP3_SET_TY1_7: CHIP3_RST_TY1_7;
     (rd_val & 0x00000008)? CHIP3_SET_TY1_8: CHIP3_RST_TY1_8;
     (rd_val & 0x00000010)? CHIP3_SET_TY1_9: CHIP3_RST_TY1_9;
+}
+
+uint32  Chip3_Rtn_Ty1()
+{
+    uint32  rd_val = 0;
+
+    if (CHIP3_CHK_TY1_0) BIT_SET(rd_val, 0x00000001);
+    if (CHIP3_CHK_TY1_1) BIT_SET(rd_val, 0x00000002);
+    if (CHIP3_CHK_TY1_2) BIT_SET(rd_val, 0x00000004);
+    if (CHIP3_CHK_TY1_3) BIT_SET(rd_val, 0x00000008);
+    if (CHIP3_CHK_TY1_4) BIT_SET(rd_val, 0x00000010);
+
+    if (CHIP3_CHK_TY1_5) BIT_SET(rd_val, 0x00000020);
+    if (CHIP3_CHK_TY1_6) BIT_SET(rd_val, 0x00000040);
+    if (CHIP3_CHK_TY1_7) BIT_SET(rd_val, 0x00000080);
+    if (CHIP3_CHK_TY1_8) BIT_SET(rd_val, 0x00000100);
+    if (CHIP3_CHK_TY1_9) BIT_SET(rd_val, 0x00000200);
+
+    return rd_val;
 }
 
 int32    Chip3_Set_Ty1(uint16 rd_val)

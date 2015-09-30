@@ -9,8 +9,11 @@
 
 #define     MAX_CFG_BITS    8   // in terms of uint32_t
 
+#define     MAX_SC_A_HIGH   18  /// the left shift# for the left most uint32 of ScanChain A
 #define     MAX_SC_BITS_A   243//total scan chain length for version 3
 #define     MAX_SC_BITS_B   14//the length of Scan chain B for version 3
+#define     GSCA_HIGHEST    (gcfg[MAX_CFG_BITS-1])
+
 #define     MAX_FSEL_LEN    (127-32+1)
 
 #define     ITERNUM 225
@@ -108,6 +111,10 @@ int32    Chip3_Set_Mdiv1(uint8 rd_val);
 int32    Chip3_Set_Cap0(uint8 rd_val);
 int32    Chip3_Set_Bs0(uint8 rd_val);
 int32    Chip3_Set_Mdiv0(uint8 rd_val);
+uint32  Chip3_Rtn_Tx1();
+uint32  Chip3_Rtn_Ty1();
+uint32  Chip3_Rtn_Tx2();
+uint32  Chip3_Rtn_Ty2();
 /// Scan chain B (ADC)
 int32    Chip3_Set_Adc(uint16 rd_val);
 int32    Chip3_Set_Adc_Fnl(uint8 rd_val);
