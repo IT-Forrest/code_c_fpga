@@ -24,7 +24,6 @@
 
 #include "../ana_opt_2/device.h"
 #include "../ana_opt_2/set_config.h"
-#include "../ana_opt_2/scan_chain.h"
 #include "../ana_opt_2/psoc_port.h"
 #include "../ana_opt_2/test_adc.h"
 

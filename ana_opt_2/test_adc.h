@@ -4,10 +4,25 @@
 #include "device.h"
 #include <stdio.h>
 #include <stdint.h>
-#include "scan_chain.h"
 
 #define IQ_GRP_OFFSET 2
 #define OSC_TOL 16
+
+// structure for a single IQ_ELEMENT
+typedef uint16  IQ_ELEMENT;
+typedef IQ_ELEMENT  TUNE_ELEMENT;
+
+// structure for a single frequency
+typedef struct  FSEL_ELEMENT_STR
+{
+    //Voff
+    IQ_ELEMENT  Iout;
+    IQ_ELEMENT  Qout;
+    IQ_ELEMENT  Iinn;
+    IQ_ELEMENT  Qinn;
+    //For oscillation detection
+    //IQ_ELEMENT  Iosc;
+}FSEL_ELEMENT;
 
 /* =================== Program for Test Chip3 =========================*/
 void    Chip3_Send_Cfg_To_SCA();

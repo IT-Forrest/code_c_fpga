@@ -16,8 +16,9 @@
 
 #define     MAX_FSEL_LEN    (127-32+1)
 
-#define     ITERNUM 225
+#define     ITERNUM 128
 #define     SSNUM 7
+#define     AVG 8
 
 extern uint32_t    gcfg[MAX_CFG_BITS];       // configuration bits array
 extern uint32_t    gcfg_bk[MAX_CFG_BITS];    // configuration bits backup

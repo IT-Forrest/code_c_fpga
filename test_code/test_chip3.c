@@ -28,10 +28,6 @@
 #include "../ana_opt_2/psoc_port.h"
 #include "../ana_opt_2/test_adc.h"
 
-#define ITERNUM 225
-#define SSNUM 7
-
-
 int main(int argc, char** argv) {
     uint16  tunex1;
     uint16  tunex2;

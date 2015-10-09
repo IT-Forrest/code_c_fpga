@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1443133154 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\device.c
+1444332599 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\device.c
 	"device.h"
 	"psoc_port.h"
 
-1443221829 f:\05. code battle\github\code_c_fpga\ana_opt_2\device.h
+1444332599 f:\05. code battle\github\code_c_fpga\ana_opt_2\device.h
 	<stdio.h>
 	<unistd.h>
 	<fcntl.h>
@@ -37,7 +37,7 @@
 
 1417721230 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\alt_gpio.h
 
-1443078057 f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.h
+1444332599 f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.h
 	<stdio.h>
 	<unistd.h>
 	<fcntl.h>
@@ -48,9 +48,9 @@
 	"socal/alt_gpio.h"
 	"hps_0.h"
 
-1443314623 f:\05. code battle\github\code_c_fpga\ana_opt_2\hps_0.h
+1444332599 f:\05. code battle\github\code_c_fpga\ana_opt_2\hps_0.h
 
-1443310446 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.c
+1444332599 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.c
 	"psoc_port.h"
 
 1427250116 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\serial_port_io.c
@@ -59,11 +59,9 @@
 	"device.h"
 	<stdlib.h>
 
-1443224130 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.c
+1444342727 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.c
 	<math.h>
 	<stdint.h>
-	"scan_chain.h"
-	"serial_port_io.h"
 	"device.h"
 	"psoc_port.h"
 	"set_config.h"
@@ -77,23 +75,21 @@
 	<stdint.h>
 	<stdlib.h>
 
-1443224120 f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.h
+1444342423 f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.h
 	"socal/hps.h"
 	"socal/alt_gpio.h"
 
-1441487662 f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.h
+1444342734 f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.h
 	"device.h"
 	<stdio.h>
 	<stdint.h>
-	"scan_chain.h"
 
-1443196764 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.c
+1444342742 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.c
 	"device.h"
 	<stdio.h>
 	<math.h>
 	<stdint.h>
-	"scan_chain.h"
-	"serial_port_io.h"
+	<stdlib.h>
 	"set_config.h"
 	"test_adc.h"
 

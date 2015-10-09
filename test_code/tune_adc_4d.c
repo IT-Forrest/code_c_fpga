@@ -16,10 +16,10 @@
 #include "../ana_opt_2/serial_port_io.h"
 #include "../ana_opt_2/test_adc.h"
 
-#define ITERNUM 512
+#define ITERNUM 128
 #define SSNUM 7
 #define VOFFSET 508
-#define AVG 4
+#define AVG 8
 
 #define NEWD
 #define P_OPT

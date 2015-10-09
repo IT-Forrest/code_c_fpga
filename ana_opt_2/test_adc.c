@@ -17,7 +17,6 @@
 #include <math.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include "scan_chain.h"
 #include "set_config.h"
 #include "test_adc.h"
 //#define DEBUG_ON
