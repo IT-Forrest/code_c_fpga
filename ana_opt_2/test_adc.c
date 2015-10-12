@@ -169,6 +169,26 @@ uint16  IQDataReadAdc(uint16 start_pos, IQ_ELEMENT* adc_buf)
     return sizeof(FSEL_ELEMENT)/sizeof(IQ_ELEMENT);
 }
 
+uint16  IQDataReadAdc2(uint16 start_pos, IQ_ELEMENT* adc_buf)
+{
+    uint16  i = start_pos;;
+    uint16  rd_val;
+
+    rd_val = ReadCfgADC(0,0,0,0);
+    if (abs(rd_val) > abs(adc_buf[i]/AVG)) adc_buf[i] = rd_val * AVG;
+
+    rd_val = ReadCfgADC(0,1,0,0);
+    if (abs(rd_val) > abs(adc_buf[i+1]/AVG)) adc_buf[i+1] = rd_val * AVG;
+
+    rd_val = ReadCfgADC(0,0,1,0);
+    if (abs(rd_val) > abs(adc_buf[i+2]/AVG)) adc_buf[i+2] = rd_val * AVG;
+
+    rd_val = ReadCfgADC(0,1,1,0);
+    if (abs(rd_val) > abs(adc_buf[i+3]/AVG)) adc_buf[i+3] = rd_val * AVG;
+
+    return sizeof(FSEL_ELEMENT)/sizeof(IQ_ELEMENT);
+}
+
 // Test Case 4: Repeatly read IQ sampling data with one configuration and then do average
 // Level 1b: IQ Data Average
 uint16  IQAvgReadAdc(uint16 start_pos, IQ_ELEMENT* adc_buf, uint16 avg)
@@ -271,6 +291,9 @@ uint16 SweepFreqRespAvg(uint16 stNum, uint16 endNum, uint16 step, IQ_ELEMENT* ad
     for (i = stNum; i <= endNum; i += step)
     {
         SetFreq(i);
+        Chip3_Send_Cfg_To_SCA();
+        usleep(70);
+
         stp = IQAvgReadAdc(idx, adc_buf, avg);
         idx += stp;
     }

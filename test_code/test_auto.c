@@ -24,7 +24,6 @@
 
 #include "../ana_opt_2/device.h"
 #include "../ana_opt_2/set_config.h"
-#include "../ana_opt_2/scan_chain.h"
 #include "../ana_opt_2/psoc_port.h"
 #include "../ana_opt_2/test_adc.h"
 
@@ -40,26 +39,26 @@ int main(int argc, char** argv) {
     ///////////////////////////////////////////////
     /// To set analog configuration: e.g. Mdiv, BS, etc
 
-    Chip3_Set_Mdiv0(84);
-    Chip3_Set_Bs0(7);
-    Chip3_Set_Cap0((1<<4)+2);
+    Chip3_Set_Mdiv0(79);
+    Chip3_Set_Bs0(3);
+    Chip3_Set_Cap0((1<<4)+5);
 
-    Chip3_Set_Mdiv1(90);
+    Chip3_Set_Mdiv1(86);
     Chip3_Set_Bs1(7);
-    Chip3_Set_Cap1((1<<4)+2);
+    Chip3_Set_Cap1((0<<4)+5);
 
-    Chip3_Set_Mdiv2(90);
+    Chip3_Set_Mdiv2(86);
     Chip3_Set_Bs2(7);
-    Chip3_Set_Cap2((1<<4)+2);
+    Chip3_Set_Cap2((0<<4)+5);
 
-    Chip3_Set_Mdiv3(96);
+    Chip3_Set_Mdiv3(93);
     Chip3_Set_Bs3(7);
-    Chip3_Set_Cap3((0<<4)+2);
+    Chip3_Set_Cap3((1<<4)+4);
 
-    Chip3_Set_Cb2(3);
-    Chip3_Set_Cb3(3);
-    Chip3_Set_Cb1(3);
-    Chip3_Set_Cb4(3);
+    Chip3_Set_Cb2(6);
+    Chip3_Set_Cb3(6);
+    Chip3_Set_Cb1(6);
+    Chip3_Set_Cb4(6);
 
     Chip3_Set_Sw(1);
 

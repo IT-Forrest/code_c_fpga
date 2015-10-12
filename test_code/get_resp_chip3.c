@@ -15,7 +15,7 @@
 #include "../ana_opt_2/test_adc.h"
 
 // Use get_offset first, then set VOFF here
-#define VOFFSET 507
+#define VOFFSET 505
 
 int main(int argc, char** argv)
 {
@@ -30,8 +30,9 @@ int main(int argc, char** argv)
     Chip3_Idx_Ctrl_Sel_A_Write(0);
 
     init_sc();
+    Chip3_Set_Sw(1);
 
-    if (argc == 4)
+    if (argc == 4) // Normal
     {
         Chip3_Set_Tx2(atoi(argv[1]));
         //Chip3_Set_Tx2_H4bits(atoi(argv[1]));
@@ -43,6 +44,33 @@ int main(int argc, char** argv)
         Chip3_Set_Cb2(7);
         Chip3_Set_Cb3(atoi(argv[3]));
         Chip3_Set_Cb4(atoi(argv[3]));
+    }
+    else if (argc == 5) // Variable Gain
+    {
+        Chip3_Set_Tx2_H4bits(atoi(argv[1]));
+        Chip3_Set_Tx2_L4bits(atoi(argv[2]));
+        Chip3_Set_Ty2(atoi(argv[3]));
+        Chip3_Set_Tx1(15);
+        Chip3_Set_Ty1(15);
+        Chip3_Set_Cb1(7);
+        Chip3_Set_Cb2(7);
+        Chip3_Set_Cb3(atoi(argv[4]));
+        Chip3_Set_Cb4(atoi(argv[4]));
+    }
+    else if (argc == 6) // Two stage
+    {
+        Chip3_Set_Sw(0);
+
+        Chip3_Set_Tx2_H4bits(atoi(argv[1]));
+        Chip3_Set_Tx2_L4bits(atoi(argv[2]));
+        Chip3_Set_Ty2(atoi(argv[3]));
+        Chip3_Set_Tx1_H4bits(atoi(argv[1]));
+        Chip3_Set_Tx1_L4bits(atoi(argv[2]));
+        Chip3_Set_Ty1(atoi(argv[3]));
+        Chip3_Set_Cb1(atoi(argv[4]));
+        Chip3_Set_Cb2(atoi(argv[4]));
+        Chip3_Set_Cb3(atoi(argv[4]));
+        Chip3_Set_Cb4(atoi(argv[4]));
     }
     else
     {
@@ -56,8 +84,6 @@ int main(int argc, char** argv)
         Chip3_Set_Cb3(7);
         Chip3_Set_Cb4(7);
     }
-
-    Chip3_Set_Sw(1);
 
     BackupCfg();
     Chip3_Send_Cfg_To_SCA();

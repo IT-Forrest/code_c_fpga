@@ -37,6 +37,8 @@ uint16  IQAvgReadAdc(uint16 start_pos, IQ_ELEMENT* adc_buf, uint16 avg);        
 uint16  FSELIQDataRead(uint16 start_pos, IQ_ELEMENT* adc_buf, uint16 fno, uint16* flist);               // Level 2
 uint16  FSELIQAvgRead(uint16 start_pos, IQ_ELEMENT* adc_buf, uint16 fno, uint16* flist, uint16 avg);    // Level 2b
 
+uint16  IQDataReadAdc2(uint16 start_pos, IQ_ELEMENT* adc_buf); // Experimental
+
 /* ==================== Non-UI Test Functions ====================== */
 uint16  SweepFreqResp(uint16 stNum, uint16 endNum, uint16 step, IQ_ELEMENT* adc_buf);
 uint16  SweepFreqRespAvg(uint16 stNum, uint16 endNum, uint16 step, IQ_ELEMENT* adc_buf, uint16 avg);
