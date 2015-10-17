@@ -267,7 +267,7 @@
 #define SPI_INT_0_INSERT_SYNC 0
 #define SPI_INT_0_ISMASTER 1
 #define SPI_INT_0_LSBFIRST 0
-#define SPI_INT_0_NUMSLAVES 1
+#define SPI_INT_0_NUMSLAVES 4
 #define SPI_INT_0_PREFIX "spi_"
 #define SPI_INT_0_SYNC_REG_DEPTH 2
 #define SPI_INT_0_TARGETCLOCK 500000
@@ -537,7 +537,7 @@
 #define SYSID_QSYS_SPAN 8
 #define SYSID_QSYS_END 0x10007
 #define SYSID_QSYS_ID 2899645186
-#define SYSID_QSYS_TIMESTAMP 1443217680
+#define SYSID_QSYS_TIMESTAMP 1445044907
 
 /*
  * Macros for device 'jtag_uart', class 'altera_avalon_jtag_uart'

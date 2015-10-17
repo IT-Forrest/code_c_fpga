@@ -93,6 +93,7 @@ int clean_mem();
 int syn_ctrl();
 
 int spi_set_res(uint8_t val);
+int spi_set_res_ss(uint8_t val, uint8_t dev);
 int hex_set_val(uint8_t pos, uint8_t val);
 
 #endif //_ALTERA_PSOC_PORT_H_

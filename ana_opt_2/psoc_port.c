@@ -14,6 +14,7 @@ uint32_t     *spi_ctrl_addr;     // SPI master control address
 uint32_t     *spi_ctrl_txdata;
 uint32_t     *spi_ctrl_status;
 uint32_t     *spi_ctrl_control;
+uint32_t     *spi_ctrl_ss;
 
 uint32_t     *hex_mux_addr;     // HEX display controller
 
@@ -130,6 +131,7 @@ int init_mem()
     spi_ctrl_txdata = spi_ctrl_addr + 1;
     spi_ctrl_status = spi_ctrl_addr + 2;
     spi_ctrl_control = spi_ctrl_addr + 3;
+    spi_ctrl_ss = spi_ctrl_addr + 5;
 
     // the AMM I/O of sa_test_logic module
 /*    sactrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_SACTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
@@ -248,6 +250,16 @@ int spi_set_res(uint8_t val)
         *spi_ctrl_txdata = (uint32_t) val;
         while (!((*spi_ctrl_status) & tx_rdy_flag));   // Wait till ready
     }
+
+    return 0;
+}
+
+int spi_set_res_ss(uint8_t val, uint8_t dev)
+{
+    *spi_ctrl_ss = (0x1 << dev);
+    avs_wait();
+
+    spi_set_res(val);
 
     return 0;
 }
