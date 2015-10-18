@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
     else
     {
         /// default configuration
-        SetFreq(108);
+        SetFreq(127);
         Chip3_Set_Cap0(31);
     }
 
@@ -66,9 +66,10 @@ int main(int argc, char** argv) {
     uint16 rd_val;
     uint16 i;
 
-    for (i=0; i<16; i++)
+    for (i=0; i<32; i++)
     {
         rd_val = Chip3_Cfg_Read_ADC(0, 0, 0, 0);
+        usleep(20);
         printf("%u\n", rd_val);
     }
 

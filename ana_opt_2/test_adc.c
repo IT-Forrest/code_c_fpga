@@ -67,7 +67,7 @@ uint16  Chip3_Read_AdC()
     Chip3_Idx_Ctrl_Sta_Clk_Write(0);
 
     Chip3_Idx_Ctrl_Lat_B_Write(1);
-    usleep(2);
+    usleep(1);
     Chip3_Idx_Ctrl_Lat_B_Write(0);
 
     Chip3_Idx_Ctrl_Sta_Sc_Write(1);
