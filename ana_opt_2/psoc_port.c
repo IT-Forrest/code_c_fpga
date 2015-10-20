@@ -256,7 +256,7 @@ int spi_set_res(uint8_t val)
 
 int spi_set_res_ss(uint8_t val, uint8_t dev)
 {
-    *spi_ctrl_ss = (0x1 << dev);
+    *spi_ctrl_ss = (0x1<<dev);
     avs_wait();
 
     spi_set_res(val);

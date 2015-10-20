@@ -75,8 +75,6 @@
 		</Unit>
 		<Unit filename="get_resp_chip3.c">
 			<Option compilerVar="CC" />
-			<Option compile="0" />
-			<Option link="0" />
 		</Unit>
 		<Unit filename="test_auto.c">
 			<Option compilerVar="CC" />
@@ -88,8 +86,15 @@
 			<Option compile="0" />
 			<Option link="0" />
 		</Unit>
+		<Unit filename="test_spi.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
 		<Unit filename="tune_adc_2d.c">
 			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
 		</Unit>
 		<Unit filename="tune_adc_4d.c">
 			<Option compilerVar="CC" />

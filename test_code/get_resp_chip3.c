@@ -68,8 +68,22 @@ int main(int argc, char** argv)
         Chip3_Set_Cb2(7);
         Chip3_Set_Cb3(atoi(argv[4]));
         Chip3_Set_Cb4(atoi(argv[4]));
-        spi_set_res(atoi(argv[5]));
+        spi_set_res_ss(atoi(argv[5]),0);
         //spi_set_res_ss(127, 0);
+    }
+    else if (argc == 7) // Two stage
+    {
+        Chip3_Set_Tx2_H4bits(atoi(argv[1]));
+        Chip3_Set_Tx2_L4bits(atoi(argv[2]));
+        Chip3_Set_Ty2(atoi(argv[3]));
+        Chip3_Set_Tx1(15);
+        Chip3_Set_Ty1(15);
+        Chip3_Set_Cb1(7);
+        Chip3_Set_Cb2(7);
+        Chip3_Set_Cb3(atoi(argv[4]));
+        Chip3_Set_Cb4(atoi(argv[4]));
+        spi_set_res_ss(atoi(argv[5]),0);
+        spi_set_res_ss(atoi(argv[6]),1);
     }
     else
     {
