@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 #define IQ_GRP_OFFSET 2
-#define OSC_TOL 10
+#define OSC_TOL 18
 
 // structure for a single IQ_ELEMENT
 typedef uint16  IQ_ELEMENT;

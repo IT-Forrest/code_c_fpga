@@ -17,7 +17,6 @@
 #define ITERNUM 128
 #define SSNUM 7
 #define VOFFSET 512
-#define AVG 8
 
 #define NEWD
 #define P_OPT
@@ -84,11 +83,10 @@ int main(int argc, char** argv)
     Chip3_Set_Cb1(7);
     Chip3_Set_Cb2(7);
 
-    Chip3_Set_Tx2_H4bits(28);
-    Chip3_Set_Tx2_L4bits(24);
-    Chip3_Set_Ty2(4);
-    Chip3_Set_Cb3(7);
-    Chip3_Set_Cb4(7);
+    Chip3_Set_Tx2(26);
+    Chip3_Set_Ty2(8);
+    Chip3_Set_Cb3(3);
+    Chip3_Set_Cb4(3);
 
     /* Sweep Frequency Response */
 #ifdef P_SWP
@@ -96,13 +94,10 @@ int main(int argc, char** argv)
 
     for (i=0; i<32; i++)
     {
-        spi_set_res(i*2+4);
-        usleep(50);
-
+        Chip3_Set_Tx2(i);
         for (j=0; j<32; j++)
         {
             Chip3_Set_Ty2(j);
-
             printf("%d,%d,%d\n", i, j, TestCost(adc_buf));
         }
     }

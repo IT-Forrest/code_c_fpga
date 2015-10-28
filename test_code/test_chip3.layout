@@ -1,59 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="..\ana_opt_2\test_adc.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="test_spi.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="8969" topLine="368" />
+			<Cursor1 position="359" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="..\ana_opt_2\set_config.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\ana_opt_2\device.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1510" topLine="31" />
+			<Cursor1 position="8408" topLine="201" />
 		</Cursor>
 	</File>
-	<File name="get_fixfreq_IQ_chip3.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\ana_opt_2\psoc_port.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3711" topLine="132" />
-		</Cursor>
-	</File>
-	<File name="..\ana_opt_2\device.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2152" topLine="72" />
-		</Cursor>
-	</File>
-	<File name="..\ana_opt_2\test_adc.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="333" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="get_offset_chip3.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1891" topLine="52" />
-		</Cursor>
-	</File>
-	<File name="..\ana_opt_2\hps_0.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9838" topLine="249" />
+			<Cursor1 position="3814" topLine="73" />
 		</Cursor>
 	</File>
 	<File name="..\ana_opt_2\set_config.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="33215" topLine="1335" />
-		</Cursor>
-	</File>
-	<File name="get_inp_amp_chip3.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1240" topLine="47" />
-		</Cursor>
-	</File>
-	<File name="get_resp_chip3.c" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1911" topLine="58" />
-		</Cursor>
-	</File>
-	<File name="test_chip3.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1233" topLine="95" />
+			<Cursor1 position="1999" topLine="63" />
 		</Cursor>
 	</File>
 	<File name="test_auto.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -66,29 +31,64 @@
 			<Cursor1 position="4357" topLine="156" />
 		</Cursor>
 	</File>
-	<File name="tune_adc_2d.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="get_inp_amp_chip3.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2053" topLine="0" />
+			<Cursor1 position="1240" topLine="47" />
 		</Cursor>
 	</File>
-	<File name="..\ana_opt_2\psoc_port.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\ana_opt_2\device.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2152" topLine="72" />
+		</Cursor>
+	</File>
+	<File name="..\ana_opt_2\psoc_port.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="15307" topLine="251" />
 		</Cursor>
 	</File>
-	<File name="test_spi.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="get_offset_chip3.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="359" topLine="0" />
+			<Cursor1 position="1890" topLine="52" />
 		</Cursor>
 	</File>
-	<File name="..\ana_opt_2\psoc_port.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="tune_adc_2d.c" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3814" topLine="73" />
+			<Cursor1 position="704" topLine="13" />
 		</Cursor>
 	</File>
-	<File name="..\ana_opt_2\device.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\ana_opt_2\test_adc.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="8408" topLine="201" />
+			<Cursor1 position="470" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="..\ana_opt_2\set_config.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="689" topLine="8" />
+		</Cursor>
+	</File>
+	<File name="test_chip3.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3502" topLine="13" />
+		</Cursor>
+	</File>
+	<File name="get_resp_chip3.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="976" topLine="30" />
+		</Cursor>
+	</File>
+	<File name="..\ana_opt_2\hps_0.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9838" topLine="249" />
+		</Cursor>
+	</File>
+	<File name="get_fixfreq_IQ_chip3.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3711" topLine="132" />
+		</Cursor>
+	</File>
+	<File name="..\ana_opt_2\test_adc.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4439" topLine="152" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
