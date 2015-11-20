@@ -527,6 +527,61 @@
 #define SWEEP_LOGIC_HIGH_END 0x17f
 
 /*
+ * Macros for device 'cfsa_4D_logic_ana_bits_in', class 'cfsa_4D_logic'
+ * The macros are prefixed with 'CFSA_4D_LOGIC_ANA_BITS_IN_'.
+ * The prefix is the slave descriptor.
+ */
+#define CFSA_4D_LOGIC_ANA_BITS_IN_COMPONENT_TYPE cfsa_4D_logic
+#define CFSA_4D_LOGIC_ANA_BITS_IN_COMPONENT_NAME cfsa_4D_logic
+#define CFSA_4D_LOGIC_ANA_BITS_IN_BASE 0x180
+#define CFSA_4D_LOGIC_ANA_BITS_IN_SPAN 4
+#define CFSA_4D_LOGIC_ANA_BITS_IN_END 0x183
+
+/*
+ * Macros for device 'cfsa_4D_logic_ana_bits', class 'cfsa_4D_logic'
+ * The macros are prefixed with 'CFSA_4D_LOGIC_ANA_BITS_'.
+ * The prefix is the slave descriptor.
+ */
+#define CFSA_4D_LOGIC_ANA_BITS_COMPONENT_TYPE cfsa_4D_logic
+#define CFSA_4D_LOGIC_ANA_BITS_COMPONENT_NAME cfsa_4D_logic
+#define CFSA_4D_LOGIC_ANA_BITS_BASE 0x184
+#define CFSA_4D_LOGIC_ANA_BITS_SPAN 4
+#define CFSA_4D_LOGIC_ANA_BITS_END 0x187
+
+/*
+ * Macros for device 'pll_tune_0_cntr', class 'pll_tune'
+ * The macros are prefixed with 'PLL_TUNE_0_CNTR_'.
+ * The prefix is the slave descriptor.
+ */
+#define PLL_TUNE_0_CNTR_COMPONENT_TYPE pll_tune
+#define PLL_TUNE_0_CNTR_COMPONENT_NAME pll_tune_0
+#define PLL_TUNE_0_CNTR_BASE 0x190
+#define PLL_TUNE_0_CNTR_SPAN 4
+#define PLL_TUNE_0_CNTR_END 0x193
+
+/*
+ * Macros for device 'pll_tune_0_cntf', class 'pll_tune'
+ * The macros are prefixed with 'PLL_TUNE_0_CNTF_'.
+ * The prefix is the slave descriptor.
+ */
+#define PLL_TUNE_0_CNTF_COMPONENT_TYPE pll_tune
+#define PLL_TUNE_0_CNTF_COMPONENT_NAME pll_tune_0
+#define PLL_TUNE_0_CNTF_BASE 0x194
+#define PLL_TUNE_0_CNTF_SPAN 4
+#define PLL_TUNE_0_CNTF_END 0x197
+
+/*
+ * Macros for device 'pll_tune_0_ctrl', class 'pll_tune'
+ * The macros are prefixed with 'PLL_TUNE_0_CTRL_'.
+ * The prefix is the slave descriptor.
+ */
+#define PLL_TUNE_0_CTRL_COMPONENT_TYPE pll_tune
+#define PLL_TUNE_0_CTRL_COMPONENT_NAME pll_tune_0
+#define PLL_TUNE_0_CTRL_BASE 0x198
+#define PLL_TUNE_0_CTRL_SPAN 4
+#define PLL_TUNE_0_CTRL_END 0x19b
+
+/*
  * Macros for device 'sysid_qsys', class 'altera_avalon_sysid_qsys'
  * The macros are prefixed with 'SYSID_QSYS_'.
  * The prefix is the slave descriptor.
@@ -537,7 +592,7 @@
 #define SYSID_QSYS_SPAN 8
 #define SYSID_QSYS_END 0x10007
 #define SYSID_QSYS_ID 2899645186
-#define SYSID_QSYS_TIMESTAMP 1445044907
+#define SYSID_QSYS_TIMESTAMP 1447973899
 
 /*
  * Macros for device 'jtag_uart', class 'altera_avalon_jtag_uart'

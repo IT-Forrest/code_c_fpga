@@ -95,6 +95,11 @@ uint32_t     *chip3_set_ctrl_addr;       // chip test control register
 uint32_t     *chip3_chk_stat_addr;       // chip test status register
 uint32_t     *chip3_set_clkcnt_addr;     // chip test clock counter
 
+// PLL calibration module
+uint32_t     *pll_tune_ctrl_addr;
+uint32_t     *pll_tune_cntr_addr;
+uint32_t     *pll_tune_cntf_addr;
+
 
 // Initialize memory mapping
 int init_mem()
@@ -127,11 +132,17 @@ int init_mem()
     reg_cntradc_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTRADC_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
     reg_cntconv_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTCONV_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
 
+    /////// spi interface ///////////
     spi_ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SPI_INT_0_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
     spi_ctrl_txdata = spi_ctrl_addr + 1;
     spi_ctrl_status = spi_ctrl_addr + 2;
     spi_ctrl_control = spi_ctrl_addr + 3;
     spi_ctrl_ss = spi_ctrl_addr + 5;
+
+    /////// pll calibration //////////
+    pll_tune_ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + PLL_TUNE_0_CTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    pll_tune_cntr_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + PLL_TUNE_0_CNTR_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    pll_tune_cntf_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + PLL_TUNE_0_CNTF_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
 
     // the AMM I/O of sa_test_logic module
 /*    sactrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_SACTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
@@ -192,7 +203,7 @@ int init_mem()
     chip3_set_ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_CTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;       // chip test control register
     chip3_chk_stat_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_STAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;       // chip test control register       // chip test status register
     chip3_set_clkcnt_addr=virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_CNTSCLK_SC_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;;     // chip test clock counter
-/**/
+
     return(0);
 }
 

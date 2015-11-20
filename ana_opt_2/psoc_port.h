@@ -85,6 +85,9 @@ extern uint32_t     *chip3_set_ctrl_addr;
 extern uint32_t     *chip3_chk_stat_addr;
 extern uint32_t     *chip3_set_clkcnt_addr;
 
+extern uint32_t     *pll_tune_ctrl_addr;
+extern uint32_t     *pll_tune_cntr_addr;
+extern uint32_t     *pll_tune_cntf_addr;
 
 void avs_wait();
 
