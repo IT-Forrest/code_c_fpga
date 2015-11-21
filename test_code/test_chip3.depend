@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1444332599 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\device.c
+1448059384 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\device.c
 	"device.h"
 	"psoc_port.h"
 
-1444332599 f:\05. code battle\github\code_c_fpga\ana_opt_2\device.h
+1448059384 f:\05. code battle\github\code_c_fpga\ana_opt_2\device.h
 	<stdio.h>
 	<unistd.h>
 	<fcntl.h>
@@ -14,7 +14,7 @@
 	"socal/alt_gpio.h"
 	"psoc_port.h"
 
-1417721225 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\hwlib.h
+1417717625 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\hwlib.h
 	<cstddef>
 	<cstdbool>
 	<cstdint>
@@ -23,9 +23,9 @@
 	<stdint.h>
 	"alt_hwlibs_ver.h"
 
-1417721223 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\alt_hwlibs_ver.h
+1417717623 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\alt_hwlibs_ver.h
 
-1417721230 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\socal.h
+1417717630 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\socal.h
 	<cstddef>
 	<cstdbool>
 	<cstdint>
@@ -33,11 +33,11 @@
 	<stdbool.h>
 	<stdint.h>
 
-1417721230 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\hps.h
+1417717630 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\hps.h
 
-1417721230 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\alt_gpio.h
+1417717630 c:\altera\14.1\embedded\ip\altera\hps\altera_hps\hwlib\include\socal\alt_gpio.h
 
-1444332599 f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.h
+1448059384 f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.h
 	<stdio.h>
 	<unistd.h>
 	<fcntl.h>
@@ -48,9 +48,9 @@
 	"socal/alt_gpio.h"
 	"hps_0.h"
 
-1444332599 f:\05. code battle\github\code_c_fpga\ana_opt_2\hps_0.h
+1448059384 f:\05. code battle\github\code_c_fpga\ana_opt_2\hps_0.h
 
-1444332599 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.c
+1448059384 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\psoc_port.c
 	"psoc_port.h"
 
 1427250116 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\serial_port_io.c
@@ -59,7 +59,7 @@
 	"device.h"
 	<stdlib.h>
 
-1444342727 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.c
+1448059384 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.c
 	<math.h>
 	<stdint.h>
 	"device.h"
@@ -75,16 +75,16 @@
 	<stdint.h>
 	<stdlib.h>
 
-1444342423 f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.h
+1448059384 f:\05. code battle\github\code_c_fpga\ana_opt_2\set_config.h
 	"socal/hps.h"
 	"socal/alt_gpio.h"
 
-1444342734 f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.h
+1448059384 f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.h
 	"device.h"
 	<stdio.h>
 	<stdint.h>
 
-1444342742 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.c
+1448059384 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.c
 	"device.h"
 	<stdio.h>
 	<math.h>

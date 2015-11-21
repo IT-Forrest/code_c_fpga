@@ -27,28 +27,65 @@ int main(int argc, char** argv) {
     {
         Chip3_Set_Mdiv0(atoi(argv[1]));
         Chip3_Set_Bs0(atoi(argv[2]));
+
+        BackupCfg();
+        Chip3_Send_Cfg_To_SCA();
+
+        Chip3_Idx_Ctrl_Rst_Ana_Write(1);
+        usleep(70);
+
+        *pll_tune_ctrl_addr = 1;
+        avs_wait();
+
+        usleep(500);
+        printf("Reference Count: %u\n", (uint32_t)(*pll_tune_cntr_addr));
+        printf("Feedback Count: %u\n", (uint32_t)(*pll_tune_cntf_addr));
+
+        *pll_tune_ctrl_addr = 0;
+        avs_wait();
     }
     else
     {
-        printf("Arguments needed: Mdiv Bs\n");
-        return 1;
+        int bs[5] = {0,1,3,7,15};
+        uint16_t mdiv, i;
+        bool flag;
+
+
+        printf("Freq,\tBs\n");
+        for (mdiv = 32; mdiv <=127; mdiv++)
+        {
+            flag = false;
+            Chip3_Set_Mdiv0(mdiv);
+            for (i = 0; i < 5; i++)
+            {
+                Chip3_Set_Bs0(bs[i]);
+
+                Chip3_Idx_Ctrl_Rst_Ana_Write(0);
+                Chip3_Send_Cfg_To_SCA();
+                Chip3_Idx_Ctrl_Rst_Ana_Write(1);
+                usleep(70);
+
+                *pll_tune_ctrl_addr = 1;
+                avs_wait();
+                usleep(500);
+
+                if (abs((*pll_tune_cntr_addr)-(*pll_tune_cntf_addr))<=2)
+                {
+                    flag = true; break;
+                }
+
+                *pll_tune_ctrl_addr = 0;
+                avs_wait();
+            }
+
+            *pll_tune_ctrl_addr = 0;
+            avs_wait();
+            if (flag)
+                printf("%u,\t%u\n", mdiv, bs[i]);
+            else
+                printf("%u,\t-1\n", mdiv);
+        }
     }
-
-    BackupCfg();
-    Chip3_Send_Cfg_To_SCA();
-
-    Chip3_Idx_Ctrl_Rst_Ana_Write(1);
-    usleep(70);
-
-    *pll_tune_ctrl_addr = 1;
-    avs_wait();
-
-    usleep(500);
-    printf("Reference Count: %u\n", (uint32_t)(*pll_tune_cntr_addr));
-    printf("Feedback Count: %u\n", (uint32_t)(*pll_tune_cntf_addr));
-
-    *pll_tune_ctrl_addr = 0;
-    avs_wait();
 
     return( clean_mem() );
 }
