@@ -182,3 +182,18 @@
 	"set_config.h"
 	"test_adc.h"
 
+1448149048 source:f:\05. code battle\github\code_c_fpga\test_code\get_pll_calibre.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"../ana_opt_2/device.h"
+	"../ana_opt_2/set_config.h"
+	"../ana_opt_2/psoc_port.h"
+	"../ana_opt_2/test_adc.h"
+

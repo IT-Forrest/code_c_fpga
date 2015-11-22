@@ -229,6 +229,18 @@ void init_sc()
     Chip3_Set_Test_Mux(1);  // for debug
 }
 
+/* Automatically config PLL bits and Amplitude bits */
+void autocfg()
+{
+    int bs[5] = {0,1,3,7,15};
+    int i;
+
+    printf("Configuring PLL and Amplitude bits...\n");
+
+
+
+}
+
 /* ==================== Initialize Filter Configuration ====================== */
 void    InitCfg()
 {

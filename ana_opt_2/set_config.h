@@ -30,6 +30,7 @@ extern uint32_t    gscB_bk;
 /* Initialization */
 int     init_cfg();
 void    init_sc();
+void    autocfg();
 
 /* Config Scan Chain */
 void    SetCfg();// just config the Analog control signal

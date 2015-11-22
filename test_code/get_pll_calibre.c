@@ -32,12 +32,12 @@ int main(int argc, char** argv) {
         Chip3_Send_Cfg_To_SCA();
 
         Chip3_Idx_Ctrl_Rst_Ana_Write(1);
-        usleep(70);
+        usleep(500);
 
         *pll_tune_ctrl_addr = 1;
         avs_wait();
 
-        usleep(500);
+        usleep(4200);
         printf("Reference Count: %u\n", (uint32_t)(*pll_tune_cntr_addr));
         printf("Feedback Count: %u\n", (uint32_t)(*pll_tune_cntf_addr));
 
@@ -50,29 +50,30 @@ int main(int argc, char** argv) {
         uint16_t mdiv, i;
         bool flag;
 
-
+        int a, b;
         printf("Freq,\tBs\n");
         for (mdiv = 32; mdiv <=127; mdiv++)
         {
             flag = false;
             Chip3_Set_Mdiv0(mdiv);
-            for (i = 0; i < 5; i++)
+            for (i = 0; i <= 4; i++)
             {
                 Chip3_Set_Bs0(bs[i]);
 
                 Chip3_Idx_Ctrl_Rst_Ana_Write(0);
                 Chip3_Send_Cfg_To_SCA();
                 Chip3_Idx_Ctrl_Rst_Ana_Write(1);
-                usleep(70);
+                usleep(500);
 
                 *pll_tune_ctrl_addr = 1;
                 avs_wait();
-                usleep(500);
+                usleep(4200);
 
-                if (abs((*pll_tune_cntr_addr)-(*pll_tune_cntf_addr))<=2)
-                {
-                    flag = true; break;
-                }
+                a = (int)(*pll_tune_cntr_addr);
+                b = (int)(*pll_tune_cntf_addr);
+
+                if (a>=b && a-b<=2)
+                { flag = true; break; }
 
                 *pll_tune_ctrl_addr = 0;
                 avs_wait();
@@ -80,6 +81,7 @@ int main(int argc, char** argv) {
 
             *pll_tune_ctrl_addr = 0;
             avs_wait();
+
             if (flag)
                 printf("%u,\t%u\n", mdiv, bs[i]);
             else
