@@ -44,6 +44,10 @@ int main(int argc, char** argv) {
         *pll_tune_ctrl_addr = 0;
         avs_wait();
     }
+    else if (argc == 2)
+    {
+        autocfg(515, 90);
+    }
     else
     {
         int bs[5] = {0,1,3,7,15};

@@ -29,8 +29,8 @@ extern uint32_t    gscB_bk;
 
 /* Initialization */
 int     init_cfg();
-void    init_sc();
-void    autocfg();
+void    init_sc();                          // Initilize the scan chain
+void    autocfg(int offset, int thres);     // Automatically config PLL bits and Amplitude bits
 
 /* Config Scan Chain */
 void    SetCfg();// just config the Analog control signal
