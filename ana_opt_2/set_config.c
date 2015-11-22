@@ -257,10 +257,10 @@ void autocfg(int offset, int thres)
             Chip3_Idx_Ctrl_Rst_Ana_Write(0);
             Chip3_Send_Cfg_To_SCA();
             Chip3_Idx_Ctrl_Rst_Ana_Write(1);
-            usleep(500);                            // Wait for PLL settling
+            usleep(300);                            // Wait for PLL settling
 
             *pll_tune_ctrl_addr = 1; avs_wait();    // Start counting 4096 times
-            usleep(4200);
+            usleep(4100);
 
             j = (int)(*pll_tune_cntr_addr);
             k = (int)(*pll_tune_cntf_addr);
@@ -281,7 +281,7 @@ void autocfg(int offset, int thres)
         gMapping_Array[mdiv-32].bs = bs[i];
         printf("#%u, bs = %u, ", mdiv, bs[i]);
 
-        for (i=0; i<2; i++) // CAP1
+        i = 1; //for (i=0; i<2; i++) // CAP1
         {
             for (j=0; j<16; j++) // CAP2
             {
@@ -292,29 +292,29 @@ void autocfg(int offset, int thres)
                 for (k=0; k<4; k++)
                     adc_buf[k]=(adc_buf[k]/AVG);
                 cap[i] = j;
-                amp[i] = sqrt(
-                       pow((int)adc_buf[2]-offset,2) +
-                       pow((int)adc_buf[3]-offset,2)
-                );  // Input amplitude
+                amp[i] = MAG((int)adc_buf[2]-offset, (int)adc_buf[3]-offset);
+//                sqrt(
+//                       pow((int)adc_buf[2]-offset,2) +
+//                       pow((int)adc_buf[3]-offset,2)
+//                );  // Input amplitude
 
                 if (amp[i]<=thres) break;
             }
-
-            j = abs(amp[0]-thres);
-            k = abs(amp[1]-thres);
-            if (j<=k)
-            {
-                gMapping_Array[mdiv-32].cap1 = 0;
-                gMapping_Array[mdiv-32].cap2 = cap[0];
-                printf("cap1 = 0, cap2 = %u, amp = %d\n", cap[0], amp[0]);
-            } else
-            {
-                gMapping_Array[mdiv-32].cap1 = 1;
-                gMapping_Array[mdiv-32].cap2 = cap[1];
-                printf("cap1 = 1, cap2 = %u, amp = %d\n", cap[1], amp[1]);
-            }
         }
 
+//        j = abs(amp[0]-thres);
+//        k = abs(amp[1]-thres);
+//        if (j<=k)
+//        {
+//            gMapping_Array[mdiv-32].cap1 = 0;
+//            gMapping_Array[mdiv-32].cap2 = cap[0];
+//            printf("cap1 = 0, cap2 = %u, amp = %d\n", cap[0], amp[0]);
+//        } else
+        {
+            gMapping_Array[mdiv-32].cap1 = 1;
+            gMapping_Array[mdiv-32].cap2 = cap[1];
+            printf("cap1 = 1, cap2 = %u, amp = %d\n", cap[1], amp[1]);
+        }
     }
 
 }

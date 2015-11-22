@@ -63,7 +63,7 @@ uint16  Chip3_Read_AdC()
 
     Chip3_Idx_Ctrl_Sta_Clk_Write(1);
     // Waiting ADC ready by usleep since no signal to indicate when is ready
-    usleep(20);
+    usleep(15);
     Chip3_Idx_Ctrl_Sta_Clk_Write(0);
 
     Chip3_Idx_Ctrl_Lat_B_Write(1);
