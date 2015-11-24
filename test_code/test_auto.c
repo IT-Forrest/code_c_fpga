@@ -39,26 +39,35 @@ int main(int argc, char** argv) {
     ///////////////////////////////////////////////
     /// To set analog configuration: e.g. Mdiv, BS, etc
 
-    Chip3_Set_Mdiv0(79);
-    Chip3_Set_Bs0(3);
-    Chip3_Set_Cap0((1<<4)+5);
+    if (argc == 11)
+    {
+        Chip3_Set_Mdiv0(atoi(argv[1]));
+        Chip3_Set_Bs0(atoi(argv[2]));
+        Chip3_Set_Cap0((1<<4)+atoi(argv[3]));
 
-    Chip3_Set_Mdiv1(86);
-    Chip3_Set_Bs1(7);
-    Chip3_Set_Cap1((0<<4)+5);
+        Chip3_Set_Mdiv1(atoi(argv[4]));
+        Chip3_Set_Bs1(atoi(argv[5]));
+        Chip3_Set_Cap1((1<<4)+atoi(argv[6]));
 
-    Chip3_Set_Mdiv2(86);
-    Chip3_Set_Bs2(7);
-    Chip3_Set_Cap2((0<<4)+5);
+        Chip3_Set_Mdiv2(atoi(argv[4]));
+        Chip3_Set_Bs2(atoi(argv[5]));
+        Chip3_Set_Cap2((1<<4)+atoi(argv[6]));
 
-    Chip3_Set_Mdiv3(93);
-    Chip3_Set_Bs3(7);
-    Chip3_Set_Cap3((1<<4)+4);
+        Chip3_Set_Mdiv3(atoi(argv[7]));
+        Chip3_Set_Bs3(atoi(argv[8]));
+        Chip3_Set_Cap3((1<<4)+atoi(argv[9]));
 
-    Chip3_Set_Cb2(6);
-    Chip3_Set_Cb3(6);
-    Chip3_Set_Cb1(6);
-    Chip3_Set_Cb4(6);
+        Chip3_Set_Aoff(atoi(argv[10]));
+
+        Chip3_Set_Cb2(6);
+        Chip3_Set_Cb3(6);
+        Chip3_Set_Cb1(6);
+        Chip3_Set_Cb4(6);
+    } else
+    {
+        printf("Arguments: Mdiv0 Bs0 Cap0 Mdiv1/2 Bs1/2 Cap1/2 Mdiv3 Bs3 Cap3 Offset\n");
+        return -1;
+    }
 
     Chip3_Set_Sw(1);
 

@@ -164,9 +164,9 @@ void init_sc()
     Chip3_Idx_Ctrl_Rst_N_Write(0);
 
     /// Frequency
-    Chip3_Set_Mdiv1(127);
-    Chip3_Set_Bs1(0);
-    Chip3_Set_Cap1(0);
+    Chip3_Set_Mdiv0(127);
+    Chip3_Set_Bs0(0);
+    Chip3_Set_Cap0(0);
 
     Chip3_Set_Mdiv1(127);
     Chip3_Set_Bs1(0);
@@ -209,7 +209,7 @@ void init_sc()
     Chip3_Set_Init_X2(15);
     Chip3_Set_Init_Y2(15);
 
-    Chip3_Set_Aoff(507);
+    Chip3_Set_Aoff(512);
     Chip3_Set_Tol(32);
 
     /// Filter Settings
@@ -275,7 +275,7 @@ void autocfg(int offset, int thres)
         if (!flag)
         {
             printf("%u, Frequency test is failed!\n", mdiv);
-            break;
+            continue;
         }
 
         gMapping_Array[mdiv-32].bs = bs[i];

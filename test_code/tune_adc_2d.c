@@ -16,15 +16,13 @@
 
 #define ITERNUM 128
 #define SSNUM 7
-#define VOFFSET 512
 
-#define NEWD
-#define P_OPT
 #define P_SWP
-#define P_FRP
+#undef VOFFSET
 
 uint16  fno = 4;
 uint16  flist[4] = {0};
+uint16  VOFFSET;
 
 uint16 TestCost(uint16*  adc_buf)
 {
@@ -49,12 +47,18 @@ uint16 TestCost(uint16*  adc_buf)
 int main(int argc, char** argv)
 {
 
-    if (argc == 4) // Normal
+    if (argc == 5) // Normal
     {
         flist[0] = atoi(argv[1]);
         flist[1] = atoi(argv[2]);
         flist[2] = atoi(argv[2]);
         flist[3] = atoi(argv[3]);
+        VOFFSET = atoi(argv[4]);
+    }
+    else
+    {
+        printf("Arguments: f1 f2 f3 offset\n");
+        return -1;
     }
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
@@ -83,10 +87,10 @@ int main(int argc, char** argv)
     Chip3_Set_Cb1(7);
     Chip3_Set_Cb2(7);
 
-    Chip3_Set_Tx2(26);
-    Chip3_Set_Ty2(8);
-    Chip3_Set_Cb3(3);
-    Chip3_Set_Cb4(3);
+    Chip3_Set_Cb3(6);
+    Chip3_Set_Cb4(6);
+
+    autocfg(VOFFSET, 110);
 
     /* Sweep Frequency Response */
 #ifdef P_SWP

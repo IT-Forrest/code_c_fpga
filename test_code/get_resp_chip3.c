@@ -15,7 +15,7 @@
 #include "../ana_opt_2/test_adc.h"
 
 // Use get_offset first, then set VOFF here
-#define VOFFSET 515
+#define VOFFSET 517
 
 int main(int argc, char** argv)
 {
