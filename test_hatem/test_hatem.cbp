@@ -30,7 +30,11 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="C:/altera/14.1/embedded/ip/altera/hps/altera_hps/hwlib/include" />
 		</Compiler>
+		<Linker>
+			<Add directory="C:/altera/14.1/embedded/ip/altera/hps/altera_hps/hwlib/include" />
+		</Linker>
 		<Unit filename="../ana_opt_2/device.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -48,8 +52,13 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../ana_opt_2/test_adc.h" />
+		<Unit filename="get_resp_h3.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="test_1.c">
 			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
 		</Unit>
 		<Extensions>
 			<code_completion />

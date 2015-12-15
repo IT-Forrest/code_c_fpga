@@ -19,9 +19,9 @@
 
 int main(int argc, char** argv)
 {
-    uint16  i;
+//    uint16  i;
 
-    IQ_ELEMENT adc_buf[384] = {0};
+//    IQ_ELEMENT adc_buf[384] = {0};
 
     if (init_mem()) return (1);
     if (init_cfg()) return (1);
@@ -38,10 +38,10 @@ int main(int argc, char** argv)
         //Chip3_Set_Tx2_H4bits(atoi(argv[1]));
         //Chip3_Set_Tx2_L4bits(31);
         Chip3_Set_Ty2(atoi(argv[2]));
-        Chip3_Set_Tx1(15);
-        Chip3_Set_Ty1(15);
-        Chip3_Set_Cb1(7);
-        Chip3_Set_Cb2(7);
+        Chip3_Set_Tx1(atoi(argv[1]));
+        Chip3_Set_Ty1(atoi(argv[2]));
+        Chip3_Set_Cb1(atoi(argv[3]));
+        Chip3_Set_Cb2(atoi(argv[3]));
         Chip3_Set_Cb3(atoi(argv[3]));
         Chip3_Set_Cb4(atoi(argv[3]));
     }
@@ -98,14 +98,16 @@ int main(int argc, char** argv)
         Chip3_Set_Cb4(7);
     }
 
-    autocfg(VOFFSET, 110);
+    //autocfg(VOFFSET, 110);
 
     BackupCfg();
+
     Chip3_Send_Cfg_To_SCA();
 
     Chip3_Idx_Ctrl_Rst_Ana_Write(1);
-    Chip3_Idx_Ctrl_Sta_Clk_Write(1);
+    Chip3_Idx_Ctrl_Sta_Clk_Write(0);
 
+#ifdef NOUSE
     /// Sweep
 
     FSEL_ELEMENT *A;
@@ -135,6 +137,7 @@ int main(int argc, char** argv)
     }
 
     Chip3_Idx_Ctrl_Sta_Clk_Write(0);
+#endif
 
     return 0;
 }

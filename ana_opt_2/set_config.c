@@ -165,8 +165,8 @@ void init_sc()
 
     /// Frequency
     Chip3_Set_Mdiv0(127);
-    Chip3_Set_Bs0(0);
-    Chip3_Set_Cap0(0);
+    Chip3_Set_Bs0(15);
+    Chip3_Set_Cap0(31);
 
     Chip3_Set_Mdiv1(127);
     Chip3_Set_Bs1(0);
