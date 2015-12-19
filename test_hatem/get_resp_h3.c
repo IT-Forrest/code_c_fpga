@@ -15,14 +15,10 @@
 #include "../ana_opt_2/test_adc.h"
 
 // Use get_offset first, then set VOFF here
-#define VOFFSET 508
+#define VOFFSET 504
 
 int main(int argc, char** argv)
 {
-//    uint16  i;
-
-//    IQ_ELEMENT adc_buf[384] = {0};
-
     if (init_mem()) return (1);
     if (init_cfg()) return (1);
     if (syn_ctrl()) return (1);
@@ -98,7 +94,14 @@ int main(int argc, char** argv)
         Chip3_Set_Cb4(7);
     }
 
-    //autocfg(VOFFSET, 110);
+#define NOUSE
+#ifdef NOUSE
+    autocfg(VOFFSET, 80);
+#else
+    Chip3_Set_Mdiv0(32);
+    Chip3_Set_Bs0(0);
+    Chip3_Set_Cap0(31);
+#endif
 
     BackupCfg();
 
@@ -109,6 +112,9 @@ int main(int argc, char** argv)
 
 #ifdef NOUSE
     /// Sweep
+    uint16  i;
+
+    IQ_ELEMENT adc_buf[384] = {0};
 
     FSEL_ELEMENT *A;
 
