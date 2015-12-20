@@ -18,7 +18,7 @@
 
 #define     ITERNUM 128
 #define     SSNUM 7
-#define     AVG 16
+#define     AVG 32
 
 extern uint32_t    gcfg[MAX_CFG_BITS];       // configuration bits array
 extern uint32_t    gcfg_bk[MAX_CFG_BITS];    // configuration bits backup

@@ -416,7 +416,7 @@ uint16 GetCFSA4D(uint16* adc_buf, uint16 offset, uint8 is_4D, uint16 div_accu,
 //        if (F2 >= 0x1FF)    F2 = 0x1FF;
 //        if (F3 >= 0x1FF)    F3 = 0x1FF;
 
-        f2_compen = (div_accu)? 128 : 64;
+        f2_compen = (div_accu)? 64 : 32;//(div_accu)? 128 : 64;
 
         uint32  F0 = Amp_Division(Amp_Cordic(A0->Iout - offset, A0->Qout - offset),
                                   Amp_Cordic(A0->Iinn - offset, A0->Qinn - offset), div_accu);
@@ -457,7 +457,7 @@ uint16 GetCFSA4D(uint16* adc_buf, uint16 offset, uint8 is_4D, uint16 div_accu,
         cost += FREQ_FACTOR(abs(F1-F2),gain3);
 
         //if (F2<128) cost += (128-F2);
-        if (F2<f2_compen) cost += (f2_compen-F2);
+        if (F2<f2_compen) cost += ((f2_compen-F2)<<1);
 
         if (cost>255) cost = 255;
 

@@ -236,15 +236,16 @@ void init_sc()
 void autocfg(int offset, int thres)
 {
     int bs[5] = {0,1,3,7,15};
-    int amp[2] = {0}; // record amplitude
-    uint16_t cap[2] = {0}; // record cap2
+    int amp; // record amplitude
     int i, j, k, mdiv;
+    uint16_t n;
     bool flag;
     IQ_ELEMENT adc_buf[4] = {0};    // Buffer
 
 
     printf("Configuring PLL and Amplitude bits...\n");
 
+    n = 15;
     for (mdiv = 32; mdiv <=127; mdiv++)
     {
         flag = false;
@@ -281,42 +282,23 @@ void autocfg(int offset, int thres)
         gMapping_Array[mdiv-32].bs = bs[i];
         printf("#%u, bs = %u, ", mdiv, bs[i]);
 
-        i = 1; //for (i=0; i<2; i++) // CAP1
+        gMapping_Array[mdiv-32].cap1 = 1;
+        while(1)
         {
-            for (j=0; j<16; j++) // CAP2
-            {
-                Chip3_Set_Cap0((i << 4) + j);
+            gMapping_Array[mdiv-32].cap2 = n;
+            Chip3_Set_Cap0((1 << 4) + n);
 
-                memset(adc_buf,0,sizeof(adc_buf));
-                IQAvgReadAdc(0, adc_buf, AVG);      //Measure I/Q data
-                for (k=0; k<4; k++)
-                    adc_buf[k]=(adc_buf[k]/AVG);
-                cap[i] = j;
-                amp[i] = MAG((int)adc_buf[2]-offset, (int)adc_buf[3]-offset);
-//                sqrt(
-//                       pow((int)adc_buf[2]-offset,2) +
-//                       pow((int)adc_buf[3]-offset,2)
-//                );  // Input amplitude
+            memset(adc_buf,0,sizeof(adc_buf));
+            IQAvgReadAdc(0, adc_buf, AVG);      //Measure I/Q data
+            for (k=0; k<4; k++) adc_buf[k]=(adc_buf[k]/AVG);
+            amp = MAG((int)adc_buf[2]-offset, (int)adc_buf[3]-offset);
 
-                if (amp[i]<=thres) break;
-            }
+            if (amp>=thres || n==0) break;
+            n --;
         }
 
-//        j = abs(amp[0]-thres);
-//        k = abs(amp[1]-thres);
-//        if (j<=k)
-//        {
-//            gMapping_Array[mdiv-32].cap1 = 0;
-//            gMapping_Array[mdiv-32].cap2 = cap[0];
-//            printf("cap1 = 0, cap2 = %u, amp = %d\n", cap[0], amp[0]);
-//        } else
-        {
-            gMapping_Array[mdiv-32].cap1 = 1;
-            gMapping_Array[mdiv-32].cap2 = cap[1];
-            printf("cap1 = 1, cap2 = %u, amp = %d\n", cap[1], amp[1]);
-        }
+        printf("cap1 = 1, cap2 = %u, amp = %d\n", n, amp);
     }
-
 }
 
 /* ==================== Initialize Filter Configuration ====================== */

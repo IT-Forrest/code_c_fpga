@@ -15,7 +15,7 @@
 #include "../ana_opt_2/test_adc.h"
 
 // Use get_offset first, then set VOFF here
-#define VOFFSET 504
+#define VOFFSET 505
 
 int main(int argc, char** argv)
 {
@@ -94,7 +94,7 @@ int main(int argc, char** argv)
         Chip3_Set_Cb4(7);
     }
 
-#define NOUSE
+//#define NOUSE
 #ifdef NOUSE
     autocfg(VOFFSET, 80);
 #else

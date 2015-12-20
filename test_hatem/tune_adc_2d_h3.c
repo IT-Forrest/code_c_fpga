@@ -84,13 +84,13 @@ int main(int argc, char** argv)
     /* Fixed Settings */
     Chip3_Set_Tx1(15);
     Chip3_Set_Ty1(15);
-    Chip3_Set_Cb1(6);
-    Chip3_Set_Cb2(6);
+    Chip3_Set_Cb1(7);
+    Chip3_Set_Cb2(7);
 
-    Chip3_Set_Cb3(6);
-    Chip3_Set_Cb4(6);
+    Chip3_Set_Cb3(7);
+    Chip3_Set_Cb4(7);
 
-    autocfg(VOFFSET, 60);
+    autocfg(VOFFSET, 80);
 
     /* Sweep Frequency Response */
 #ifdef P_SWP
