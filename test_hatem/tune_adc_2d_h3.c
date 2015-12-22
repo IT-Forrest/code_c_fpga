@@ -46,18 +46,19 @@ uint16 TestCost(uint16*  adc_buf)
 
 int main(int argc, char** argv)
 {
-
-    if (argc == 5) // Normal
+    uint16_t cap;
+    if (argc == 6) // Normal
     {
         flist[0] = atoi(argv[1]);
         flist[1] = atoi(argv[2]);
         flist[2] = atoi(argv[2]);
         flist[3] = atoi(argv[3]);
         VOFFSET = atoi(argv[4]);
+        cap = atoi(argv[5]);
     }
     else
     {
-        printf("Arguments: f1 f2 f3 offset\n");
+        printf("Arguments: f1 f2 f3 offset cap\n");
         return -1;
     }
 
@@ -84,11 +85,11 @@ int main(int argc, char** argv)
     /* Fixed Settings */
     Chip3_Set_Tx1(15);
     Chip3_Set_Ty1(15);
-    Chip3_Set_Cb1(7);
-    Chip3_Set_Cb2(7);
 
-    Chip3_Set_Cb3(7);
-    Chip3_Set_Cb4(7);
+    Chip3_Set_Cb1(cap);
+    Chip3_Set_Cb2(cap);
+    Chip3_Set_Cb3(cap);
+    Chip3_Set_Cb4(cap);
 
     autocfg(VOFFSET, 80);
 

@@ -73,7 +73,7 @@
 	<stdio.h>
 	<stdint.h>
 
-1448158963 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.c
+1450580158 source:f:\05. code battle\github\code_c_fpga\ana_opt_2\test_adc.c
 	"device.h"
 	<stdio.h>
 	<math.h>
@@ -81,4 +81,20 @@
 	<stdlib.h>
 	"set_config.h"
 	"test_adc.h"
+
+1450646657 source:f:\05. code battle\github\code_c_fpga\test_hatem\tune_adc_2d_h3.c
+	<stdio.h>
+	<math.h>
+	<unistd.h>
+	<fcntl.h>
+	<string.h>
+	<stdlib.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"../ana_opt_2/device.h"
+	"../ana_opt_2/set_config.h"
+	"../ana_opt_2/test_adc.h"
 
