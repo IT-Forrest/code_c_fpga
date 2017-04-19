@@ -555,87 +555,6 @@ unsigned int CFSA_TUNE4DX3_Read() {return (*cfsatune4Dx3_addr);}
 unsigned int CFSA_TUNE4DX4_Read() {return (*cfsatune4Dx4_addr);}
 
 /////// tapeout chip 3 //////
-/// the clock for scan chain, also need FLAGA or FLAGB
-void Chip3_Idx_Ctrl_Sta_Sc_Write(int rd_val)
-{
-    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_STA_SC):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_STA_SC);
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
-    avs_wait();
-}
-
-void Chip3_Idx_Ctrl_Sin_Ab_Write(int rd_val)
-{
-    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_SIN_AB):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_SIN_AB);
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
-    avs_wait();
-}
-
-void Chip3_Idx_Ctrl_Sel_A_Write(int rd_val)
-{
-    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_SEL_A):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_SEL_A);
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
-    avs_wait();
-}
-
-void Chip3_Idx_Ctrl_Sel_B_Write(int rd_val)
-{
-    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_SEL_B):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_SEL_B);
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
-    avs_wait();
-}
-
-void Chip3_Idx_Ctrl_Lat_A_Write(int rd_val)
-{
-    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_LAT_A):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_LAT_A);
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
-    avs_wait();
-}
-
-void Chip3_Idx_Ctrl_Lat_B_Write(int rd_val)
-{
-    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_LAT_B):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_LAT_B);
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
-    avs_wait();
-}
-
-/// set clock flag for scan chain A
-void Chip3_Idx_Ctrl_Flag_A_Write(int rd_val)
-{
-    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_FLAG_A):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_FLAG_A);
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
-    avs_wait();
-}
-
-/// set clock flag for scan chain B
-void Chip3_Idx_Ctrl_Flag_B_Write(int rd_val)
-{
-    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_FLAG_B):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_FLAG_B);
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
-    avs_wait();
-}
-
-/// the clock for global system
-void Chip3_Idx_Ctrl_Sta_Clk_Write(int rd_val)
-{
-    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_STA_CLK):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_STA_CLK);
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;void    ReadArray(uint8 *dat, uint8 *length); // Read number from console
-    avs_wait();
-}
-
-void Chip3_Idx_Ctrl_Rst_N_Write(int rd_val)
-{
-    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_RST_N):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_RST_N);
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
-    avs_wait();
-}
-
-void Chip3_Idx_Ctrl_Rst_Ana_Write(int rd_val)
-{
-    (rd_val & 0x1)? BIT_ON(local_chip3_ctrl_addr, IDX_CTRL_RST_ANA):BIT_OFF(local_chip3_ctrl_addr, IDX_CTRL_RST_ANA);
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
-    avs_wait();
-}
-
 /// only generate one global clock for debug
 //void CHIP3_SET_ONE_CLK_Write(int rd_val)
 //{
@@ -644,10 +563,58 @@ void Chip3_Idx_Ctrl_Rst_Ana_Write(int rd_val)
 //    avs_wait();
 //}
 
-int Chip3_Idx_Stat_Scrdy_Read()     {return ((*chip3_chk_stat_addr >> IDX_STAT_SCREADY) & 1) ;}
-int Chip3_Idx_Stat_Scso_A_Read()    {return ((*chip3_chk_stat_addr >> IDX_STAT_SCSO_A) & 1) ;}
-int Chip3_Idx_Stat_Scso_B_Read()    {return ((*chip3_chk_stat_addr >> IDX_STAT_SCSO_B) & 1) ;}
+//int Chip3_Idx_Stat_Scrdy_Read()     {return ((*chip3_chk_stat_addr >> IDX_STAT_SCREADY) & 1) ;}
+//int Chip3_Idx_Stat_Scso_A_Read()    {return ((*chip3_chk_stat_addr >> IDX_STAT_SCSO_A) & 1) ;}
+//int Chip3_Idx_Stat_Scso_B_Read()    {return ((*chip3_chk_stat_addr >> IDX_STAT_SCSO_B) & 1) ;}
 //int CHIP3_CHK_ONECLK_RDY() {return ((*chip3_chk_stat_addr >> IDX_STAT_ONERDY) & 1) ;}
+
+
+void SWEEP_START_Write(int rd_val)
+{
+    (rd_val & 0x1)? BIT_ON(local_sweepctrl_addr, IDX_CTRL_STA):BIT_OFF(local_sweepctrl_addr, IDX_CTRL_STA);
+    *sweepctrl_addr = local_sweepctrl_addr;
+    avs_wait();
+}
+
+void SWEEP_SETLOW_Write(int rd_val)
+{
+    (rd_val & 0x1)? BIT_ON(local_sweepctrl_addr, IDX_CTRL_LOW):BIT_OFF(local_sweepctrl_addr, IDX_CTRL_LOW);
+    *sweepctrl_addr = local_sweepctrl_addr;
+    avs_wait();
+}
+
+void SWEEP_SETHIGH_Write(int rd_val)
+{
+    (rd_val & 0x1)? BIT_ON(local_sweepctrl_addr, IDX_CTRL_HIGH):BIT_OFF(local_sweepctrl_addr, IDX_CTRL_HIGH);
+    *sweepctrl_addr = local_sweepctrl_addr;
+    avs_wait();
+}
+
+void SWEEP_CNTSCLK_Write(int bit_val)
+{
+    //.... do something here
+    *sweepcntsclk_addr = bit_val;
+    avs_wait();
+}
+
+void SWEEP_LOWDATA_Write(int data_val)
+{
+    *sweep_lowdata_addr = data_val;
+    avs_wait();
+}
+
+void SWEEP_HIGHDATA_Write(int data_val)
+{
+    *sweep_highdata_addr = data_val;
+    avs_wait();
+}
+
+int SWEEP_RDY_Read()
+{
+    return ((*sweepstat_addr >> IDX_STAT_SCRDY) & 1);
+}
+
+
 
 // used for debugging
 int DEBUG_Read() { return 1;}

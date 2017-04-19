@@ -89,16 +89,13 @@ uint32_t     *cfsatune4Dx2_addr;      // Tune X2 register
 uint32_t     *cfsatune4Dx3_addr;      // Tune X3 register
 uint32_t     *cfsatune4Dx4_addr;      // Tune X4 register
 
-// the chip test for tapeout3
-uint32_t     local_chip3_ctrl_addr;
-uint32_t     *chip3_set_ctrl_addr;       // chip test control register
-uint32_t     *chip3_chk_stat_addr;       // chip test status register
-uint32_t     *chip3_set_clkcnt_addr;     // chip test clock counter
-
-// PLL calibration module
-uint32_t     *pll_tune_ctrl_addr;
-uint32_t     *pll_tune_cntr_addr;
-uint32_t     *pll_tune_cntf_addr;
+// sweep bits module
+uint32_t     local_sweepctrl_addr;
+uint32_t     *sweepctrl_addr;
+uint32_t     *sweepcntsclk_addr;
+uint32_t     *sweepstat_addr;
+uint32_t     *sweep_lowdata_addr;
+uint32_t     *sweep_highdata_addr;
 
 
 // Initialize memory mapping
@@ -120,89 +117,59 @@ int init_mem()
 
     hex_mux_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + HEX_MUX_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
 
-    ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    stat_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_STAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    reg_cntclk_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTSCLK_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    // ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    // stat_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_STAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    // reg_cntclk_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTSCLK_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
 
-    *reg_cntclk_addr = 4;
+    // *reg_cntclk_addr = 4;
 
-    reg_cntclrn_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTCLRN_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    reg_cntsmpl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTSMPL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    reg_cntckad_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTCKAD_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    reg_cntradc_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTRADC_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    reg_cntconv_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTCONV_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    // reg_cntclrn_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTCLRN_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    // reg_cntsmpl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTSMPL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    // reg_cntckad_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTCKAD_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    // reg_cntradc_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTRADC_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    // reg_cntconv_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ANA_OPT_LOGIC_CNTCONV_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
 
-    /////// spi interface ///////////
-    spi_ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SPI_INT_0_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    spi_ctrl_txdata = spi_ctrl_addr + 1;
-    spi_ctrl_status = spi_ctrl_addr + 2;
-    spi_ctrl_control = spi_ctrl_addr + 3;
-    spi_ctrl_ss = spi_ctrl_addr + 5;
+    ///// spi interface ///////////
+    // spi_ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SPI_INT_0_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    // spi_ctrl_txdata = spi_ctrl_addr + 1;
+    // spi_ctrl_status = spi_ctrl_addr + 2;
+    // spi_ctrl_control = spi_ctrl_addr + 3;
+    // spi_ctrl_ss = spi_ctrl_addr + 5;
 
-    /////// pll calibration //////////
-    pll_tune_ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + PLL_TUNE_0_CTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    pll_tune_cntr_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + PLL_TUNE_0_CNTR_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    pll_tune_cntf_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + PLL_TUNE_0_CNTF_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    ///// pll calibration //////////
+    // pll_tune_ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + PLL_TUNE_0_CTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    // pll_tune_cntr_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + PLL_TUNE_0_CNTR_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    // pll_tune_cntf_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + PLL_TUNE_0_CNTF_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
 
-    // the AMM I/O of sa_test_logic module
-/*    sactrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_SACTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    sastat_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_SASTAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    initx1_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_INITX1_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    initx2_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_INITX2_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    initx3_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_INITX3_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    initx4_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_INITX4_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    //// the AMM I/O of sa_test_logic module
+    // cfsa4Dctrl_addr   = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_SACTRL_BASE) & (unsigned long) (HW_REGS_MASK));
+    // cfsa4Dstat_addr   = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_SASTAT_BASE) & (unsigned long) (HW_REGS_MASK));
+    // cfsainit4Dx1_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_INITX1_BASE) & (unsigned long) (HW_REGS_MASK));
+    // cfsainit4Dx2_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_INITX2_BASE) & (unsigned long) (HW_REGS_MASK));
+    // cfsainit4Dx3_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_INITX3_BASE) & (unsigned long) (HW_REGS_MASK));
+    // cfsainit4Dx4_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_INITX4_BASE) & (unsigned long) (HW_REGS_MASK));
 
-    iternum_addr = virtual_base+ ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_ITERNUM_BASE) & ( unsigned long)( HW_REGS_MASK ) );
-    anain_addr  = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_ANAIN_BASE  ) & ( unsigned long)( HW_REGS_MASK ) );
-    tunex1_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_TUNEX1_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    tunex2_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_TUNEX2_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    tunex3_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_TUNEX3_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    tunex4_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_TEST_LOGIC_TUNEX4_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    // cfsaiter4Dsa_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_ITERNUM_BASE) & (unsigned long) (HW_REGS_MASK));
+    // cfsaiter4Dss_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_ITERSS_BASE) & (unsigned long) (HW_REGS_MASK));
+    // cfsainitT4D_addr  = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_INITT_BASE)  & (unsigned long) (HW_REGS_MASK));
+    // cfsatolin4D_addr  = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TOL_BASE)    & (unsigned long) (HW_REGS_MASK));
+    // cfsaoffin4D_addr  = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_AOFF_BASE)   & (unsigned long) (HW_REGS_MASK));
+    // cfsa3dbfactor0_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_SS_3DBFACTOR0_BASE)   & (unsigned long) (HW_REGS_MASK));
+    // cfsa3dbfactor1_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_SS_3DBFACTOR1_BASE)   & (unsigned long) (HW_REGS_MASK));
+    // cfsaadcin4D_addr  = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_ADC_BASE)    & (unsigned long) (HW_REGS_MASK));
+    // cfsathreshold_addr= virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_SS_THRESHOLD_BASE)    & (unsigned long) (HW_REGS_MASK));
 
-    // the AMM I/O of sa_4D_logic module
-    sa4Dctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_SACTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    sa4Dstat_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_SASTAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    init4Dx1_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_INITX1_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    init4Dx2_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_INITX2_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    init4Dx3_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_INITX3_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    init4Dx4_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_INITX4_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-
-    iter4Dsa_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_ITERNUM_BASE) & ( unsigned long)( HW_REGS_MASK ) );
-    iter4Dss_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_ITERSS_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    initT4D_addr  = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_INITT_BASE  ) & ( unsigned long)( HW_REGS_MASK ) );
-    anain4D_addr  = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_ANAIN_BASE  ) & ( unsigned long)( HW_REGS_MASK ) );
-    tune4Dx1_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_TUNEX1_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    tune4Dx2_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_TUNEX2_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    tune4Dx3_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_TUNEX3_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-    tune4Dx4_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + SA_4D_LOGIC_TUNEX4_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
-*/
-    // the AMM I/O of digital_test_logic module
-    cfsa4Dctrl_addr   = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_SACTRL_BASE) & (unsigned long) (HW_REGS_MASK));
-    cfsa4Dstat_addr   = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_SASTAT_BASE) & (unsigned long) (HW_REGS_MASK));
-    cfsainit4Dx1_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_INITX1_BASE) & (unsigned long) (HW_REGS_MASK));
-    cfsainit4Dx2_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_INITX2_BASE) & (unsigned long) (HW_REGS_MASK));
-    cfsainit4Dx3_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_INITX3_BASE) & (unsigned long) (HW_REGS_MASK));
-    cfsainit4Dx4_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_INITX4_BASE) & (unsigned long) (HW_REGS_MASK));
-
-    cfsaiter4Dsa_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_ITERNUM_BASE) & (unsigned long) (HW_REGS_MASK));
-    cfsaiter4Dss_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_ITERSS_BASE) & (unsigned long) (HW_REGS_MASK));
-    cfsainitT4D_addr  = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_INITT_BASE)  & (unsigned long) (HW_REGS_MASK));
-    cfsatolin4D_addr  = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TOL_BASE)    & (unsigned long) (HW_REGS_MASK));
-    cfsaoffin4D_addr  = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_AOFF_BASE)   & (unsigned long) (HW_REGS_MASK));
-    cfsa3dbfactor0_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_SS_3DBFACTOR0_BASE)   & (unsigned long) (HW_REGS_MASK));
-    cfsa3dbfactor1_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_SS_3DBFACTOR1_BASE)   & (unsigned long) (HW_REGS_MASK));
-    cfsaadcin4D_addr  = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_ADC_BASE)    & (unsigned long) (HW_REGS_MASK));
-    cfsathreshold_addr= virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_SS_THRESHOLD_BASE)    & (unsigned long) (HW_REGS_MASK));
-
-    cfsatune4Dx1_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX1_BASE) & (unsigned long) (HW_REGS_MASK));
-    cfsatune4Dx2_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX2_BASE) & (unsigned long) (HW_REGS_MASK));
-    cfsatune4Dx3_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX3_BASE) & (unsigned long) (HW_REGS_MASK));
-    cfsatune4Dx4_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX4_BASE) & (unsigned long) (HW_REGS_MASK));
+    // cfsatune4Dx1_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX1_BASE) & (unsigned long) (HW_REGS_MASK));
+    // cfsatune4Dx2_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX2_BASE) & (unsigned long) (HW_REGS_MASK));
+    // cfsatune4Dx3_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX3_BASE) & (unsigned long) (HW_REGS_MASK));
+    // cfsatune4Dx4_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + CFSA_4D_LOGIC_TUNEX4_BASE) & (unsigned long) (HW_REGS_MASK));
 
     /////// tapeout chip 3 //////
-    chip3_set_ctrl_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_CTRL_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;       // chip test control register
-    chip3_chk_stat_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_STAT_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;       // chip test control register       // chip test status register
-    chip3_set_clkcnt_addr=virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + CHIP_TEST_LOGIC_CNTSCLK_SC_BASE ) & ( unsigned long)( HW_REGS_MASK ) );;;     // chip test clock counter
+    sweepctrl_addr    = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + SWEEP_LOGIC_CTRL_BASE)    & (unsigned long) (HW_REGS_MASK));
+    sweepcntsclk_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + SWEEP_LOGIC_CNTSCLK_BASE) & (unsigned long) (HW_REGS_MASK));
+    sweepstat_addr    = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + SWEEP_LOGIC_STAT_BASE)    & (unsigned long) (HW_REGS_MASK));
+    sweep_lowdata_addr= virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + SWEEP_LOGIC_LOW_BASE)     & (unsigned long) (HW_REGS_MASK));
+    sweep_highdata_addr=virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + SWEEP_LOGIC_HIGH_BASE)    & (unsigned long) (HW_REGS_MASK));
 
     return(0);
 }
@@ -230,20 +197,20 @@ int clean_mem()
 // Initia1 the local ctrl_addr to remember the status in *ctrl_addr
 int syn_ctrl()
 {
-    local_ctrl_addr = 0;
-    *ctrl_addr = local_ctrl_addr;
+    // local_ctrl_addr = 0;
+    // *ctrl_addr = local_ctrl_addr;
 
-    /*local_sactrl_addr = 0;
-    *sactrl_addr = local_sactrl_addr;
+    // local_sactrl_addr = 0;
+    // *sactrl_addr = local_sactrl_addr;
 
-    local_sa4Dctrl_addr = 0;
-    *sa4Dctrl_addr = local_sa4Dctrl_addr;*/
+    // local_sa4Dctrl_addr = 0;
+    // *sa4Dctrl_addr = local_sa4Dctrl_addr;
 
-    local_cfsa4Dctrl_addr = 0;
-    *cfsa4Dctrl_addr = local_cfsa4Dctrl_addr;
+    // local_cfsa4Dctrl_addr = 0;
+    // *cfsa4Dctrl_addr = local_cfsa4Dctrl_addr;
 
-    local_chip3_ctrl_addr = 0;
-    *chip3_set_ctrl_addr = local_chip3_ctrl_addr;
+    local_sweepctrl_addr = 0;
+    *sweepctrl_addr = local_sweepctrl_addr;
 
     avs_wait();
     return (0);

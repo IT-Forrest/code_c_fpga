@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="test_cpuwjf" />
+		<Option pch_mode="2" />
+		<Option compiler="arm-elf-gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/test_cpuwjf" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="arm-elf-gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/test_cpuwjf" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="arm-elf-gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../ana_opt_2/device.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ana_opt_2/device.h" />
+		<Unit filename="../ana_opt_2/hps_0.h" />
+		<Unit filename="../ana_opt_2/psoc_port.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ana_opt_2/psoc_port.h" />
+		<Unit filename="../ana_opt_2/serial_port_io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ana_opt_2/serial_port_io.h" />
+		<Unit filename="../ana_opt_2/set_config.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ana_opt_2/set_config.h" />
+		<Unit filename="test_cpuwjf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

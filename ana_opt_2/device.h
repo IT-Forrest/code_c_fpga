@@ -93,25 +93,8 @@ typedef char char8;
 #define IDX_CFSA_CFAVRG  (23)               // CF Average measurment number
 
 #define IDX_STAT_SA4DRDY (0)
-
-/////////////////
-#define IDX_CTRL_STA_SC     (0)
-#define IDX_CTRL_SIN_AB     (1)
-#define IDX_CTRL_SEL_A      (2)
-#define IDX_CTRL_SEL_B      (3)
-#define IDX_CTRL_LAT_A      (4)
-#define IDX_CTRL_LAT_B      (5)
-#define IDX_CTRL_FLAG_A     (6)
-#define IDX_CTRL_FLAG_B     (7)
-#define IDX_CTRL_STA_CLK    (8)
-#define IDX_CTRL_RST_N      (9)
-#define IDX_CTRL_ONE_CLK   (10)                   // unused right now
-#define IDX_CTRL_RST_ANA   (11)                   // Reset Analog Circuit
-
-#define IDX_STAT_SCREADY    (0)                   // bit position. Scan Chain. Ready
-#define IDX_STAT_SCSO_A     (1)                   // bit position. Scan Chain. SO_ANA
-#define IDX_STAT_SCSO_B     (2)                   // bit position. Scan Chain. SO_DIG
-//#define IDX_STAT_ONERDY     (3)                   // bit position. Measurement. Ready
+#define IDX_CTRL_LOW     (1)
+#define IDX_CTRL_HIGH    (2)
 
 int USBUART_1_CDCIsReady();
 int USBUART_1_DataIsReady();
@@ -223,6 +206,14 @@ void Chip3_Idx_Ctrl_Rst_Ana_Write(int rd_val);
 int Chip3_Idx_Stat_Scrdy_Read();
 int Chip3_Idx_Stat_Scso_A_Read();
 int Chip3_Idx_Stat_Scso_B_Read();
+
+void SWEEP_START_Write(int rd_val);
+void SWEEP_SETLOW_Write(int rd_val);
+void SWEEP_SETHIGH_Write(int rd_val);
+void SWEEP_CNTSCLK_Write(int bit_val);
+void SWEEP_LOWDATA_Write(int data_val);
+void SWEEP_HIGHDATA_Write(int data_val);
+int  SWEEP_RDY_Read();
 
 int DEBUG_Read();
 float sqrt12( const float N);
