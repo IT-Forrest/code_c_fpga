@@ -113,136 +113,158 @@
 #define HEX_MUX_END 0x23
 
 /*
- * Macros for device 'ana_opt_logic_ctrl', class 'ana_opt_logic'
- * The macros are prefixed with 'ANA_OPT_LOGIC_CTRL_'.
+ * Macros for device 'sweep_logic_ctrl', class 'sweep_logic'
+ * The macros are prefixed with 'SWEEP_LOGIC_CTRL_'.
  * The prefix is the slave descriptor.
  */
-#define ANA_OPT_LOGIC_CTRL_COMPONENT_TYPE ana_opt_logic
-#define ANA_OPT_LOGIC_CTRL_COMPONENT_NAME ana_opt_logic
-#define ANA_OPT_LOGIC_CTRL_BASE 0x30
-#define ANA_OPT_LOGIC_CTRL_SPAN 4
-#define ANA_OPT_LOGIC_CTRL_END 0x33
+#define SWEEP_LOGIC_CTRL_COMPONENT_TYPE sweep_logic
+#define SWEEP_LOGIC_CTRL_COMPONENT_NAME sweep_logic
+#define SWEEP_LOGIC_CTRL_BASE 0x30
+#define SWEEP_LOGIC_CTRL_SPAN 4
+#define SWEEP_LOGIC_CTRL_END 0x33
 
 /*
- * Macros for device 'ana_opt_logic_stat', class 'ana_opt_logic'
- * The macros are prefixed with 'ANA_OPT_LOGIC_STAT_'.
+ * Macros for device 'sweep_logic_stat', class 'sweep_logic'
+ * The macros are prefixed with 'SWEEP_LOGIC_STAT_'.
  * The prefix is the slave descriptor.
  */
-#define ANA_OPT_LOGIC_STAT_COMPONENT_TYPE ana_opt_logic
-#define ANA_OPT_LOGIC_STAT_COMPONENT_NAME ana_opt_logic
-#define ANA_OPT_LOGIC_STAT_BASE 0x34
-#define ANA_OPT_LOGIC_STAT_SPAN 4
-#define ANA_OPT_LOGIC_STAT_END 0x37
+#define SWEEP_LOGIC_STAT_COMPONENT_TYPE sweep_logic
+#define SWEEP_LOGIC_STAT_COMPONENT_NAME sweep_logic
+#define SWEEP_LOGIC_STAT_BASE 0x34
+#define SWEEP_LOGIC_STAT_SPAN 4
+#define SWEEP_LOGIC_STAT_END 0x37
 
 /*
- * Macros for device 'ana_opt_logic_cntsclk', class 'ana_opt_logic'
- * The macros are prefixed with 'ANA_OPT_LOGIC_CNTSCLK_'.
+ * Macros for device 'sweep_logic_cntsclk', class 'sweep_logic'
+ * The macros are prefixed with 'SWEEP_LOGIC_CNTSCLK_'.
  * The prefix is the slave descriptor.
  */
-#define ANA_OPT_LOGIC_CNTSCLK_COMPONENT_TYPE ana_opt_logic
-#define ANA_OPT_LOGIC_CNTSCLK_COMPONENT_NAME ana_opt_logic
-#define ANA_OPT_LOGIC_CNTSCLK_BASE 0x38
-#define ANA_OPT_LOGIC_CNTSCLK_SPAN 4
-#define ANA_OPT_LOGIC_CNTSCLK_END 0x3b
+#define SWEEP_LOGIC_CNTSCLK_COMPONENT_TYPE sweep_logic
+#define SWEEP_LOGIC_CNTSCLK_COMPONENT_NAME sweep_logic
+#define SWEEP_LOGIC_CNTSCLK_BASE 0x38
+#define SWEEP_LOGIC_CNTSCLK_SPAN 4
+#define SWEEP_LOGIC_CNTSCLK_END 0x3b
 
 /*
- * Macros for device 'ana_opt_logic_cntclrn', class 'ana_opt_logic'
- * The macros are prefixed with 'ANA_OPT_LOGIC_CNTCLRN_'.
+ * Macros for device 'sweep_logic_low', class 'sweep_logic'
+ * The macros are prefixed with 'SWEEP_LOGIC_LOW_'.
  * The prefix is the slave descriptor.
  */
-#define ANA_OPT_LOGIC_CNTCLRN_COMPONENT_TYPE ana_opt_logic
-#define ANA_OPT_LOGIC_CNTCLRN_COMPONENT_NAME ana_opt_logic
-#define ANA_OPT_LOGIC_CNTCLRN_BASE 0x3c
-#define ANA_OPT_LOGIC_CNTCLRN_SPAN 4
-#define ANA_OPT_LOGIC_CNTCLRN_END 0x3f
+#define SWEEP_LOGIC_LOW_COMPONENT_TYPE sweep_logic
+#define SWEEP_LOGIC_LOW_COMPONENT_NAME sweep_logic
+#define SWEEP_LOGIC_LOW_BASE 0x3c
+#define SWEEP_LOGIC_LOW_SPAN 4
+#define SWEEP_LOGIC_LOW_END 0x3f
 
 /*
- * Macros for device 'ana_opt_logic_cntsmpl', class 'ana_opt_logic'
- * The macros are prefixed with 'ANA_OPT_LOGIC_CNTSMPL_'.
+ * Macros for device 'sweep_logic_high', class 'sweep_logic'
+ * The macros are prefixed with 'SWEEP_LOGIC_HIGH_'.
  * The prefix is the slave descriptor.
  */
-#define ANA_OPT_LOGIC_CNTSMPL_COMPONENT_TYPE ana_opt_logic
-#define ANA_OPT_LOGIC_CNTSMPL_COMPONENT_NAME ana_opt_logic
-#define ANA_OPT_LOGIC_CNTSMPL_BASE 0x40
-#define ANA_OPT_LOGIC_CNTSMPL_SPAN 4
-#define ANA_OPT_LOGIC_CNTSMPL_END 0x43
+#define SWEEP_LOGIC_HIGH_COMPONENT_TYPE sweep_logic
+#define SWEEP_LOGIC_HIGH_COMPONENT_NAME sweep_logic
+#define SWEEP_LOGIC_HIGH_BASE 0x40
+#define SWEEP_LOGIC_HIGH_SPAN 4
+#define SWEEP_LOGIC_HIGH_END 0x43
 
 /*
- * Macros for device 'ana_opt_logic_cntckad', class 'ana_opt_logic'
- * The macros are prefixed with 'ANA_OPT_LOGIC_CNTCKAD_'.
+ * Macros for device 'FPGA_CHIP_LOGIC_cpuctrl', class 'SRAM_IO_CTRL_LOGIC'
+ * The macros are prefixed with 'FPGA_CHIP_LOGIC_CPUCTRL_'.
  * The prefix is the slave descriptor.
  */
-#define ANA_OPT_LOGIC_CNTCKAD_COMPONENT_TYPE ana_opt_logic
-#define ANA_OPT_LOGIC_CNTCKAD_COMPONENT_NAME ana_opt_logic
-#define ANA_OPT_LOGIC_CNTCKAD_BASE 0x44
-#define ANA_OPT_LOGIC_CNTCKAD_SPAN 4
-#define ANA_OPT_LOGIC_CNTCKAD_END 0x47
+#define FPGA_CHIP_LOGIC_CPUCTRL_COMPONENT_TYPE SRAM_IO_CTRL_LOGIC
+#define FPGA_CHIP_LOGIC_CPUCTRL_COMPONENT_NAME FPGA_CHIP_LOGIC
+#define FPGA_CHIP_LOGIC_CPUCTRL_BASE 0x44
+#define FPGA_CHIP_LOGIC_CPUCTRL_SPAN 4
+#define FPGA_CHIP_LOGIC_CPUCTRL_END 0x47
 
 /*
- * Macros for device 'ana_opt_logic_cntradc', class 'ana_opt_logic'
- * The macros are prefixed with 'ANA_OPT_LOGIC_CNTRADC_'.
+ * Macros for device 'FPGA_CHIP_LOGIC_cpustat', class 'SRAM_IO_CTRL_LOGIC'
+ * The macros are prefixed with 'FPGA_CHIP_LOGIC_CPUSTAT_'.
  * The prefix is the slave descriptor.
  */
-#define ANA_OPT_LOGIC_CNTRADC_COMPONENT_TYPE ana_opt_logic
-#define ANA_OPT_LOGIC_CNTRADC_COMPONENT_NAME ana_opt_logic
-#define ANA_OPT_LOGIC_CNTRADC_BASE 0x48
-#define ANA_OPT_LOGIC_CNTRADC_SPAN 4
-#define ANA_OPT_LOGIC_CNTRADC_END 0x4b
+#define FPGA_CHIP_LOGIC_CPUSTAT_COMPONENT_TYPE SRAM_IO_CTRL_LOGIC
+#define FPGA_CHIP_LOGIC_CPUSTAT_COMPONENT_NAME FPGA_CHIP_LOGIC
+#define FPGA_CHIP_LOGIC_CPUSTAT_BASE 0x48
+#define FPGA_CHIP_LOGIC_CPUSTAT_SPAN 4
+#define FPGA_CHIP_LOGIC_CPUSTAT_END 0x4b
 
 /*
- * Macros for device 'ana_opt_logic_cntconv', class 'ana_opt_logic'
- * The macros are prefixed with 'ANA_OPT_LOGIC_CNTCONV_'.
+ * Macros for device 'FPGA_CHIP_LOGIC_cntsclk', class 'SRAM_IO_CTRL_LOGIC'
+ * The macros are prefixed with 'FPGA_CHIP_LOGIC_CNTSCLK_'.
  * The prefix is the slave descriptor.
  */
-#define ANA_OPT_LOGIC_CNTCONV_COMPONENT_TYPE ana_opt_logic
-#define ANA_OPT_LOGIC_CNTCONV_COMPONENT_NAME ana_opt_logic
-#define ANA_OPT_LOGIC_CNTCONV_BASE 0x4c
-#define ANA_OPT_LOGIC_CNTCONV_SPAN 4
-#define ANA_OPT_LOGIC_CNTCONV_END 0x4f
+#define FPGA_CHIP_LOGIC_CNTSCLK_COMPONENT_TYPE SRAM_IO_CTRL_LOGIC
+#define FPGA_CHIP_LOGIC_CNTSCLK_COMPONENT_NAME FPGA_CHIP_LOGIC
+#define FPGA_CHIP_LOGIC_CNTSCLK_BASE 0x4c
+#define FPGA_CHIP_LOGIC_CNTSCLK_SPAN 4
+#define FPGA_CHIP_LOGIC_CNTSCLK_END 0x4f
 
 /*
- * Macros for device 'chip_test_logic_ctrl', class 'chip_test_logic'
- * The macros are prefixed with 'CHIP_TEST_LOGIC_CTRL_'.
+ * Macros for device 'FPGA_CHIP_LOGIC_adc', class 'SRAM_IO_CTRL_LOGIC'
+ * The macros are prefixed with 'FPGA_CHIP_LOGIC_ADC_'.
  * The prefix is the slave descriptor.
  */
-#define CHIP_TEST_LOGIC_CTRL_COMPONENT_TYPE chip_test_logic
-#define CHIP_TEST_LOGIC_CTRL_COMPONENT_NAME chip_test_logic
-#define CHIP_TEST_LOGIC_CTRL_BASE 0x50
-#define CHIP_TEST_LOGIC_CTRL_SPAN 4
-#define CHIP_TEST_LOGIC_CTRL_END 0x53
+#define FPGA_CHIP_LOGIC_ADC_COMPONENT_TYPE SRAM_IO_CTRL_LOGIC
+#define FPGA_CHIP_LOGIC_ADC_COMPONENT_NAME FPGA_CHIP_LOGIC
+#define FPGA_CHIP_LOGIC_ADC_BASE 0x50
+#define FPGA_CHIP_LOGIC_ADC_SPAN 4
+#define FPGA_CHIP_LOGIC_ADC_END 0x53
 
 /*
- * Macros for device 'chip_test_logic_stat', class 'chip_test_logic'
- * The macros are prefixed with 'CHIP_TEST_LOGIC_STAT_'.
+ * Macros for device 'FPGA_CHIP_LOGIC_scan_chain', class 'SRAM_IO_CTRL_LOGIC'
+ * The macros are prefixed with 'FPGA_CHIP_LOGIC_SCAN_CHAIN_'.
  * The prefix is the slave descriptor.
  */
-#define CHIP_TEST_LOGIC_STAT_COMPONENT_TYPE chip_test_logic
-#define CHIP_TEST_LOGIC_STAT_COMPONENT_NAME chip_test_logic
-#define CHIP_TEST_LOGIC_STAT_BASE 0x54
-#define CHIP_TEST_LOGIC_STAT_SPAN 4
-#define CHIP_TEST_LOGIC_STAT_END 0x57
+#define FPGA_CHIP_LOGIC_SCAN_CHAIN_COMPONENT_TYPE SRAM_IO_CTRL_LOGIC
+#define FPGA_CHIP_LOGIC_SCAN_CHAIN_COMPONENT_NAME FPGA_CHIP_LOGIC
+#define FPGA_CHIP_LOGIC_SCAN_CHAIN_BASE 0x54
+#define FPGA_CHIP_LOGIC_SCAN_CHAIN_SPAN 4
+#define FPGA_CHIP_LOGIC_SCAN_CHAIN_END 0x57
 
 /*
- * Macros for device 'chip_test_logic_cntsclk_sc', class 'chip_test_logic'
- * The macros are prefixed with 'CHIP_TEST_LOGIC_CNTSCLK_SC_'.
+ * Macros for device 'FPGA_CHIP_LOGIC_sram_addr_wrt', class 'SRAM_IO_CTRL_LOGIC'
+ * The macros are prefixed with 'FPGA_CHIP_LOGIC_SRAM_ADDR_WRT_'.
  * The prefix is the slave descriptor.
  */
-#define CHIP_TEST_LOGIC_CNTSCLK_SC_COMPONENT_TYPE chip_test_logic
-#define CHIP_TEST_LOGIC_CNTSCLK_SC_COMPONENT_NAME chip_test_logic
-#define CHIP_TEST_LOGIC_CNTSCLK_SC_BASE 0x58
-#define CHIP_TEST_LOGIC_CNTSCLK_SC_SPAN 4
-#define CHIP_TEST_LOGIC_CNTSCLK_SC_END 0x5b
+#define FPGA_CHIP_LOGIC_SRAM_ADDR_WRT_COMPONENT_TYPE SRAM_IO_CTRL_LOGIC
+#define FPGA_CHIP_LOGIC_SRAM_ADDR_WRT_COMPONENT_NAME FPGA_CHIP_LOGIC
+#define FPGA_CHIP_LOGIC_SRAM_ADDR_WRT_BASE 0x58
+#define FPGA_CHIP_LOGIC_SRAM_ADDR_WRT_SPAN 4
+#define FPGA_CHIP_LOGIC_SRAM_ADDR_WRT_END 0x5b
 
 /*
- * Macros for device 'cfsa_4D_logic_sactrl', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_SACTRL_'.
+ * Macros for device 'FPGA_CHIP_LOGIC_sram_data_wrt', class 'SRAM_IO_CTRL_LOGIC'
+ * The macros are prefixed with 'FPGA_CHIP_LOGIC_SRAM_DATA_WRT_'.
  * The prefix is the slave descriptor.
  */
-#define CFSA_4D_LOGIC_SACTRL_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_SACTRL_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_SACTRL_BASE 0xec
-#define CFSA_4D_LOGIC_SACTRL_SPAN 4
-#define CFSA_4D_LOGIC_SACTRL_END 0xef
+#define FPGA_CHIP_LOGIC_SRAM_DATA_WRT_COMPONENT_TYPE SRAM_IO_CTRL_LOGIC
+#define FPGA_CHIP_LOGIC_SRAM_DATA_WRT_COMPONENT_NAME FPGA_CHIP_LOGIC
+#define FPGA_CHIP_LOGIC_SRAM_DATA_WRT_BASE 0x5c
+#define FPGA_CHIP_LOGIC_SRAM_DATA_WRT_SPAN 4
+#define FPGA_CHIP_LOGIC_SRAM_DATA_WRT_END 0x5f
+
+/*
+ * Macros for device 'FPGA_CHIP_LOGIC_sram_addr_rd', class 'SRAM_IO_CTRL_LOGIC'
+ * The macros are prefixed with 'FPGA_CHIP_LOGIC_SRAM_ADDR_RD_'.
+ * The prefix is the slave descriptor.
+ */
+#define FPGA_CHIP_LOGIC_SRAM_ADDR_RD_COMPONENT_TYPE SRAM_IO_CTRL_LOGIC
+#define FPGA_CHIP_LOGIC_SRAM_ADDR_RD_COMPONENT_NAME FPGA_CHIP_LOGIC
+#define FPGA_CHIP_LOGIC_SRAM_ADDR_RD_BASE 0x60
+#define FPGA_CHIP_LOGIC_SRAM_ADDR_RD_SPAN 4
+#define FPGA_CHIP_LOGIC_SRAM_ADDR_RD_END 0x63
+
+/*
+ * Macros for device 'FPGA_CHIP_LOGIC_sram_data_rd', class 'SRAM_IO_CTRL_LOGIC'
+ * The macros are prefixed with 'FPGA_CHIP_LOGIC_SRAM_DATA_RD_'.
+ * The prefix is the slave descriptor.
+ */
+#define FPGA_CHIP_LOGIC_SRAM_DATA_RD_COMPONENT_TYPE SRAM_IO_CTRL_LOGIC
+#define FPGA_CHIP_LOGIC_SRAM_DATA_RD_COMPONENT_NAME FPGA_CHIP_LOGIC
+#define FPGA_CHIP_LOGIC_SRAM_DATA_RD_BASE 0x64
+#define FPGA_CHIP_LOGIC_SRAM_DATA_RD_SPAN 4
+#define FPGA_CHIP_LOGIC_SRAM_DATA_RD_END 0x67
 
 /*
  * Macros for device 'spi_int_0', class 'altera_avalon_spi'
@@ -274,314 +296,6 @@
 #define SPI_INT_0_TARGETSSDELAY "0.0"
 
 /*
- * Macros for device 'cfsa_4D_logic_sastat', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_SASTAT_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_SASTAT_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_SASTAT_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_SASTAT_BASE 0x120
-#define CFSA_4D_LOGIC_SASTAT_SPAN 4
-#define CFSA_4D_LOGIC_SASTAT_END 0x123
-
-/*
- * Macros for device 'cfsa_4D_logic_initx1', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_INITX1_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_INITX1_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_INITX1_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_INITX1_BASE 0x124
-#define CFSA_4D_LOGIC_INITX1_SPAN 4
-#define CFSA_4D_LOGIC_INITX1_END 0x127
-
-/*
- * Macros for device 'cfsa_4D_logic_initx2', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_INITX2_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_INITX2_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_INITX2_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_INITX2_BASE 0x128
-#define CFSA_4D_LOGIC_INITX2_SPAN 4
-#define CFSA_4D_LOGIC_INITX2_END 0x12b
-
-/*
- * Macros for device 'cfsa_4D_logic_initx3', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_INITX3_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_INITX3_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_INITX3_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_INITX3_BASE 0x12c
-#define CFSA_4D_LOGIC_INITX3_SPAN 4
-#define CFSA_4D_LOGIC_INITX3_END 0x12f
-
-/*
- * Macros for device 'cfsa_4D_logic_initx4', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_INITX4_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_INITX4_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_INITX4_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_INITX4_BASE 0x130
-#define CFSA_4D_LOGIC_INITX4_SPAN 4
-#define CFSA_4D_LOGIC_INITX4_END 0x133
-
-/*
- * Macros for device 'cfsa_4D_logic_iternum', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_ITERNUM_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_ITERNUM_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_ITERNUM_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_ITERNUM_BASE 0x134
-#define CFSA_4D_LOGIC_ITERNUM_SPAN 4
-#define CFSA_4D_LOGIC_ITERNUM_END 0x137
-
-/*
- * Macros for device 'cfsa_4D_logic_iterss', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_ITERSS_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_ITERSS_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_ITERSS_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_ITERSS_BASE 0x138
-#define CFSA_4D_LOGIC_ITERSS_SPAN 4
-#define CFSA_4D_LOGIC_ITERSS_END 0x13b
-
-/*
- * Macros for device 'cfsa_4D_logic_initt', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_INITT_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_INITT_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_INITT_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_INITT_BASE 0x13c
-#define CFSA_4D_LOGIC_INITT_SPAN 4
-#define CFSA_4D_LOGIC_INITT_END 0x13f
-
-/*
- * Macros for device 'cfsa_4D_logic_tol', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_TOL_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_TOL_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_TOL_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_TOL_BASE 0x140
-#define CFSA_4D_LOGIC_TOL_SPAN 4
-#define CFSA_4D_LOGIC_TOL_END 0x143
-
-/*
- * Macros for device 'cfsa_4D_logic_aoff', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_AOFF_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_AOFF_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_AOFF_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_AOFF_BASE 0x144
-#define CFSA_4D_LOGIC_AOFF_SPAN 4
-#define CFSA_4D_LOGIC_AOFF_END 0x147
-
-/*
- * Macros for device 'cfsa_4D_logic_adc', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_ADC_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_ADC_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_ADC_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_ADC_BASE 0x148
-#define CFSA_4D_LOGIC_ADC_SPAN 4
-#define CFSA_4D_LOGIC_ADC_END 0x14b
-
-/*
- * Macros for device 'cfsa_4D_logic_tunex1', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_TUNEX1_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_TUNEX1_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_TUNEX1_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_TUNEX1_BASE 0x14c
-#define CFSA_4D_LOGIC_TUNEX1_SPAN 4
-#define CFSA_4D_LOGIC_TUNEX1_END 0x14f
-
-/*
- * Macros for device 'cfsa_4D_logic_tunex2', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_TUNEX2_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_TUNEX2_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_TUNEX2_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_TUNEX2_BASE 0x150
-#define CFSA_4D_LOGIC_TUNEX2_SPAN 4
-#define CFSA_4D_LOGIC_TUNEX2_END 0x153
-
-/*
- * Macros for device 'cfsa_4D_logic_tunex3', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_TUNEX3_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_TUNEX3_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_TUNEX3_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_TUNEX3_BASE 0x154
-#define CFSA_4D_LOGIC_TUNEX3_SPAN 4
-#define CFSA_4D_LOGIC_TUNEX3_END 0x157
-
-/*
- * Macros for device 'cfsa_4D_logic_tunex4', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_TUNEX4_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_TUNEX4_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_TUNEX4_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_TUNEX4_BASE 0x158
-#define CFSA_4D_LOGIC_TUNEX4_SPAN 4
-#define CFSA_4D_LOGIC_TUNEX4_END 0x15b
-
-/*
- * Macros for device 'cfsa_4D_logic_ss_threshold', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_SS_THRESHOLD_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_SS_THRESHOLD_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_SS_THRESHOLD_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_SS_THRESHOLD_BASE 0x160
-#define CFSA_4D_LOGIC_SS_THRESHOLD_SPAN 4
-#define CFSA_4D_LOGIC_SS_THRESHOLD_END 0x163
-
-/*
- * Macros for device 'cfsa_4D_logic_ss_3dbfactor0', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_SS_3DBFACTOR0_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_SS_3DBFACTOR0_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_SS_3DBFACTOR0_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_SS_3DBFACTOR0_BASE 0x164
-#define CFSA_4D_LOGIC_SS_3DBFACTOR0_SPAN 4
-#define CFSA_4D_LOGIC_SS_3DBFACTOR0_END 0x167
-
-/*
- * Macros for device 'cfsa_4D_logic_ss_3dbfactor1', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_SS_3DBFACTOR1_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_SS_3DBFACTOR1_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_SS_3DBFACTOR1_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_SS_3DBFACTOR1_BASE 0x168
-#define CFSA_4D_LOGIC_SS_3DBFACTOR1_SPAN 4
-#define CFSA_4D_LOGIC_SS_3DBFACTOR1_END 0x16b
-
-/*
- * Macros for device 'sweep_logic_ctrl', class 'sweep_logic'
- * The macros are prefixed with 'SWEEP_LOGIC_CTRL_'.
- * The prefix is the slave descriptor.
- */
-#define SWEEP_LOGIC_CTRL_COMPONENT_TYPE sweep_logic
-#define SWEEP_LOGIC_CTRL_COMPONENT_NAME sweep_logic
-#define SWEEP_LOGIC_CTRL_BASE 0x16c
-#define SWEEP_LOGIC_CTRL_SPAN 4
-#define SWEEP_LOGIC_CTRL_END 0x16f
-
-/*
- * Macros for device 'sweep_logic_stat', class 'sweep_logic'
- * The macros are prefixed with 'SWEEP_LOGIC_STAT_'.
- * The prefix is the slave descriptor.
- */
-#define SWEEP_LOGIC_STAT_COMPONENT_TYPE sweep_logic
-#define SWEEP_LOGIC_STAT_COMPONENT_NAME sweep_logic
-#define SWEEP_LOGIC_STAT_BASE 0x170
-#define SWEEP_LOGIC_STAT_SPAN 4
-#define SWEEP_LOGIC_STAT_END 0x173
-
-/*
- * Macros for device 'sweep_logic_cntsclk', class 'sweep_logic'
- * The macros are prefixed with 'SWEEP_LOGIC_CNTSCLK_'.
- * The prefix is the slave descriptor.
- */
-#define SWEEP_LOGIC_CNTSCLK_COMPONENT_TYPE sweep_logic
-#define SWEEP_LOGIC_CNTSCLK_COMPONENT_NAME sweep_logic
-#define SWEEP_LOGIC_CNTSCLK_BASE 0x174
-#define SWEEP_LOGIC_CNTSCLK_SPAN 4
-#define SWEEP_LOGIC_CNTSCLK_END 0x177
-
-/*
- * Macros for device 'sweep_logic_low', class 'sweep_logic'
- * The macros are prefixed with 'SWEEP_LOGIC_LOW_'.
- * The prefix is the slave descriptor.
- */
-#define SWEEP_LOGIC_LOW_COMPONENT_TYPE sweep_logic
-#define SWEEP_LOGIC_LOW_COMPONENT_NAME sweep_logic
-#define SWEEP_LOGIC_LOW_BASE 0x178
-#define SWEEP_LOGIC_LOW_SPAN 4
-#define SWEEP_LOGIC_LOW_END 0x17b
-
-/*
- * Macros for device 'sweep_logic_high', class 'sweep_logic'
- * The macros are prefixed with 'SWEEP_LOGIC_HIGH_'.
- * The prefix is the slave descriptor.
- */
-#define SWEEP_LOGIC_HIGH_COMPONENT_TYPE sweep_logic
-#define SWEEP_LOGIC_HIGH_COMPONENT_NAME sweep_logic
-#define SWEEP_LOGIC_HIGH_BASE 0x17c
-#define SWEEP_LOGIC_HIGH_SPAN 4
-#define SWEEP_LOGIC_HIGH_END 0x17f
-
-/*
- * Macros for device 'cfsa_4D_logic_ana_bits_in', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_ANA_BITS_IN_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_ANA_BITS_IN_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_ANA_BITS_IN_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_ANA_BITS_IN_BASE 0x180
-#define CFSA_4D_LOGIC_ANA_BITS_IN_SPAN 4
-#define CFSA_4D_LOGIC_ANA_BITS_IN_END 0x183
-
-/*
- * Macros for device 'cfsa_4D_logic_ana_bits', class 'cfsa_4D_logic'
- * The macros are prefixed with 'CFSA_4D_LOGIC_ANA_BITS_'.
- * The prefix is the slave descriptor.
- */
-#define CFSA_4D_LOGIC_ANA_BITS_COMPONENT_TYPE cfsa_4D_logic
-#define CFSA_4D_LOGIC_ANA_BITS_COMPONENT_NAME cfsa_4D_logic
-#define CFSA_4D_LOGIC_ANA_BITS_BASE 0x184
-#define CFSA_4D_LOGIC_ANA_BITS_SPAN 4
-#define CFSA_4D_LOGIC_ANA_BITS_END 0x187
-
-/*
- * Macros for device 'pll_tune_0_cntr', class 'pll_tune'
- * The macros are prefixed with 'PLL_TUNE_0_CNTR_'.
- * The prefix is the slave descriptor.
- */
-#define PLL_TUNE_0_CNTR_COMPONENT_TYPE pll_tune
-#define PLL_TUNE_0_CNTR_COMPONENT_NAME pll_tune_0
-#define PLL_TUNE_0_CNTR_BASE 0x190
-#define PLL_TUNE_0_CNTR_SPAN 4
-#define PLL_TUNE_0_CNTR_END 0x193
-
-/*
- * Macros for device 'pll_tune_0_cntf', class 'pll_tune'
- * The macros are prefixed with 'PLL_TUNE_0_CNTF_'.
- * The prefix is the slave descriptor.
- */
-#define PLL_TUNE_0_CNTF_COMPONENT_TYPE pll_tune
-#define PLL_TUNE_0_CNTF_COMPONENT_NAME pll_tune_0
-#define PLL_TUNE_0_CNTF_BASE 0x194
-#define PLL_TUNE_0_CNTF_SPAN 4
-#define PLL_TUNE_0_CNTF_END 0x197
-
-/*
- * Macros for device 'pll_tune_0_ctrl', class 'pll_tune'
- * The macros are prefixed with 'PLL_TUNE_0_CTRL_'.
- * The prefix is the slave descriptor.
- */
-#define PLL_TUNE_0_CTRL_COMPONENT_TYPE pll_tune
-#define PLL_TUNE_0_CTRL_COMPONENT_NAME pll_tune_0
-#define PLL_TUNE_0_CTRL_BASE 0x198
-#define PLL_TUNE_0_CTRL_SPAN 4
-#define PLL_TUNE_0_CTRL_END 0x19b
-
-/*
  * Macros for device 'sysid_qsys', class 'altera_avalon_sysid_qsys'
  * The macros are prefixed with 'SYSID_QSYS_'.
  * The prefix is the slave descriptor.
@@ -592,7 +306,7 @@
 #define SYSID_QSYS_SPAN 8
 #define SYSID_QSYS_END 0x10007
 #define SYSID_QSYS_ID 2899645186
-#define SYSID_QSYS_TIMESTAMP 1447973899
+#define SYSID_QSYS_TIMESTAMP 1493179175
 
 /*
  * Macros for device 'jtag_uart', class 'altera_avalon_jtag_uart'

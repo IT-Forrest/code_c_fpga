@@ -87,6 +87,16 @@ extern uint32_t     *sweepstat_addr;
 extern uint32_t     *sweep_lowdata_addr;
 extern uint32_t     *sweep_highdata_addr;
 
+extern uint32_t     *chip4_cpuctrl_wrt_addr;
+extern uint32_t     *chip4_cpustat_rd_addr;
+extern uint32_t     *chip4_cntsclk_wrt_addr;
+extern uint32_t     *chip4_sram_addr_wrt_addr;
+extern uint32_t     *chip4_sram_data_wrt_addr;
+extern uint32_t     *chip4_adc_wrt_addr;
+extern uint32_t     *chip4_sram_addr_rd_addr;
+extern uint32_t     *chip4_sram_data_rd_addr;
+extern uint32_t     *chip4_scan_chain_rd_addr;
+
 void avs_wait();
 
 int init_mem();

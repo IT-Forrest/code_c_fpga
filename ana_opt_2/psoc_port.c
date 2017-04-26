@@ -97,6 +97,16 @@ uint32_t     *sweepstat_addr;
 uint32_t     *sweep_lowdata_addr;
 uint32_t     *sweep_highdata_addr;
 
+// scpu logic module
+uint32_t     *chip4_cpuctrl_wrt_addr;
+uint32_t     *chip4_cpustat_rd_addr;
+uint32_t     *chip4_cntsclk_wrt_addr;
+uint32_t     *chip4_sram_addr_wrt_addr;
+uint32_t     *chip4_sram_data_wrt_addr;
+uint32_t     *chip4_adc_wrt_addr;
+uint32_t     *chip4_sram_addr_rd_addr;
+uint32_t     *chip4_sram_data_rd_addr;
+uint32_t     *chip4_scan_chain_rd_addr;
 
 // Initialize memory mapping
 int init_mem()
@@ -170,6 +180,17 @@ int init_mem()
     sweepstat_addr    = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + SWEEP_LOGIC_STAT_BASE)    & (unsigned long) (HW_REGS_MASK));
     sweep_lowdata_addr= virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + SWEEP_LOGIC_LOW_BASE)     & (unsigned long) (HW_REGS_MASK));
     sweep_highdata_addr=virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + SWEEP_LOGIC_HIGH_BASE)    & (unsigned long) (HW_REGS_MASK));
+
+    /////// tapeout chip 4 //////
+    chip4_cpuctrl_wrt_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + FPGA_CHIP_LOGIC_CPUCTRL_BASE) & (unsigned long) (HW_REGS_MASK));
+    chip4_cpustat_rd_addr  = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + FPGA_CHIP_LOGIC_CPUSTAT_BASE) & (unsigned long) (HW_REGS_MASK));
+    chip4_cntsclk_wrt_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + FPGA_CHIP_LOGIC_CNTSCLK_BASE) & (unsigned long) (HW_REGS_MASK));
+    chip4_sram_addr_wrt_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + FPGA_CHIP_LOGIC_SRAM_ADDR_WRT_BASE) & (unsigned long) (HW_REGS_MASK));
+    chip4_sram_data_wrt_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + FPGA_CHIP_LOGIC_SRAM_DATA_WRT_BASE) & (unsigned long) (HW_REGS_MASK));
+    chip4_adc_wrt_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + FPGA_CHIP_LOGIC_ADC_BASE) & (unsigned long) (HW_REGS_MASK));
+    chip4_sram_addr_rd_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + FPGA_CHIP_LOGIC_SRAM_ADDR_RD_BASE) & (unsigned long) (HW_REGS_MASK));
+    chip4_sram_data_rd_addr = virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + FPGA_CHIP_LOGIC_SRAM_DATA_RD_BASE) & (unsigned long) (HW_REGS_MASK));
+    chip4_scan_chain_rd_addr= virtual_base + ((unsigned long) (ALT_LWFPGASLVS_OFST + FPGA_CHIP_LOGIC_SCAN_CHAIN_BASE) & (unsigned long) (HW_REGS_MASK));
 
     return(0);
 }
