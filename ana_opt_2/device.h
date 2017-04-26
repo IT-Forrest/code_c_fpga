@@ -96,6 +96,27 @@ typedef char char8;
 #define IDX_CTRL_LOW     (1)
 #define IDX_CTRL_HIGH    (2)
 
+/// CPU control flags
+#define IDX_SCPU_CTRL_BGN   (0)
+#define IDX_SCPU_CTRL_LOAD  (1)
+#define IDX_SCPU_CTRL_MOD0  (2)
+#define IDX_SCPU_CTRL_MOD1  (3)
+#define IDX_SCPU_APP_DONE   (4)
+#define IDX_SCPU_CPU_BGN    (5)
+#define IDX_SCPU_RST_N      (6)
+#define IDX_SCPU_CPU_WAIT   (7)
+#define IDX_SCPU_TEST_MUX0  (8)
+#define IDX_SCPU_TEST_MUX1  (9)
+#define IDX_SCPU_TEST_MUX2  (10)
+#define IDX_SCPU_CLK_STOP   (11)
+#define IDX_SCPU_CLK_CHG    (12)
+
+/// CPU status flags
+#define IDX_SCPU_CTRL_RDY   (0)
+#define IDX_SCPU_NXT_END    (1)
+#define IDX_SCPU_NXT_CONT   (2)
+#define IDX_SCPU_APP_START  (3)
+
 int USBUART_1_CDCIsReady();
 int USBUART_1_DataIsReady();
 void CFG_CKADC_Write(int bit_val);
@@ -214,6 +235,37 @@ void SWEEP_CNTSCLK_Write(int bit_val);
 void SWEEP_LOWDATA_Write(int data_val);
 void SWEEP_HIGHDATA_Write(int data_val);
 int  SWEEP_RDY_Read();
+
+/// SCPU status flag read functions
+int Chip4_SCPU_Idx_Ctrl_Rdy();
+int Chip4_SCPU_Idx_Nxt_End();
+int Chip4_SCPU_Idx_Nxt_Cont();
+int Chip4_SCPU_Idx_App_Start();
+int Chip4_SCPU_SRAM_ADDR_Read();
+int Chip4_SCPU_SRAM_DATA_Read();
+unsigned int    Chip4_Cpu_Stat_Read();
+unsigned int    Chip4_CCT_Sram_Addr_Read();
+unsigned int    Chip4_CCT_Sram_Data_Read();
+unsigned int    Chip4_Scan_Chain_Read();
+
+/// SCPU control bit wrt functions
+void Chip4_Idx_Scpu_Ctrl_Bgn_Write(int rd_val);
+void Chip4_Idx_Scpu_Ctrl_Load_Write(int rd_val);
+void Chip4_Idx_Scpu_Ctrl_Mod_Write(int rd_val);
+void Chip4_Idx_Scpu_App_Done_Write(int rd_val);
+void Chip4_Idx_Scpu_Cpu_Bgn_Write(int rd_val);
+void Chip4_Idx_Scpu_Rst_N_Write(int rd_val);
+void Chip4_Idx_Scpu_Cpu_Wait_Write(int rd_val);
+void Chip4_Idx_Scpu_Test_Mux_Write(int rd_val);
+void Chip4_Idx_Scpu_Clk_Stop_Write(int rd_val);
+void Chip4_Idx_Scpu_Clk_Freq_Chg_Write(int rd_val);
+
+/// SCPU parameters configuration functions
+void Chip4_SCPU_CNT_SCLK_Write(int rd_val);
+void Chip4_SCPU_SRAM_ADDR_Write(int rd_val);
+void Chip4_SCPU_SRAM_DATA_Write(int rd_val);
+void Chip4_ADC_Write(int data_val);
+void Chip4_Cpu_Ctrl_Flags_Write(int data_val);
 
 int DEBUG_Read();
 float sqrt12( const float N);

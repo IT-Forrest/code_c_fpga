@@ -614,7 +614,89 @@ int SWEEP_RDY_Read()
     return ((*sweepstat_addr >> IDX_STAT_SCRDY) & 1);
 }
 
+/// SCPU status flag read functions
+int Chip4_SCPU_Idx_Ctrl_Rdy()   {return ((*chip4_cpustat_rd_addr >> IDX_SCPU_CTRL_RDY) & 1);}
+int Chip4_SCPU_Idx_Nxt_End()    {return ((*chip4_cpustat_rd_addr >> IDX_SCPU_NXT_END) & 1);}
+int Chip4_SCPU_Idx_Nxt_Cont()   {return ((*chip4_cpustat_rd_addr >> IDX_SCPU_NXT_CONT) & 1);}
+int Chip4_SCPU_Idx_App_Start()  {return ((*chip4_cpustat_rd_addr >> IDX_SCPU_APP_START) & 1);}
+uint32_t Chip4_Cpu_Stat_Read()       {return (*chip4_cpustat_rd_addr);}
+uint32_t Chip4_CCT_Sram_Addr_Read()  {return (*chip4_sram_addr_rd_addr);}
+uint32_t Chip4_CCT_Sram_Data_Read()  {return (*chip4_sram_data_rd_addr);}
+uint32_t Chip4_Scan_Chain_Read()     {return (*chip4_scan_chain_rd_addr);}
 
+/// SCPU control flag wrt functions
+void Chip4_Idx_Scpu_Ctrl_Bgn_Write(int rd_val) {
+    (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_CTRL_BGN):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_CTRL_BGN);
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+    avs_wait();
+}
+void Chip4_Idx_Scpu_Ctrl_Load_Write(int rd_val) {
+    (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_CTRL_LOAD):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_CTRL_LOAD);
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+    avs_wait();
+}
+void Chip4_Idx_Scpu_Ctrl_Mod_Write(int rd_val) {
+    (rd_val & 0x2)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_CTRL_MOD1):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_CTRL_MOD1);
+    (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_CTRL_MOD0):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_CTRL_MOD0);
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+    avs_wait();
+}
+void Chip4_Idx_Scpu_App_Done_Write(int rd_val) {
+    (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_APP_DONE):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_APP_DONE);
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+    avs_wait();
+}
+void Chip4_Idx_Scpu_Cpu_Bgn_Write(int rd_val) {
+    (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_CPU_BGN):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_CPU_BGN);
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+}
+void Chip4_Idx_Scpu_Rst_N_Write(int rd_val) {
+    (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_RST_N):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_RST_N);
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+}
+void Chip4_Idx_Scpu_Cpu_Wait_Write(int rd_val) {
+    (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_CPU_WAIT):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_CPU_WAIT);
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+}
+void Chip4_Idx_Scpu_Test_Mux_Write(int rd_val) {
+    (rd_val & 0x4)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_TEST_MUX2):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_TEST_MUX2);
+    (rd_val & 0x2)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_TEST_MUX1):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_TEST_MUX1);
+    (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_TEST_MUX0):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_TEST_MUX0);
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+    avs_wait();
+}
+void Chip4_Idx_Scpu_Clk_Stop_Write(int rd_val) {
+    (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_CLK_STOP):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_CLK_STOP);
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+    avs_wait();
+}
+void Chip4_Idx_Scpu_Clk_Freq_Chg_Write(int rd_val) {
+    (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_CLK_CHG):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_CLK_CHG);
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+    avs_wait();
+}
+//void Chip4_Cpu_Ctrl_Flags_Write(int data_val) {
+//    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+//    avs_wait();
+//}
+
+/// SCPU parameters configuration functions
+void Chip4_SCPU_CNT_SCLK_Write(int data_val) {
+    *chip4_cntsclk_wrt_addr = data_val;
+    avs_wait();
+}
+void Chip4_SCPU_SRAM_ADDR_Write(int data_val) {
+    *chip4_sram_addr_wrt_addr = data_val;
+    avs_wait();
+}
+void Chip4_SCPU_SRAM_DATA_Write(int data_val) {
+    *chip4_sram_data_wrt_addr = data_val;
+    avs_wait();
+}
+void Chip4_ADC_Write(int data_val) {
+    *chip4_adc_wrt_addr = data_val;
+    avs_wait();
+}
 
 // used for debugging
 int DEBUG_Read() { return 1;}

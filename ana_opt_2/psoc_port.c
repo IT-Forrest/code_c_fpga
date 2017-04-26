@@ -98,6 +98,7 @@ uint32_t     *sweep_lowdata_addr;
 uint32_t     *sweep_highdata_addr;
 
 // scpu logic module
+uint32_t     local_cpuctrl_flag_addr;
 uint32_t     *chip4_cpuctrl_wrt_addr;
 uint32_t     *chip4_cpustat_rd_addr;
 uint32_t     *chip4_cntsclk_wrt_addr;
@@ -232,6 +233,9 @@ int syn_ctrl()
 
     local_sweepctrl_addr = 0;
     *sweepctrl_addr = local_sweepctrl_addr;
+
+    local_cpuctrl_flag_addr = 0;
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
 
     avs_wait();
     return (0);

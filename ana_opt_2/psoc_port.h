@@ -87,6 +87,7 @@ extern uint32_t     *sweepstat_addr;
 extern uint32_t     *sweep_lowdata_addr;
 extern uint32_t     *sweep_highdata_addr;
 
+extern uint32_t     local_cpuctrl_flag_addr;
 extern uint32_t     *chip4_cpuctrl_wrt_addr;
 extern uint32_t     *chip4_cpustat_rd_addr;
 extern uint32_t     *chip4_cntsclk_wrt_addr;
