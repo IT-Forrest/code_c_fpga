@@ -18,10 +18,15 @@
 
 int main() {
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-    uint16  i = 0;//,j;
+    //uint16  i = 0;,j;
     uint8   tst_type = 1;
     uint16  rd_val = 0;
     uint8   len = 0;
+    char8   line[18];//2 bits more than instruction binary arrays
+    uint32  val_inst = 0;
+    FILE    *fd;
+    val_inst = strtol(line,0,2);//just for compiling test
+
     uint8   clk_stop = 0;// 0: TURN on clk to chip
     uint8   cpu_rst_n = 0;// 0: reset; 1: activate
     //0: No change to the output signals                    1: {NXT, SCLK1, SCLK2, LAT, SPI_SO}=FOUT[5:0]
@@ -30,7 +35,7 @@ int main() {
     //6: {NXT, SCLK1, SCLK2, LAT, SPI_SO}=pc_pointer[5:0]   7: {NXT, SCLK1, SCLK2, LAT, SPI_SO}=reg_C_reg[5:0]
     uint8   test_mux_chs = 0;// 0~7 debug settings:
 
-    uint8   ctrl_bgn = 0;// 0: CPU working path; 1: SRAM loading path
+    uint8   ctrl_bgn = 0;// 0: CPU working path; 1: RAM loading path
     //00: serially loop instructions to CCT; 11: CCT send instructions to SRAM parallelly
     //01: CCT fetch contents from SRAM parallelly; 10: nothing happens
     uint8   ctrl_mode = 0;
@@ -46,28 +51,22 @@ int main() {
     uint16  adc_buf[10] = {0};
 
     if (init_mem()) return (1);
-    //if (init_cfg()) return (1);
     if (syn_ctrl()) return (1);
 
-    FILE *fd = fopen("sweep_interval.cfg","r");
-    if (fd == NULL)
-    {
-        printf("open file failed!\n");
-        return (1);
-    }
-
-    //while(fscanf(fd,"%d",&fint))
-    while(fgets((char*)fd_str,10,fd))
-    {
-        ((char*)fd_str)[9] = '\0';
-        adc_buf[i] = atoi((char*)fd_str);
-        i++;
-    }
-
-    //Since FPGA code are still running, registers keep the old value. Thus we clean them.
-    //coe_sweep_bits = (reg_low||reg_high)?{reg_high_bits,reg_low_bits}:sweep_cntsclk[7:0];
-    //SWEEP_LOWDATA_Write(low_value);
-    //SWEEP_HIGHDATA_Write(high_value);
+//    FILE *fd = fopen("sweep_interval.cfg","r");
+//    if (fd == NULL)
+//    {
+//        printf("open file failed!\n");
+//        return (1);
+//    }
+//
+//    //while(fscanf(fd,"%d",&fint))
+//    while(fgets((char*)fd_str,10,fd))
+//    {
+//        ((char*)fd_str)[9] = '\0';
+//        adc_buf[i] = atoi((char*)fd_str);
+//        i++;
+//    }
 
     for(;;)
     {
@@ -78,20 +77,20 @@ int main() {
         printf("#CMT\t1 :Turn ON/OFF clk to chip (0~1)\r\n");
         printf("#CMT\t2 :Reset_N CPU chip (0~1)\r\n");
         printf("#CMT\t3 :Set test mux channels (0~7)\r\n");
-        printf("#CMT\t4 :Switch between CPU/SRAM path (0~1)\r\n");
-        printf("#CMT\t5 :   SRAM path:  Set contrl mode (0~3)\r\n");
-        printf("#CMT\t6 :   SRAM path:  Load contents to SRAM (0~1)\r\n");
-        printf("#CMT\t7 :CPU path:  set activation pulse (0~1)\r\n");
-        printf("#CMT\t8 :CPU path:  cpu single step wait (0~1)\r\n");
-        printf("#CMT\t9 :CPU path:  app_done to unlock chip (0~1)\r\n");
-//        printf("#CMT\t1 :Set value to lower 3 bits (0~7)\r\n");
-//        printf("#CMT\t2 :Set value to higher 5 bits (0~31)\r\n");
-//        printf("#CMT\t3 :Sweep value from 0~255, and then become 0\r\n");
+        printf("#CMT\t4 :Switch between CPU/RAM path (0~1)\r\n");
+        printf("#CMT\t5 :   RAM path:  Set contrl mode (0~3)\r\n");
+        printf("#CMT\t6 :   RAM path:  Load contents to RAM (0~1)\r\n");
+        printf("#CMT\t7 :   CPU path:  set activation pulse (0~1)\r\n");
+        printf("#CMT\t8 :   CPU path:  cpu single step wait (0~1)\r\n");
+        printf("#CMT\t9 :   CPU path:  app_done to unlock chip (0~1)\r\n");
+        printf("#CMT\t10:Testcase:  instruction to SRAM\r\n");
+        printf("#CMT\t11:Testcase: Set value to higher 5 bits (0~31)\r\n");
+        printf("#CMT\t12:Sweep value from 0~255, and then become 0\r\n");
         printf("#CMT\r\n");
         printf("#CMT\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n");
         printf("#CMT\tWhich Test next(");FmtPrint(tst_type);printf(")? ");
         rd_val = ReadInput(&len);
-        if (USE_NEW_VAL && rd_val < 4)    tst_type = rd_val;
+        if (USE_NEW_VAL)    tst_type = rd_val;
 
         printf("#CMT\t---------------------\r\n");
         //CFG_RSTN_Write(1);
@@ -151,7 +150,7 @@ int main() {
 //        }
 //        else
         if (1 == tst_type) {
-            printf("#CMT\t\tTurn ON/OFF clk to chip (0~1)\r\n");
+            printf("#CMT\t1 :Turn ON/OFF clk to chip (0~1)\r\n");
             printf("#DLC\tValue = ");
             rd_val = ReadInput(&len);
             if (USE_NEW_VAL)    clk_stop = rd_val;
@@ -162,7 +161,7 @@ int main() {
             else printf("#DLC\tTurn ON clk to chip\n\n");
         }
         else if (2 == tst_type) {
-            printf("#CMT\t9 :Reset the CPU at CPU path (0~1)\r\n");
+            printf("#CMT\t2 :Reset_N CPU chip (0~1)\r\n");
             printf("#DLC\tValue = ");
             rd_val = ReadInput(&len);
             if (USE_NEW_VAL)    cpu_rst_n = rd_val;
@@ -180,7 +179,7 @@ int main() {
             else {printf("#DLC\tPrevious value = ");FmtPrint(test_mux_chs);printf(")\r\n");}
 
             Chip4_Idx_Scpu_Test_Mux_Write(test_mux_chs);
-            if (0 == test_mux_chs) printf("#DLC\tNo change to the output signals\n\n");
+            if (0 == test_mux_chs) printf("#DLC\t{NXT, SCLK1, SCLK2, LAT, SPI_SO} has No change\n\n");
             else if (1 == test_mux_chs) printf("#DLC\t{NXT, SCLK1, SCLK2, LAT, SPI_SO}=FOUT[5:0]\n\n");
             else if (2 == test_mux_chs) printf("#DLC\t{NXT, SCLK1, SCLK2, LAT, SPI_SO}=io_datainA[5:0]\n\n");
             else if (3 == test_mux_chs) printf("#DLC\t{NXT, SCLK1, SCLK2, LAT, SPI_SO}=io_datainB[5:0]\n\n");
@@ -191,7 +190,7 @@ int main() {
             else printf("#DLC\tOooops, nothing happens...\n\n");
         }
         else if (4 == tst_type) {
-            printf("#CMT\t4 :Switch between CPU/SRAM path (0~1)\r\n");
+            printf("#CMT\t4 :Switch between CPU/RAM path (0~1)\r\n");
             printf("#DLC\tValue = ");
             rd_val = ReadInput(&len);
             if (USE_NEW_VAL)    ctrl_bgn = rd_val;
@@ -202,7 +201,7 @@ int main() {
             else printf("#DLC\tTurn on CPU working path\n\n");
         }
         else if (5 == tst_type) {
-            printf("#CMT\t5 :Set contrl mode at SRAM path (0~3)\r\n");
+            printf("#CMT\t5 :   RAM path:  Set contrl mode (0~3)\r\n");
             printf("#DLC\tValue = ");
             rd_val = ReadInput(&len);
             if (USE_NEW_VAL)    ctrl_mode = rd_val;
@@ -217,18 +216,18 @@ int main() {
             else printf("#DLC\tOooops, nothing happens...\n\n");
         }
         else if (6 == tst_type) {
-            printf("#CMT\t6 :Notify SRAM_CTRL to load SRAM (0~1)\r\n");
+            printf("#CMT\t6 :   RAM path:  Load contents to RAM (0~1)\r\n");
             printf("#DLC\tValue = ");
             rd_val = ReadInput(&len);
             if (USE_NEW_VAL)    ctrl_load = rd_val;
             else {printf("#DLC\tPrevious value = ");FmtPrint(ctrl_load);printf(")\r\n");}
 
             Chip4_Idx_Scpu_Ctrl_Load_Write(ctrl_load);
-            if (ctrl_load) printf("#DLC\tActivate the SRAM loading\n\n");
-            else printf("#DLC\tFinish the SRAM loading\n\n");
+            if (ctrl_load) printf("#DLC\tSRAM loading signal is valid\n\n");
+            else printf("#DLC\tSRAM loading signal is invalid\n\n");
         }
         else if (7 == tst_type) {
-            printf("#CMT\t7 :CPU path:  set activation pulse (0~1)\r\n");
+            printf("#CMT\t7 :   CPU path:  set activation pulse (0~1)\r\n");
             printf("#DLC\tValue = ");
             rd_val = ReadInput(&len);
             if (USE_NEW_VAL)    cpu_bgn = rd_val;
@@ -239,7 +238,7 @@ int main() {
             else printf("#DLC\tFinish a pulse to CPU\n\n");
         }
         else if (8 == tst_type) {
-            printf("#CMT\t8 :CPU path:  cpu single step wait (0~1)\r\n");
+            printf("#CMT\t8 :   CPU path:  cpu single step wait (0~1)\r\n");
             printf("#DLC\tValue = ");
             rd_val = ReadInput(&len);
             if (USE_NEW_VAL)    cpu_wait = rd_val;
@@ -250,7 +249,7 @@ int main() {
             else printf("#DLC\tFinish a pulse to CPU\n\n");
         }
         else if (9 == tst_type) {
-            printf("#CMT\t9 :CPU path:  app_done to unlock chip (0~1)\r\n");
+            printf("#CMT\t9 :   CPU path:  app_done to unlock chip (0~1)\r\n");
             printf("#DLC\tValue = ");
             rd_val = ReadInput(&len);
             if (USE_NEW_VAL)    app_done = rd_val;
@@ -259,6 +258,9 @@ int main() {
             Chip4_Idx_Scpu_App_Done_Write(app_done);
             if (app_done) printf("#DLC\tApp done signal is valid\n\n");
             else printf("#DLC\tApp done signal is invalid\n\n");
+        }
+        else if (10 == tst_type) {
+            printf("#CMT\t10:Testcase:  instruction to SRAM\r\n");
         }
         else
         {

@@ -1,0 +1,7 @@
+00001000 =  = 8 = 0x08
+Retrive str = 00001000
+LSB=48, MSB=48
+value = 8
+Retrive str = 10111001
+LSB=49, MSB=49
+value = 185
