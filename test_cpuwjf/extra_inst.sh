@@ -33,15 +33,9 @@ for ((j=0;j<=7;j++)); do
 done
 
 # (4) remove the '_','`','3'b', and ','
-exit
 sed -i "s/_//g" $finst_name
-exit
-sed -i "s/,//g" $finst_name
-exit
+#sed -i "s/,//g" $finst_name
 sed -i "s/\`//g" $finst_name
-exit
-sed -i "s/[0-9]'b//g" $finst_name
-exit
-sed -i "s/'//g" $finst_name
-exit
+sed -i "s/[0-9]\+'b//g" $finst_name
 sed -i "s/ //g" $finst_name
+sed -i "s/,//g" $finst_name
