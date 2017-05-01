@@ -48,6 +48,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../ana_opt_2/set_config.h" />
+		<Unit filename="conf_cpuwjf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="conf_cpuwjf.h" />
 		<Unit filename="test_cpuwjf.c">
 			<Option compilerVar="CC" />
 		</Unit>

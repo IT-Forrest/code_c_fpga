@@ -117,6 +117,8 @@ typedef char char8;
 #define IDX_SCPU_NXT_CONT   (2)
 #define IDX_SCPU_APP_START  (3)
 
+#define MAX_SRAM_WORD   (512)
+
 int USBUART_1_CDCIsReady();
 int USBUART_1_DataIsReady();
 void CFG_CKADC_Write(int bit_val);
