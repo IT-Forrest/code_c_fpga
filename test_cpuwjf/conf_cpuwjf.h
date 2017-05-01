@@ -20,7 +20,7 @@
 
 #include "../ana_opt_2/device.h"
 
-void rd_bfile_to_sram_buf(FILE *fd, uint8 *sram_buf, uint16 reserve_len);
+int16   rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 reserve_len);
 
 #endif//_SERIAL_PORT_IO_H_
 

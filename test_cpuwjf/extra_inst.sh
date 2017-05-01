@@ -3,9 +3,10 @@
 #echo $SUBI
 echo $MACRO_1
 
-vfile_name="SYS_PC_PSEUDO_SPI_INTF_SCAN_TEST.v"
-tcase_name="testcase_1.txt"
-finst_name="testcase_1.bin"
+#vfile_name="SYS_PC_PSEUDO_SPI_INTF_SCAN_TEST.v"
+vfile_name="SCPU_MEM_LOOP_8BIT_TEST.v"
+tcase_name="testcase_2.txt"
+finst_name="testcase_2.bin"
 
 # (1) extract commonds from verilog tb;
 cat $vfile_name | grep 'tmpi_datain = {' > $tcase_name
@@ -22,7 +23,8 @@ for ((i=1;i<=32;i++)); do
     TMPB="MACRO_${i}"
     MAC_BITS=${!TMPB}
     #echo $MAC_NAME $MAC_BITS
-    sed -i "s|${MAC_NAME}|${MAC_BITS}|g" $finst_name
+    #sed -i "s|${MAC_NAME},|${MAC_BITS},|g" $finst_name
+    sed -i "s|\<${MAC_NAME}\>|${MAC_BITS}|g" $finst_name
 done
 
 for ((j=0;j<=7;j++)); do

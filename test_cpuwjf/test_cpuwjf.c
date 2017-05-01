@@ -26,7 +26,7 @@ int main() {
     uint8   len = 0;
 
     FILE    *fd;
-    char8   line[18];//2 bits more than instruction binary arrays
+    //char8   line[18];//2 bits more than instruction binary arrays
     uint8   clk_stop = 0;// 0: TURN on clk to chip
     uint8   cpu_rst_n = 0;// 0: reset; 1: activate
     //0: No change to the output signals                    1: {NXT, SCLK1, SCLK2, LAT, SPI_SO}=FOUT[5:0]
@@ -48,8 +48,9 @@ int main() {
 //    uint8   high_value = 0;
     //int16  read_len;
     uint8   sram_buf[1024];/// SRAM 1024X8, or say, 512X16
-    uint32  inst_val = 0;
-    uint16  adc_buf[10] = {0};
+    int16   inst_num = 0;
+    uint16  addr_tmp = 0;
+    //uint16  adc_buf[10] = {0};
 
     if (init_mem()) return (1);
     if (syn_ctrl()) return (1);
@@ -84,8 +85,8 @@ int main() {
         printf("#CMT\t7 :   CPU path:  set activation pulse (0~1)\r\n");
         printf("#CMT\t8 :   CPU path:  cpu single step wait (0~1)\r\n");
         printf("#CMT\t9 :   CPU path:  app_done to unlock chip (0~1)\r\n");
-        printf("#CMT\t10:Testcase 1:  instruction to SRAM\r\n");
-        printf("#CMT\t11:Testcase: Set value to higher 5 bits (0~31)\r\n");
+        printf("#CMT\t10:Testcase 1:  instruction to Memory\r\n");
+        printf("#CMT\t11:Testcase 2:  instruction to SRAM\r\n");
         printf("#CMT\t12:Sweep value from 0~255, and then become 0\r\n");
         printf("#CMT\r\n");
         printf("#CMT\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n");
@@ -261,7 +262,7 @@ int main() {
             else printf("#DLC\tApp done signal is invalid\n\n");
         }
         else if (10 == tst_type) {
-            printf("#CMT\t10:Testcase 1:  instruction to SRAM\r\n");
+            printf("#CMT\t10:Testcase 1:  instruction to Memory\r\n");
             printf("#DLC\tRead instructions...\r\n");
             fd = fopen("testcase_1.bin", "r");
 
@@ -269,26 +270,65 @@ int main() {
                 printf("open file failed!\n");
             }
             else {
-                rd_bfile_to_sram_buf(fd, sram_buf, DEFAULT_PC_ADDR);
+                inst_num = rd_bfile_to_mem_buf(fd, sram_buf, DEFAULT_PC_ADDR);
+                printf("Total word(s) = %d\n", inst_num);
+                fclose(fd);
+            }
+        }
+        else if (11 == tst_type) {
+            printf("#CMT\t11:Testcase 2:  instruction to SRAM\r\n");
+            printf("#DLC\tRead instructions...\r\n");
+            fd = fopen("testcase_1.bin", "r");
 
-//                /// initialize the sram buffer each time
-//                for (i=0; i<MAX_SRAM_WORD; ++i) {
-//                    sram_buf[2*i] = 0x00;
-//                    sram_buf[2*i+1] = 0x00;
-//                }
-//
-//                i = 0;
-//                while (fgets(line, sizeof(line), fd)) {
-//                    printf("Retrive str = %s", line);
-//                    inst_val = strtol(line,0,2);//just for compiling test
-//                    sram_buf[2*i] = inst_val & 0x00ff;
-//                    sram_buf[2*i+1] = (inst_val>>8) & 0x00ff;
-//                    if (0 == i) {
-//                        i= DEFAULT_PC_ADDR;
-//                    } else {
-//                        i++;
-//                    }
-//                }
+            if (fd == NULL) {
+                printf("open file failed!\n");
+            }
+            else {
+                inst_num = rd_bfile_to_mem_buf(fd, sram_buf, DEFAULT_PC_ADDR);
+
+                Chip4_Idx_Scpu_Rst_N_Write(1);
+                for (i=0; i<(inst_num-1)+DEFAULT_PC_ADDR; ) {
+                    for (j=2; j>=1; --j) {
+                        Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
+                        Chip4_Idx_Scpu_Ctrl_Mod_Write(0);
+
+                        addr_tmp = 2*i+j-1;
+                        Chip4_SCPU_SRAM_ADDR_Write(addr_tmp);
+                        Chip4_SCPU_SRAM_DATA_Write(sram_buf[addr_tmp]);
+                        /// swift instructions and address to CTRL module
+                        Chip4_Idx_Scpu_Ctrl_Load_Write(1);
+                        while (!Chip4_SCPU_Idx_Ctrl_Rdy());
+
+                        Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
+                        Chip4_Idx_Scpu_Ctrl_Load_Write(0);
+                        while (Chip4_SCPU_Idx_Ctrl_Rdy());
+
+                        /// notify CTRL send instructions to SRAM
+                        Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
+                        Chip4_Idx_Scpu_Ctrl_Mod_Write(3);
+                        Chip4_Idx_Scpu_Ctrl_Load_Write(1);
+                        while (!Chip4_SCPU_Idx_Ctrl_Rdy());
+
+                        Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
+                        Chip4_Idx_Scpu_Ctrl_Load_Write(0);
+                        while (Chip4_SCPU_Idx_Ctrl_Rdy());
+                    }
+
+                    if (0 == i) {
+                        i = DEFAULT_PC_ADDR;
+                    } else {
+                        ++i;
+                    }
+                }
+
+                /// activate the CPU
+                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
+                Chip4_Idx_Scpu_Cpu_Bgn_Write(1);
+                Chip4_Idx_Scpu_Cpu_Bgn_Write(0);
+
+                /// waiting for finish
+                while(!Chip4_SCPU_Idx_Nxt_End());
+                printf("Process finish!\n");
 
                 fclose(fd);
             }

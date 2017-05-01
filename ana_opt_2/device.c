@@ -649,14 +649,17 @@ void Chip4_Idx_Scpu_App_Done_Write(int rd_val) {
 void Chip4_Idx_Scpu_Cpu_Bgn_Write(int rd_val) {
     (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_CPU_BGN):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_CPU_BGN);
     *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+    avs_wait();
 }
 void Chip4_Idx_Scpu_Rst_N_Write(int rd_val) {
     (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_RST_N):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_RST_N);
     *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+    avs_wait();
 }
 void Chip4_Idx_Scpu_Cpu_Wait_Write(int rd_val) {
     (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_CPU_WAIT):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_CPU_WAIT);
     *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+    avs_wait();
 }
 void Chip4_Idx_Scpu_Test_Mux_Write(int rd_val) {
     (rd_val & 0x4)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_TEST_MUX2):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_TEST_MUX2);
