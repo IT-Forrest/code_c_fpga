@@ -1,0 +1,84 @@
+# depslib dependency file v1.0
+1493614091 source:f:\05.code_battle\github\code_c_fpga\ana_opt_2\device.c
+	"device.h"
+	"psoc_port.h"
+
+1493599537 f:\05.code_battle\github\code_c_fpga\ana_opt_2\device.h
+	<stdio.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"psoc_port.h"
+
+1493234466 f:\05.code_battle\github\code_c_fpga\ana_opt_2\psoc_port.h
+	<stdio.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"hps_0.h"
+
+1493183861 f:\05.code_battle\github\code_c_fpga\ana_opt_2\hps_0.h
+
+1493239019 source:f:\05.code_battle\github\code_c_fpga\ana_opt_2\psoc_port.c
+	"psoc_port.h"
+
+1427250116 source:f:\05.code_battle\github\code_c_fpga\ana_opt_2\serial_port_io.c
+	<math.h>
+	<stdint.h>
+	"device.h"
+	<stdlib.h>
+
+1492575782 source:f:\05.code_battle\github\code_c_fpga\ana_opt_2\set_config.c
+	<math.h>
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"device.h"
+	"psoc_port.h"
+	"serial_port_io.h"
+	"set_config.h"
+	"test_adc.h"
+
+1426711461 f:\05.code_battle\github\code_c_fpga\ana_opt_2\serial_port_io.h
+	"device.h"
+	<stdint.h>
+	<stdlib.h>
+
+1450573823 f:\05.code_battle\github\code_c_fpga\ana_opt_2\set_config.h
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+
+1448154240 f:\05.code_battle\github\code_c_fpga\ana_opt_2\test_adc.h
+	"device.h"
+	<stdio.h>
+	<stdint.h>
+
+1493660947 source:f:\05.code_battle\github\code_c_fpga\test_cpuwjf\test_cpuwjf.c
+	<stdio.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/mman.h>
+	"hwlib.h"
+	"socal/socal.h"
+	"socal/hps.h"
+	"socal/alt_gpio.h"
+	"../ana_opt_2/device.h"
+	"../ana_opt_2/serial_port_io.h"
+	"../ana_opt_2/psoc_port.h"
+	"conf_cpuwjf.h"
+
+1493608084 f:\05.code_battle\github\code_c_fpga\test_cpuwjf\conf_cpuwjf.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../ana_opt_2/device.h"
+
