@@ -116,6 +116,7 @@ typedef char char8;
 #define IDX_SCPU_NXT_END    (1)
 #define IDX_SCPU_NXT_CONT   (2)
 #define IDX_SCPU_APP_START  (3)
+#define IDX_SCPU_CTRL_SO    (4)
 
 #define MAX_SRAM_WORD   (512)
 
@@ -243,6 +244,7 @@ int Chip4_SCPU_Idx_Ctrl_Rdy();
 int Chip4_SCPU_Idx_Nxt_End();
 int Chip4_SCPU_Idx_Nxt_Cont();
 int Chip4_SCPU_Idx_App_Start();
+int Chip4_SCPU_Idx_Ctrl_So();
 int Chip4_SCPU_SRAM_ADDR_Read();
 int Chip4_SCPU_SRAM_DATA_Read();
 unsigned int    Chip4_Cpu_Stat_Read();

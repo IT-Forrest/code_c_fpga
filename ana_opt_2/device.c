@@ -619,6 +619,7 @@ int Chip4_SCPU_Idx_Ctrl_Rdy()   {return ((*chip4_cpustat_rd_addr >> IDX_SCPU_CTR
 int Chip4_SCPU_Idx_Nxt_End()    {return ((*chip4_cpustat_rd_addr >> IDX_SCPU_NXT_END) & 1);}
 int Chip4_SCPU_Idx_Nxt_Cont()   {return ((*chip4_cpustat_rd_addr >> IDX_SCPU_NXT_CONT) & 1);}
 int Chip4_SCPU_Idx_App_Start()  {return ((*chip4_cpustat_rd_addr >> IDX_SCPU_APP_START) & 1);}
+int Chip4_SCPU_Idx_Ctrl_So()    {return ((*chip4_cpustat_rd_addr >> IDX_SCPU_CTRL_SO) & 1);}
 uint32_t Chip4_Cpu_Stat_Read()       {return (*chip4_cpustat_rd_addr);}
 uint32_t Chip4_CCT_Sram_Addr_Read()  {return (*chip4_sram_addr_rd_addr);}
 uint32_t Chip4_CCT_Sram_Data_Read()  {return (*chip4_sram_data_rd_addr);}
