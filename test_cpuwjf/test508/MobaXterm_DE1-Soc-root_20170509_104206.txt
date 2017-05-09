@@ -1,0 +1,3924 @@
+root@165.91.215.240's password:
+     ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´
+     ©¦                        ? MobaXterm 10.2 ?                          ©¦
+     ©¦            (SSH client, X-server and networking tools)             ©¦
+     ©¦                                                                    ©¦
+     ©¦ ? SSH session to root@165.91.215.240                               ©¦
+     ©¦   ? SSH compression : ?  (disabled or not supported by server)     ©¦
+     ©¦   ? SSH-browser     : ?                                            ©¦
+     ©¦   ? X11-forwarding  : ?  (disabled or not supported by server)     ©¦
+     ©¦   ? DISPLAY         : 10.202.37.147:0.0                            ©¦
+     ©¦                                                                    ©¦
+     ©¦ ? For more info, ctrl+click on help or visit our website           ©¦
+     ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼
+
+root@socfpga:~#
+root@socfpga:~#
+root@socfpga:~#
+root@socfpga:~# cd ../jiafan
+root@socfpga:/home/jiafan#
+root@socfpga:/home/jiafan#
+root@socfpga:/home/jiafan# cd test508
+root@socfpga:/home/jiafan/test508# ls
+test_cpuwjf.exe  testcase_1.bin   testcase_2.bin
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 2500 kHz
+
+^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 12^H^H^H^H
+#CMT    ---------------------
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#DLC    Value = ^C
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 2500 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x003, Data: 0xfa, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0xc8, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue... ^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 2500 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x32, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x64, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0xc8, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue... ^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 2500 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x18, Loop k=10
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0xc8, Loop k=9
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x64, Loop k=8
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0xc8, Loop k=7
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x64, Loop k=6
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x64, Loop k=5
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x64, Loop k=4
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x32, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0xc8, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x64, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue... ^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 2500 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x19, Loop k=10
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ff, Data: 0xff, Loop k=9
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ff, Data: 0xff, Loop k=8
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ff, Data: 0xff, Loop k=7
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ff, Data: 0xff, Loop k=6
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ff, Data: 0xff, Loop k=5
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ff, Data: 0xff, Loop k=4
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ff, Data: 0xff, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ff, Data: 0xff, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ff, Data: 0xff, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue... ^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 2500 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ff, Data: 0xff, Loop k=10
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3fa, Data: 0xa9, Loop k=9
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3fa, Data: 0xab, Loop k=8
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3fa, Data: 0xab, Loop k=7
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3fd, Data: 0x55, Loop k=6
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3fd, Data: 0x55, Loop k=5
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3fa, Data: 0xab, Loop k=4
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3fa, Data: 0xab, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3fd, Data: 0x55, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3fd, Data: 0x55, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue... ^C
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 1250 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x52, Loop k=100
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=99
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=98
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=97
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=96
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=95
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=94
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=93
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=92
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=91
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=90
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=89
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=88
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=87
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=86
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=85
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=84
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=83
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=82
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=81
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=80
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=79
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=78
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=77
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=76
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=75
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=74
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=73
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=72
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=71
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=70
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=69
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=68
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=67
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=66
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=65
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=64
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=63
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=62
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=61
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=60
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=59
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=58
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=57
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=56
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=55
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=54
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=53
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=52
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=51
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=50
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=49
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=48
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=47
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=46
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=45
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=44
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=43
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=42
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=41
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=40
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=39
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=38
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=37
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=36
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=35
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=34
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=33
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=32
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=31
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=30
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=29
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=28
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=27
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=26
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=25
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=24
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=23
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=22
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=21
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=20
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=19
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=18
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=17
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=16
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=15
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=14
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=13
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=12
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=11
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=10
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=9
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=8
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=7
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=6
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=5
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=4
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x00, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue... ^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 1250 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x000, Data: 0x01, Loop k=100
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=99
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=98
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=97
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=96
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=95
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=94
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=93
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=92
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=91
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=90
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=89
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=88
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=87
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=86
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=85
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=84
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=83
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=82
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=81
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=80
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=79
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=78
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=77
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=76
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=75
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=74
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=73
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=72
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=71
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=70
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=69
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=68
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=67
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=66
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=65
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=64
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=63
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=62
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=61
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=60
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=59
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=58
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=57
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=56
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=55
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=54
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=53
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=52
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=51
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=50
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=49
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=48
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=47
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=46
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=45
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=44
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=43
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=42
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=41
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=40
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=39
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=38
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=37
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=36
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=35
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=34
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=33
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=32
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=31
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=30
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=29
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=28
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=27
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=26
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=25
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=24
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=23
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=22
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=21
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=20
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=19
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=18
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=17
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=16
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=15
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=14
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=13
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=12
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=11
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=10
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=9
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=8
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=7
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=6
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=5
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=4
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ea, Data: 0xab, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue... ^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 625 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=100
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=99
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=98
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=97
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=96
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x0aa, Data: 0xab, Loop k=95
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=94
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=93
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=92
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=91
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=90
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=89
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=88
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=87
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=86
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=85
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=84
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=83
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=82
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=81
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=80
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=79
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=78
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=77
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=76
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=75
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=74
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=73
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=72
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=71
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=70
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=69
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=68
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=67
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=66
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=65
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=64
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=63
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=62
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=61
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=60
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=59
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=58
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=57
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=56
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=55
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=54
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=53
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=52
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=51
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=50
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=49
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=48
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=47
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=46
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=45
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=44
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x0aa, Data: 0xab, Loop k=43
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=42
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=41
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=40
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=39
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=38
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=37
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=36
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=35
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=34
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=33
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=32
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=31
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=30
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=29
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=28
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=27
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=26
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=25
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=24
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=23
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=22
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=21
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=20
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=19
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=18
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=17
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=16
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=15
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=14
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=13
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=12
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=11
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=10
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=9
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=8
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=7
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=6
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=5
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=4
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue... ^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 625 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x0de, Data: 0xc1, Loop k=100
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=99
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=98
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=97
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=96
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=95
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=94
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=93
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=92
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=91
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=90
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=89
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=88
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=87
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=86
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=85
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=84
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=83
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=82
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=81
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=80
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=79
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=78
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=77
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=76
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=75
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=74
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=73
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=72
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=71
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=70
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=69
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=68
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x0aa, Data: 0xab, Loop k=67
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=66
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=65
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=64
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=63
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=62
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=61
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=60
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=59
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=58
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=57
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=56
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=55
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=54
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=53
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=52
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=51
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x0aa, Data: 0xab, Loop k=50
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=49
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=48
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=47
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=46
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=45
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=44
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x0aa, Data: 0xab, Loop k=43
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=42
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=41
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=40
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=39
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=38
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=37
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=36
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=35
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=34
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=33
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=32
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=31
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=30
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=29
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=28
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=27
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=26
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=25
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=24
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=23
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=22
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=21
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=20
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=19
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=18
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=17
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=16
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=15
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=14
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=13
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x0aa, Data: 0xab, Loop k=12
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=11
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=10
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=9
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=8
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=7
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=6
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=5
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=4
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(18)? #CMT       ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 625 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+^C
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 625 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3ff, Data: 0x61, Loop k=100
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=99
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=98
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=97
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=96
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=95
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=94
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=93
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=92
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=91
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=90
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=89
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=88
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=87
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=86
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=85
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=84
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=83
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=82
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=81
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=80
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=79
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=78
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=77
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=76
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=75
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=74
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=73
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=72
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=71
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=70
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=69
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=68
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=67
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=66
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=65
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=64
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=63
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=62
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=61
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=60
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=59
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=58
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=57
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=56
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=55
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=54
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=53
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=52
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=51
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=50
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=49
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=48
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=47
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=46
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=45
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=44
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=43
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=42
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=41
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=40
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=39
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=38
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=37
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=36
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=35
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=34
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=33
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=32
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=31
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=30
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=29
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=28
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x155, Data: 0x55, Loop k=27
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=26
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=25
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=24
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=23
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=22
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=21
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=20
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=19
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=18
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=17
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=16
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=15
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=14
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=13
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=12
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=11
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=10
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=9
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=8
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=7
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=6
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=5
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=4
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue... ^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 31 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=100
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=99
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=98
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=97
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=96
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=95
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=94
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=93
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=92
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=91
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=90
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=89
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=88
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=87
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=86
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=85
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=84
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=83
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=82
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=81
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=80
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=79
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=78
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=77
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=76
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=75
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=74
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=73
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=72
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=71
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=70
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=69
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=68
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=67
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=66
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=65
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=64
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=63
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=62
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=61
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=60
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=59
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=58
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=57
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=56
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=55
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=54
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=53
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=52
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=51
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=50
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=49
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=48
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=47
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=46
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=45
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=44
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=43
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=42
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=41
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=40
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=39
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=38
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=37
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=36
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=35
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=34
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=33
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=32
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=31
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=30
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=29
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=28
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=27
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=26
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=25
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=24
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=23
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=22
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=21
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=20
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=19
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=18
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=17
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=16
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=15
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=14
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=13
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=12
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=11
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=10
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=9
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=8
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=7
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=6
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=5
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=4
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(18)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 31 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=100
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=99
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=98
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=97
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=96
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=95
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=94
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=93
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=92
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=91
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=90
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=89
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=88
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=87
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=86
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=85
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=84
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=83
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=82
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=81
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=80
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=79
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=78
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=77
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=76
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=75
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=74
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=73
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=72
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=71
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=70
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=69
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=68
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=67
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=66
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=65
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=64
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=63
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=62
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=61
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=60
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=59
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=58
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=57
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=56
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=55
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=54
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=53
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=52
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=51
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=50
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=49
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=48
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=47
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=46
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=45
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=44
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=43
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=42
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=41
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=40
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=39
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=38
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=37
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=36
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=35
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=34
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=33
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=32
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=31
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=30
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=29
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=28
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=27
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=26
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=25
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=24
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=23
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=22
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=21
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=20
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=19
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=18
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=17
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=16
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=15
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=14
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=13
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=12
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=11
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=10
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=9
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=8
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=7
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=6
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=5
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=4
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(18)?
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 31 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=100
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=99
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=98
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=97
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=96
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=95
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=94
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=93
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=92
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=91
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=90
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=89
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=88
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=87
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=86
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=85
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=84
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=83
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=82
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=81
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=80
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=79
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=78
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=77
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=76
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=75
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=74
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=73
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=72
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=71
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=70
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=69
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=68
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=67
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=66
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=65
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=64
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=63
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=62
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=61
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=60
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=59
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=58
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=57
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=56
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=55
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=54
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=53
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=52
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=51
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=50
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=49
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=48
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=47
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=46
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=45
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=44
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=43
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=42
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=41
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=40
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=39
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=38
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=37
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=36
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=35
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=34
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=33
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=32
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=31
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=30
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=29
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=28
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=27
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=26
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=25
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=24
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=23
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=22
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=21
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=20
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=19
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=18
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=17
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=16
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=15
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=14
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=13
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=12
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=11
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3d5, Data: 0x55, Loop k=10
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=9
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x355, Data: 0x55, Loop k=8
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=7
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=6
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=5
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=4
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue... ^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 19^H^H^H^H^H^H^H^H^H^H^H
+#CMT    ---------------------
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#DLC    Value = 1^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H
+#DLC    Previous value = 0
+#DLC    Turn ON clk to chip
+
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 31 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x3aa, Data: 0xab, Loop k=100
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=99
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=98
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=97
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=96
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=95
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=94
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=93
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=92
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=91
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=90
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=89
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=88
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=87
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=86
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=85
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=84
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=83
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=82
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=81
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=80
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=79
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=78
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=77
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=76
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=75
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=74
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=73
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=72
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=71
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=70
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=69
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=68
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=67
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=66
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=65
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=64
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=63
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=62
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=61
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=60
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=59
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=58
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=57
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=56
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=55
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=54
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=53
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=52
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=51
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=50
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=49
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=48
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=47
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=46
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=45
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=44
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=43
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=42
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=41
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=40
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=39
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=38
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=37
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=36
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=35
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=34
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=33
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0xab, Loop k=32
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=31
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=30
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=29
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=28
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=27
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=26
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=25
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=24
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=23
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=22
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=21
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=20
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=19
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=18
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=17
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=16
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=15
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=14
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=13
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=12
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=11
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=10
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=9
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=8
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=7
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=6
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=5
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=4
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x300, Data: 0xab, Loop k=3
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x380, Data: 0x55, Loop k=2
+#DLC    Loop in Ctrl_Rdy=1
+
+#DLC    Addr: 0x301, Data: 0x55, Loop k=1
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue... ^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 31 kHz
+
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 001010101
+#DLC    Loop in Ctrl_Rdy=1
+
+01110000000 010101011
+#DLC    Loop in Ctrl_Rdy=1
+
+01100000001 001010101
+#DLC    Loop in/out Test Failed!
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue... ^C
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 18
+#CMT    ---------------------
+#CMT    18:Testcase 5:  Loop in/out Test
+#DLC    SRAM data = 31 kHz
+
+00011110000
+root@socfpga:/home/jiafan/test508# ^C
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT    18:Testcase 5:  Loop in/out Test
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? ^C
+root@socfpga:/home/jiafan/test508#
+©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤
+
+Session stopped
+    - Press <return> to exit tab
+    - Press R to restart session
+    - Press S to save terminal output to file
+
+Network error: Software caused connection abort

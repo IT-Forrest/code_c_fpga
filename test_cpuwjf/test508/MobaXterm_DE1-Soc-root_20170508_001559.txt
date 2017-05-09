@@ -1,0 +1,939 @@
+root@165.91.215.194's password:
+     ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´
+     ©¦                        ? MobaXterm 10.2 ?                          ©¦
+     ©¦            (SSH client, X-server and networking tools)             ©¦
+     ©¦                                                                    ©¦
+     ©¦ ? SSH session to root@165.91.215.194                               ©¦
+     ©¦   ? SSH compression : ?  (disabled or not supported by server)     ©¦
+     ©¦   ? SSH-browser     : ?                                            ©¦
+     ©¦   ? X11-forwarding  : ?  (disabled or not supported by server)     ©¦
+     ©¦   ? DISPLAY         : 10.202.37.147:0.0                            ©¦
+     ©¦                                                                    ©¦
+     ©¦ ? For more info, ctrl+click on help or visit our website           ©¦
+     ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼
+
+root@socfpga:~#
+root@socfpga:~#
+root@socfpga:~#
+root@socfpga:~# cd ../jiafan
+root@socfpga:/home/jiafan#
+root@socfpga:/home/jiafan#
+root@socfpga:/home/jiafan# ls
+bk               mydesign         programfpga      test             test430          test502
+my_script        passwd.txt       soc_system.rbf   test426          test501          test_cpuwjf.exe
+root@socfpga:/home/jiafan#
+root@socfpga:/home/jiafan#
+root@socfpga:/home/jiafan# ./programfpga
+6+1 records in
+6+1 records out
+root@socfpga:/home/jiafan#
+root@socfpga:/home/jiafan#
+root@socfpga:/home/jiafan#
+root@socfpga:/home/jiafan# mkdir test508
+root@socfpga:/home/jiafan# cd test50
+test501/ test502/ test508/
+root@socfpga:/home/jiafan# cd test50
+test501/ test502/ test508/
+root@socfpga:/home/jiafan# cd test508
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# cp ../test50
+test501/ test502/ test508/
+root@socfpga:/home/jiafan/test508# cp ../test502/* ./
+root@socfpga:/home/jiafan/test508# ls
+test_cpuwjf.exe  testcase_1.bin   testcase_2.bin
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 12
+#CMT    ---------------------
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#DLC    Value = 10
+#DLC    SRAM data = 2500 kHz
+
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(12)? 0
+#CMT    ---------------------
+#CMT    0 :Read chip status
+#DLC    RAM mode
+#DLC    Addr_rd = 0x000 Addr_wr = 0x000
+#DLC    Data_rd = 0x00  Data_wr = 0x00
+#DLC    Ctrl_mode[1:0] = 00
+#DLC    Ctrl_So = 1
+#DLC    App_Start = 1
+#DLC    Nxt_Cont = 1
+#DLC    Nxt_End = 1
+#DLC    Ctrl_Rdy = 1
+#DLC    Cpu_Status = 0x1f
+#DLC    SC_bits(13) = 0x1fff
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(0)? 10
+#CMT    ---------------------
+#CMT    10:Set SRAM address (0~1023)
+#DLC    Value = 240
+#DLC    SRAM address = 0x0f0
+
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(10)? 11
+#CMT    ---------------------
+#CMT    11:Set SRAM content (0~255)
+#DLC    Value = 100
+#DLC    SRAM data = 0x64
+
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(11)? 17
+#CMT    ---------------------
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#DLC    Load instructions done
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(17)? 0
+#CMT    ---------------------
+#CMT    0 :Read chip status
+#DLC    RAM mode
+#DLC    Addr_rd = 0x3ff Addr_wr = 0x0f0
+#DLC    Data_rd = 0xfe  Data_wr = 0x64
+#DLC    Ctrl_mode[1:0] = 00
+#DLC    Ctrl_So = 1
+#DLC    App_Start = 1
+#DLC    Nxt_Cont = 1
+#DLC    Nxt_End = 1
+#DLC    Ctrl_Rdy = 1
+#DLC    Cpu_Status = 0x1f
+#DLC    SC_bits(13) = 0x1fff
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(0)? 14
+#CMT    ---------------------
+#CMT    14:Testcase 2:  instruction to suspend cpu
+#DLC    Read instructions...
+Addr 0x001      0xc8
+Clear Ctrl Bgn and Load
+^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 0
+#CMT    ---------------------
+#CMT    0 :Read chip status
+#DLC    RAM mode
+#DLC    Addr_rd = 0x3ff Addr_wr = 0x000
+#DLC    Data_rd = 0xfe  Data_wr = 0x00
+#DLC    Ctrl_mode[1:0] = 00
+#DLC    Ctrl_So = 0
+#DLC    App_Start = 0
+#DLC    Nxt_Cont = 0
+#DLC    Nxt_End = 0
+#DLC    Ctrl_Rdy = 0
+#DLC    Cpu_Status = 0x00
+#DLC    SC_bits(13) = 0x1fff
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(0)? 12
+#CMT    ---------------------
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#DLC    Value = 10
+#DLC    SRAM data = 2500 kHz
+
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(12)? 10
+#CMT    ---------------------
+#CMT    10:Set SRAM address (0~1023)
+#DLC    Value = 240
+#DLC    SRAM address = 0x0f0
+
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(10)? 11
+#CMT    ---------------------
+#CMT    11:Set SRAM content (0~255)
+#DLC    Value = 100
+#DLC    SRAM data = 0x64
+
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(11)? 17
+#CMT    ---------------------
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#DLC    Start load instructions
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(17)? 0
+#CMT    ---------------------
+#CMT    0 :Read chip status
+#DLC    RAM mode
+#DLC    Addr_rd = 0x07f Addr_wr = 0x0f0
+#DLC    Data_rd = 0x74  Data_wr = 0x64
+#DLC    Ctrl_mode[1:0] = 00
+#DLC    Ctrl_So = 0
+#DLC    App_Start = 0
+#DLC    Nxt_Cont = 0
+#DLC    Nxt_End = 0
+#DLC    Ctrl_Rdy = 1
+#DLC    Cpu_Status = 0x01
+#DLC    SC_bits(13) = 0x1fff
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(0)? 17
+#CMT    ---------------------
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#DLC    Load instructions done
+#DLC    Start load instructions
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(17)? 0
+#CMT    ---------------------
+#CMT    0 :Read chip status
+#DLC    RAM mode
+#DLC    Addr_rd = 0x07f Addr_wr = 0x0f0
+#DLC    Data_rd = 0x74  Data_wr = 0x64
+#DLC    Ctrl_mode[1:0] = 00
+#DLC    Ctrl_So = 0
+#DLC    App_Start = 0
+#DLC    Nxt_Cont = 0
+#DLC    Nxt_End = 0
+#DLC    Ctrl_Rdy = 1
+#DLC    Cpu_Status = 0x01
+#DLC    SC_bits(13) = 0x1fff
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(0)? 14
+#CMT    ---------------------
+#CMT    14:Testcase 2:  instruction to suspend cpu
+#DLC    Read instructions...
+Addr 0x001      0xc8
+Clear Ctrl Bgn and Load
+Notify Ctrl Send data to SRAM
+Clear Ctrl Bgn and Load again
+Addr 0x000      0x80
+Clear Ctrl Bgn and Load
+Notify Ctrl Send data to SRAM
+Clear Ctrl Bgn and Load again
+Addr 0x003      0xc8
+Clear Ctrl Bgn and Load
+Notify Ctrl Send data to SRAM
+Clear Ctrl Bgn and Load again
+Addr 0x002      0x00
+Clear Ctrl Bgn and Load
+Notify Ctrl Send data to SRAM
+Clear Ctrl Bgn and Load again
+Addr 0x005      0x08
+Clear Ctrl Bgn and Load
+Notify Ctrl Send data to SRAM
+Clear Ctrl Bgn and Load again
+Addr 0x004      0x00
+Clear Ctrl Bgn and Load
+Notify Ctrl Send data to SRAM
+Clear Ctrl Bgn and Load again
+#DLC    App_Start = 1
+#DLC    App_Start = 1
+#DLC    App_Start = 1
+
+
+
+
+
+
+^C
+root@socfpga:/home/jiafan/test508#
+root@socfpga:/home/jiafan/test508# ./test_cpuwjf.exe
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(1)? 0
+#CMT    ---------------------
+#CMT    0 :Read chip status
+#DLC    RAM mode
+#DLC    Addr_rd = 0x000 Addr_wr = 0x000
+#DLC    Data_rd = 0x00  Data_wr = 0x00
+#DLC    Ctrl_mode[1:0] = 00
+#DLC    Ctrl_So = 0
+#DLC    App_Start = 0
+#DLC    Nxt_Cont = 0
+#DLC    Nxt_End = 0
+#DLC    Ctrl_Rdy = 0
+#DLC    Cpu_Status = 0x00
+#DLC    SC_bits(13) = 0x1fff
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(0)? 13
+#CMT    ---------------------
+#CMT    13:Testcase 1:  instruction to Memory
+#DLC    Read instructions...
+Addr 0x001      0xc0
+Addr 0x000      0x10
+Addr 0x021      0xb9
+Addr 0x020      0x80
+Addr 0x023      0xa2
+Addr 0x022      0x00
+Addr 0x025      0xb9
+Addr 0x024      0x00
+Addr 0x027      0xb9
+Addr 0x026      0x80
+Addr 0x029      0xa3
+Addr 0x028      0x00
+Addr 0x02b      0xb9
+Addr 0x02a      0x00
+Addr 0x02d      0x54
+Addr 0x02c      0x44
+Addr 0x02f      0xb9
+Addr 0x02e      0x31
+Addr 0x031      0xa2
+Addr 0x030      0x00
+Addr 0x033      0x22
+Addr 0x032      0x23
+Addr 0x035      0xb9
+Addr 0x034      0x00
+Addr 0x037      0x1a
+Addr 0x036      0x02
+Addr 0x039      0x52
+Addr 0x038      0x22
+Addr 0x03b      0xba
+Addr 0x03a      0x03
+Addr 0x03d      0x53
+Addr 0x03c      0x33
+Addr 0x03f      0xbb
+Addr 0x03e      0x02
+Addr 0x041      0xb9
+Addr 0x040      0x40
+Addr 0x043      0xb9
+Addr 0x042      0x00
+Addr 0x045      0x08
+Addr 0x044      0x00
+Total word(s) = 20
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(13)? 0
+#CMT    ---------------------
+#CMT    0 :Read chip status
+#DLC    RAM mode
+#DLC    Addr_rd = 0x000 Addr_wr = 0x000
+#DLC    Data_rd = 0x00  Data_wr = 0x00
+#DLC    Ctrl_mode[1:0] = 00
+#DLC    Ctrl_So = 0
+#DLC    App_Start = 0
+#DLC    Nxt_Cont = 0
+#DLC    Nxt_End = 0
+#DLC    Ctrl_Rdy = 0
+#DLC    Cpu_Status = 0x00
+#DLC    SC_bits(13) = 0x1fff
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(0)? 12
+#CMT    ---------------------
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#DLC    Value = 10
+#DLC    SRAM data = 2500 kHz
+
+#CMT    ---------- press any key to continue -----------
+#WAT    Press Any Key to continue...
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    $$$$ Welcome to Jiafan's World. Have fun $$$$
+#CMT
+#CMT    0 :Read chip status
+#CMT
+#CMT    1 :Turn ON/OFF clk to chip (0~1)
+#CMT    2 :Reset_N CPU chip (0~1)
+#CMT    3 :Set test mux channels (0~7)
+#CMT    4 :Switch between CPU/RAM path (0~1)
+#CMT    5 :   RAM path:  Set contrl mode (0~3)
+#CMT    6 :   RAM path:  Load contents to RAM (0~1)
+#CMT    7 :   CPU path:  set activation pulse (0~1)
+#CMT    8 :   CPU path:  cpu single step wait (0~1)
+#CMT    9 :   CPU path:  app_done to unlock chip (0~1)
+#CMT    10:Set SRAM address (0~1023)
+#CMT    11:Set SRAM content (0~255)
+#CMT    12:Bi-split chip freq (0,1,2,3,...255)
+#CMT
+#CMT    13:Testcase 1:  instruction to Memory
+#CMT    14:Testcase 2:  instruction to SRAM
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#CMT    16:Testcase 4:  load one instruction to SRAM
+#CMT    17:Testcase 4:  shift out instruction from CTRL
+#CMT
+#CMT    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#CMT    Which Test next(12)? 15
+#CMT    ---------------------
+#CMT    15:Testcase 3:  instruction to sum_1+2+3+4
+#DLC    Read instructions...
+Addr 0x001      0xc0
+Addr 0x000      0x10
+Addr 0x021      0xbb
+Addr 0x020      0x04
+Addr 0x023      0xb9
+Addr 0x022      0x00
+Addr 0x025      0x41
+Addr 0x024      0x13
+Addr 0x027      0x5b
+Addr 0x026      0x01
+Addr 0x029      0xd8
+Addr 0x028      0x12
+Addr 0x02b      0x19
+Addr 0x02a      0x02
+Addr 0x02d      0x52
+Addr 0x02c      0x22
+Addr 0x02f      0xba
+Addr 0x02e      0x03
+Addr 0x031      0x53
+Addr 0x030      0x33
+Addr 0x033      0xbb
+Addr 0x032      0x02
+Addr 0x035      0xb9
+Addr 0x034      0x40
+Addr 0x037      0xb9
+Addr 0x036      0x00
+Addr 0x039      0x08
+Addr 0x038      0x00
+Total instruction(s) = 14 DWORD
+Addr 0x001      0xc0
+Addr 0x000      0x10
+Addr 0x021      0xbb
+Addr 0x020      0x04
+Addr 0x023      0xb9
+Addr 0x022      0x00
+Addr 0x025      0x41
+Addr 0x024      0x13
+Addr 0x027      0x5b
+Addr 0x026      0x01
+Addr 0x029      0xd8
+Addr 0x028      0x12
+Addr 0x02b      0x19
+Addr 0x02a      0x02
+Addr 0x02d      0x52
+Addr 0x02c      0x22
+Addr 0x02f      0xba
+Addr 0x02e      0x03
+Addr 0x031      0x53
+Addr 0x030      0x33
+Addr 0x033      0xbb
+Addr 0x032      0x02
+Addr 0x035      0xb9
+Addr 0x034      0x40
+Addr 0x037      0xb9
+Addr 0x036      0x00
+Addr 0x039      0x08
+Addr 0x038      0x00
+^C
+root@socfpga:/home/jiafan/test508#

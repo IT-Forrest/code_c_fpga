@@ -100,6 +100,7 @@ int main() {
         printf("#CMT\t15:Testcase 3:  instruction to sum_1+2+3+4\r\n");
         printf("#CMT\t16:Testcase 4:  load one instruction to SRAM\r\n");
         printf("#CMT\t17:Testcase 4:  shift out instruction from CTRL \r\n");
+        printf("#CMT\t18:Testcase 5:  Loop in/out Test\r\n");
         printf("#CMT\r\n");
         printf("#CMT\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n");
         printf("#CMT\tWhich Test next(");FmtPrint(tst_type);printf(")? ");
@@ -262,20 +263,22 @@ int main() {
             if (USE_NEW_VAL)    cnt_clk = rd_val;
             else {
                 printf("#DLC\tPrevious value = ");
-                if (0 == cnt_clk)
+                if (0 == cnt_clk) {
                     FmtPrint(50);
-                else
-                    FmtPrint(50>>(cnt_clk));//pow(2,cnt_clk)
-                printf(" MHz\r\n");
+                    printf(" MHz\r\n");
+                } else {
+                    FmtPrint(50*1000/(cnt_clk*2));//pow(2,cnt_clk)
+                    printf(" kHz\r\n");
+                }
             }
 
             if (0 == cnt_clk) {
                 Chip4_Idx_Scpu_Clk_Freq_Chg_Write(0);
-                printf("#DLC\tClk freq = 50MHz\n\n");
+                printf("#DLC\tClk freq = 50 MHz\n\n");
             } else {
                 Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
                 Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
-                printf("#DLC\tSRAM data = %dMHz\n\n", 50>>(cnt_clk));
+                printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
             }
         }
         else if (13 == tst_type) {
@@ -529,6 +532,42 @@ int main() {
             /// keep the SRAM and DATA value as input
 
             Chip4_Idx_Scpu_Ctrl_Load_Write(1);
+        }
+        else if (18 == tst_type) {
+            printf("#CMT\t18:Testcase 5:  Loop in/out Test\r\n");
+            cnt_clk = 800;
+            Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
+            printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
+            Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
+            sleep(1);
+
+            for (j=10; j>=1; --j) {
+                Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
+                Chip4_Idx_Scpu_Ctrl_Mod_Write(0);
+
+                Chip4_SCPU_SRAM_ADDR_Write(0xaa00);
+                Chip4_SCPU_SRAM_DATA_Write(0xab);
+
+                Chip4_Idx_Scpu_Ctrl_Load_Write(1);
+                while(!Chip4_SCPU_Idx_Ctrl_Rdy());
+                printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
+
+                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
+                Chip4_Idx_Scpu_Ctrl_Load_Write(0);
+                while(Chip4_SCPU_Idx_Ctrl_Rdy());
+
+                dec2bin(Chip4_CCT_Sram_Addr_Read(), 10);
+                printf(" ");
+                dec2bin(Chip4_CCT_Sram_Data_Read(), 8);
+                printf(" Loop k=%d\n\n", k);
+                //printf("#DLC\tAddr: 0x%.3x, Data: 0x%.2x, Loop k=%d\r\n", Chip4_CCT_Sram_Addr_Read(), Chip4_CCT_Sram_Data_Read(), j);
+            }
+
+            if ((Chip4_CCT_Sram_Addr_Read()==240) && (Chip4_CCT_Sram_Data_Read()==100)) {
+                printf("#DLC\tLoop in/out Test Correct!\r\n");
+            } else {
+                printf("#DLC\tLoop in/out Test Failed!\r\n");
+            }
         }
         else
         {

@@ -30,3 +30,19 @@ int16  rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 reserve_len) {
     //printf("Total word(s) = %d\r\n", i-reserve_len+1);
     return (i-reserve_len+1);
 }
+
+
+//strlen <= 31
+void dec2bin(int c, int strlen)
+{
+   int i = 0;
+   for(i = strlen-1; i >= 0; i--){
+     if((c & (1 << i)) != 0){
+       printf("1");
+     }else{
+       printf("0");
+     }
+   }
+}
+
+

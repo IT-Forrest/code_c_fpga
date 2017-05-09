@@ -21,6 +21,7 @@
 #include "../ana_opt_2/device.h"
 
 int16   rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 reserve_len);
+void    dec2bin(int c, int strlen);
 
 #endif//_SERIAL_PORT_IO_H_
 
