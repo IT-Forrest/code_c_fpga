@@ -679,6 +679,16 @@ void Chip4_Idx_Scpu_Clk_Freq_Chg_Write(int rd_val) {
     *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
     avs_wait();
 }
+void Chip4_Idx_Scpu_Clk_Discrt_Write(int rd_val) {
+    (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_CLK_DISCRT):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_CLK_DISCRT);
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+    avs_wait();
+}
+void Chip4_Idx_Scpu_Clk_1Time_Write(int rd_val) {
+    (rd_val & 0x1)? BIT_ON(local_cpuctrl_flag_addr, IDX_SCPU_CLK_1TIME):BIT_OFF(local_cpuctrl_flag_addr, IDX_SCPU_CLK_1TIME);
+    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
+    avs_wait();
+}
 //void Chip4_Cpu_Ctrl_Flags_Write(int data_val) {
 //    *chip4_cpuctrl_wrt_addr = local_cpuctrl_flag_addr;
 //    avs_wait();

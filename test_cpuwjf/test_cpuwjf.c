@@ -535,31 +535,45 @@ int main() {
         }
         else if (18 == tst_type) {
             printf("#CMT\t18:Testcase 5:  Loop in/out Test\r\n");
-            cnt_clk = 800;
+            cnt_clk = 10;
             Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
             printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
             Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
-            sleep(1);
+            //sleep(1);
+            Chip4_Idx_Scpu_Rst_N_Write(1);
+            Chip4_Idx_Scpu_Clk_Discrt_Write(1);
 
-            for (j=10; j>=1; --j) {
+            //Initialize one cycle
+            Chip4_Idx_Scpu_Clk_1Time_Write(1);
+            Chip4_Idx_Scpu_Clk_1Time_Write(0);
+
+            for (j=10; j>9; --j) {
                 Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
                 Chip4_Idx_Scpu_Ctrl_Mod_Write(0);
 
-                Chip4_SCPU_SRAM_ADDR_Write(0xaa00);
-                Chip4_SCPU_SRAM_DATA_Write(0xab);
+                Chip4_SCPU_SRAM_ADDR_Write(0x0f0);
+                Chip4_SCPU_SRAM_DATA_Write(0x64);
 
                 Chip4_Idx_Scpu_Ctrl_Load_Write(1);
+                for (i=0; i<21; ++i) {
+                    Chip4_Idx_Scpu_Clk_1Time_Write(1);
+                    Chip4_Idx_Scpu_Clk_1Time_Write(0);
+                }
                 while(!Chip4_SCPU_Idx_Ctrl_Rdy());
                 printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
 
                 Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
                 Chip4_Idx_Scpu_Ctrl_Load_Write(0);
+                for (i=0; i<2; ++i) {
+                    Chip4_Idx_Scpu_Clk_1Time_Write(1);
+                    Chip4_Idx_Scpu_Clk_1Time_Write(0);
+                }
                 while(Chip4_SCPU_Idx_Ctrl_Rdy());
 
                 dec2bin(Chip4_CCT_Sram_Addr_Read(), 10);
                 printf(" ");
                 dec2bin(Chip4_CCT_Sram_Data_Read(), 8);
-                printf(" Loop k=%d\n\n", k);
+                printf(" Loop j=%d\n\n", j);
                 //printf("#DLC\tAddr: 0x%.3x, Data: 0x%.2x, Loop k=%d\r\n", Chip4_CCT_Sram_Addr_Read(), Chip4_CCT_Sram_Data_Read(), j);
             }
 

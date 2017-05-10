@@ -110,6 +110,9 @@ typedef char char8;
 #define IDX_SCPU_TEST_MUX2  (10)
 #define IDX_SCPU_CLK_STOP   (11)
 #define IDX_SCPU_CLK_CHG    (12)
+#define IDX_SCPU_CLK_DISCRT (13)    // SCPU switch between continous/discrete timer
+#define IDX_SCPU_CLK_1TIME  (14)    // SCPU give 1 clk cycle during IDX_SCPU_CLK_DISCRT
+
 
 /// CPU status flags
 #define IDX_SCPU_CTRL_RDY   (0)
@@ -263,6 +266,8 @@ void Chip4_Idx_Scpu_Cpu_Wait_Write(int rd_val);
 void Chip4_Idx_Scpu_Test_Mux_Write(int rd_val);
 void Chip4_Idx_Scpu_Clk_Stop_Write(int rd_val);
 void Chip4_Idx_Scpu_Clk_Freq_Chg_Write(int rd_val);
+void Chip4_Idx_Scpu_Clk_Discrt_Write(int rd_val);
+void Chip4_Idx_Scpu_Clk_1Time_Write(int rd_val);
 
 /// SCPU parameters configuration functions
 void Chip4_SCPU_CNT_SCLK_Write(int rd_val);
