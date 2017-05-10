@@ -535,19 +535,23 @@ int main() {
         }
         else if (18 == tst_type) {
             printf("#CMT\t18:Testcase 5:  Loop in/out Test\r\n");
+
+            /// initialize
+            Chip4_Idx_Scpu_Rst_N_Write(0);
+            Chip4_Idx_Scpu_Rst_N_Write(1);
+
             cnt_clk = 10;
             Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
             printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
             Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
             //sleep(1);
-            Chip4_Idx_Scpu_Rst_N_Write(1);
             Chip4_Idx_Scpu_Clk_Discrt_Write(1);
 
             //Initialize one cycle
             Chip4_Idx_Scpu_Clk_1Time_Write(1);
             Chip4_Idx_Scpu_Clk_1Time_Write(0);
 
-            for (j=10; j>9; --j) {
+            for (j=10; j>1; --j) {
                 Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
                 Chip4_Idx_Scpu_Ctrl_Mod_Write(0);
 
@@ -555,7 +559,7 @@ int main() {
                 Chip4_SCPU_SRAM_DATA_Write(0x64);
 
                 Chip4_Idx_Scpu_Ctrl_Load_Write(1);
-                for (i=0; i<21; ++i) {
+                for (i=0; i<23; ++i) {
                     Chip4_Idx_Scpu_Clk_1Time_Write(1);
                     Chip4_Idx_Scpu_Clk_1Time_Write(0);
                 }
@@ -564,7 +568,7 @@ int main() {
 
                 Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
                 Chip4_Idx_Scpu_Ctrl_Load_Write(0);
-                for (i=0; i<2; ++i) {
+                for (i=0; i<4; ++i) {
                     Chip4_Idx_Scpu_Clk_1Time_Write(1);
                     Chip4_Idx_Scpu_Clk_1Time_Write(0);
                 }
