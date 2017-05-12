@@ -1,4 +1,5 @@
 #include "conf_cpuwjf.h"
+#include "../ana_opt_2/device.h"// in order to use functions, i.e., Chip4_Idx_Scpu_Clk_1Time_Write
 
 int16  rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 reserve_len) {
     int16   i;
@@ -43,6 +44,14 @@ void dec2bin(int c, int strlen)
        printf("0");
      }
    }
+}
+
+void send_clk_cycles(int clk_cnt) {
+    int i;
+    for (i=0; i<clk_cnt; ++i) {
+        Chip4_Idx_Scpu_Clk_1Time_Write(1);
+        Chip4_Idx_Scpu_Clk_1Time_Write(0);
+    }
 }
 
 

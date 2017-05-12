@@ -101,6 +101,7 @@ int main() {
         printf("#CMT\t16:Testcase 4:  load one instruction to SRAM\r\n");
         printf("#CMT\t17:Testcase 4:  shift out instruction from CTRL \r\n");
         printf("#CMT\t18:Testcase 5:  Loop in/out Test\r\n");
+        printf("#CMT\t19:Testcase 5:  Loop in/Write SRAM/Loop out Test\r\n");
         printf("#CMT\r\n");
         printf("#CMT\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n");
         printf("#CMT\tWhich Test next(");FmtPrint(tst_type);printf(")? ");
@@ -585,6 +586,98 @@ int main() {
                 printf("#DLC\tLoop in/out Test Correct!\r\n");
             } else {
                 printf("#DLC\tLoop in/out Test Failed!\r\n");
+            }
+        }
+        else if (19 == tst_type) {
+            printf("#CMT\t19:Testcase 5:  Loop in/Write SRAM/Loop out Test\r\n");
+
+            /// initialize
+            Chip4_Idx_Scpu_Rst_N_Write(0);
+            Chip4_Idx_Scpu_Rst_N_Write(1);
+
+            cnt_clk = 1;
+            Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
+            printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
+            Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
+            //sleep(1);
+            Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+
+            //Initialize one cycle
+            Chip4_Idx_Scpu_Clk_1Time_Write(1);
+            Chip4_Idx_Scpu_Clk_1Time_Write(0);
+            // write data to SRAM
+            for (j=10; j>1; --j) {
+                Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
+                Chip4_Idx_Scpu_Ctrl_Mod_Write(0);
+
+                Chip4_SCPU_SRAM_ADDR_Write(0x0f0);
+                Chip4_SCPU_SRAM_DATA_Write(0x83);
+
+                Chip4_Idx_Scpu_Ctrl_Load_Write(1);
+                send_clk_cycles(23);
+                while(!Chip4_SCPU_Idx_Ctrl_Rdy());
+                printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
+
+                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
+                Chip4_Idx_Scpu_Ctrl_Load_Write(0);
+                send_clk_cycles(4);
+                while(Chip4_SCPU_Idx_Ctrl_Rdy());
+                // write data to SRAM
+                Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
+                Chip4_Idx_Scpu_Ctrl_Mod_Write(3);
+                Chip4_Idx_Scpu_Ctrl_Load_Write(1);
+                send_clk_cycles(4);
+                while(!Chip4_SCPU_Idx_Ctrl_Rdy());
+                printf("#DLC\tW Ctrl_Rdy=1\r\n");
+
+                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
+                Chip4_Idx_Scpu_Ctrl_Load_Write(0);
+                send_clk_cycles(4);
+                while(Chip4_SCPU_Idx_Ctrl_Rdy());
+                //printf("#DLC\tAddr: 0x%.3x, Data: 0x%.2x, Loop k=%d\r\n", Chip4_CCT_Sram_Addr_Read(), Chip4_CCT_Sram_Data_Read(), j);
+            }
+
+            // read data from SRAM
+            for (j=3; j>1; --j) {
+                Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
+                Chip4_Idx_Scpu_Ctrl_Mod_Write(0);
+
+                Chip4_SCPU_SRAM_ADDR_Write(0x0f0);
+                Chip4_SCPU_SRAM_DATA_Write(0xff);
+
+                Chip4_Idx_Scpu_Ctrl_Load_Write(1);
+                send_clk_cycles(23);
+                while(!Chip4_SCPU_Idx_Ctrl_Rdy());
+                printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
+
+                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
+                Chip4_Idx_Scpu_Ctrl_Load_Write(0);
+                send_clk_cycles(4);
+                while(Chip4_SCPU_Idx_Ctrl_Rdy());
+                // read data from SRAM
+                Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
+                Chip4_Idx_Scpu_Ctrl_Mod_Write(1);
+                Chip4_Idx_Scpu_Ctrl_Load_Write(1);
+                send_clk_cycles(4);
+                while(!Chip4_SCPU_Idx_Ctrl_Rdy());
+                printf("#DLC\tW Ctrl_Rdy=1\r\n");
+
+                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
+                Chip4_Idx_Scpu_Ctrl_Load_Write(0);
+                send_clk_cycles(4);
+                while(Chip4_SCPU_Idx_Ctrl_Rdy());
+                //printf("#DLC\tAddr: 0x%.3x, Data: 0x%.2x, Loop k=%d\r\n", Chip4_CCT_Sram_Addr_Read(), Chip4_CCT_Sram_Data_Read(), j);
+            }
+
+            dec2bin(Chip4_CCT_Sram_Addr_Read(), 10);
+            printf(" ");
+            dec2bin(Chip4_CCT_Sram_Data_Read(), 8);
+            printf(" Loop j=%d\n\n", j);
+
+            if (Chip4_CCT_Sram_Data_Read()==131) {
+                printf("#DLC\tLoop in/SRAM Test Correct!\r\n");
+            } else {
+                printf("#DLC\tLoop in/SRAM Test Failed!\r\n");
             }
         }
         else
