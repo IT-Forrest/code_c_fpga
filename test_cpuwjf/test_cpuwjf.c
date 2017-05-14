@@ -710,79 +710,38 @@ int main() {
             Chip4_Idx_Scpu_Clk_1Time_Write(0);
             // write data to SRAM
             for (j=10; j>1; --j) {
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
-                Chip4_Idx_Scpu_Ctrl_Mod_Write(0);
-
-                Chip4_SCPU_SRAM_ADDR_Write(0x0f0);
+                Chip4_SCPU_SRAM_ADDR_Write(0x0f1);
                 Chip4_SCPU_SRAM_DATA_Write(0x83);
 
-                Chip4_Idx_Scpu_Ctrl_Load_Write(1);
-                send_clk_cycles(23);
-                while(!Chip4_SCPU_Idx_Ctrl_Rdy());
+                conf_ctrl_flag_value(0);
                 printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
+                wait_ctrl_flag_clean();
 
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
-                Chip4_Idx_Scpu_Ctrl_Load_Write(0);
-                send_clk_cycles(4);
-                while(Chip4_SCPU_Idx_Ctrl_Rdy());
                 // write data to SRAM
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
-                Chip4_Idx_Scpu_Ctrl_Mod_Write(3);
-                Chip4_Idx_Scpu_Ctrl_Load_Write(1);
-                send_clk_cycles(4);
-                while(!Chip4_SCPU_Idx_Ctrl_Rdy());
-                printf("#DLC\tW Ctrl_Rdy=1\r\n");
-
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
-                Chip4_Idx_Scpu_Ctrl_Load_Write(0);
-                send_clk_cycles(4);
-                while(Chip4_SCPU_Idx_Ctrl_Rdy());
+                conf_ctrl_flag_value(3);
+                printf("#DLC\tWrite Ctrl_Rdy=1\r\n");
+                wait_ctrl_flag_clean();
                 //printf("#DLC\tAddr: 0x%.3x, Data: 0x%.2x, Loop k=%d\r\n", Chip4_CCT_Sram_Addr_Read(), Chip4_CCT_Sram_Data_Read(), j);
             }
 
             // read data from SRAM
             for (j=3; j>1; --j) {
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
-                Chip4_Idx_Scpu_Ctrl_Mod_Write(0);
-
-                Chip4_SCPU_SRAM_ADDR_Write(0x0f0);
+                Chip4_SCPU_SRAM_ADDR_Write(0x0f1);///0xee + j
                 Chip4_SCPU_SRAM_DATA_Write(0xff);
 
-                Chip4_Idx_Scpu_Ctrl_Load_Write(1);
-                send_clk_cycles(23);
-                while(!Chip4_SCPU_Idx_Ctrl_Rdy());
+                conf_ctrl_flag_value(0);
                 printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
+                wait_ctrl_flag_clean();
 
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
-                Chip4_Idx_Scpu_Ctrl_Load_Write(0);
-                send_clk_cycles(4);
-                while(Chip4_SCPU_Idx_Ctrl_Rdy());
                 // read data from SRAM
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
-                Chip4_Idx_Scpu_Ctrl_Mod_Write(1);
-                Chip4_Idx_Scpu_Ctrl_Load_Write(1);
-                send_clk_cycles(4);
-                while(!Chip4_SCPU_Idx_Ctrl_Rdy());
+                conf_ctrl_flag_value(1);
                 printf("#DLC\tRead Ctrl_Rdy=1\r\n");
-
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
-                Chip4_Idx_Scpu_Ctrl_Load_Write(0);
-                send_clk_cycles(4);
-                while(Chip4_SCPU_Idx_Ctrl_Rdy());
+                wait_ctrl_flag_clean();
 
                 // export data to fpga
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
-                Chip4_Idx_Scpu_Ctrl_Mod_Write(2);
-
-                Chip4_Idx_Scpu_Ctrl_Load_Write(1);
-                send_clk_cycles(23);
-                while(!Chip4_SCPU_Idx_Ctrl_Rdy());
+                conf_ctrl_flag_value(2);
                 printf("#DLC\tExport Ctrl_Rdy=1\r\n");
-
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
-                Chip4_Idx_Scpu_Ctrl_Load_Write(0);
-                send_clk_cycles(4);
-                while(Chip4_SCPU_Idx_Ctrl_Rdy());
+                wait_ctrl_flag_clean();
 
                 dec2bin(Chip4_CCT_Sram_Addr_Read(), 10);
                 printf(" ");

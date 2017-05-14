@@ -23,6 +23,8 @@
 int16   rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 reserve_len);
 void    dec2bin(int c, int strlen);
 void    send_clk_cycles(int clk_cnt);
+void    conf_ctrl_flag_value(int mode_type);
+void    wait_ctrl_flag_clean();
 
 #endif//_SERIAL_PORT_IO_H_
 

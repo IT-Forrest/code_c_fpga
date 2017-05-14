@@ -54,4 +54,28 @@ void send_clk_cycles(int clk_cnt) {
     }
 }
 
+void conf_ctrl_flag_value(int mode_type) {
+    int clk_cnt = 0;
+    if (0 == mode_type) clk_cnt = 23;/// scan data from fpga to I/O need >= 23 clk cycles
+    else if (3 == mode_type) clk_cnt = 4;/// write to sram need >= 4 clk cycles
+    else if (1 == mode_type) clk_cnt = 4;/// read from sram need >= 4 clk cycles
+    else if (2 == mode_type) clk_cnt = 23;/// export data from I/O to fpga need >= 23 clk cycles
+    else {
+        printf("mode_type ranges from 0 to 3\r\n");
+        return;
+    }
 
+    Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
+    Chip4_Idx_Scpu_Ctrl_Mod_Write(mode_type);
+    Chip4_Idx_Scpu_Ctrl_Load_Write(1);
+    send_clk_cycles(clk_cnt);
+    while(!Chip4_SCPU_Idx_Ctrl_Rdy());
+}
+
+void wait_ctrl_flag_clean() {
+    int clk_cnt = 4;///default clk_cnt = 4;
+    Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
+    Chip4_Idx_Scpu_Ctrl_Load_Write(0);
+    send_clk_cycles(clk_cnt);
+    while(Chip4_SCPU_Idx_Ctrl_Rdy());
+}
