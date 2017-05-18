@@ -1,10 +1,10 @@
         tmpi_datain = {`JUMP, 3'b000, 4'b0001, 4'b0000};// Jump to certain address
-        tmpi_datain = {`SET, `gr3, 4'b0000, 4'b0100};//reset the loop controller `gr7
-        tmpi_datain = {`SET, `gr1, 4'b0000, 4'b0000};//reset the sum value
-        tmpi_datain = {`ADD, `gr1, 1'b0, `gr1, 1'b0, `gr3};//set the loop controller `gr7 = 25
+        tmpi_datain = {`SET, `gr3, 4'b0110, 4'b0100};//reset the loop controller `gr7
+        tmpi_datain = {`SET, `gr5, 4'b0000, 4'b0000};//reset the sum value
+        tmpi_datain = {`ADD, `gr5, 1'b0, `gr5, 1'b0, `gr3};//set the loop controller `gr7 = 25
         tmpi_datain = {`SUBI, `gr3, 4'b0000, 4'b0001};//sum += `gr7
         tmpi_datain = {`BNZ, `gr0, 4'b0001, 4'b0010};
-        tmpi_datain = {`STORE, `gr1, 1'b0, `gr0, 4'b0010};//if (`gr7 != 0) go to I_RAM[ 9];
+        tmpi_datain = {`STORE, `gr5, 1'b0, `gr0, 4'b0010};//if (`gr7 != 0) go to I_RAM[ 9];
         tmpi_datain = {`SUB, `gr2, 1'b0, `gr2, 1'b0, `gr2};
         tmpi_datain = {`SET, `gr2, 4'b0000, 4'b0011};
         tmpi_datain = {`SUB, `gr3, 1'b0, `gr3, 1'b0, `gr3};

@@ -17,6 +17,7 @@
 #define SSNUM 7
 #define USE_NEW_VAL     (0 != len)
 #define DEFAULT_PC_ADDR (16)
+#define MAX_SRAM_LEN    (1024)
 
 int main() {
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
@@ -51,7 +52,7 @@ int main() {
 //    uint8   low_value = 0;
 //    uint8   high_value = 0;
     //int16  read_len;
-    uint8   sram_buf[1024];/// SRAM 1024X8, or say, 512X16
+    uint8   sram_buf[MAX_SRAM_LEN];/// SRAM 1024X8, or say, 512X16
     int16   inst_num = 0;
     uint16  inst_val = 0;
     uint16  addr_tmp = 0;
@@ -97,12 +98,12 @@ int main() {
         printf("#CMT\t12:Bi-split chip freq (0,1,2,3,...255)\r\n");
         printf("#CMT\r\n");
         printf("#CMT\t13:Testcase 1:  instruction to Memory\r\n");
-        printf("#CMT\t14:Testcase 2:  instruction to SRAM\r\n");
-        printf("#CMT\t15:Testcase 3:  instruction to sum_1+2+3+4\r\n");
-        printf("#CMT\t16:Testcase 4:  load one instruction to SRAM\r\n");
-        printf("#CMT\t17:Testcase 4:  shift out instruction from CTRL \r\n");
-        printf("#CMT\t18:Testcase 5:  Loop in/out Test\r\n");
-        printf("#CMT\t19:Testcase 5:  SRAM Read/Write Test\r\n");
+        printf("#CMT\t14:Testcase 2:  instruction to suspend cpu\r\n");
+        printf("#CMT\t15:Testcase 3:  instruction for sum_1+2+3+4+...100\r\n");
+        printf("#CMT\t16:Testcase 4:  Write/Read many instructions to SRAM\r\n");
+        printf("#CMT\t17:Testcase 5:  shift out instruction from CTRL \r\n");
+        printf("#CMT\t18:Testcase 6:  Loop in/out Test\r\n");
+        printf("#CMT\t19:Testcase 7:  Loop in/Write SRAM/Export out Test\r\n");
         printf("#CMT\r\n");
         printf("#CMT\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n");
         printf("#CMT\tWhich Test next(");FmtPrint(tst_type);printf(")? ");
@@ -369,7 +370,7 @@ int main() {
             printf("#DLC\tCPU process finish\r\n");
         }
         else if (15 == tst_type) {
-            printf("#CMT\t15:Testcase 3:  instruction to sum_1+2+3+4\r\n");
+            printf("#CMT\t15:Testcase 3:  instruction for sum_1+2+3+4+...100\r\n");
             printf("#DLC\tRead instructions...\r\n");
             fd = fopen("testcase_3.bin", "r");
 
@@ -467,19 +468,19 @@ int main() {
                         }
                     }
                 }
-                if (10 == inst_val) {
+                if (5050 == inst_val) {
                     printf("#DLC\tSum = %d\r\n", inst_val);
-                    printf("#DLC\tTest passed!\r\n");
+                    printf("#DLC\tTest sum_1+2+3+4+...100 passed!\r\n");
                 } else {
                     printf("#DLC\tSum = %d\r\n", inst_val);
-                    printf("#DLC\tTest failed!\r\n");
+                    printf("#DLC\tTest sum_1+2+3+4+...100 failed!\r\n");
                 }
 
                 fclose(fd);
             }
         }
         else if (16 == tst_type) {
-            printf("#CMT\t16:Testcase 4:  load one instruction to CTRL\r\n");
+            printf("#CMT\t16:Testcase 4:  Write/Read many instructions to SRAM\r\n");
             printf("#DLC\tRead instructions...\r\n");
             //fd = fopen("testcase_3.bin", "r");
             sram_buf[0 ] = 0x10;//11000000  00010000
@@ -546,14 +547,6 @@ int main() {
 
             for (i=0; i<28; ++i) {
                 /// initialize
-//                Chip4_Idx_Scpu_Rst_N_Write(0);
-//                Chip4_Idx_Scpu_Rst_N_Write(1);
-
-                //Initialize one cycle
-//                Chip4_Idx_Scpu_Clk_1Time_Write(1);
-//                Chip4_Idx_Scpu_Clk_1Time_Write(0);
-
-                // read data from SRAM
                 for (j=2; j>1; --j) {
                     Chip4_SCPU_SRAM_ADDR_Write(i);//0x0f1
                     Chip4_SCPU_SRAM_DATA_Write(0xff);
@@ -586,20 +579,15 @@ int main() {
                     err_cnt++;
                     printf("#DLC\tSRAM Read Failed, addr = 0x%.3x\r\n\n", i);
                 }
-                ///if (Chip4_CCT_Sram_Data_Read()==131) {
-                ///    printf("#DLC\tSRAM Read/Write Test Correct!\r\n");
-                ///} else {
-                ///    printf("#DLC\tSRAM Read/Write Test Failed!\r\n");
-                ///}
             }
 
             if (!err_cnt)
-                printf("#DLC\tSRAM Read/Write Test Correct!\r\n");
+                printf("#DLC\tSRAM batch Write/Read Test Correct!\r\n");
             else
-                printf("#DLC\tSRAM Read/Write Test Failed!\r\n");
+                printf("#DLC\tSRAM batch Write/Read Test Failed!\r\n");
         }
         else if (17 == tst_type) {
-            printf("#CMT\t17:Testcase 4:  shift out instruction from CTRL \r\n");
+            printf("#CMT\t17:Testcase 5:  shift out instruction from CTRL \r\n");
             if (Chip4_SCPU_Idx_Ctrl_Rdy()) {
                 printf("#DLC\tLoad instructions done\r\n");
             }
@@ -616,13 +604,14 @@ int main() {
             Chip4_Idx_Scpu_Ctrl_Load_Write(1);
         }
         else if (18 == tst_type) {
-            printf("#CMT\t18:Testcase 5:  Loop in/out Test\r\n");
+            printf("#CMT\t18:Testcase 6:  SRAM all address write/read Test\r\n");
+            err_cnt = 0;
 
             /// initialize
             Chip4_Idx_Scpu_Rst_N_Write(0);
-            Chip4_Idx_Scpu_Rst_N_Write(1);
+            //Chip4_Idx_Scpu_Rst_N_Write(1);
 
-            cnt_clk = 10;
+            cnt_clk = 1;
             Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
             printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
             Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
@@ -630,47 +619,65 @@ int main() {
             Chip4_Idx_Scpu_Clk_Discrt_Write(1);
 
             //Initialize one cycle
-            Chip4_Idx_Scpu_Clk_1Time_Write(1);
-            Chip4_Idx_Scpu_Clk_1Time_Write(0);
+            send_clk_cycles(2);
+            // write data to sram
+            for (j=0; j<MAX_SRAM_LEN; ++j) {
+                Chip4_SCPU_SRAM_ADDR_Write(j);
+                Chip4_SCPU_SRAM_DATA_Write(j%256);
 
-            for (j=10; j>1; --j) {
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(1);
-                Chip4_Idx_Scpu_Ctrl_Mod_Write(0);
-
-                Chip4_SCPU_SRAM_ADDR_Write(0x0f0);
-                Chip4_SCPU_SRAM_DATA_Write(0x64);
-
-                Chip4_Idx_Scpu_Ctrl_Load_Write(1);
-                for (i=0; i<23; ++i) {
-                    Chip4_Idx_Scpu_Clk_1Time_Write(1);
-                    Chip4_Idx_Scpu_Clk_1Time_Write(0);
-                }
-                while(!Chip4_SCPU_Idx_Ctrl_Rdy());
+                conf_ctrl_flag_value(0);
                 printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
+                wait_ctrl_flag_clean();
 
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
-                Chip4_Idx_Scpu_Ctrl_Load_Write(0);
-                for (i=0; i<4; ++i) {
-                    Chip4_Idx_Scpu_Clk_1Time_Write(1);
-                    Chip4_Idx_Scpu_Clk_1Time_Write(0);
-                }
-                while(Chip4_SCPU_Idx_Ctrl_Rdy());
+                // Write data to SRAM
+                conf_ctrl_flag_value(3);
+                printf("#DLC\tWrite Ctrl_Rdy=1\r\n");
+                wait_ctrl_flag_clean();
+            }
+
+            // read data from SRAM
+            for (j=0; j<MAX_SRAM_LEN; ++j) {
+                Chip4_SCPU_SRAM_ADDR_Write(j);///0xee + j
+                Chip4_SCPU_SRAM_DATA_Write(0xff);
+
+                conf_ctrl_flag_value(0);
+                printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
+                wait_ctrl_flag_clean();
+
+                // read data from SRAM
+                conf_ctrl_flag_value(1);
+                printf("#DLC\tRead Ctrl_Rdy=1\r\n");
+                wait_ctrl_flag_clean();
+
+                // export data to fpga
+                Chip4_SCPU_SRAM_ADDR_Write(0);
+                Chip4_SCPU_SRAM_DATA_Write(0);
+
+                conf_ctrl_flag_value(2);
+                printf("#DLC\tExport Ctrl_Rdy=1\r\n");
+                wait_ctrl_flag_clean();
 
                 dec2bin(Chip4_CCT_Sram_Addr_Read(), 10);
                 printf(" ");
                 dec2bin(Chip4_CCT_Sram_Data_Read(), 8);
                 printf(" Loop j=%d\n\n", j);
                 //printf("#DLC\tAddr: 0x%.3x, Data: 0x%.2x, Loop k=%d\r\n", Chip4_CCT_Sram_Addr_Read(), Chip4_CCT_Sram_Data_Read(), j);
+
+                if ((Chip4_CCT_Sram_Addr_Read() == j) && (Chip4_CCT_Sram_Data_Read() == (j%256))) {
+                    printf("#DLC\tRound = %d,\tData = 0x%.2x\r\n", j, Chip4_CCT_Sram_Data_Read());
+                } else {
+                    err_cnt++;
+                    printf("#DLC\tRound = %d,\tData = 0x%.2x\r\n", j, Chip4_CCT_Sram_Data_Read());
+                }
             }
 
-            if ((Chip4_CCT_Sram_Addr_Read()==240) && (Chip4_CCT_Sram_Data_Read()==100)) {
-                printf("#DLC\tLoop in/out Test Correct!\r\n");
-            } else {
-                printf("#DLC\tLoop in/out Test Failed!\r\n");
-            }
+            if (!err_cnt)
+                printf("#DLC\tSRAM all address write/read Test Correct!\r\n");
+            else
+                printf("#DLC\tSRAM all address write/read Test Failed!\r\n");
         }
         else if (19 == tst_type) {
-            printf("#CMT\t19:Testcase 5:  Loop in/Write SRAM/Loop out Test\r\n");
+            printf("#CMT\t19:Testcase 7:  Loop in/Write SRAM/Export out Test\r\n");
             err_cnt = 0;
             sram_data = 0x83;
             sram_addr = 0xf1;
@@ -738,9 +745,9 @@ int main() {
             }
 
             if (!err_cnt)
-                printf("#DLC\tSRAM Read/Write Test Correct!\r\n");
+                printf("#DLC\tSRAM Write/Read/Export Test Correct!\r\n");
             else
-                printf("#DLC\tSRAM Read/Write Test Failed!\r\n");
+                printf("#DLC\tSRAM Write/Read/Export Test Failed!\r\n");
         }
         else
         {
