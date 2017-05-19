@@ -1,0 +1,9 @@
+        tmpi_datain = {`SET, `gr1, 4'b1000, 4'b0000};
+        tmpi_datain = {`LIOA, `gr5, 4'b0000, 4'b0000};
+        tmpi_datain = {`SET, `gr1, 4'b0000, 4'b0000};
+        tmpi_datain = {`SET, `gr1, 4'b1000, 4'b0000};
+        tmpi_datain = {`LIOA, `gr6, 4'b0000, 4'b0000};
+        tmpi_datain = {`SET, `gr1, 4'b0000, 4'b0000};
+        tmpi_datain = {`STORE, `gr5, 1'b0, `gr0, 4'b1010};
+        tmpi_datain = {`STORE, `gr6, 1'b0, `gr0, 4'b1011};
+        tmpi_datain = {`HALT, 11'b000_0000_0000};//due to the pipeline, we need to add many `NOP to the instruction set
