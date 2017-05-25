@@ -32,6 +32,32 @@ int16  rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 reserve_len) {
     return (i-reserve_len+1);
 }
 
+int16   rd_bfile_to_adc_buf(FILE *fd, uint16 *adc_buf, bool is_osc) {
+    int16   i;
+    uint16  inst_val = 0;
+    char8   line[12];//2 bits more than the ADC binary arrays
+    uint16  max_io_data;
+    //FSEL_ELEMENT    *A;
+
+    max_io_data = (is_osc)? 18 : 16;
+    max_io_data *= MAX_IQDATA_GRP;
+
+    for (i=0; i<max_io_data; ++i) {
+        adc_buf[i] = 0;
+    }
+
+    i = 0;
+    while (fgets(line, sizeof(line), fd)) {
+        if ('\n'==line[0]) continue;/// skip the empty line derived by using fgets
+
+        inst_val = strtol(line,0,2);
+        adc_buf[i] = inst_val;
+        printf("IQ Data = %d, id=%d\r\n", adc_buf[i], i);
+        ++i;
+    }
+    return  i;
+}
+
 
 //strlen <= 31
 void dec2bin(int c, int strlen)

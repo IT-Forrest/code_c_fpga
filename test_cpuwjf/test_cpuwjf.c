@@ -18,6 +18,7 @@
 #define USE_NEW_VAL     (0 != len)
 #define DEFAULT_PC_ADDR (16)
 #define MAX_SRAM_LEN    (1024)
+#define MAX_IQDATA_GRP  (1024)
 
 int main() {
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
@@ -27,7 +28,7 @@ int main() {
     uint16  rd_val = 0;
     uint8   len = 0;
 
-    FILE    *fd;
+    FILE    *fd, *fd2;
     //char8   line[18];//2 bits more than instruction binary arrays
     uint8   clk_stop = 0;// 0: TURN on clk to chip
     uint8   cpu_rst_n = 0;// 0: reset; 1: activate
@@ -57,7 +58,7 @@ int main() {
     int16   inst_num = 0;
     uint16  inst_val = 0;
     uint16  addr_tmp = 0;
-    //uint16  adc_buf[10] = {0};
+    uint16  adc_buf[MAX_IQDATA_GRP*18] = {0};
 
     if (init_mem()) return (1);
     if (syn_ctrl()) return (1);
@@ -102,9 +103,10 @@ int main() {
         printf("#CMT\t14:Testcase 2:  suspend cpu to get ADC data\r\n");
         printf("#CMT\t15:Testcase 3:  instruction for sum_1+2+3+4+...100\r\n");
         printf("#CMT\t16:Testcase 4:  write/Read many instructions to SRAM\r\n");
-        printf("#CMT\t17:Testcase 5:  shift out instruction from CTRL \r\n");
+        printf("#CMT\t17:Testcase 5:  shift out instruction from CTR\r\n");
         printf("#CMT\t18:Testcase 6:  write/read all SRAM address Test\r\n");
         printf("#CMT\t19:Testcase 7:  loop in/Write SRAM/Export out Test\r\n");
+        printf("#CMT\t20:Testcase 8:  sweep the 3D cost function curve\r\n");
         printf("#CMT\r\n");
         printf("#CMT\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n");
         printf("#CMT\tWhich Test next(");FmtPrint(tst_type);printf(")? ");
@@ -807,6 +809,39 @@ int main() {
                 printf("#DLC\tSRAM Write/Read/Export Test Correct!\r\n");
             else
                 printf("#DLC\tSRAM Write/Read/Export Test Failed!\r\n");
+        }
+        else if (20 == tst_type) {
+            printf("#CMT\t20:Testcase 8:  sweep the 3D cost function curve\r\n");
+            printf("#DLC\tRead IQ Data...\r\n");
+            fd = fopen("sweep_67_74_80_25C_516off.bin", "r");
+
+            printf("#DLC\tRead instructions...\r\n");
+            fd2 = fopen("testcase_5.bin", "r");
+
+            if (fd == NULL) {
+                printf("open IQ Data file failed!\r\n");
+            } else if (fd2 == NULL) {
+                printf("open Instruction file failed!\r\n");
+            } else {
+                inst_num = rd_bfile_to_adc_buf(fd, adc_buf, 0);
+                printf("Total %d IQ Data\r\n", inst_num);
+                fclose(fd);
+
+                inst_num = rd_bfile_to_mem_buf(fd2, sram_buf, 30);//DEFAULT_PC_ADDR
+                printf("Total instruction(s) = %d DWORD\n", inst_num);
+                fclose(fd2);
+/*                    err_cnt = 0;
+                    cnt_clk = 1;
+                    Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
+                    printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
+                    Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
+                    //sleep(1);
+                    Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+
+                    /// initialize
+                    Chip4_Idx_Scpu_Rst_N_Write(0);
+                    //Chip4_Idx_Scpu_Rst_N_Write(1);*/
+            }
         }
         else
         {
