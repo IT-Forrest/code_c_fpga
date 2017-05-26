@@ -53,15 +53,12 @@ int main() {
 
 //    uint8   low_value = 0;
 //    uint8   high_value = 0;
-    uint16  bgn_line;/// the start line of DWORD
-    uint16  num_line;/// the DWORD number of data
-    uint8   read_buf[MAX_SRAM_LEN];/// store data stored in SRAM
+    //int16  read_len;
     uint8   sram_buf[MAX_SRAM_LEN];/// SRAM 1024X8, or say, 512X16
-    int16   adcs_num = 0;// IQ data num
-    int16   inst_num = 0;// Instruction num
+    int16   inst_num = 0;
     uint16  inst_val = 0;
     uint16  addr_tmp = 0;
-    uint16  adcs_buf[MAX_IQDATA_GRP*18] = {0};
+    uint16  adc_buf[MAX_IQDATA_GRP*18] = {0};
 
     if (init_mem()) return (1);
     if (syn_ctrl()) return (1);
@@ -826,38 +823,24 @@ int main() {
             } else if (fd2 == NULL) {
                 printf("open Instruction file failed!\r\n");
             } else {
-                adcs_num = rd_bfile_to_adc_buf(fd, adcs_buf, 0);
-                printf("Total %d IQ Data\r\n", adcs_num);
+                inst_num = rd_bfile_to_adc_buf(fd, adc_buf, 0);
+                printf("Total %d IQ Data\r\n", inst_num);
                 fclose(fd);
 
                 inst_num = rd_bfile_to_mem_buf(fd2, sram_buf, 30);//DEFAULT_PC_ADDR
                 printf("Total instruction(s) = %d DWORD\n", inst_num);
                 fclose(fd2);
+/*                    err_cnt = 0;
+                    cnt_clk = 1;
+                    Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
+                    printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
+                    Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
+                    //sleep(1);
+                    Chip4_Idx_Scpu_Clk_Discrt_Write(1);
 
-                err_cnt = 0;
-                cnt_clk = 1;
-                /// (1) change the fpga clock before write data to SRAM
-                chg_fpga_clk_freq(cnt_clk);
-
-                /// (2) write data to SRAM:
-                write_insts_to_sram(sram_buf,inst_num, 30);
-
-                /// (3) Loop: 1024 and get the CF curve
-                for (j = 0; j<1; ++j) {
-                    /// 3.1 active cpu;
-                    chg_clk_and_start_cpu();
-                    /// 3.2 provide IQ data and calculate ANA
-                    get_IQ_data_to_cpu(j, adcs_buf);
-                    /// 3.3 wait for finish
-                    while(!Chip4_SCPU_Idx_Nxt_End());
-                    printf("#DLC\tCPU Process finish!\r\n");
-
-                    /// (5) Read data from SRAM:
-                    bgn_line = 5; num_line = 1; inst_val = 0;
-                    read_data_from_sram(read_buf, bgn_line, num_line);
-                    inst_val = CHIP4_GET_ADC_BUF(bgn_line);
-                    printf("ADC= %d\r\n", inst_val);
-                }
+                    /// initialize
+                    Chip4_Idx_Scpu_Rst_N_Write(0);
+                    //Chip4_Idx_Scpu_Rst_N_Write(1);*/
             }
         }
         else
