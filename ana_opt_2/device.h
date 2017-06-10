@@ -123,6 +123,8 @@ typedef char char8;
 
 #define MAX_SRAM_WORD   (512)
 #define MAX_IQDATA_GRP  (1024)
+#define OSCD_TOL        (18)
+
 
 int USBUART_1_CDCIsReady();
 int USBUART_1_DataIsReady();

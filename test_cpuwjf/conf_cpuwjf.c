@@ -1,7 +1,7 @@
 #include "conf_cpuwjf.h"
 #include "../ana_opt_2/device.h"// in order to use functions, i.e., Chip4_Idx_Scpu_Clk_1Time_Write
 
-int16  rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 reserve_len) {
+int16  rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 config_len, uint16 reserve_len) {
     int16   i;
     uint32  inst_val = 0;
     char8   line[18];//2 bits more than instruction binary arrays
@@ -22,7 +22,7 @@ int16  rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 reserve_len) {
         //printf("ADDR 0x%.3x-%.3x:\t 0x%.2x 0x%.2x\n", 2*i+1, 2*i, sram_buf[2*i+1], sram_buf[2*i]);
         printf("Addr 0x%.3x\t0x%.2x\r\n", 2*i+1, sram_buf[2*i+1]);
         printf("Addr 0x%.3x\t0x%.2x\r\n", 2*i, sram_buf[2*i]);
-        if (0 == i) {
+        if ((config_len - 1) == i) {
             i= reserve_len;///DEFAULT_PC_ADDR;
         } else {
             i++;
@@ -167,14 +167,18 @@ void chg_clk_and_start_cpu() {
     Chip4_Idx_Scpu_Cpu_Bgn_Write(0);
 }
 
-void get_IQ_data_to_cpu(uint16 addr_adc, uint16 *adcs_buf) {
+void get_IQ_data_to_cpu(uint16 addr_adc, uint16 *adcs_buf, bool is_osc) {
     uint16  k;
     uint16  adc_data;
     uint16  addr_iqs = 0;
+    uint16  max_io_data = (is_osc)? 18 : 16;
+    uint16  IQ_data[18];
+    uint16  IQ_abs[2];
 
-    for (k=0; k < 16; ++k) {
-        addr_iqs = (addr_adc<<4) + k;
+    for (k=0; k < max_io_data; ) {
+        addr_iqs = (addr_adc*max_io_data) + k;
         adc_data = adcs_buf[addr_iqs];
+        IQ_data[k] = adcs_buf[addr_iqs];
 
         /// wait for ADC request signal
         while(!Chip4_SCPU_Idx_App_Start());
@@ -184,8 +188,27 @@ void get_IQ_data_to_cpu(uint16 addr_adc, uint16 *adcs_buf) {
         Chip4_Idx_Scpu_App_Done_Write(1);
 
         /// wait for ADC request finish
-        while(Chip4_SCPU_Idx_App_Start());
+        //while(Chip4_SCPU_Idx_App_Start());
+        //sleep(2);
         Chip4_Idx_Scpu_App_Done_Write(0);
+
+        if (is_osc) {
+            if (3 == k) {
+                IQ_abs[0] = (IQ_data[0]>IQ_data[2])?(IQ_data[0]-IQ_data[2]):(IQ_data[2]-IQ_data[0]);
+                IQ_abs[1] = (IQ_data[1]>IQ_data[3])?(IQ_data[1]-IQ_data[3]):(IQ_data[3]-IQ_data[1]);
+
+                if ((IQ_abs[0] + IQ_abs[1]) < OSCD_TOL)
+                    ++k;
+                else
+                    break;
+            }
+            else {
+                ++k;
+            }
+        }
+        else {
+            ++k;
+        }
     }
 }
 
