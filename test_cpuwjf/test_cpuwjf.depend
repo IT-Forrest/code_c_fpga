@@ -25,7 +25,7 @@
 	"socal/alt_gpio.h"
 	"hps_0.h"
 
-1494400499 f:\05.code_battle\github\code_c_fpga\ana_opt_2\hps_0.h
+1497052280 f:\05.code_battle\github\code_c_fpga\ana_opt_2\hps_0.h
 
 1493239019 source:f:\05.code_battle\github\code_c_fpga\ana_opt_2\psoc_port.c
 	"psoc_port.h"
@@ -83,7 +83,7 @@
 	"../ana_opt_2/device.h"
 	"../ana_opt_2/test_adc.h"
 
-1496967777 source:f:\05.code_battle\github\code_c_fpga\test_cpuwjf\conf_cpuwjf.c
+1497059705 source:f:\05.code_battle\github\code_c_fpga\test_cpuwjf\conf_cpuwjf.c
 	"conf_cpuwjf.h"
 	"../ana_opt_2/device.h"
 

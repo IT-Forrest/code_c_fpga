@@ -1,6 +1,9 @@
 #include "conf_cpuwjf.h"
 #include "../ana_opt_2/device.h"// in order to use functions, i.e., Chip4_Idx_Scpu_Clk_1Time_Write
 
+//#define     CPU_GLOBAL_ON
+//#define     CPU_DETAIL_ON
+
 int16  rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 config_len, uint16 reserve_len) {
     int16   i;
     uint32  inst_val = 0;
@@ -20,8 +23,10 @@ int16  rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 config_len, uint16 
         sram_buf[2*i] = inst_val & 0x00ff;
         sram_buf[2*i+1] = (inst_val>>8) & 0x00ff;
         //printf("ADDR 0x%.3x-%.3x:\t 0x%.2x 0x%.2x\n", 2*i+1, 2*i, sram_buf[2*i+1], sram_buf[2*i]);
+#ifdef CPU_GLOBAL_ON
         printf("Addr 0x%.3x\t0x%.2x\r\n", 2*i+1, sram_buf[2*i+1]);
         printf("Addr 0x%.3x\t0x%.2x\r\n", 2*i, sram_buf[2*i]);
+#endif
         if ((config_len - 1) == i) {
             i= reserve_len;///DEFAULT_PC_ADDR;
         } else {
@@ -52,7 +57,9 @@ int16   rd_bfile_to_adc_buf(FILE *fd, uint16 *adc_buf, bool is_osc) {
 
         inst_val = strtol(line,0,2);
         adc_buf[i] = inst_val;
+#ifdef CPU_GLOBAL_ON
         printf("IQ Data = %d, id=%d\r\n", adc_buf[i], i);
+#endif
         ++i;
     }
     return  i;
@@ -135,8 +142,9 @@ void write_insts_to_sram(uint8 *sram_buf, int16 inst_num, uint16 reserve_len) {
             addr_tmp = 2*i+j-1;
             Chip4_SCPU_SRAM_ADDR_Write(addr_tmp);
             Chip4_SCPU_SRAM_DATA_Write(sram_buf[addr_tmp]);
+#ifdef CPU_GLOBAL_ON
             printf("Addr 0x%.3x\t0x%.2x\r\n", addr_tmp, sram_buf[addr_tmp]);
-
+#endif
             /// swift instructions and address to CTRL module
             conf_ctrl_flag_value(0);
             wait_ctrl_flag_clean();
@@ -230,20 +238,33 @@ void read_data_from_sram(uint8 *read_buf, uint16 bgn_line, uint16 num_line) {
             Chip4_SCPU_SRAM_DATA_Write(0xff);
 
             conf_ctrl_flag_value(0);
+#ifdef CPU_GLOBAL_ON
             printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
+#endif
             wait_ctrl_flag_clean();
 
             /// read data from SRAM
             conf_ctrl_flag_value(1);
+#ifdef CPU_GLOBAL_ON
             printf("#DLC\tRead Ctrl_Rdy=1\r\n");
+#endif
             wait_ctrl_flag_clean();
 
             /// export sram data to fpga
             Chip4_SCPU_SRAM_ADDR_Write(0x00);
             Chip4_SCPU_SRAM_DATA_Write(0x00);
             conf_ctrl_flag_value(2);
+#ifdef CPU_GLOBAL_ON
             printf("#DLC\tExport Ctrl_Rdy=1\r\n");
+#endif
             wait_ctrl_flag_clean();
+
+#ifdef CPU_DETAIL_ON
+            dec2bin(Chip4_CCT_Sram_Addr_Read(), 10);
+            printf(" ");
+            dec2bin(Chip4_CCT_Sram_Data_Read(), 8);
+            printf(" Loop j=%d\n\n", j);
+#endif
 
 //            if (1 == j) {
 //                inst_val |= (0x000000ff & Chip4_CCT_Sram_Data_Read());

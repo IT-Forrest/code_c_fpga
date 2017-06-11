@@ -60,7 +60,6 @@ int main() {
     int16   adcs_num = 0;// IQ data num
     int16   inst_num = 0;// Instruction num
     uint16  inst_val = 0;
-    uint16  addr_tmp = 0;
     uint16  adcs_buf[MAX_IQDATA_GRP*18] = {0};
 
     if (init_mem()) return (1);
@@ -111,6 +110,7 @@ int main() {
         printf("#CMT\t19:Testcase 7:  loop in/Write SRAM/Export out Test\r\n");
         printf("#CMT\t20:Testcase 8:  sweep the 3D cost function curve\r\n");
         printf("#CMT\t21:Testcase 9:  sweep the 3D cost function curve with OSCD\r\n");
+        printf("#CMT\t22:Testcase 10: instruction for sum = 0\r\n");
         printf("#CMT\r\n");
         printf("#CMT\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n");
         printf("#CMT\tWhich Test next(");FmtPrint(tst_type);printf(")? ");
@@ -302,6 +302,11 @@ int main() {
             else {
                 inst_num = rd_bfile_to_mem_buf(fd, sram_buf, 1, DEFAULT_PC_ADDR);
                 printf("Total word(s) = %d\n", inst_num);
+                if (20 == inst_num) {
+                    printf("Testcase 1:  instruction to Memory Passed!\r\n");
+                } else {
+                    printf("Testcase 1:  instruction to Memory Failed!\r\n");
+                }
                 fclose(fd);
             }
         }
@@ -314,44 +319,15 @@ int main() {
             } else {
                 inst_num = rd_bfile_to_mem_buf(fd, sram_buf, 1, 1);
                 printf("Total instruction(s) = %d DWORD\n", inst_num);
+                fclose(fd);
 
                 err_cnt = 0;
                 cnt_clk = 1;
-                Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
-                printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
-                Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
-                //sleep(1);
-                Chip4_Idx_Scpu_Clk_Discrt_Write(1);
-
-                /// initialize
-                Chip4_Idx_Scpu_Rst_N_Write(0);
-                //Chip4_Idx_Scpu_Rst_N_Write(1);
+                /// change the fpga clock frequency
+                chg_fpga_clk_freq(cnt_clk);
 
                 /// (1) Initialize one cycle & scan in instructions
-                Chip4_Idx_Scpu_Clk_1Time_Write(1);
-                Chip4_Idx_Scpu_Clk_1Time_Write(0);
-                for (i=0; i<(inst_num-1)+1; ) {//+DEFAULT_PC_ADDR
-                    for (j=2; j>=1; --j) {
-                        addr_tmp = 2*i+j-1;
-                        Chip4_SCPU_SRAM_ADDR_Write(addr_tmp);
-                        Chip4_SCPU_SRAM_DATA_Write(sram_buf[addr_tmp]);
-                        printf("Addr 0x%.3x\t0x%.2x\r\n", addr_tmp, sram_buf[addr_tmp]);
-
-                        /// swift instructions and address to CTRL module
-                        conf_ctrl_flag_value(0);
-                        wait_ctrl_flag_clean();
-
-                        /// notify CTRL send instructions to SRAM
-                        conf_ctrl_flag_value(3);
-                        wait_ctrl_flag_clean();
-                    }
-
-                    if (0 == i) {
-                        i = 1;//DEFAULT_PC_ADDR
-                    } else {
-                        ++i;
-                    }
-                }
+                write_insts_to_sram(sram_buf, inst_num, 1);
 
                 /// (2) switch to CPU mode & activate the CPU
                 printf("#DLC\tActivate CPU...\r\n");
@@ -390,55 +366,22 @@ int main() {
                 printf("#DLC\tCPU Process finish!\r\n");
 
                 /// (3) switch to control mode & fetch result from sram
-                Chip4_Idx_Scpu_Rst_N_Write(0);
-                Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+                read_data_from_sram(read_buf, 10, 2);
 
-                for (i = 10; i <12; ++i) {
-                    inst_val = 0;
-                    for (j=2; j >=1; --j) {
-                        addr_tmp = 2*i+j-1;
-                        Chip4_SCPU_SRAM_ADDR_Write(addr_tmp);
-                        Chip4_SCPU_SRAM_DATA_Write(0xff);
-
-                        conf_ctrl_flag_value(0);
-                        printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
-                        wait_ctrl_flag_clean();
-
-                        /// read data from SRAM
-                        conf_ctrl_flag_value(1);
-                        printf("#DLC\tRead Ctrl_Rdy=1\r\n");
-                        wait_ctrl_flag_clean();
-
-                        /// export sram data to fpga
-                        Chip4_SCPU_SRAM_ADDR_Write(0x00);
-                        Chip4_SCPU_SRAM_DATA_Write(0x00);
-                        conf_ctrl_flag_value(2);
-                        printf("#DLC\tExport Ctrl_Rdy=1\r\n");
-                        wait_ctrl_flag_clean();
-
-                        if (1 == j) {
-                            inst_val |= (0x00ff & Chip4_CCT_Sram_Data_Read());
-                            printf("#DLC\tSram Data 0x%x\r\n", Chip4_CCT_Sram_Data_Read());
-                        } else { // (2 == j)
-                            inst_val |= ((0x00ff & Chip4_CCT_Sram_Data_Read()) << 8);
-                            printf("#DLC\tSram Data 0x%x\r\n", Chip4_CCT_Sram_Data_Read());
-                        }
-                    }
-                    printf("#DLC\tinst_val=%d\r\n\n", inst_val);
-
-                    if ((10 == i) && (inst_val != 5))
-                        err_cnt++;
-                    else if ((11 == i) && (inst_val != 537))
-                        err_cnt++;
-                }
+                inst_val = 0;// (10 == i)
+                inst_val = CHIP4_GET_ADC_BUF(10);
+                if (inst_val != p)
+                    err_cnt++;
+                inst_val = 0;// (11 == i)
+                inst_val = CHIP4_GET_ADC_BUF(11);
+                if (inst_val != 537)
+                    err_cnt++;
                 }
 
                 if (!err_cnt)
-                    printf("#DLC\tsuspend cpu to get ADC data Test Correct!\r\n");
+                    printf("#DLC\tsuspend cpu to get ADC data Test Passed!\r\n");
                 else
                     printf("#DLC\tsuspend cpu to get ADC data Test Failed!\r\n");
-
-                fclose(fd);
             }
         }
         else if (15 == tst_type) {
@@ -452,44 +395,15 @@ int main() {
             else {
                 inst_num = rd_bfile_to_mem_buf(fd, sram_buf, 1, DEFAULT_PC_ADDR);
                 printf("Total instruction(s) = %d DWORD\n", inst_num);
+                fclose(fd);
 
                 err_cnt = 0;
                 cnt_clk = 1;
-                Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
-                printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
-                Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
-                //sleep(1);
-                Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+                /// change the fpga clock frequency
+                chg_fpga_clk_freq(cnt_clk);
 
-                /// initialize
-                Chip4_Idx_Scpu_Rst_N_Write(0);
-                //Chip4_Idx_Scpu_Rst_N_Write(1);
-
-                //Initialize one cycle
-                Chip4_Idx_Scpu_Clk_1Time_Write(1);
-                Chip4_Idx_Scpu_Clk_1Time_Write(0);
-                for (i=0; i<(inst_num-1)+DEFAULT_PC_ADDR; ) {
-                    for (j=2; j>=1; --j) {
-                        addr_tmp = 2*i+j-1;
-                        Chip4_SCPU_SRAM_ADDR_Write(addr_tmp);
-                        Chip4_SCPU_SRAM_DATA_Write(sram_buf[addr_tmp]);
-                        printf("Addr 0x%.3x\t0x%.2x\r\n", addr_tmp, sram_buf[addr_tmp]);
-
-                        /// swift instructions and address to CTRL module
-                        conf_ctrl_flag_value(0);
-                        wait_ctrl_flag_clean();
-
-                        /// notify CTRL send instructions to SRAM
-                        conf_ctrl_flag_value(3);
-                        wait_ctrl_flag_clean();
-                    }
-
-                    if (0 == i) {
-                        i = DEFAULT_PC_ADDR;
-                    } else {
-                        ++i;
-                    }
-                }
+                /// write data to sram
+                write_insts_to_sram(sram_buf, inst_num, DEFAULT_PC_ADDR);
 
                 /// activate the CPU
                 printf("#DLC\tActivate CPU...\r\n");
@@ -502,153 +416,71 @@ int main() {
 
                 /// waiting for finish
                 while(!Chip4_SCPU_Idx_Nxt_End());
-                //for (i=0; i < 5; ++i) {
-                //    printf("Sleep 1 sec, Zzz...\r\n"); sleep(1);
-                //}
                 printf("#DLC\tCPU Process finish!\r\n");
 
                 /// fetch result from sram
-                Chip4_Idx_Scpu_Rst_N_Write(0);
-                Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+                read_data_from_sram(read_buf, 2, 1);
+                inst_val = 0;
+                inst_val = CHIP4_GET_ADC_BUF(2);
 
-                for (i = 2; i <3; ++i) {
-                    inst_val = 0;
-                    for (j=2; j >=1; --j) {
-                        addr_tmp = 2*i+j-1;
-                        Chip4_SCPU_SRAM_ADDR_Write(addr_tmp);
-                        Chip4_SCPU_SRAM_DATA_Write(0xff);
-
-                        conf_ctrl_flag_value(0);
-                        printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
-                        wait_ctrl_flag_clean();
-
-                        /// read data from SRAM
-                        conf_ctrl_flag_value(1);
-                        printf("#DLC\tRead Ctrl_Rdy=1\r\n");
-                        wait_ctrl_flag_clean();
-
-                        /// export sram data to fpga
-                        Chip4_SCPU_SRAM_ADDR_Write(0x00);
-                        Chip4_SCPU_SRAM_DATA_Write(0x00);
-                        conf_ctrl_flag_value(2);
-                        printf("#DLC\tExport Ctrl_Rdy=1\r\n");
-                        wait_ctrl_flag_clean();
-
-                        if (1 == j) {
-                            inst_val |= (0x000000ff & Chip4_CCT_Sram_Data_Read());
-                            printf("#DLC\tSram Data 0x%x\r\n", Chip4_CCT_Sram_Data_Read());
-                        } else { // (2 == j)
-                            inst_val |= ((0x000000ff & Chip4_CCT_Sram_Data_Read()) << 8);
-                            printf("#DLC\tSram Data 0x%x\r\n", Chip4_CCT_Sram_Data_Read());
-                        }
-                    }
-                }
                 if (5050 == inst_val) {
                     printf("#DLC\tSum = %d\r\n", inst_val);
-                    printf("#DLC\tTest sum_1+2+3+4+...100 passed!\r\n");
+                    printf("#DLC\tTest sum_1+2+3+4+...100 Passed!\r\n");
                 } else {
                     printf("#DLC\tSum = %d\r\n", inst_val);
-                    printf("#DLC\tTest sum_1+2+3+4+...100 failed!\r\n");
+                    printf("#DLC\tTest sum_1+2+3+4+...100 Failed!\r\n");
                 }
-
-                fclose(fd);
             }
         }
         else if (16 == tst_type) {
             printf("#CMT\t16:Testcase 4:  write/Read many instructions to SRAM\r\n");
             printf("#DLC\tRead instructions...\r\n");
             //fd = fopen("testcase_3.bin", "r");
-            sram_buf[0 ] = 0x10;//11000000  00010000
-            sram_buf[1 ] = 0xc0;
-            sram_buf[2 ] = 0x04;//10111011  00000100
-            sram_buf[3 ] = 0xbb;
-            sram_buf[4 ] = 0x00;//10111001  00000000
-            sram_buf[5 ] = 0xb9;
-            sram_buf[6 ] = 0x13;//01000001  00010011
-            sram_buf[7 ] = 0x41;
-            sram_buf[8 ] = 0x01;//01011011  00000001
-            sram_buf[9 ] = 0x5b;
-            sram_buf[10] = 0x12;//11011000  00010010
-            sram_buf[11] = 0xd8;
-            sram_buf[12] = 0x02;//00011001  00000010
-            sram_buf[13] = 0x19;
-            sram_buf[14] = 0x22;//01010010  00100010
-            sram_buf[15] = 0x52;
-            sram_buf[16] = 0x03;//10111010  00000011
-            sram_buf[17] = 0xba;
-            sram_buf[18] = 0x33;//01010011  00110011
-            sram_buf[19] = 0x53;
-            sram_buf[20] = 0x02;//10111011  00000010
-            sram_buf[21] = 0xbb;
-            sram_buf[22] = 0x40;//10111001  01000000
-            sram_buf[23] = 0xb9;
-            sram_buf[24] = 0x00;//10111001  00000000
-            sram_buf[25] = 0xb9;
-            sram_buf[26] = 0x00;//00001000  00000000
-            sram_buf[27] = 0x08;
+            {
+                sram_buf[0 ] = 0x10;//11000000  00010000
+                sram_buf[1 ] = 0xc0;
+                sram_buf[2 ] = 0x04;//10111011  00000100
+                sram_buf[3 ] = 0xbb;
+                sram_buf[4 ] = 0x00;//10111001  00000000
+                sram_buf[5 ] = 0xb9;
+                sram_buf[6 ] = 0x13;//01000001  00010011
+                sram_buf[7 ] = 0x41;
+                sram_buf[8 ] = 0x01;//01011011  00000001
+                sram_buf[9 ] = 0x5b;
+                sram_buf[10] = 0x12;//11011000  00010010
+                sram_buf[11] = 0xd8;
+                sram_buf[12] = 0x02;//00011001  00000010
+                sram_buf[13] = 0x19;
+                sram_buf[14] = 0x22;//01010010  00100010
+                sram_buf[15] = 0x52;
+                sram_buf[16] = 0x03;//10111010  00000011
+                sram_buf[17] = 0xba;
+                sram_buf[18] = 0x33;//01010011  00110011
+                sram_buf[19] = 0x53;
+                sram_buf[20] = 0x02;//10111011  00000010
+                sram_buf[21] = 0xbb;
+                sram_buf[22] = 0x40;//10111001  01000000
+                sram_buf[23] = 0xb9;
+                sram_buf[24] = 0x00;//10111001  00000000
+                sram_buf[25] = 0xb9;
+                sram_buf[26] = 0x00;//00001000  00000000
+                sram_buf[27] = 0x08;
+            }
 
             err_cnt = 0;
             cnt_clk = 1;
-            Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
-            printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
-            Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
-            //sleep(1);
-            Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+            /// change the fpga clock frequency
+            chg_fpga_clk_freq(cnt_clk);
 
-            /// initialize
-            Chip4_Idx_Scpu_Rst_N_Write(0);
-            //Chip4_Idx_Scpu_Rst_N_Write(1);
+            /// write data to SRAM
+            write_insts_to_sram(sram_buf, 28, 1);
 
-            //Initialize one cycle
-            Chip4_Idx_Scpu_Clk_1Time_Write(1);
-            Chip4_Idx_Scpu_Clk_1Time_Write(0);
-            // write data to SRAM
-            for (i=0; i<28; ++i){
-               for (j=2; j>1; --j) {
-                    Chip4_SCPU_SRAM_ADDR_Write(i);//0x0f1
-                    Chip4_SCPU_SRAM_DATA_Write(sram_buf[i]);//0x83
+            /// read data from SRAM to buffer
+            read_data_from_sram(read_buf, 0, 28);
 
-                    conf_ctrl_flag_value(0);
-                    printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
-                    wait_ctrl_flag_clean();
-
-                    // write data to SRAM
-                    conf_ctrl_flag_value(3);
-                    printf("#DLC\tWrite Ctrl_Rdy=1\r\n");
-                    wait_ctrl_flag_clean();
-                    //printf("#DLC\tAddr: 0x%.3x, Data: 0x%.2x, Loop k=%d\r\n", Chip4_CCT_Sram_Addr_Read(), Chip4_CCT_Sram_Data_Read(), j);
-                }
-            }
-
+            /// judge the result
             for (i=0; i<28; ++i) {
-                /// initialize
-                for (j=2; j>1; --j) {
-                    Chip4_SCPU_SRAM_ADDR_Write(i);//0x0f1
-                    Chip4_SCPU_SRAM_DATA_Write(0xff);
-
-                    conf_ctrl_flag_value(0);
-                    printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
-                    wait_ctrl_flag_clean();
-
-                    // read data from SRAM
-                    conf_ctrl_flag_value(1);
-                    printf("#DLC\tRead Ctrl_Rdy=1\r\n");
-                    wait_ctrl_flag_clean();
-
-                    // export data to fpga
-                    conf_ctrl_flag_value(2);
-                    printf("#DLC\tExport Ctrl_Rdy=1\r\n");
-                    wait_ctrl_flag_clean();
-
-                    dec2bin(Chip4_CCT_Sram_Addr_Read(), 10);
-                    printf(" ");
-                    dec2bin(Chip4_CCT_Sram_Data_Read(), 8);
-                    printf("\r\n");
-                    //printf(" Loop j=%d\n\n", j);
-                    //printf("#DLC\tAddr: 0x%.3x, Data: 0x%.2x, Loop k=%d\r\n", Chip4_CCT_Sram_Addr_Read(), Chip4_CCT_Sram_Data_Read(), j);
-                }
-
-                if (Chip4_CCT_Sram_Data_Read() == sram_buf[i]) {
+                if (read_buf[i] == sram_buf[i]) {
                     printf("#DLC\tSRAM Read Correct, addr = 0x%.3x\r\n\n", i);
                 } else {
                     err_cnt++;
@@ -657,7 +489,7 @@ int main() {
             }
 
             if (!err_cnt)
-                printf("#DLC\tSRAM batch Write/Read Test Correct!\r\n");
+                printf("#DLC\tSRAM batch Write/Read Test Passed!\r\n");
             else
                 printf("#DLC\tSRAM batch Write/Read Test Failed!\r\n");
         }
@@ -688,146 +520,61 @@ int main() {
         else if (18 == tst_type) {
             printf("#CMT\t18:Testcase 6:  write/read all SRAM address Test\r\n");
             err_cnt = 0;
-
-            /// initialize
-            Chip4_Idx_Scpu_Rst_N_Write(0);
-            //Chip4_Idx_Scpu_Rst_N_Write(1);
-
             cnt_clk = 1;
-            Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
-            printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
-            Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
-            //sleep(1);
-            Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+            /// change the fpga clock frequency
+            chg_fpga_clk_freq(cnt_clk);
 
-            //Initialize one cycle
-            send_clk_cycles(2);
-            // write data to sram
+            /// write data to sram
+            for (j=0; j<MAX_SRAM_LEN; ++j) sram_buf[j] = (j%256);
+            write_insts_to_sram(sram_buf, MAX_SRAM_LEN/2, 1);
+
+            /// read data from SRAM
+            read_data_from_sram(read_buf, 0, MAX_SRAM_LEN/2);
+
+            /// judge the result
             for (j=0; j<MAX_SRAM_LEN; ++j) {
-                Chip4_SCPU_SRAM_ADDR_Write(j);
-                Chip4_SCPU_SRAM_DATA_Write(j%256);
-
-                conf_ctrl_flag_value(0);
-                printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
-                wait_ctrl_flag_clean();
-
-                // Write data to SRAM
-                conf_ctrl_flag_value(3);
-                printf("#DLC\tWrite Ctrl_Rdy=1\r\n");
-                wait_ctrl_flag_clean();
-            }
-
-            // read data from SRAM
-            for (j=0; j<MAX_SRAM_LEN; ++j) {
-                Chip4_SCPU_SRAM_ADDR_Write(j);///0xee + j
-                Chip4_SCPU_SRAM_DATA_Write(0xff);
-
-                conf_ctrl_flag_value(0);
-                printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
-                wait_ctrl_flag_clean();
-
-                // read data from SRAM
-                conf_ctrl_flag_value(1);
-                printf("#DLC\tRead Ctrl_Rdy=1\r\n");
-                wait_ctrl_flag_clean();
-
-                // export data to fpga
-                Chip4_SCPU_SRAM_ADDR_Write(0);
-                Chip4_SCPU_SRAM_DATA_Write(0);
-
-                conf_ctrl_flag_value(2);
-                printf("#DLC\tExport Ctrl_Rdy=1\r\n");
-                wait_ctrl_flag_clean();
-
-                dec2bin(Chip4_CCT_Sram_Addr_Read(), 10);
-                printf(" ");
-                dec2bin(Chip4_CCT_Sram_Data_Read(), 8);
-                printf(" Loop j=%d\n\n", j);
-                //printf("#DLC\tAddr: 0x%.3x, Data: 0x%.2x, Loop k=%d\r\n", Chip4_CCT_Sram_Addr_Read(), Chip4_CCT_Sram_Data_Read(), j);
-
-                if ((Chip4_CCT_Sram_Addr_Read() == j) && (Chip4_CCT_Sram_Data_Read() == (j%256))) {
-                    printf("#DLC\tRound = %d,\tData = 0x%.2x\r\n", j, Chip4_CCT_Sram_Data_Read());
+                if (read_buf[j] == (j%256)) {
+                    printf("#DLC\tRound = %d,\tData = 0x%.2x,\tExpect = %d\r\n", j, read_buf[j], (j%256));
                 } else {
                     err_cnt++;
-                    printf("#DLC\tRound = %d,\tData = 0x%.2x\r\n", j, Chip4_CCT_Sram_Data_Read());
+                    printf("#DLC\tRound = %d,\tData = 0x%.2x,\tExpect = %d\r\n", j, read_buf[j], (j%256));
                 }
             }
 
             if (!err_cnt)
-                printf("#DLC\tSRAM all address write/read Test Correct!\r\n");
+                printf("#DLC\tSRAM all address write/read Test Passed!\r\n");
             else
                 printf("#DLC\tSRAM all address write/read Test Failed!\r\n");
         }
         else if (19 == tst_type) {
             printf("#CMT\t19:Testcase 7:  loop in/Write SRAM/Export out Test\r\n");
-            err_cnt = 0;
             sram_data = 0x83;
             sram_addr = 0xf1;
 
-            /// initialize
-            Chip4_Idx_Scpu_Rst_N_Write(0);
-            //Chip4_Idx_Scpu_Rst_N_Write(1);
-
+            err_cnt = 0;
             cnt_clk = 1;
-            Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
-            printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
-            Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
-            //sleep(1);
-            Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+            /// change the fpga clock frequency
+            chg_fpga_clk_freq(cnt_clk);
 
-            //Initialize one cycle
-            send_clk_cycles(2);
-            // write data to SRAM
-            for (j=100; j>1; --j) {
-                Chip4_SCPU_SRAM_ADDR_Write(sram_addr);
-                Chip4_SCPU_SRAM_DATA_Write(sram_data);
+            /// write data to sram
+            for (j=0; j<100; ++j) sram_buf[j] = sram_data;
+            write_insts_to_sram(sram_buf, 100/2, 1);
 
-                conf_ctrl_flag_value(0);
-                printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
-                wait_ctrl_flag_clean();
+            /// read data from SRAM
+            read_data_from_sram(read_buf,0,100/2);
 
-                // write data to SRAM
-                conf_ctrl_flag_value(3);
-                printf("#DLC\tWrite Ctrl_Rdy=1\r\n");
-                wait_ctrl_flag_clean();
-                //printf("#DLC\tAddr: 0x%.3x, Data: 0x%.2x, Loop k=%d\r\n", Chip4_CCT_Sram_Addr_Read(), Chip4_CCT_Sram_Data_Read(), j);
-            }
-
-            // read data from SRAM
-            for (j=100; j>1; --j) {
-                Chip4_SCPU_SRAM_ADDR_Write(sram_addr);///0xee + j
-                Chip4_SCPU_SRAM_DATA_Write(0xff);
-
-                conf_ctrl_flag_value(0);
-                printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
-                wait_ctrl_flag_clean();
-
-                // read data from SRAM
-                conf_ctrl_flag_value(1);
-                printf("#DLC\tRead Ctrl_Rdy=1\r\n");
-                wait_ctrl_flag_clean();
-
-                // export data to fpga
-                conf_ctrl_flag_value(2);
-                printf("#DLC\tExport Ctrl_Rdy=1\r\n");
-                wait_ctrl_flag_clean();
-
-                dec2bin(Chip4_CCT_Sram_Addr_Read(), 10);
-                printf(" ");
-                dec2bin(Chip4_CCT_Sram_Data_Read(), 8);
-                printf(" Loop j=%d\n\n", j);
-                //printf("#DLC\tAddr: 0x%.3x, Data: 0x%.2x, Loop k=%d\r\n", Chip4_CCT_Sram_Addr_Read(), Chip4_CCT_Sram_Data_Read(), j);
-
-                if (Chip4_CCT_Sram_Data_Read() == sram_data) {
-                    printf("#DLC\tRound = %d,\tData = 0x%.2x\r\n", j, Chip4_CCT_Sram_Data_Read());
+            /// judge the result
+            for (j=0; j<100; ++j) {
+                if (read_buf[j] == sram_data) {
+                    printf("#DLC\tRound = %d,\tData = 0x%.2x\r\n", j, read_buf[j]);
                 } else {
                     err_cnt++;
-                    printf("#DLC\tRound = %d,\tData = 0x%.2x\r\n", j, Chip4_CCT_Sram_Data_Read());
+                    printf("#DLC\tRound = %d,\tData = 0x%.2x\r\n", j, read_buf[j]);
                 }
             }
 
             if (!err_cnt)
-                printf("#DLC\tSRAM Write/Read/Export Test Correct!\r\n");
+                printf("#DLC\tSRAM Write/Read/Export Test Passed!\r\n");
             else
                 printf("#DLC\tSRAM Write/Read/Export Test Failed!\r\n");
         }
@@ -876,6 +623,11 @@ int main() {
                     inst_val = CHIP4_GET_ADC_BUF(bgn_line);
                     printf("ANA= %d\r\n", inst_val);
                 }
+
+                if (1024 == j)
+                    printf("#DLC\tTestcase 8:  sweep the 3D cost function curve Test Passed!\r\n");
+                else
+                    printf("#DLC\tTestcase 8:  sweep the 3D cost function curve Test Failed!\r\n");
             }
         }
         else if (21 == tst_type) {
@@ -927,7 +679,7 @@ int main() {
             }
         }
         else if (22 == tst_type) {
-            printf("#CMT\t22:Testcase 10:  instruction for sum = 1\r\n");
+            printf("#CMT\t22:Testcase 10:  instruction for sum = 0\r\n");
             printf("#DLC\tRead instructions...\r\n");
             fd = fopen("new 1.bin", "r");
 
@@ -937,44 +689,15 @@ int main() {
             else {
                 inst_num = rd_bfile_to_mem_buf(fd, sram_buf, 1, 1);
                 printf("Total instruction(s) = %d DWORD\n", inst_num);
+                fclose(fd);
 
                 err_cnt = 0;
                 cnt_clk = 1;
-                Chip4_SCPU_CNT_SCLK_Write(cnt_clk - 1);
-                printf("#DLC\tSRAM data = %d kHz\n\n", 50*1000/(cnt_clk*2));
-                Chip4_Idx_Scpu_Clk_Freq_Chg_Write(1);
-                //sleep(1);
-                Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+                /// change the fpga clock frequency
+                chg_fpga_clk_freq(cnt_clk);
 
-                /// initialize
-                Chip4_Idx_Scpu_Rst_N_Write(0);
-                //Chip4_Idx_Scpu_Rst_N_Write(1);
-
-                //Initialize one cycle
-                Chip4_Idx_Scpu_Clk_1Time_Write(1);
-                Chip4_Idx_Scpu_Clk_1Time_Write(0);
-                for (i=0; i<(inst_num-1)+1; ) {
-                    for (j=2; j>=1; --j) {
-                        addr_tmp = 2*i+j-1;
-                        Chip4_SCPU_SRAM_ADDR_Write(addr_tmp);
-                        Chip4_SCPU_SRAM_DATA_Write(sram_buf[addr_tmp]);
-                        printf("Addr 0x%.3x\t0x%.2x\r\n", addr_tmp, sram_buf[addr_tmp]);
-
-                        /// swift instructions and address to CTRL module
-                        conf_ctrl_flag_value(0);
-                        wait_ctrl_flag_clean();
-
-                        /// notify CTRL send instructions to SRAM
-                        conf_ctrl_flag_value(3);
-                        wait_ctrl_flag_clean();
-                    }
-
-                    if (0 == i) {
-                        i = 1;
-                    } else {
-                        ++i;
-                    }
-                }
+                /// write data to SRAM
+                write_insts_to_sram(sram_buf, inst_num, 1);
 
                 /// activate the CPU
                 printf("#DLC\tActivate CPU...\r\n");
@@ -986,57 +709,24 @@ int main() {
                 Chip4_Idx_Scpu_Cpu_Bgn_Write(0);
 
                 /// waiting for finish
-                ///while(!Chip4_SCPU_Idx_Nxt_End());
+                while(!Chip4_SCPU_Idx_Nxt_End());
                 //for (i=0; i < 5; ++i) {
-                    printf("Sleep 1 sec, Zzz...\r\n"); sleep(1);
+                ///    printf("Sleep 1 sec, Zzz...\r\n"); sleep(1);
                 //}
                 printf("#DLC\tCPU Process finish!\r\n");
 
                 /// fetch result from sram
-                Chip4_Idx_Scpu_Rst_N_Write(0);
-                Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+                read_data_from_sram(read_buf, 5, 1);
 
-                for (i = 5; i <6; ++i) {
-                    inst_val = 0;
-                    for (j=2; j >=1; --j) {
-                        addr_tmp = 2*i+j-1;
-                        Chip4_SCPU_SRAM_ADDR_Write(addr_tmp);
-                        Chip4_SCPU_SRAM_DATA_Write(0xff);
-
-                        conf_ctrl_flag_value(0);
-                        printf("#DLC\tLoop in Ctrl_Rdy=1\r\n");
-                        wait_ctrl_flag_clean();
-
-                        /// read data from SRAM
-                        conf_ctrl_flag_value(1);
-                        printf("#DLC\tRead Ctrl_Rdy=1\r\n");
-                        wait_ctrl_flag_clean();
-
-                        /// export sram data to fpga
-                        Chip4_SCPU_SRAM_ADDR_Write(0x00);
-                        Chip4_SCPU_SRAM_DATA_Write(0x00);
-                        conf_ctrl_flag_value(2);
-                        printf("#DLC\tExport Ctrl_Rdy=1\r\n");
-                        wait_ctrl_flag_clean();
-
-                        if (1 == j) {
-                            inst_val |= (0x000000ff & Chip4_CCT_Sram_Data_Read());
-                            printf("#DLC\tSram Data 0x%x\r\n", Chip4_CCT_Sram_Data_Read());
-                        } else { // (2 == j)
-                            inst_val |= ((0x000000ff & Chip4_CCT_Sram_Data_Read()) << 8);
-                            printf("#DLC\tSram Data 0x%x\r\n", Chip4_CCT_Sram_Data_Read());
-                        }
-                    }
-                }
+                /// judge the result
+                inst_val = CHIP4_GET_ADC_BUF(5);
                 if (0 == inst_val) {
                     printf("#DLC\tSum = %d\r\n", inst_val);
-                    printf("#DLC\tTest sum_1+2+3+4+...100 passed!\r\n");
+                    printf("#DLC\tTestcase 10:  instruction for sum = 0 Passed!\r\n");
                 } else {
                     printf("#DLC\tSum = %d\r\n", inst_val);
-                    printf("#DLC\tTest sum_1+2+3+4+...100 failed!\r\n");
+                    printf("#DLC\tTestcase 10:  instruction for sum = 0 Failed!\r\n");
                 }
-
-                fclose(fd);
             }
         }
         else
