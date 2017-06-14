@@ -302,12 +302,13 @@ int main() {
             else {
                 inst_num = rd_bfile_to_mem_buf(fd, sram_buf, 1, DEFAULT_PC_ADDR);
                 printf("Total word(s) = %d\n", inst_num);
+                fclose(fd);
+
                 if (20 == inst_num) {
                     printf("Testcase 1:  instruction to Memory Passed!\r\n");
                 } else {
                     printf("Testcase 1:  instruction to Memory Failed!\r\n");
                 }
-                fclose(fd);
             }
         }
         else if (14 == tst_type) {
@@ -333,21 +334,15 @@ int main() {
                 printf("#DLC\tActivate CPU...\r\n");
                 for (p = 0; p<1024; ++p) {
 
-                Chip4_Idx_Scpu_Clk_Discrt_Write(0);
-                //Chip4_Idx_Scpu_Clk_Freq_Chg_Write(0);
-                Chip4_Idx_Scpu_Rst_N_Write(1);
+                    chg_clk_and_start_cpu();
 
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
-                Chip4_Idx_Scpu_Cpu_Bgn_Write(1);
-                Chip4_Idx_Scpu_Cpu_Bgn_Write(0);
-
-                for (i=0; i<2; ++i) {
-                    if (0 == i) adc_data = p;
-                    else adc_data = 537;
+                    for (i=0; i<1; ++i) {
+                        if (0 == i || 2 == i) adc_data = p;//492;
+                        else adc_data = 537;
 
                     /// wait for ADC request signal
                     while(!Chip4_SCPU_Idx_App_Start());
-                    printf("#DLC\tApp Start: get ADC!!\r\n");
+                    printf("#DLC\tApp Start: CPU request ADC!!\r\n");
 
                     Chip4_ADC_Write(adc_data);
                     printf("#DLC\tSet ADC data = %d\r\n", adc_data);
@@ -355,8 +350,9 @@ int main() {
 
                     /// wait for ADC request finish
                     printf("#DLC\tWait for App Start => 0\r\n");
-                    //while(Chip4_SCPU_Idx_App_Start());
+                    while(Chip4_SCPU_Idx_App_Start());
                     //sleep(3);
+                    //while(!Chip4_SCPU_Idx_App_Start());
                     printf("#DLC\tApp Start change to 0\r\n");
                     Chip4_Idx_Scpu_App_Done_Write(0);
                 }
@@ -366,16 +362,19 @@ int main() {
                 printf("#DLC\tCPU Process finish!\r\n");
 
                 /// (3) switch to control mode & fetch result from sram
-                read_data_from_sram(read_buf, 10, 2);
+                read_data_from_sram(read_buf, 10, 1);
 
-                inst_val = 0;// (10 == i)
-                inst_val = CHIP4_GET_ADC_BUF(10);
-                if (inst_val != p)
+                inst_val = CHIP4_GET_ADC_BUF(10);// (10 == i)
+                printf("#DLC\tValue = %d\r\n", inst_val);
+                if (inst_val != p) { //492
                     err_cnt++;
-                inst_val = 0;// (11 == i)
-                inst_val = CHIP4_GET_ADC_BUF(11);
-                if (inst_val != 537)
-                    err_cnt++;
+                }
+
+                //inst_val = CHIP4_GET_ADC_BUF(11);// (11 == i)
+                //if (inst_val != 537) {
+                //    printf("#DLC\tValue = %d\r\n", inst_val);
+                //    err_cnt++;
+                //}
                 }
 
                 if (!err_cnt)
@@ -407,12 +406,7 @@ int main() {
 
                 /// activate the CPU
                 printf("#DLC\tActivate CPU...\r\n");
-                Chip4_Idx_Scpu_Clk_Discrt_Write(0);
-                Chip4_Idx_Scpu_Rst_N_Write(1);
-
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
-                Chip4_Idx_Scpu_Cpu_Bgn_Write(1);
-                Chip4_Idx_Scpu_Cpu_Bgn_Write(0);
+                chg_clk_and_start_cpu();
 
                 /// waiting for finish
                 while(!Chip4_SCPU_Idx_Nxt_End());
@@ -615,7 +609,7 @@ int main() {
                     get_IQ_data_to_cpu(j, adcs_buf, 0);
                     /// 3.3 wait for finish
                     while(!Chip4_SCPU_Idx_Nxt_End());
-                    printf("#DLC\tCPU Process finish!\r\n");
+                    printf("#DLC\tCPU Process finish! j = %d\r\n", j);
 
                     /// (5) Read data from SRAM:
                     bgn_line = 5; num_line = 1; inst_val = 0;
@@ -647,7 +641,7 @@ int main() {
                 printf("Total %d IQ Data\r\n", adcs_num);
                 fclose(fd);
 
-                inst_num = rd_bfile_to_mem_buf(fd2, sram_buf, 14, 30);//DEFAULT_PC_ADDR
+                inst_num = rd_bfile_to_mem_buf(fd2, sram_buf, 1, 30);//DEFAULT_PC_ADDR
                 printf("Total instruction(s) = %d DWORD\n", inst_num);
                 fclose(fd2);
 
@@ -668,7 +662,7 @@ int main() {
                     get_IQ_data_to_cpu(j, adcs_buf, 1);
                     /// 3.3 wait for finish
                     while(!Chip4_SCPU_Idx_Nxt_End());
-                    printf("#DLC\tCPU Process finish!\r\n");
+                    printf("#DLC\tCPU Process finish! j = %d\r\n", j);
 
                     /// (5) Read data from SRAM:
                     bgn_line = 5; num_line = 1; inst_val = 0;
@@ -676,6 +670,11 @@ int main() {
                     inst_val = CHIP4_GET_ADC_BUF(bgn_line);
                     printf("ANA= %d\r\n", inst_val);
                 }
+
+                if (1024 == j)
+                    printf("#DLC\tTestcase 9:  sweep the 3D cost function curve with OSCD Test Passed!\r\n");
+                else
+                    printf("#DLC\tTestcase 9:  sweep the 3D cost function curve with OSCD Test Failed!\r\n");
             }
         }
         else if (22 == tst_type) {
@@ -701,18 +700,10 @@ int main() {
 
                 /// activate the CPU
                 printf("#DLC\tActivate CPU...\r\n");
-                Chip4_Idx_Scpu_Clk_Discrt_Write(0);
-                Chip4_Idx_Scpu_Rst_N_Write(1);
-
-                Chip4_Idx_Scpu_Ctrl_Bgn_Write(0);
-                Chip4_Idx_Scpu_Cpu_Bgn_Write(1);
-                Chip4_Idx_Scpu_Cpu_Bgn_Write(0);
+                chg_clk_and_start_cpu();
 
                 /// waiting for finish
                 while(!Chip4_SCPU_Idx_Nxt_End());
-                //for (i=0; i < 5; ++i) {
-                ///    printf("Sleep 1 sec, Zzz...\r\n"); sleep(1);
-                //}
                 printf("#DLC\tCPU Process finish!\r\n");
 
                 /// fetch result from sram

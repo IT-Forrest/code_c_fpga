@@ -3,6 +3,8 @@
 
 //#define     CPU_GLOBAL_ON
 //#define     CPU_DETAIL_ON
+#define     DEBUG_BIT_ERROR
+#define     DEBUG_BIT_AND(F)           ((F) &= ~(0x0025))
 
 int16  rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 config_len, uint16 reserve_len) {
     int16   i;
@@ -187,28 +189,37 @@ void get_IQ_data_to_cpu(uint16 addr_adc, uint16 *adcs_buf, bool is_osc) {
         addr_iqs = (addr_adc*max_io_data) + k;
         adc_data = adcs_buf[addr_iqs];
         IQ_data[k] = adcs_buf[addr_iqs];
-
+#ifdef  DEBUG_BIT_ERROR
+        DEBUG_BIT_AND(adc_data);
+        DEBUG_BIT_AND(IQ_data[k]);
+#endif
         /// wait for ADC request signal
         while(!Chip4_SCPU_Idx_App_Start());
         //printf("#DLC\tApp Start: get ADC!!\r\n");
 
         Chip4_ADC_Write(adc_data);
+
+        Chip4_Idx_Scpu_Clk_Discrt_Write(1);
         Chip4_Idx_Scpu_App_Done_Write(1);
+        send_clk_cycles(20);
 
         /// wait for ADC request finish
         //while(Chip4_SCPU_Idx_App_Start());
-        //sleep(2);
         Chip4_Idx_Scpu_App_Done_Write(0);
+        Chip4_Idx_Scpu_Clk_Discrt_Write(0);
 
         if (is_osc) {
             if (3 == k) {
                 IQ_abs[0] = (IQ_data[0]>IQ_data[2])?(IQ_data[0]-IQ_data[2]):(IQ_data[2]-IQ_data[0]);
                 IQ_abs[1] = (IQ_data[1]>IQ_data[3])?(IQ_data[1]-IQ_data[3]):(IQ_data[3]-IQ_data[1]);
 
-                if ((IQ_abs[0] + IQ_abs[1]) < OSCD_TOL)
+                if ((IQ_abs[0] + IQ_abs[1]) < OSCD_TOL) {
                     ++k;
-                else
+                }
+                else {
+                    printf("#DLC\tOSCD violated!!!\r\n");
                     break;
+                }
             }
             else {
                 ++k;
