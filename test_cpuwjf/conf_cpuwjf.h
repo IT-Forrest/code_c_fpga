@@ -22,6 +22,8 @@
 #include "../ana_opt_2/test_adc.h"
 
 #define     CHIP4_GET_ADC_BUF(bgn_line)     ((read_buf[bgn_line*2+1] << 8) | (read_buf[bgn_line*2]))
+#define     DEBUG_BIT_ERROR
+#define     DEBUG_BIT_AND(F)           ((F) &= ~(0x0025))
 
 int16   rd_bfile_to_mem_buf(FILE *fd, uint8 *sram_buf, uint16 config_len, uint16 reserve_len);
 int16   rd_bfile_to_adc_buf(FILE *fd, uint16 *adc_buf, bool is_osc);
