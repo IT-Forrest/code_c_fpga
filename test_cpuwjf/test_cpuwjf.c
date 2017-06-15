@@ -111,6 +111,7 @@ int main() {
         printf("#CMT\t20:Testcase 8:  sweep the 3D cost function curve\r\n");
         printf("#CMT\t21:Testcase 9:  sweep the 3D cost function curve with OSCD\r\n");
         printf("#CMT\t22:Testcase 10: instruction for sum = 0\r\n");
+        printf("#CMT\t23:Testcase 11: run stand-alone Simulated Annealing + CF with OSCD\r\n");
         printf("#CMT\r\n");
         printf("#CMT\t$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n");
         printf("#CMT\tWhich Test next(");FmtPrint(tst_type);printf(")? ");
@@ -328,7 +329,7 @@ int main() {
                 chg_fpga_clk_freq(cnt_clk);
 
                 /// (1) Initialize one cycle & scan in instructions
-                write_insts_to_sram(sram_buf, inst_num, 1);
+                write_insts_to_sram(sram_buf, inst_num, 1, 1);
 
                 /// (2) switch to CPU mode & activate the CPU
                 printf("#DLC\tActivate CPU...\r\n");
@@ -340,41 +341,45 @@ int main() {
                         if (0 == i || 2 == i) adc_data = p;//492;
                         else adc_data = 537;
 
-                    /// wait for ADC request signal
-                    while(!Chip4_SCPU_Idx_App_Start());
-                    printf("#DLC\tApp Start: CPU request ADC!!\r\n");
+                        /// wait for ADC request signal
+                        while(!Chip4_SCPU_Idx_App_Start());
+                        printf("#DLC\tApp Start: CPU request ADC!!\r\n");
 
-                    Chip4_ADC_Write(adc_data);
-                    printf("#DLC\tSet ADC data = %d\r\n", adc_data);
-                    Chip4_Idx_Scpu_App_Done_Write(1);
+                        Chip4_ADC_Write(adc_data);
+                        printf("#DLC\tSet ADC data = %d\r\n", adc_data);
 
-                    /// wait for ADC request finish
-                    printf("#DLC\tWait for App Start => 0\r\n");
-                    while(Chip4_SCPU_Idx_App_Start());
-                    //sleep(3);
-                    //while(!Chip4_SCPU_Idx_App_Start());
-                    printf("#DLC\tApp Start change to 0\r\n");
-                    Chip4_Idx_Scpu_App_Done_Write(0);
-                }
+                        Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+                        Chip4_Idx_Scpu_App_Done_Write(1);
+                        send_clk_cycles(20);
 
-                /// waiting for finish
-                while(!Chip4_SCPU_Idx_Nxt_End());
-                printf("#DLC\tCPU Process finish!\r\n");
+                        /// wait for ADC request finish
+                        //printf("#DLC\tWait for App Start => 0\r\n");
+                        //while(Chip4_SCPU_Idx_App_Start());
+                        //sleep(3);
+                        //while(!Chip4_SCPU_Idx_App_Start());
+                        //printf("#DLC\tApp Start change to 0\r\n");
+                        Chip4_Idx_Scpu_App_Done_Write(0);
+                        Chip4_Idx_Scpu_Clk_Discrt_Write(0);
+                    }
 
-                /// (3) switch to control mode & fetch result from sram
-                read_data_from_sram(read_buf, 10, 1);
+                    /// waiting for finish
+                    while(!Chip4_SCPU_Idx_Nxt_End());
+                    printf("#DLC\tCPU Process finish!\r\n");
 
-                inst_val = CHIP4_GET_ADC_BUF(10);// (10 == i)
-                printf("#DLC\tValue = %d\r\n", inst_val);
-                if (inst_val != p) { //492
-                    err_cnt++;
-                }
+                    /// (3) switch to control mode & fetch result from sram
+                    read_data_from_sram(read_buf, 10, 1);
 
-                //inst_val = CHIP4_GET_ADC_BUF(11);// (11 == i)
-                //if (inst_val != 537) {
-                //    printf("#DLC\tValue = %d\r\n", inst_val);
-                //    err_cnt++;
-                //}
+                    inst_val = CHIP4_GET_ADC_BUF(10);// (10 == i)
+                    printf("#DLC\tValue = %d\r\n", inst_val);
+                    if (inst_val != p) { //492
+                        err_cnt++;
+                    }
+
+                    //inst_val = CHIP4_GET_ADC_BUF(11);// (11 == i)
+                    //if (inst_val != 537) {
+                    //    printf("#DLC\tValue = %d\r\n", inst_val);
+                    //    err_cnt++;
+                    //}
                 }
 
                 if (!err_cnt)
@@ -402,7 +407,7 @@ int main() {
                 chg_fpga_clk_freq(cnt_clk);
 
                 /// write data to sram
-                write_insts_to_sram(sram_buf, inst_num, DEFAULT_PC_ADDR);
+                write_insts_to_sram(sram_buf, inst_num, 1, DEFAULT_PC_ADDR);
 
                 /// activate the CPU
                 printf("#DLC\tActivate CPU...\r\n");
@@ -467,7 +472,7 @@ int main() {
             chg_fpga_clk_freq(cnt_clk);
 
             /// write data to SRAM
-            write_insts_to_sram(sram_buf, 28, 1);
+            write_insts_to_sram(sram_buf, 28, 1, 1);
 
             /// read data from SRAM to buffer
             read_data_from_sram(read_buf, 0, 28);
@@ -520,7 +525,7 @@ int main() {
 
             /// write data to sram
             for (j=0; j<MAX_SRAM_LEN; ++j) sram_buf[j] = (j%256);
-            write_insts_to_sram(sram_buf, MAX_SRAM_LEN/2, 1);
+            write_insts_to_sram(sram_buf, MAX_SRAM_LEN/2, 1, 1);
 
             /// read data from SRAM
             read_data_from_sram(read_buf, 0, MAX_SRAM_LEN/2);
@@ -552,7 +557,7 @@ int main() {
 
             /// write data to sram
             for (j=0; j<100; ++j) sram_buf[j] = sram_data;
-            write_insts_to_sram(sram_buf, 100/2, 1);
+            write_insts_to_sram(sram_buf, 100/2, 1, 1);
 
             /// read data from SRAM
             read_data_from_sram(read_buf,0,100/2);
@@ -599,7 +604,7 @@ int main() {
                 chg_fpga_clk_freq(cnt_clk);
 
                 /// (2) write data to SRAM:
-                write_insts_to_sram(sram_buf,inst_num, 30);
+                write_insts_to_sram(sram_buf, inst_num, 1, 30);
 
                 /// (3) Loop: 1024 and get the CF curve
                 for (j = 0; j<1024; ++j) {
@@ -651,7 +656,7 @@ int main() {
                 chg_fpga_clk_freq(cnt_clk);
 
                 /// (2) write data to SRAM:
-                write_insts_to_sram(sram_buf,inst_num, 30);
+                write_insts_to_sram(sram_buf, inst_num, 1, 30);
 
                 /// (3) Loop: 1024 and get the CF curve
                 for (j = 0; j<1024; ++j) {
@@ -696,7 +701,7 @@ int main() {
                 chg_fpga_clk_freq(cnt_clk);
 
                 /// write data to SRAM
-                write_insts_to_sram(sram_buf, inst_num, 1);
+                write_insts_to_sram(sram_buf, inst_num, 1, 1);
 
                 /// activate the CPU
                 printf("#DLC\tActivate CPU...\r\n");
@@ -717,6 +722,43 @@ int main() {
                 } else {
                     printf("#DLC\tSum = %d\r\n", inst_val);
                     printf("#DLC\tTestcase 10:  instruction for sum = 0 Failed!\r\n");
+                }
+            }
+        }
+        else if (23 == tst_type) {
+            printf("#CMT\t23:Testcase 11: run stand-alone Simulated Annealing + CF with OSCD\r\n");
+            printf("#DLC\tRead IQ Data...\r\n");
+            fd = fopen("sweep_67_74_80_25C_516off_oscd.bin", "r");
+
+            printf("#DLC\tRead instructions...\r\n");
+            fd2 = fopen("testcase_7.bin", "r");
+
+            if (fd == NULL) {
+                printf("open IQ Data file failed!\r\n");
+            } else if (fd2 == NULL) {
+                printf("open Instruction file failed!\r\n");
+            } else {
+                adcs_num = rd_bfile_to_adc_buf(fd, adcs_buf, 1);
+                printf("Total %d IQ Data\r\n", adcs_num);
+                fclose(fd);
+
+                inst_num = rd_bfile_to_mem_buf(fd2, sram_buf, 1, 30);//DEFAULT_PC_ADDR
+                printf("Total instruction(s) = %d DWORD\n", inst_num);
+                fclose(fd2);
+
+                err_cnt = 0;
+                cnt_clk = 1;
+                /// (1) change the fpga clock before write data to SRAM
+                chg_fpga_clk_freq(cnt_clk);
+
+                /// (2) write data to SRAM:
+                write_insts_to_sram(sram_buf, inst_num, 14, 30);
+
+                /// (3) Active CPU and input ADC data when notified
+                chg_clk_and_start_cpu();
+
+                for (j = 0; j < 255; ++j) {
+                    ;
                 }
             }
         }

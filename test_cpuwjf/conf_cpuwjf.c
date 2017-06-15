@@ -128,7 +128,7 @@ void chg_fpga_clk_freq(uint16  cnt_clk) {
     }
 }
 
-void write_insts_to_sram(uint8 *sram_buf, int16 inst_num, uint16 reserve_len) {
+void write_insts_to_sram(uint8 *sram_buf, int16 inst_num, uint16 config_len, uint16 reserve_len) {
     uint16  i,j;
     uint16  addr_tmp = 0;
     //reserve_len = DEFAULT_PC_ADDR;
@@ -156,7 +156,7 @@ void write_insts_to_sram(uint8 *sram_buf, int16 inst_num, uint16 reserve_len) {
             wait_ctrl_flag_clean();
         }
 
-        if (0 == i) {
+        if ((config_len - 1) == i) {
             i = reserve_len;
         } else {
             ++i;

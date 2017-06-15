@@ -30,7 +30,7 @@ void    send_clk_cycles(int clk_cnt);
 void    conf_ctrl_flag_value(int mode_type);
 void    wait_ctrl_flag_clean();
 void    chg_fpga_clk_freq(uint16 cnt_clk);
-void    write_insts_to_sram(uint8 *sram_buf, int16 inst_num, uint16 reserve_len);
+void    write_insts_to_sram(uint8 *sram_buf, int16 inst_num, uint16 config_len, uint16 reserve_len);
 void    chg_clk_and_start_cpu();
 void    get_IQ_data_to_cpu(uint16 addr_adc, uint16 *adcs_buf, bool is_osc);
 void    read_data_from_sram(uint8 *read_buf, uint16 bgn_line, uint16 num_line);
