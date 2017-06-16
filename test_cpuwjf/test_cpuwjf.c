@@ -856,9 +856,128 @@ int main() {
                 }
             }
         }
-        else if (24 == inst_val) {
+        else if (24 == tst_type) {
             printf("#CMT\t24:Testcase 12: run multi-start Simulated Annealing + CF with OSCD\r\n");
+            printf("#DLC\tRead IQ Data...\r\n");
+            fd = fopen("sweep_67_74_80_25C_516off_oscd.bin", "r");
 
+            printf("#DLC\tRead instructions...\r\n");
+            fd2 = fopen("testcase_8.bin", "r");
+
+            if (fd == NULL) {
+                printf("open IQ Data file failed!\r\n");
+            } else if (fd2 == NULL) {
+                printf("open Instruction file failed!\r\n");
+            } else {
+                adcs_num = rd_bfile_to_adc_buf(fd, adcs_buf, 1);
+                printf("Total %d IQ Data\r\n", adcs_num);
+                fclose(fd);
+
+                inst_num = rd_bfile_to_mem_buf(fd2, sram_buf, 15, 30);//DEFAULT_PC_ADDR
+                printf("Total instruction(s) = %d DWORD\n", inst_num);
+                fclose(fd2);
+
+                err_cnt = 0;
+                cnt_clk = 1;
+                /// (1) change the fpga clock before write data to SRAM
+                chg_fpga_clk_freq(cnt_clk);
+
+                /// (2) write data to SRAM:
+                write_insts_to_sram(sram_buf, inst_num, 15, 30);
+
+                /// (3) Active CPU and input ADC data when notified
+                chg_clk_and_start_cpu();
+                printf("#DLC\tActivate CPU...\r\n");
+
+                for (j = 0; j < 255; ++j) {
+                    for (k=0; k<18;) {
+                        /// wait for ADC request signal
+                        while(!Chip4_SCPU_Idx_App_Start());
+                        printf("#DLC\tApp Start: CPU request ADC!!\r\n");
+
+                        if (0 == k) {
+                            sc_rd_data = Chip4_Scan_Chain_Read();
+                            Ana_new_sa = (sc_rd_data & 0x000003FF);//avs_scan_chain_readdata[9:0];
+                            if (j != 0) {
+                                printf("Ana_data = %d\r\n", Ana_new_sa);
+                            }
+
+                            tunning_new_sa = (sc_rd_data >> 16);//avs_scan_chain_readdata[31:16]
+                            X_new = (tunning_new_sa >> 8);//tunning_new_sa[15:8];
+                            Y_new = (tunning_new_sa & 0x00FF);//tunning_new_sa[7:0];
+                            printf("SA#=%4d: Tune_X=%d\tTune_Y=%d\t", j, X_new, Y_new);
+
+                            q = X_new*32 + Y_new;//get the ADC data starting address
+                        }
+
+                        addr_iqs = q*18 +k;
+                        adc_data = adcs_buf[addr_iqs];
+                        IQ_data[k] = adcs_buf[addr_iqs];
+#ifdef  DEBUG_BIT_ERROR
+        DEBUG_BIT_AND(adc_data);
+        DEBUG_BIT_AND(IQ_data[k]);
+#endif
+                        Chip4_ADC_Write(adc_data);
+
+                        Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+                        Chip4_Idx_Scpu_App_Done_Write(1);
+                        send_clk_cycles(20);
+
+                        /// wait for ADC request finish
+                        //while(Chip4_SCPU_Idx_App_Start());
+                        Chip4_Idx_Scpu_App_Done_Write(0);
+                        Chip4_Idx_Scpu_Clk_Discrt_Write(0);
+
+                        if (3 == k) {
+                            IQ_abs[0] = (IQ_data[0]>IQ_data[2])?(IQ_data[0]-IQ_data[2]):(IQ_data[2]-IQ_data[0]);
+                            IQ_abs[1] = (IQ_data[1]>IQ_data[3])?(IQ_data[1]-IQ_data[3]):(IQ_data[3]-IQ_data[1]);
+
+                            if ((IQ_abs[0] + IQ_abs[1]) < OSCD_TOL) {
+                                ++k;
+                            } else {
+                                printf("#DLC\tOSCD violated!!!\r\n");
+                                k = 18;
+                            }
+                        } else {
+                            ++k;
+                        }
+                    }
+
+                    /// wait for ADC request signal (just for the debug; no need to input ADC data)
+                    while(!Chip4_SCPU_Idx_App_Start());
+
+                    Chip4_Idx_Scpu_Clk_Discrt_Write(1);
+                    Chip4_Idx_Scpu_App_Done_Write(1);
+                    send_clk_cycles(20);
+
+                    /// wait for ADC request finish
+                    //while(Chip4_SCPU_Idx_App_Start());
+                    Chip4_Idx_Scpu_App_Done_Write(0);
+                    Chip4_Idx_Scpu_Clk_Discrt_Write(0);
+                }
+
+                /// waiting for finish
+                while(!Chip4_SCPU_Idx_Nxt_End());
+                printf("#DLC\tCPU Process finish!\r\n");
+
+                if (j == 255) {
+                    printf("Ana_data no output\r\n");
+                }
+
+                sc_rd_data = Chip4_Scan_Chain_Read();
+                tunning_new_sa = (sc_rd_data >> 16);//avs_scan_chain_readdata[31:16]
+                X_new = (tunning_new_sa >> 8);//tunning_new_sa[15:8];
+                Y_new = (tunning_new_sa & 0x00FF);//tunning_new_sa[7:0];
+                Ana_new_sa = (sc_rd_data & 0x000003FF);//avs_scan_chain_readdata[9:0];
+
+                printf("\nBest_X =%d\tBest_Y =%d\tAna_best = %d\r\n", X_new, Y_new, Ana_new_sa);
+
+                if (j == 255) {
+                    printf("#DLC\tTestcase 12: run multi-start Simulated Annealing + CF with OSCD Passed!\r\n");
+                } else {
+                    printf("#DLC\tTestcase 12: run multi-start Simulated Annealing + CF with OSCD Failed!\r\n");
+                }
+            }
         }
         else
         {
